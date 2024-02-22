@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.2798717547345657,
+      "y": 5.463073824179848
+    },
+    "rotation": 180.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Ring 1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Ring 2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Ring 3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Final path"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

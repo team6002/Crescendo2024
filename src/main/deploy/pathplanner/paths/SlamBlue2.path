@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.8071827163332332,
+        "y": 4.111991050457951
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.2784981527029253,
+        "y": 4.567247202472939
+      },
+      "isLocked": false,
+      "linkedName": "BlueSlam1"
+    },
+    {
+      "anchor": {
+        "x": 1.177071978473117,
+        "y": 5.507130871149041
+      },
+      "prevControl": {
+        "x": 1.9994701885647073,
+        "y": 4.86096084893422
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "BlueSlam2"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SlamBlue",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

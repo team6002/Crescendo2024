@@ -1,0 +1,18 @@
+{
+  "robotWidth": 0.62,
+  "robotLength": 0.66,
+  "holonomicMode": true,
+  "pathFolders": [
+    "4 Close Rings Blue",
+    "4 Close Rings Red",
+    "BOX",
+    "SlamBlue",
+    "SlamRingRed"
+  ],
+  "autoFolders": [],
+  "defaultMaxVel": 1.0,
+  "defaultMaxAccel": 1.0,
+  "defaultMaxAngVel": 360.0,
+  "defaultMaxAngAccel": 360.0,
+  "maxModuleSpeed": 4.5
+}

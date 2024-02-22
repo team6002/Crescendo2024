@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 13.65990195307761,
+        "y": 5.565873600441298
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 14.203272199030982,
+        "y": 5.477759506502913
+      },
+      "isLocked": false,
+      "linkedName": "4SlamRing3"
+    },
+    {
+      "anchor": {
+        "x": 15.319384055583853,
+        "y": 5.492445188825977
+      },
+      "prevControl": {
+        "x": 14.893499268214994,
+        "y": 5.492445188825977
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "4SlamRing4"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -178.26429541107166,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SlamRingRed",
+  "previewStartingState": {
+    "rotation": -178.91907581333933,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}
