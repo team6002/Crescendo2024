@@ -16,6 +16,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.ElbowConstants;
+import frc.robot.Constants.HookConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.ShoulderConstants;
@@ -71,6 +72,7 @@ public class RobotContainer {
   private final BooleanSupplier AutoAim = () -> m_variables.getAutofire();
   private final BooleanSupplier HasItem = () -> m_variables.getHasItem();
   private final BooleanSupplier ReadyDrop = () -> m_variables.getReadyDrop();
+  private final BooleanSupplier ContShoot = () -> m_variables.getContShooting();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -218,9 +220,11 @@ public class RobotContainer {
 
     m_driverController.pov(0).onTrue(new SequentialCommandGroup(
       // m_arm.CMDsetShoulderConstrainst(ShoulderConstants.kClimbConstraints),
+      m_arm.CMDsetLHookPWM(HookConstants.LHookOpen),
+      m_arm.CMDsetRHookPWM(HookConstants.RHookOpen),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(60)),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(45)),
-      new CMD_ShoulderCheck(m_arm, Math.toRadians(45))
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(50)),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(50))
       // new CMD_setShooterTrap(m_shooter, 1500),
       // new CMD_ShooterOn(m_shooter)
       // new WaitCommand(1),
@@ -230,10 +234,24 @@ public class RobotContainer {
       // m_intake.setIndexVelocity(0)
     ));
 
+    m_driverController.pov(90).onTrue(new SequentialCommandGroup(
+      m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(10)),
+      new SequentialCommandGroup(
+        new WaitCommand(1),
+        new CMD_ElbowSetPosition(m_arm, Math.toRadians(80))
+      ),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(10)),
+      new CMD_setShooterTrap(m_shooter, 1500)
+    ));
+
     m_driverController.pov(180).onTrue(new SequentialCommandGroup(
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(45))
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(50)),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(-44)),
+      m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
+      m_arm.CMDsetRHookPWM(HookConstants.RHookClose)
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
     ));
 
@@ -249,6 +267,10 @@ public class RobotContainer {
       new CMD_GroundIntakeSetPower(m_intake, 0)
     ));
     
+    m_driverController.y().onTrue(m_arm.CMDsetRHookPWM(.40));
+
+    m_driverController.x().onTrue(m_arm.CMDsetRHookPWM(.10));
+    
     m_operatorController.a().onTrue(new CMD_CycleIntakeType(m_variables));
     
     m_operatorController.y().onTrue(new CMD_CycleSyncLocation(m_variables));
@@ -257,9 +279,10 @@ public class RobotContainer {
     
     m_operatorController.rightBumper().onTrue(new CMD_CycleOutputType(m_variables));
 
-    m_operatorController.povLeft().onTrue(
-      //epic trap command
-      new CMD_setShooterTrap(m_shooter, 1500)
+    m_operatorController.leftBumper().onTrue(new ConditionalCommand(
+      m_variables.CMDsetContShooting(false)
+      ,m_variables.CMDsetContShooting(true)
+      ,ContShoot)
     );
     
   }

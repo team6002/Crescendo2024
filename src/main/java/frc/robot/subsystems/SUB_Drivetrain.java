@@ -79,6 +79,7 @@ public class SUB_Drivetrain extends SubsystemBase {
   
   private ChassisSpeeds targetChassisSpeeds = new ChassisSpeeds();
 
+  private boolean onTarget = false;
   // The gyro sensor
   private final AHRS m_gyro = new AHRS(Port.kMXP);
   // Slew rate filter variables for controlling lateral acceleration
@@ -187,7 +188,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     // SmartDashboard.putNumber("XVelocity", getXVelocity());
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
     SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
-    
+    SmartDashboard.putBoolean("OnTarget", onTarget);
     m_frontLeft.telemetry(); 
     // m_frontRight.telemetry();
     // m_rearLeft.telemetry();
@@ -301,7 +302,7 @@ public class SUB_Drivetrain extends SubsystemBase {
       if (m_currentTranslationMag != 0.0) {
         directionSlewRate = Math.abs(DriveConstants.kDirectionSlewRate / m_currentTranslationMag);
       } else {
-        directionSlewRate = 300.0; //some high number that means the slew rate is effectively instantaneous
+        directionSlewRate = 325.0; //some high number that means the slew rate is effectively instantaneous
       }
       
 
@@ -485,9 +486,9 @@ public class SUB_Drivetrain extends SubsystemBase {
     // Calculate difference between target angle and our current heading 
     Rotation2d wantedTurnAngle = getPose().getRotation().minus(globalTargetAng);
     
-    //The target angle we are aiming for
+    //The difference between our current pose and target in radians
     double targetError = wantedTurnAngle.getRadians();
-    SmartDashboard.putNumber("targetError", targetError);
+    // SmartDashboard.putNumber("targetError", targetError);
     
     //target angle as detect by the Camera
     var visionEst = m_vision.getEstimatedGlobalPose();
@@ -504,9 +505,19 @@ public class SUB_Drivetrain extends SubsystemBase {
     if (Math.abs(targetError) <= Math.toRadians(2) && Math.abs(CameraError) <= 1){
       return 0;
     }
+    // variable tolerance for different distances
+    //TODO: makesure that the sides have tighter tolerance
+    if (targetError <= MathUtil.clamp(250 / calculateTargetXError(), 1, 2.5)){
+      onTarget = true;
+    } else{
+      onTarget = false;
+    }
     return MathUtil.clamp(p + f, -0.5, 0.5);
   }
 
+  public boolean getOnTarget(){
+    return onTarget;
+  }
   /*
    * Returns the angle of the robot in FRC coordinate system
    * @return heading of the robot in degrees

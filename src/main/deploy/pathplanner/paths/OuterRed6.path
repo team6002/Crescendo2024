@@ -1,0 +1,68 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 8.22619949354389,
+        "y": 4.082619685811823
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.477229695067619,
+        "y": 4.156048097427144
+      },
+      "isLocked": false,
+      "linkedName": "OuterRed6"
+    },
+    {
+      "anchor": {
+        "x": 4.965978017823657,
+        "y": 4.435076061565361
+      },
+      "prevControl": {
+        "x": 6.005384447262634,
+        "y": 4.1184351205911724
+      },
+      "nextControl": {
+        "x": 3.9265715883846797,
+        "y": 4.75171700253955
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.5267811501633743,
+        "y": 5.521816553472107
+      },
+      "prevControl": {
+        "x": 3.807447622050878,
+        "y": 5.180823824975021
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.5,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "OuterRed",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

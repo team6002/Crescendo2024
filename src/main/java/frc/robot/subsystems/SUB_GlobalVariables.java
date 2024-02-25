@@ -16,6 +16,7 @@ public class SUB_GlobalVariables extends SubsystemBase {
   private boolean m_autoaim;
   private boolean m_hasItem;
   private boolean m_readyDrop;
+  private boolean m_contShooting; // continous shooting mode
   private int m_intakeType = 0;
   private int m_outputType = 0;
   private int m_robotStage = 0;
@@ -57,6 +58,7 @@ public class SUB_GlobalVariables extends SubsystemBase {
   public Command CMDsetHasItem(boolean p_hasitem) {
     return Commands.runOnce(()->setHasItem(p_hasitem),this);
   }
+
   public boolean getReadyDrop(){
     return m_readyDrop;
   }
@@ -67,6 +69,18 @@ public class SUB_GlobalVariables extends SubsystemBase {
 
   public Command CMDsetReadyDrop(boolean p_readydrop) {
     return Commands.runOnce(()->setReadyDrop(p_readydrop),this);
+  }
+
+  public boolean getContShooting(){
+    return m_contShooting;
+  }
+
+  public void setContShooting(boolean p_contshooting){
+    m_contShooting = p_contshooting;
+  }
+
+  public Command CMDsetContShooting(boolean p_contshooting) {
+    return Commands.runOnce(()->setContShooting(p_contshooting),this);
   }
 
   public int getIntakeType(){
@@ -123,6 +137,7 @@ public class SUB_GlobalVariables extends SubsystemBase {
     SmartDashboard.putNumber("IntakeType", m_intakeType);
     SmartDashboard.putNumber("OutputType", m_outputType);
     SmartDashboard.putNumber("RobotStage", m_robotStage);
+    SmartDashboard.putBoolean("ContShoot", m_contShooting);
     // This method will be called once per scheduler run
   }
 }

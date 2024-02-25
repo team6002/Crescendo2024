@@ -28,7 +28,7 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
   private ArmFeedforward m_elbowFeedForward;
 
   private double m_currentGoal;
-    private double m_positionTolerance = Math.toRadians(1);;
+    private double m_positionTolerance = Math.toRadians(2);;
     
   //makes the PID tuning display all the Smartdashboard stuff it needs
   private boolean firstPIDTesting = true;
@@ -104,7 +104,7 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
     }
 
     public boolean atGoal(double tolerateRad) {
-        return (Math.abs(m_currentGoal - getPositionRad()) < tolerateRad);
+        return (Math.abs(m_currentGoal - getPositionRad()) <= tolerateRad);
     }
 
     public void setGoalRad(double goalRad) {

@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -105,15 +106,34 @@ public class SUB_Arm extends SubsystemBase {
         setShoulderGoalWithElbow(shoulderGoalRad);
     }
     
+    public void setLHookPWM(double p_PWM){
+        m_shoulder.setLHookPWM(p_PWM);
+    }
+    
+    public void setRHookPWM(double p_PWM){
+        m_shoulder.setRHookPWM(p_PWM);
+    }
+
+    public Command CMDsetLHookPWM(double p_PWM){
+        return m_shoulder.CMDsetLHookPWM(p_PWM);
+    }
+    public Command CMDsetRHookPWM(double p_PWM){
+        return m_shoulder.CMDsetRHookPWM(p_PWM);
+    }
+
+    // public Command CMDsetHooksPWM(double p_PWM){
+    //     return m_shoulder.CMDsetHooksPWM(p_PWM);
+    // }
+    
     @Override
     public void periodic() {
         // m_elbow.ElbowPIDTuning();
         // m_shoulder.ShoulderPIDTuning();
 
-        
         SmartDashboard.putNumber("Elbow Current", getElbowCurrent());
         SmartDashboard.putNumber("Elbow Goal", Math.toDegrees(getElbowGoal()));
         SmartDashboard.putNumber("Elbow Position", Math.toDegrees(getElbowPosition()));
+        SmartDashboard.putBoolean("ElbowAtGoal", m_elbow.atGoal());
 
         SmartDashboard.putNumber("Shoulder Current", getShoulderCurrent());
         SmartDashboard.putNumber("Shoulder Goal", Math.toDegrees(getShoulderGoal()));

@@ -44,7 +44,7 @@ public class CMD_Drive extends Command {
     if (m_variables.getAutofire()){
       rot = m_drivetrain.autoAlignTurn();
     }else{
-      rot = MathUtil.applyDeadband(m_controller.getRightX(),deadzone);
+      rot = MathUtil.applyDeadband(m_controller.getRightX(), deadzone);
     }
     // System.out.println(m_drivetrain.autoAlignTurn(m_drivetrain.calculateTargetAngle()));
     m_drivetrain.drive( xSpeed, ySpeed, rot,true,true);
