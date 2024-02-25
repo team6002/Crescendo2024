@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.30469837326079,
-      "y": 5.316217000949208
+      "x": 15.33,
+      "y": 5.33
     },
-    "rotation": 180.0
+    "rotation": -179.19307054489758
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
+            "name": "Dunk"
           }
         },
         {
@@ -27,12 +27,6 @@
           "type": "named",
           "data": {
             "name": "Fire"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.1
           }
         },
         {
@@ -55,9 +49,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamRingRed2"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamRingRed2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -99,9 +106,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamRingRed4"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamRingRed4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -109,15 +129,15 @@
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
                 "type": "wait",
                 "data": {
                   "waitTime": 0.1
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
                 }
               }
             ]
@@ -143,9 +163,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamRingRed6"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamRingRed6"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -165,6 +198,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "HoldShooter"
           }
         }
       ]

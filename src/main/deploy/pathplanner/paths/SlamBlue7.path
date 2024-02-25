@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.177071978473117,
-        "y": 5.639302012056618
+        "x": 1.27,
+        "y": 5.53
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1770719784731165,
-        "y": 5.639302012056618
+        "x": 2.2699999999999996,
+        "y": 5.53
       },
       "isLocked": false,
       "linkedName": "SlamBlue6"
@@ -32,11 +32,11 @@
     },
     {
       "anchor": {
-        "x": 8.284942222836145,
+        "x": 8.28,
         "y": 7.416269573147376
       },
       "prevControl": {
-        "x": 8.035285623344055,
+        "x": 8.03034340050791,
         "y": 7.386898208501247
       },
       "nextControl": null,
@@ -66,7 +66,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
+    "maxVelocity": 4.5,
     "maxAcceleration": 1.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0

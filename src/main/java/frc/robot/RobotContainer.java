@@ -67,7 +67,8 @@ public class RobotContainer {
   // The driver's controller
   CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   CommandXboxController m_operatorController = new CommandXboxController(OIConstants.kOperatorControllerPort);
-
+  
+  private final BooleanSupplier AutoAim = () -> m_variables.getAutofire();
   private final BooleanSupplier HasItem = () -> m_variables.getHasItem();
   private final BooleanSupplier ReadyDrop = () -> m_variables.getReadyDrop();
 
@@ -129,14 +130,24 @@ public class RobotContainer {
       // m_intake.CMDsetIndexVelocity(2350),
       // new CMD_GroundIntakeSetPower(m_intake, .7),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(0)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(60)),
-      new CMD_ElbowCheck(m_arm, Math.toRadians(60))
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(55)),
+      new CMD_ElbowCheck(m_arm, Math.toRadians(55))
     ));
 
     NamedCommands.registerCommand("HoldShooter", new SequentialCommandGroup(
       new CMD_ShooterOff(m_shooter),
       m_intake.CMDsetIndexVelocity(0),
-      new CMD_GroundIntakeSetPower(m_intake, 0)
+      new CMD_GroundIntakeSetPower(m_intake, 0),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10))
+
+    ));
+    NamedCommands.registerCommand("InterFire", new SequentialCommandGroup( 
+      // new CMD_AutoShoulder(m_arm, m_drivetrain, m_intake, m_variables),
+      new CMD_interpolateShooterSetpoint(m_drivetrain, m_shooter),
+      new CMD_ShooterCheck(m_shooter),
+      m_intake.CMDsetIndexPower(2350),
+      new CMD_GroundIntakeSetPower(m_intake, .7)
     ));
     NamedCommands.registerCommand("Fire", new SequentialCommandGroup( 
       // new CMD_AutoShoulder(m_arm, m_drivetrain, m_intake, m_variables),
@@ -154,8 +165,9 @@ public class RobotContainer {
     NamedCommands.registerCommand("PickUp", new SequentialCommandGroup(
       m_intake.CMDsetIndexVelocity(2350),     
        new CMD_GroundIntakeSetPower(m_intake, .7),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_IndexerIndex(m_intake).withTimeout(3)
-
     ));
 
     NamedCommands.registerCommand("ShooterCheck", new SequentialCommandGroup(
@@ -191,51 +203,18 @@ public class RobotContainer {
       getOutputCommand,
       ReadyDrop
       ));
-
-    // m_driverController.rightBumper().onTrue(new SequentialCommandGroup(
-    //   new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-4.9)),//25
-    //   new CMD_ShoulderCheck(m_arm, Math.toRadians(-4.9)),//25
-    //   new CMD_ElbowSetPosition(m_arm,Math.toRadians(15)),
-    //   new CMD_setShooterSetpoint(m_shooter, 4000),
-    //   new CMD_ShooterOn(m_shooter),
-    //   new ParallelCommandGroup(
-    //     new WaitCommand(3),
-    //     new CMD_PrepShot(m_intake)
-    //   ),
-    //   m_intake.setIndexVelocity(4000),
-    //   new WaitCommand(1),
-    //   m_intake.setIndexPower(0),
-    //   new CMD_ShooterOff(m_shooter)
-    //   // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
-    //   // new CMD_ElbowSetPosition(m_arm, Math.toRadians(15))
-    // ));
-    
-
-    // m_driverController.leftBumper().onTrue(new SequentialCommandGroup(
-    //   new CMD_ShoulderSetPosition(m_arm, ShoulderConstants.kShoulderShelfIntake),
-    //   new CMD_ShoulderCheck(m_arm, ShoulderConstants.kShoulderShelfIntake),
-    //   new CMD_ElbowSetPosition(m_arm, ElbowConstants.kElbowShelfIntake),
-    //   new CMD_setShooterSetpoint(m_shooter, ShooterConstants.kShooterIntakeVelocity),
-    //   new CMD_ShooterOn(m_shooter)
-    // ));
-    // m_driverController.x().onTrue(m_intake.setIndexVelocity(2000));
-    // m_driverController.leftBumper().onTrue(new SequentialCommandGroup(
-    //   m_variables.CMDsetAutofire(false),
-    //   new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
-    //   new CMD_ShoulderCheck(m_arm, Math.toRadians(-45)),
-    //   new CMD_ElbowSetPosition(m_arm, Math.toRadians(15)),
-    //   new ParallelCommandGroup(
-    //   new CMD_GroundIntakeForwardCool(m_intake, .5),
-    //   new SequentialCommandGroup(
-    //       new CMD_IndexerIndex(m_intake)
-    //       // new CMD_IndexerReady(m_intake)     
-    //   )
-    //   )
-    // ));
-
-    m_driverController.x().onTrue(new SequentialCommandGroup(
-      
+    // eject
+    m_driverController.b().onTrue(new SequentialCommandGroup(
+      new CMD_setShooterSetpoint(m_shooter, -1000),
+      m_intake.CMDsetIndexPower(-3000),
+      new CMD_GroundIntakeSetVelocity(m_intake, -1000),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
+      new CMD_ElbowSetPosition(m_arm, Math.toRadians(10))
     )); 
+
+    m_driverController.back().onTrue(
+      m_drivetrain.CMDzeroHeading()
+    );
 
     m_driverController.pov(0).onTrue(new SequentialCommandGroup(
       // m_arm.CMDsetShoulderConstrainst(ShoulderConstants.kClimbConstraints),
@@ -257,18 +236,10 @@ public class RobotContainer {
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(45))
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
     ));
-    
-
-    // m_driverController.pov(180).onTrue(new ConditionalCommand(
-    //   m_variables.CMDsetReadyDrop(false), m_variables.CMDsetReadyDrop(true), ReadyDrop
-    // ));
-    
-    m_driverController.y().onTrue(new CMD_CycleIntakeType(m_variables));
-
-    m_driverController.b().onTrue(new CMD_CycleOutputType(m_variables));
 
     m_driverController.a().onTrue(new SequentialCommandGroup(
       m_variables.CMDsetReadyDrop(false),
+      m_variables.CMDsetAutofire(false),
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kNormalConstaints),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(-45)),
@@ -277,8 +248,20 @@ public class RobotContainer {
       m_intake.CMDsetIndexVelocity(0),
       new CMD_GroundIntakeSetPower(m_intake, 0)
     ));
+    
+    m_operatorController.a().onTrue(new CMD_CycleIntakeType(m_variables));
+    
+    m_operatorController.y().onTrue(new CMD_CycleSyncLocation(m_variables));
+    
+    m_operatorController.x().onTrue(new CMD_SyncOdometry(m_drivetrain, m_variables));
+    
+    m_operatorController.rightBumper().onTrue(new CMD_CycleOutputType(m_variables));
 
-    m_driverController.back().onTrue( new CMD_setOdometry(m_drivetrain, new Pose2d(Units.inchesToMeters(120),Units.inchesToMeters(0) + 6,Rotation2d.fromDegrees(0))));
+    m_operatorController.povLeft().onTrue(
+      //epic trap command
+      new CMD_setShooterTrap(m_shooter, 1500)
+    );
+    
   }
 
   private int getIntakeType() {
@@ -336,7 +319,7 @@ public class RobotContainer {
   
   public Command getAutonomousCommand() {
     // return new PathPlannerAuto("HAPL").andThen(new PrintCommand("IAHFOSAIOFSOIFALK"));
-    return new PathPlannerAuto("5SlamBlue");
+    return new PathPlannerAuto("4SlamRed");
     // return new PathPlannerAuto("BOX");
   
   }

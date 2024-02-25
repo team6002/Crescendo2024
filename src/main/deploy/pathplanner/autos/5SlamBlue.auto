@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
+            "name": "Dunk"
           }
         },
         {
@@ -49,9 +49,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamBlue2"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamBlue2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -93,9 +106,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamBlue4"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamBlue4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -137,9 +163,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamBlue6"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamBlue6"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -181,9 +220,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamBlue8"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamBlue8"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -203,6 +255,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "HoldShooter"
           }
         }
       ]

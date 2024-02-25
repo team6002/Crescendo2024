@@ -15,13 +15,13 @@ public class CMD_GroundIntakeForwardCool extends Command {
   boolean m_finished;
   double m_detectTimer;
   double m_stopTimer;
-  double m_power;
+  double m_velocity;
   /** Creates a new CMD_IntakeForward. */
-  public CMD_GroundIntakeForwardCool(SUB_Intake p_intake, double p_power) {
+  public CMD_GroundIntakeForwardCool(SUB_Intake p_intake, double p_velocity) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_intake = p_intake;
     m_detected = false;
-    m_power = p_power;
+    m_velocity = p_velocity;
   }
 
   // Called when the command is initially scheduled.
@@ -30,7 +30,7 @@ public class CMD_GroundIntakeForwardCool extends Command {
     m_detected = false;
     m_finished = false;
     m_detectTimer = 0;
-    m_intake.setGroundIntakePower(m_power);
+    m_intake.setGroundIntakeVelocity(m_velocity);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

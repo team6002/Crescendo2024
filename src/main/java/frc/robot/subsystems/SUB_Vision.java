@@ -109,6 +109,10 @@ public class SUB_Vision extends SubsystemBase {
         return estStdDevs;
     }
 
+    public double getTargetYaw(int targId){
+        return getLatestResult().getBestTarget().getYaw();
+        // return photonEstimator.getFieldTags().getTagPose(targId).get().getRotation().getAngle();
+    }
     // @Override
     // public void periodic() {
     // var visionEst = getEstimatedGlobalPose();

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 14.291386292969365,
-        "y": 4.244162191365528
+        "x": 13.792073093985186,
+        "y": 4.111991050457951
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.790699491953543,
-        "y": 4.670046978734388
+        "x": 14.291386292969364,
+        "y": 4.537875837826811
       },
       "isLocked": false,
       "linkedName": "4SlamRing1"
@@ -32,7 +32,7 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
+    "maxVelocity": 4.5,
     "maxAcceleration": 1.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
@@ -45,7 +45,7 @@
   "reversed": false,
   "folder": "SlamRingRed",
   "previewStartingState": {
-    "rotation": -158.55226367289472,
+    "rotation": -178.75463573323165,
     "velocity": 0
   },
   "useDefaultConstraints": true

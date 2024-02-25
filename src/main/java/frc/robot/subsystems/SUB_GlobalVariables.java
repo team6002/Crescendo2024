@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -18,6 +19,7 @@ public class SUB_GlobalVariables extends SubsystemBase {
   private int m_intakeType = 0;
   private int m_outputType = 0;
   private int m_robotStage = 0;
+  private Pose2d m_syncLocation;
   public SUB_GlobalVariables() {}
   //*returns if the robot is automatically shooting */
   public boolean getAutofire(){
@@ -101,6 +103,18 @@ public class SUB_GlobalVariables extends SubsystemBase {
 
   public Command CMDsetRobotStage(int p_robotStage) {
     return Commands.runOnce(()->setRobotStage(p_robotStage),this);
+  }
+
+  public Pose2d getSyncLocation(){
+    return m_syncLocation;
+  }
+
+  public void setSyncLocation(Pose2d p_pose2d){
+    m_syncLocation = p_pose2d;
+  }
+
+  public Command CMDsetSyncLocation(Pose2d p_pose2d) {
+    return Commands.runOnce(()->setSyncLocation(p_pose2d),this);
   }
   @Override
   public void periodic() {

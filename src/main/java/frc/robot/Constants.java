@@ -10,7 +10,10 @@ import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
+import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.geometry.Translation3d;
@@ -94,9 +97,9 @@ public final class Constants {
     public static final boolean kGyroReversed = false;
 
     public static final double kAutoAlignP = 0.2;
-    public static final double kAutoAlignF = 0.03;
+    public static final double kAutoAlignF = 0.02;
 
-    public static final double kAlignVelocityMod = 0.02;
+    public static final double kAlignVelocityMod = 0.018;
   }
 
   public static final class ModuleConstants {
@@ -119,7 +122,7 @@ public final class Constants {
         / kDrivingMotorReduction;
 
     // This accounts for stuff such as wheel wear
-    public static final double kXFactor = 1.025;    
+    public static final double kXFactor = .9782;  // if actual is smaller than odo go down  
 
     public static final double kDrivingEncoderPositionFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) * kXFactor; // meters
@@ -172,8 +175,8 @@ public final class Constants {
   }
 
   public static final class AutoConstants {
-    public static final double kMaxSpeedMetersPerSecond = 2;
-    public static final double kMaxAccelerationMetersPerSecondSquared = 2;
+    public static final double kMaxSpeedMetersPerSecond = 2;//4.5
+    public static final double kMaxAccelerationMetersPerSecondSquared = 2;//5
     public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
     public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
 
@@ -181,7 +184,7 @@ public final class Constants {
     // public static final double kPYController = 1;
     // public static final double kPThetaController = 1;
 
-    public static final double kPXController = 3.8;//0.2;//0.5;// perfect distance test
+    public static final double kPXController = 4;//0.2;//0.5;// perfect distance test
     public static final double kPYController = 0;//0.5; //perfect distance test
     public static final double kPThetaController = 4;//1.5;//2; perfect distance test
     
@@ -198,10 +201,10 @@ public final class Constants {
   public static final class IntakeConstants{
     // public static final int kShelfIntakeMotorCANID = 12;
 
-    public static final double kIntakeP = 0;
+    public static final double kIntakeP = 0.00001;
     public static final double kIntakeI = 0;
-    public static final double kIntakeD = 0;
-    public static final double kIntakeFF = 0;
+    public static final double kIntakeD = 0.00001;
+    public static final double kIntakeFF = 0.00022;
 
     public static final double kIntakeS = 0;
     public static final double kIntakeV = 0;
@@ -249,7 +252,7 @@ public final class Constants {
     public static final double kShooterBotD = 0.0008;//0.0005
     public static final double kShooterBotFF = 0.0000;
 
-    public static final double kShooterBotSVolts = 0.00001;
+    public static final double kShooterBotSVolts = 0.00002;
     public static final double kBotVVoltSecondsPerRotation = 0.0022;
     public static final double kShooterBotA = 0.1;
 
@@ -277,7 +280,7 @@ public final class Constants {
       {120, 2400}, 
       {180, 3000},
       {240, 3500},
-      {300, 4000},
+      {300, 3800},
     };
   }
 
@@ -290,7 +293,7 @@ public final class Constants {
     public static final double kPositionConversionFactor = Math.PI * 2; // radians
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60; // radians per second
 
-    public static final double kShoulderP = 1.1;
+    public static final double kShoulderP = 2.2;
     public static final double kShoulderI = 0;
     public static final double kShoulderD = 0;
     public static final double kShoulderFF = 0.0;
@@ -312,8 +315,8 @@ public final class Constants {
     // public static final double kShoulderMaxVelocity = 1000;
     // public static final double kShoulderMaxAcceleration = 1000;
 
-    public static final double kMaxVelocityRadPerSecond = 5.1;
-    public static final double kMaxAccelerationRadPerSecSquared = 9.1;
+    public static final double kMaxVelocityRadPerSecond = 6.1;
+    public static final double kMaxAccelerationRadPerSecSquared = 8.1;
 
     public static final double kMaxClimbVelocityRadPerSecond = .5;
     public static final double kMaxClimbAccelerationRadPerSecSquared = 1;
@@ -330,21 +333,23 @@ public final class Constants {
     public static final double[][] kShoulderArray = {
     //Shoulder positions for shooting at the Speaker for ft 
       // values before shifting shooter
-      // {36, Math.toRadians(-43)}, 
-      // {84, Math.toRadians(-30)}, 
-      // {120, Math.toRadians(-16)}, 
-      // {180, Math.toRadians(-11)},
-      // {240, Math.toRadians(-7 )},
-      // {300, Math.toRadians(-4.9)},
-      //values after shifiting shooter
       {36, Math.toRadians(-47)},
       {50, Math.toRadians(-47)},  
       {84, Math.toRadians(-42)}, 
       {100, Math.toRadians(-38)}, 
       {120, Math.toRadians(-37)}, 
-      {180, Math.toRadians(-26.8)},
-      {240, Math.toRadians(-20.4)},
+      {180, Math.toRadians(-24.7)},
+      {240, Math.toRadians(-19.7)},
       {300, Math.toRadians(-15.9)},
+      //values after shifiting shooter
+      // {36, Math.toRadians(-47)},
+      // {50, Math.toRadians(-47)},  
+      // {84, Math.toRadians(-42)}, 
+      // {100, Math.toRadians(-38)}, 
+      // {120, Math.toRadians(-37)}, 
+      // {180, Math.toRadians(-29.8)},
+      // {240, Math.toRadians(-25.4)},
+      // {300, Math.toRadians(-18.9)},
     };
 
   }
@@ -356,7 +361,7 @@ public final class Constants {
     public static final double kPositionConversionFactor = (Math.PI * 2) / 3; // 3:1 ratio to shaft
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60;
 
-    public static final double kElbowP = 1.2;
+    public static final double kElbowP = 1.5;
     public static final double kElbowI = 0;
     public static final double kElbowD = 0.0;
     public static final double kElbowFF = 0.0;
@@ -368,8 +373,8 @@ public final class Constants {
 
     // public static final double kElbowMaxVelocity = 1000;
     // public static final double kElbowMaxAcceleration = 1000;
-    public static final double kMaxVelocityRadPerSecond = 2.1;
-    public static final double kMaxAccelerationRadPerSecSquared = 2.1;
+    public static final double kMaxVelocityRadPerSecond = 6.1;
+    public static final double kMaxAccelerationRadPerSecSquared = 6.1;
 
     public static final double kElbowHome = Math.toRadians(10); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
@@ -396,15 +401,24 @@ public final class Constants {
     public static final int kBackAmpOutput = 2;
   }
   public static final class LocationConstants{
-    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(220));
-    public static final Translation2d SpeakerRed = new Translation2d(16.5, Units.inchesToMeters(220));
+    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(215));
+    public static final Translation2d SpeakerRed = new Translation2d(16.5, Units.inchesToMeters(215));
+  
+    public static final Pose2d SubwooferBlue = new Pose2d( 1.2,5.4, Rotation2d.fromDegrees(0));
+    public static final Pose2d AmpBlue = new Pose2d( 1.9,7.8, Rotation2d.fromDegrees(-90));
+    public static final Pose2d LSourceBlue = new Pose2d( 15,.5, Rotation2d.fromDegrees(125));// the source closest to blue side
+    
+    public static final Pose2d SubwooferRed = new Pose2d( 15.4,5.4, Rotation2d.fromDegrees(-180));
+    public static final Pose2d AmpRed = new Pose2d( 14.8,7.8, Rotation2d.fromDegrees(-90));
+    public static final Pose2d LSourceRed = new Pose2d( 1.6,.5, Rotation2d.fromDegrees(60));// the source closest to blue side
+    
   }
 
   public static final class VisionConstants{
            public static final String kPhoton = "ShooterCam";
         // Cam mounted facing forward, half a meter forward of center, half a meter up from center.
         public static final Transform3d kRobotToCam =
-                new Transform3d(new Translation3d(Units.inchesToMeters(10.75), 0, Units.inchesToMeters(21)), new Rotation3d(0, Math.toRadians(10), Math.toRadians(0)));
+                new Transform3d(new Translation3d(Units.inchesToMeters(10.75), 0, Units.inchesToMeters(21)), new Rotation3d(0, Math.toRadians(-10), 0));
 
         // The layout of the AprilTags on the field
         public static final AprilTagFieldLayout kTagLayout =
@@ -412,8 +426,8 @@ public final class Constants {
 
         // The standard deviations of our vision estimated poses, which affect correction rate
         // (Fake values. Experiment and determine estimation noise on an actual robot.)
-        public static final Matrix<N3, N1> kSingleTagStdDevs = VecBuilder.fill(4, 4, 8);
-        public static final Matrix<N3, N1> kMultiTagStdDevs = VecBuilder.fill(0.5, 0.5, 1);
+        public static final Matrix<N3, N1> kSingleTagStdDevs = VecBuilder.fill(2, 2, 4);
+        public static final Matrix<N3, N1> kMultiTagStdDevs = VecBuilder.fill(0.06, 0.06, .12);
  
   }
 }

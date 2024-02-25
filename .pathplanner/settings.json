@@ -3,14 +3,14 @@
   "robotLength": 0.66,
   "holonomicMode": true,
   "pathFolders": [
-    "4 Close Rings Blue",
-    "4 Close Rings Red",
     "BOX",
+    "OuterBlue",
+    "ShootyBlue",
     "SlamBlue",
     "SlamRingRed"
   ],
   "autoFolders": [],
-  "defaultMaxVel": 1.0,
+  "defaultMaxVel": 4.5,
   "defaultMaxAccel": 1.0,
   "defaultMaxAngVel": 360.0,
   "defaultMaxAngAccel": 360.0,

@@ -26,7 +26,7 @@ public class CMD_FloorIntake extends SequentialCommandGroup {
         new CMD_ShoulderCheck(p_arm, Math.toRadians(-45)),
         new CMD_ElbowSetPositionRelative(p_arm, Math.toRadians(ElbowConstants.kElbowHome)),
         new ParallelCommandGroup(
-        new CMD_GroundIntakeForwardCool(p_intake, .5),
+        new CMD_GroundIntakeForwardCool(p_intake, 3000),
         new SequentialCommandGroup(
         new CMD_IndexerIndex(p_intake)
       )

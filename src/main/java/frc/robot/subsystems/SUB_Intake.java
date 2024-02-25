@@ -170,8 +170,10 @@ public class SUB_Intake extends SubsystemBase {
     SmartDashboard.putNumber("IntakeOutputCurrent", getGroundIntakeCurrent());
     SmartDashboard.putNumber("IndexerOutputCurrent", getIndexerCurrent());
     // SmartDashboard.putNumber("Indexer Position", getIndexerPosition());
-    // SmartDashboard.putNumber("Indexer Velocity", getIndexerVelocity());
+    SmartDashboard.putNumber("Indexer Velocity", getIndexerVelocity());
+    SmartDashboard.putNumber("Intake Velocity", getGroundIntakeVelocity());
     // SmartDashboard.putBoolean("Indexer Sensor", getIndexerSensor());
     // This method will be called once per scheduler run
+
   }
 }

@@ -1,0 +1,68 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.704382940071784,
+        "y": 4.244162191365528
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.955413141595514,
+        "y": 4.376333332273105
+      },
+      "isLocked": false,
+      "linkedName": "ShootBlue1"
+    },
+    {
+      "anchor": {
+        "x": 1.8085563183648736,
+        "y": 5.0225033544879265
+      },
+      "prevControl": {
+        "x": 1.7498135890726172,
+        "y": 4.346961967626977
+      },
+      "nextControl": {
+        "x": 1.8531020150572766,
+        "y": 5.534778866450561
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.9246681749177457,
+        "y": 5.595244965087426
+      },
+      "prevControl": {
+        "x": 2.219755423410669,
+        "y": 5.492445188825977
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "ShootBlue2"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.5,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "ShootyBlue",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

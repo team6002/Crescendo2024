@@ -3,49 +3,49 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.8806111279485536,
-        "y": 5.565873600441298
+        "x": 1.25,
+        "y": 5.345588365595336
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.014155870887771,
-        "y": 5.242788589333888
+        "x": 1.9842841161532057,
+        "y": 4.758161072672772
       },
       "isLocked": false,
-      "linkedName": "4RingClose2"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.131641329472284,
-        "y": 4.391019014596169
+        "x": 2.704382940071784,
+        "y": 4.244162191365528
       },
       "prevControl": {
-        "x": 1.6470138128111682,
-        "y": 4.684732661057451
+        "x": 2.205069741087604,
+        "y": 4.581932884796003
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "4RingClose3"
+      "linkedName": "ShootBlue1"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
+    "maxVelocity": 4.5,
     "maxAcceleration": 1.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -26.565051177078,
+    "rotation": -20.725558865560476,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4 Close Rings Blue",
+  "folder": "ShootyBlue",
   "previewStartingState": {
-    "rotation": -31.651272886712643,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

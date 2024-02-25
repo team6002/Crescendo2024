@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.260641326291596,
-      "y": 5.0371890368109895
+      "x": 0.81,
+      "y": 6.46
     },
-    "rotation": -149.5344550805402
+    "rotation": 59.215853473673526
   },
   "command": {
     "type": "sequential",
@@ -30,60 +30,96 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "4RingClose1Red"
+                  "pathName": "OuterBlue1"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooterSecond"
+                  "name": "PickUp"
                 }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "4RingClose2Red"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterThird"
+                  "pathName": "OuterBlue3"
                 }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
+          "data": {
+            "name": "AdjustShoulder"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "InterFire"
+          }
+        },
+        {
+          "type": "race",
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "4RingClose3Red"
+                  "name": "PickUp"
                 }
               },
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "ReadyShooterFourth"
+                  "pathName": "OuterBlue4"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "OuterBlue5"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AdjustShoulder"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "InterFire"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.2
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "HoldShooter"
           }
         }
       ]

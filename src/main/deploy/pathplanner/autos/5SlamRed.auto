@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.275327008614662,
-      "y": 5.051874719134054
+      "x": 15.33,
+      "y": 5.33
     },
-    "rotation": -150.42216131873874
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
+            "name": "Dunk"
           }
         },
         {
@@ -49,9 +49,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamRingRed2"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamRingRed2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -93,9 +106,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamRingRed4"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamRingRed4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -137,9 +163,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamRingRed6"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamRingRed6"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
           }
         },
         {
@@ -162,9 +201,15 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "HoldShooter"
+                }
+              },
               {
                 "type": "path",
                 "data": {
@@ -175,9 +220,47 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SlamRed8"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SlamRed8"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Dunk"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.1
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "HoldShooter"
           }
         }
       ]

@@ -189,7 +189,7 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
       CANSparkMax.ControlType.kPosition,(1),
       m_elbowFeedForward.calculate(setpoint.position,setpoint.velocity)
     );  
-    // SmartDashboard.putNumber("Elbow Setpoint", Math.toDegrees(setpoint.position));
+    SmartDashboard.putNumber("Elbow Setpoint", Math.toDegrees(setpoint.position));
     // SmartDashboard.putNumber("Elbow Setpoint Velocity", setpoint.velocity);
     // SmartDashboard.putNumber("Elbow feedforward", m_elbowFeedForward.calculate(setpoint.position, setpoint.velocity));
   }  

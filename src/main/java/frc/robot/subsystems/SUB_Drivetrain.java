@@ -28,6 +28,7 @@ import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -37,6 +38,8 @@ import frc.robot.Constants.LocationConstants;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.Constants.HardwareConstants;
 import frc.utils.SwerveUtils;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -106,6 +109,7 @@ public class SUB_Drivetrain extends SubsystemBase {
   Field2d field;
   Field2d fieldEst;
   /** Creates a new DriveSubsystem. */
+
   public SUB_Drivetrain(SUB_Vision p_vision) {
     var stateStdDevs = VecBuilder.fill(0.1, 0.1, 0.1);
     var visionStdDevs = VecBuilder.fill(1, 1, 1);    
@@ -166,6 +170,7 @@ public class SUB_Drivetrain extends SubsystemBase {
   public void periodic() {
     // Update the odometry in the periodic block
     
+    var visionEst = m_vision.getEstimatedGlobalPose();
     SmartDashboard.putData("Field", field);
     SmartDashboard.putData("FieldEst", fieldEst);
     field.setRobotPose(getPose());
@@ -176,12 +181,13 @@ public class SUB_Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("X",Units.metersToInches(getPose().getX()));
     SmartDashboard.putNumber("Y", Units.metersToInches(getPose().getY()));
     SmartDashboard.putNumber("Angle", getAngle());
-    SmartDashboard.putNumber("Target Angle", Math.toDegrees(calculateTargetAngle()));
+    SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
     SmartDashboard.putNumber("TargetXError", Units.metersToInches(calculateTargetXError()));
     // SmartDashboard.putNumber("XVelocity", getXVelocity());
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
-
+    SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
+    
     m_frontLeft.telemetry(); 
     // m_frontRight.telemetry();
     // m_rearLeft.telemetry();
@@ -212,7 +218,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     //   // lol how long does it take for justin to notice this
     //   //saw it immedialtly lmao
     // }
-    var visionEst = m_vision.getEstimatedGlobalPose();
+    
     visionEst.ifPresent(
             est -> {
                 var estPose = est.estimatedPose.toPose2d();
@@ -226,6 +232,7 @@ public class SUB_Drivetrain extends SubsystemBase {
       SmartDashboard.putNumber("EstX", Units.metersToInches(visionEst.get().estimatedPose.getX()));
       SmartDashboard.putNumber("EstY", Units.metersToInches(visionEst.get().estimatedPose.getY()));
       SmartDashboard.putNumber("EstDeg", Math.toDegrees(visionEst.get().estimatedPose.getRotation().getAngle()));
+      // SmartDashboard.putNumber("targetAng", m_vision.getTargetYaw(7));
       fieldEst.setRobotPose(visionEst.get().estimatedPose.toPose2d());
     }
   }
@@ -396,6 +403,11 @@ public class SUB_Drivetrain extends SubsystemBase {
     m_gyro.reset();
     m_angleOffset = 0;
   }
+
+  public Command CMDzeroHeading() {
+    return Commands.runOnce(()->zeroHeading(),this);
+  }
+
   public void setHeading(double p_DegAngle){
     m_gyro.reset();
     m_angleOffset = p_DegAngle;
@@ -415,9 +427,6 @@ public class SUB_Drivetrain extends SubsystemBase {
   //   return Rotation2d.fromDegrees(m_gyro.getAngle()).getDegrees();
   // }
 
-  public double getAngle() {
-    return -Rotation2d.fromDegrees(m_gyro.getAngle()).getDegrees() + m_angleOffset;
-  }
   public double getVelocity(){
     double p_velocity =
     (m_frontLeft.getVelocity() + m_frontRight.getVelocity()
@@ -446,56 +455,91 @@ public class SUB_Drivetrain extends SubsystemBase {
     }
   }
 
-  public double calculateTargetAngle(){
-    double XError = ((getPose().getX()) - Units.inchesToMeters(DriveConstants.kTrackWidth/2) - m_currentTarget.getX());
-    double YError = ((getPose().getY()) - Units.inchesToMeters(DriveConstants.kWheelBase/2) - m_currentTarget.getY());
-    double hypo = Math.sqrt((XError* XError) - (YError * YError));
-    m_TargetAngle = Math.asin(YError/hypo); 
-    return m_TargetAngle;
-  }
   public double calculateTargetXError(){
     return  Math.abs((getPose().getX()) - Units.inchesToMeters(DriveConstants.kTrackWidth/2) - m_currentTarget.getX());
   }
-  //*NOTE returns a percentage of power for the drive CMD to use */
-  public double autoAlignTurn(double targetAng){
+
+  /**
+   * Calculate the angle between current pose to current target
+   * @return Relative angle to the current target from robot pose
+   */
+  public Rotation2d angleToCurrentTarget() {
+    Translation2d currentTranslation = getPose().getTranslation();
+    Translation2d delta = currentTranslation.minus(m_currentTarget);
+    Rotation2d angleTo = new Rotation2d(Math.atan2(delta.getY(), delta.getX()));
+    return angleTo;
+  }
+
+  /*
+   * Using the relative angle from angleToCurrentTarget(), determine the rotation speed for the 
+   * robot to turn towards the target
+   * @param targetAng: angle to the target
+   * @return: rotation power for drivetrain from -0.5 to 0.5
+   */
+  public double autoAlignTurn(){
+    double CameraError = 0;
+
+    //Angle to target
+    Rotation2d globalTargetAng = angleToCurrentTarget();
+
+    // Calculate difference between target angle and our current heading 
+    Rotation2d wantedTurnAngle = getPose().getRotation().minus(globalTargetAng);
     
-    double targetError = MathUtil.angleModulus(Math.toRadians(getAngle())) - targetAng;
-    // SmartDashboard.putNumber("TargetError", Math.toDegrees(targetError));
+    //The target angle we are aiming for
+    double targetError = wantedTurnAngle.getRadians();
+    SmartDashboard.putNumber("targetError", targetError);
+    
+    //target angle as detect by the Camera
+    var visionEst = m_vision.getEstimatedGlobalPose();
+    if (visionEst.isPresent()){
+      // CameraError = m_vision.getTargetYaw(0);
+    }
+
+    //TODO: Use wpilib's built in PIDController.  Easier and allows for motion profiles.
     double p =  targetError * DriveConstants.kAutoAlignP;
     double f = Math.copySign(DriveConstants.kAutoAlignF, targetError);
     if (Double.isNaN(m_TargetAngle) ){
       return 0;
     }
-    if (Math.abs(targetError) <= Math.toRadians(4)){
+    if (Math.abs(targetError) <= Math.toRadians(2) && Math.abs(CameraError) <= 1){
       return 0;
     }
     return MathUtil.clamp(p + f, -0.5, 0.5);
   }
 
-      /**
-     * Get the SwerveModulePosition of each swerve module (position, angle). The returned array order
-     * matches the kinematics module order.
-     */
-    public SwerveModulePosition[] getModulePositions() {
-      return new SwerveModulePosition[] {
-          m_frontLeft.getPosition(),
-          m_frontRight.getPosition(),
-          m_rearLeft.getPosition(),
-          m_rearRight.getPosition()
-      };
-    }
-        /** See {@link SwerveDrivePoseEstimator#addVisionMeasurement(Pose2d, double)}. */
-    public void addVisionMeasurement(Pose2d visionMeasurement, double timestampSeconds) {
-        m_odometry.addVisionMeasurement(visionMeasurement, timestampSeconds);
-    }
+  /*
+   * Returns the angle of the robot in FRC coordinate system
+   * @return heading of the robot in degrees
+   */
+  public double getAngle() {
+    return Math.toDegrees(MathUtil.angleModulus(-Rotation2d.fromDegrees(m_gyro.getAngle()).getRadians())) + m_angleOffset;
+  }
 
-    /** See {@link SwerveDrivePoseEstimator#addVisionMeasurement(Pose2d, double, Matrix)}. */
-    public void addVisionMeasurement(
-            Pose2d visionMeasurement, double timestampSeconds, Matrix<N3, N1> stdDevs) {
-        //uses navx instead of camera vision.
-        Pose2d p_angledPose = new Pose2d(visionMeasurement.getTranslation(), Rotation2d.fromDegrees(getAngle())); 
-        m_odometry.addVisionMeasurement(p_angledPose, timestampSeconds, stdDevs);
-    }
+  /**
+  * Get the SwerveModulePosition of each swerve module (position, angle). The returned array order
+  * matches the kinematics module order.
+  */
+  public SwerveModulePosition[] getModulePositions() {
+    return new SwerveModulePosition[] {
+        m_frontLeft.getPosition(),
+        m_frontRight.getPosition(),
+        m_rearLeft.getPosition(),
+        m_rearRight.getPosition()
+    };
+  }
+
+  /** See {@link SwerveDrivePoseEstimator#addVisionMeasurement(Pose2d, double)}. */
+  public void addVisionMeasurement(Pose2d visionMeasurement, double timestampSeconds) {
+      m_odometry.addVisionMeasurement(visionMeasurement, timestampSeconds);
+  }
+
+  /** See {@link SwerveDrivePoseEstimator#addVisionMeasurement(Pose2d, double, Matrix)}. */
+  public void addVisionMeasurement(
+          Pose2d visionMeasurement, double timestampSeconds, Matrix<N3, N1> stdDevs) {
+      //uses navx instead of camera vision.
+      Pose2d p_angledPose = new Pose2d(visionMeasurement.getTranslation(), Rotation2d.fromDegrees(getAngle())); 
+      m_odometry.addVisionMeasurement(p_angledPose, timestampSeconds, stdDevs);
+  }
 
   
 }

@@ -1,0 +1,191 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.25,
+      "y": 5.36
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ReadyShooterFirstRing"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AdjustShoulder"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShooterCheck"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Fire"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootyBlue2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AdjustShoulder"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShooterCheck"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Fire"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue3"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AdjustShoulder"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShooterCheck"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Fire"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue4"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ShootBlue5"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AdjustShoulder"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShooterCheck"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "InterFire"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.2
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "HoldShooter"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

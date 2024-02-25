@@ -273,7 +273,7 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
     );
     
     // SmartDashboard.putNumber("Shoulder feedforward", m_shoulderFeedForward.calculate(setpoint.position, setpoint.velocity));
-    // SmartDashboard.putNumber("ShoulderSetpoint", Math.toDegrees(setpoint.position));
+    SmartDashboard.putNumber("ShoulderSetpoint", Math.toDegrees(setpoint.position));
     // SmartDashboard.putNumber("ShoulderSetpointVelocity", setpoint.velocity);
   }
   

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.04997130566712,
-        "y": 7.416269573147376
+        "x": 8.1,
+        "y": 7.35
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.669517167299094,
-        "y": 7.034441832747708
+        "x": 9.1,
+        "y": 7.35
       },
       "isLocked": false,
-      "linkedName": "Ring 3"
+      "linkedName": "OuterBlue1"
     },
     {
       "anchor": {
-        "x": 4.3344936779319,
-        "y": 6.285472034271439
+        "x": 8.255570858190017,
+        "y": 7.416269573147376
       },
       "prevControl": {
-        "x": 6.243632379930235,
-        "y": 6.7994709155786826
+        "x": 7.255570858190017,
+        "y": 7.416269573147376
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,21 +32,21 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
-    "maxAngularVelocity": 180.0,
-    "maxAngularAcceleration": 180.0
+    "maxVelocity": 4.5,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -162.030860259843,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "OuterBlue",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

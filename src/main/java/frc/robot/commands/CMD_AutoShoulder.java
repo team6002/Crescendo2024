@@ -48,6 +48,6 @@ public class CMD_AutoShoulder extends Command {
   @Override
   public boolean isFinished() {
     // System.out.println(m_variable.getAutoaim());
-    return !m_variable.getAutoaim();
+    return m_arm.atShoulderGoal();
   }
 }
