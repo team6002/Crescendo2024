@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.290012690937726,
-        "y": 5.477759506502913
+        "x": 15.172527232353213,
+        "y": 5.492445188825977
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.864127903568866,
-        "y": 5.492445188825978
+        "x": 14.746642444984353,
+        "y": 5.507130871149042
       },
       "isLocked": false,
       "linkedName": "4SlamRing2"
     },
     {
       "anchor": {
-        "x": 13.65990195307761,
-        "y": 5.565873600441298
+        "x": 13.689273317723737,
+        "y": 5.53650223579517
       },
       "prevControl": {
-        "x": 14.027044011154212,
-        "y": 5.521816553472107
+        "x": 14.05641537580034,
+        "y": 5.492445188825978
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.5,
-    "maxAcceleration": 1.0,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

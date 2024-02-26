@@ -3,48 +3,54 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.187212914676275,
-        "y": 5.624616329733554
+        "x": 0.7952442380734501,
+        "y": 6.520442951440464
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.188586516707915,
-        "y": 5.903644293871772
-      },
-      "isLocked": false,
-      "linkedName": "SlamRed6"
-    },
-    {
-      "anchor": {
-        "x": 8.931112245050967,
-        "y": 7.416269573147376
-      },
-      "prevControl": {
-        "x": 9.356997032419825,
-        "y": 7.401583890824313
-      },
-      "nextControl": {
-        "x": 8.475180598185812,
-        "y": 7.431991354073759
+        "x": 1.6470138128111684,
+        "y": 7.269412749916735
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.240885175866953,
-        "y": 7.460326620116567
+        "x": 2.9246681749177457,
+        "y": 7.6365548079933365
       },
       "prevControl": {
-        "x": 8.76956973949726,
-        "y": 7.401583890824312
+        "x": 1.9246681749177457,
+        "y": 7.6365548079933365
+      },
+      "nextControl": {
+        "x": 3.9246681749177457,
+        "y": 7.6365548079933365
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.314313587482273,
+        "y": 7.4309552554704394
+      },
+      "prevControl": {
+        "x": 5.83243327488444,
+        "y": 7.798097313547042
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SlamRing7"
+      "linkedName": "OuterRed1"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.65,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -55,13 +61,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 178.83086067209263,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SlamRingRed",
+  "folder": "OuterRed",
   "previewStartingState": {
-    "rotation": -178.91907581333933,
+    "rotation": 58.39249775375112,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -4,24 +4,24 @@
     {
       "anchor": {
         "x": 2.895296810271618,
-        "y": 6.990384785778517
+        "y": 7.07
       },
       "prevControl": null,
       "nextControl": {
         "x": 2.395983611287438,
-        "y": 6.505757269117401
+        "y": 6.585372483338885
       },
       "isLocked": false,
       "linkedName": "BlueSlam5"
     },
     {
       "anchor": {
-        "x": 1.27,
-        "y": 5.53
+        "x": 1.3679858486729504,
+        "y": 5.565873600441298
       },
       "prevControl": {
-        "x": 1.945541386860949,
-        "y": 5.955884787368858
+        "x": 2.043527235533899,
+        "y": 5.991758387810156
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.5,
-    "maxAcceleration": 1.0,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

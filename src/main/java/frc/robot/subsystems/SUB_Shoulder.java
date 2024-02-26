@@ -13,6 +13,7 @@ import com.revrobotics.SparkAbsoluteEncoder.Type;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.ArmFeedforward;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -132,10 +133,30 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
       return MathUtil.angleModulus(m_shoulderAbsoluteEncoder.getPosition());
     }
 
-    public double getHooksAngle(){
-      // m_hookLeft.setAngle(p_DegPos);
-      return m_hookRight.getAngle();
+    public void setLHookPWM(double p_PWM){
+      m_hookLeft.set(p_PWM);
     }
+    
+    public void setRHookPWM(double p_PWM){
+      m_hookRight.set(p_PWM);
+    }
+    
+    // public void setHooksPWM(double p_PWM){
+    //   setRHookPWM(p_PWM);
+    //   setLHookPWM(p_PWM);
+    // }
+
+    public Command CMDsetLHookPWM(double p_PWM) {
+      return Commands.runOnce(()->setLHookPWM(p_PWM),this);
+    }
+
+    public Command CMDsetRHookPWM(double p_PWM) {
+      return Commands.runOnce(()->setRHookPWM(p_PWM),this);
+    }
+
+    // public Command CMDsetHooksPWM(double p_PWM) {
+    //   return Commands.runOnce(()->setHooksPWM(p_PWM),this);
+    // }
     
 
     public double getVelocity(){
@@ -171,11 +192,6 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
         setGoal(goalRad);
     }
 
-    public void setHooks(double p_DegPos){
-      m_hookLeft.setAngle(p_DegPos);
-      m_hookRight.setAngle(p_DegPos);
-    }
-
     public double interpolateSetpoint(double p_distance){
       m_interpolatedValue = m_interpolater.getInterpolatedValue(p_distance);
       return m_interpolatedValue;
@@ -192,15 +208,15 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
       m_shoulderPIDController.setP(ShoulderConstants.kShoulderClimbFF);
     }
 
-    private double m_ShoulderP = ShoulderConstants.kShoulderP;
-    private double m_ShoulderI = ShoulderConstants.kShoulderI;
-    private double m_ShoulderD = ShoulderConstants.kShoulderD;
-    private double m_ShoulderFF = ShoulderConstants.kShoulderFF;
-    private double m_ShoulderS = ShoulderConstants.kSVolts;
-    private double m_ShoulderG = ShoulderConstants.kGVolts;
-    private double m_ShoulderVV = ShoulderConstants.kVVoltSecondPerRad;
-    private double m_ShoulderAV = ShoulderConstants.kAVoltSecondSquaredPerRad;
-    private double m_ShoulderWantedPosition = 0;
+    // private double m_ShoulderP = ShoulderConstants.kShoulderP;
+    // private double m_ShoulderI = ShoulderConstants.kShoulderI;
+    // private double m_ShoulderD = ShoulderConstants.kShoulderD;
+    // private double m_ShoulderFF = ShoulderConstants.kShoulderFF;
+    // private double m_ShoulderS = ShoulderConstants.kSVolts;
+    // private double m_ShoulderG = ShoulderConstants.kGVolts;
+    // private double m_ShoulderVV = ShoulderConstants.kVVoltSecondPerRad;
+    // private double m_ShoulderAV = ShoulderConstants.kAVoltSecondSquaredPerRad;
+    // private double m_ShoulderWantedPosition = 0;
 
     // public void ShoulderPIDTuning(){
     //     if (firstPIDTesting){

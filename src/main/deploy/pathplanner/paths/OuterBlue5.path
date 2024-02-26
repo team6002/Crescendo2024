@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.284942222836145,
-        "y": 5.6
+        "x": 8.51991314000517,
+        "y": 5.683359059025811
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.227573095575528,
-        "y": 6.334284116153205
+        "x": 7.462544012744554,
+        "y": 6.417643175179016
       },
       "isLocked": false,
       "linkedName": "OuterBlue4"
@@ -17,11 +17,11 @@
     {
       "anchor": {
         "x": 4.0848370784398105,
-        "y": 6.329529081240632
+        "y": 6.38
       },
       "prevControl": {
         "x": 5.08346347640817,
-        "y": 6.461700222148208
+        "y": 6.512171140907576
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.5,
-    "maxAcceleration": 1.0,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

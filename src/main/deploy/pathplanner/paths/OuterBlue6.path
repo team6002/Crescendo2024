@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 4.0848370784398105,
-        "y": 6.329529081240632
+        "y": 6.38
       },
       "prevControl": null,
       "nextControl": {
         "x": 4.217008219347387,
-        "y": 5.609930647410491
+        "y": 5.660401566169859
       },
       "isLocked": false,
       "linkedName": "OuterBlue5"
@@ -49,7 +49,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.5,
-    "maxAcceleration": 1.0,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

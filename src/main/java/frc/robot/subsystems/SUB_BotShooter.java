@@ -54,6 +54,8 @@ public class SUB_BotShooter extends PIDSubsystem {
     m_shooterBotFollowerMotor.follow(m_shooterBotMotor, false);
     m_shooterBotFollowerMotor.setIdleMode(IdleMode.kCoast);
 
+    m_shooterBotFollowerMotor.burnFlash();
+    m_shooterBotMotor.burnFlash();
 
     getController().setTolerance(ShooterConstants.kShooterTolerance);
     setSetpoint(ShooterConstants.kShooterTargetSpeed);

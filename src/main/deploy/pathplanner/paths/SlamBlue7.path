@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.27,
-        "y": 5.53
+        "x": 1.3679858486729504,
+        "y": 5.565873600441298
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2699999999999996,
-        "y": 5.53
+        "x": 2.3679858486729497,
+        "y": 5.565873600441298
       },
       "isLocked": false,
       "linkedName": "SlamBlue6"
@@ -67,7 +67,7 @@
   ],
   "globalConstraints": {
     "maxVelocity": 4.5,
-    "maxAcceleration": 1.0,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

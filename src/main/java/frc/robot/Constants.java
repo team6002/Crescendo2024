@@ -256,7 +256,8 @@ public final class Constants {
     public static final double kBotVVoltSecondsPerRotation = 0.0022;
     public static final double kShooterBotA = 0.1;
 
-    public static final double kShooterTopP = 0.0077;//0.005;
+    public static final double kShooterTopP = 0.005;//0.005;
+    // public static final double kShooterTopP = 0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
     public static final double kShooterTopD = 0.0008;//0.0005
     public static final double kShooterTopFF = 0.0;
@@ -293,7 +294,7 @@ public final class Constants {
     public static final double kPositionConversionFactor = Math.PI * 2; // radians
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60; // radians per second
 
-    public static final double kShoulderP = 2.2;
+    public static final double kShoulderP = 2.1;
     public static final double kShoulderI = 0;
     public static final double kShoulderD = 0;
     public static final double kShoulderFF = 0.0;
@@ -335,11 +336,11 @@ public final class Constants {
       // values before shifting shooter
       {36, Math.toRadians(-47)},
       {50, Math.toRadians(-47)},  
-      {84, Math.toRadians(-42)}, 
-      {100, Math.toRadians(-38)}, 
+      {84, Math.toRadians(-47)}, 
+      {100, Math.toRadians(-39)}, 
       {120, Math.toRadians(-37)}, 
       {180, Math.toRadians(-24.7)},
-      {240, Math.toRadians(-19.7)},
+      {240, Math.toRadians(-20.7)},
       {300, Math.toRadians(-15.9)},
       //values after shifiting shooter
       // {36, Math.toRadians(-47)},
@@ -354,6 +355,15 @@ public final class Constants {
 
   }
   
+  public static final class HookConstants{
+    public static final double LHookClose = 0.9;
+    public static final double LHookOpen = 0.6;
+
+    public static final double RHookClose = 0.1;
+    public static final double RHookOpen = 0.4;
+
+  }
+
   public static final class ElbowConstants{
     
     public static final int kElbowCurrentLimit = 40;
@@ -361,7 +371,7 @@ public final class Constants {
     public static final double kPositionConversionFactor = (Math.PI * 2) / 3; // 3:1 ratio to shaft
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60;
 
-    public static final double kElbowP = 1.5;
+    public static final double kElbowP = 1.55;
     public static final double kElbowI = 0;
     public static final double kElbowD = 0.0;
     public static final double kElbowFF = 0.0;
@@ -377,6 +387,8 @@ public final class Constants {
     public static final double kMaxAccelerationRadPerSecSquared = 6.1;
 
     public static final double kElbowHome = Math.toRadians(10); 
+    //only for da front one
+    public static final double kElbowAmp = Math.toRadians(20); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
     public static final double kElbowGroundIntake = Math.toRadians(45);
     //intake position is 90 to ground
@@ -400,6 +412,7 @@ public final class Constants {
     public static final int kFrontAmpOutput = 1;
     public static final int kBackAmpOutput = 2;
   }
+
   public static final class LocationConstants{
     public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(215));
     public static final Translation2d SpeakerRed = new Translation2d(16.5, Units.inchesToMeters(215));

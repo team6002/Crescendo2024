@@ -54,20 +54,22 @@ public class CMD_Autofire extends Command {
       m_firingTimer += 0.02;
       if (m_firingTimer >= .1){
         m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetXError())));
-        if (Units.metersToInches(m_drivetrain.calculateTargetXError()) <= 70 ){
+        if (Units.metersToInches(m_drivetrain.calculateTargetXError()) <= 85 ){
           if (Units.metersToInches(m_drivetrain.calculateTargetXError()) <= 55){
             m_arm.setElbowGoalRelative(Math.toRadians(22));
-          }else{
+          }else if (Units.metersToInches(m_drivetrain.calculateTargetXError()) <= 65){
             m_arm.setElbowGoalRelative(Math.toRadians(18));
+          }else {
+            m_arm.setElbowGoalRelative(Math.toRadians(12));
           }
         }else {
           m_arm.setElbowGoalAbsolute(Math.toRadians(ElbowConstants.kElbowHome)); 
         }
       }
-      if (m_arm.atShoulderGoal() && m_shooter.getAtShooterSetpoint()){
+      if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
         m_intake.setIndexerVelocity(4000);
       }
-      if (m_shooter.getAtShooterSetpoint() && m_arm.atShoulderGoal()){
+      if (m_shooter.getAtShooterSetpoint() && m_arm.atShoulderGoal() && m_drivetrain.getOnTarget() && m_arm.atElbowGoal()){
         m_shooterTimer += 0.02;
       }
       if (m_shooterTimer > 0.0){
@@ -95,7 +97,11 @@ public class CMD_Autofire extends Command {
   public boolean isFinished() {
     // System.out.println("DONE");
     if (m_shot){
-      m_shooter.disableShooter();
+      if (m_variable.getContShooting()){
+        m_shooter.setShooterSetpoint(2000);
+      }else{
+        m_shooter.disableShooter();
+      }
       m_intake.setIndexerVelocity(0);
     }
     return m_shot;
