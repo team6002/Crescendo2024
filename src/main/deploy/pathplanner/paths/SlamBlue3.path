@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.27,
-        "y": 5.507130871149041
+        "x": 1.3679858486729504,
+        "y": 5.477759506502913
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.3273691272606154,
-        "y": 5.521816553472107
+        "x": 2.4253549759335655,
+        "y": 5.492445188825979
       },
       "isLocked": false,
       "linkedName": "BlueSlam2"
     },
     {
       "anchor": {
-        "x": 2.8,
-        "y": 5.57
+        "x": 2.9246681749177457,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 1.6838881434471271,
-        "y": 5.5553143176769355
+        "x": 1.808556318364873,
+        "y": 5.485314317676935
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.5,
-    "maxAcceleration": 1.0,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

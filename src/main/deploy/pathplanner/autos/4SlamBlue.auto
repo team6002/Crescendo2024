@@ -30,19 +30,19 @@
           }
         },
         {
-          "type": "race",
+          "type": "deadline",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "PickUp"
-                }
-              },
               {
                 "type": "path",
                 "data": {
                   "pathName": "SlamBlue1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
                 }
               }
             ]
@@ -87,7 +87,7 @@
           }
         },
         {
-          "type": "race",
+          "type": "deadline",
           "data": {
             "commands": [
               {
@@ -144,19 +144,19 @@
           }
         },
         {
-          "type": "race",
+          "type": "deadline",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "PickUp"
-                }
-              },
               {
                 "type": "path",
                 "data": {
                   "pathName": "SlamBlue5"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
                 }
               }
             ]

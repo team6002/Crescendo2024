@@ -49,7 +49,7 @@ public class SwerveModule {
   public SwerveModule(int drivingCANId, int turningCANId, double chassisAngularOffset, String p_moduleChannel) {
     m_drivingSparkMax = new CANSparkMax(drivingCANId, MotorType.kBrushless);
     m_turningSparkMax = new CANSparkMax(turningCANId, MotorType.kBrushless);
-
+    m_drivingSparkMax.setIdleMode(IdleMode.kBrake);
     // Factory reset, so we get the SPARKS MAX to a known state before configuring
     // them. This is useful in case a SPARK MAX is swapped out.
     m_drivingSparkMax.restoreFactoryDefaults();

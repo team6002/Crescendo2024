@@ -88,10 +88,10 @@ public class RobotContainer {
       new CMD_ElbowCheck(m_arm, Math.toRadians(19))
     ));
 
-    NamedCommands.registerCommand("ReadyShooterSecond", new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 2150),
+    NamedCommands.registerCommand("ReadyShooterMid", new SequentialCommandGroup(
+      new CMD_setShooterSetpoint(m_shooter, 2600),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-37)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-32.2)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm, Math.toRadians(10))
     ));
@@ -132,8 +132,8 @@ public class RobotContainer {
       // m_intake.CMDsetIndexVelocity(2350),
       // new CMD_GroundIntakeSetPower(m_intake, .7),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(0)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(55)),
-      new CMD_ElbowCheck(m_arm, Math.toRadians(55))
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(58)),
+      new CMD_ElbowCheck(m_arm, Math.toRadians(57))
     ));
 
     NamedCommands.registerCommand("HoldShooter", new SequentialCommandGroup(
@@ -167,7 +167,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("PickUp", new SequentialCommandGroup(
       m_intake.CMDsetIndexVelocity(2350),     
        new CMD_GroundIntakeSetPower(m_intake, .7),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_IndexerIndex(m_intake).withTimeout(3)
     ));
@@ -236,20 +236,25 @@ public class RobotContainer {
 
     m_driverController.pov(90).onTrue(new SequentialCommandGroup(
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(10)),
+      new CMD_ElbowSetPosition(m_arm, Math.toRadians(10)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
       new SequentialCommandGroup(
         new WaitCommand(1),
         new CMD_ElbowSetPosition(m_arm, Math.toRadians(80))
       ),
       new CMD_ShoulderCheck(m_arm, Math.toRadians(10)),
-      new CMD_setShooterTrap(m_shooter, 1500)
+      new CMD_setShooterTrap(m_shooter, 1500),
+      new CMD_ShooterOn(m_shooter),
+      new WaitCommand(.5),
+      m_intake.CMDsetIndexVelocity(1500)
+      
     ));
 
     m_driverController.pov(180).onTrue(new SequentialCommandGroup(
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(50)),
-      new CMD_ShoulderCheck(m_arm, Math.toRadians(-44)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(55)),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(-42)),
       m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
       m_arm.CMDsetRHookPWM(HookConstants.RHookClose)
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
@@ -284,6 +289,22 @@ public class RobotContainer {
       ,m_variables.CMDsetContShooting(true)
       ,ContShoot)
     );
+
+    m_operatorController.povUp().onTrue(new SequentialCommandGroup(
+       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(80)),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(80))
+    ));
+
+    m_operatorController.povDown().onTrue(new SequentialCommandGroup(
+      m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-32)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10))
+      // new CMD_ShoulderCheck(m_arm, Math.toRadians(-42)),
+      // m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
+      // m_arm.CMDsetRHookPWM(HookConstants.RHookClose)
+      // // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
+    ));
     
   }
 
@@ -342,7 +363,9 @@ public class RobotContainer {
   
   public Command getAutonomousCommand() {
     // return new PathPlannerAuto("HAPL").andThen(new PrintCommand("IAHFOSAIOFSOIFALK"));
-    return new PathPlannerAuto("4SlamRed");
+    // return new PathPlannerAuto("4SlamBlue");
+
+    return new PathPlannerAuto("3OuterBlue");
     // return new PathPlannerAuto("BOX");
   
   }
