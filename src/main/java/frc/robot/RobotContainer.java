@@ -249,6 +249,9 @@ public class RobotContainer {
       new CMD_GroundIntakeSetPower(m_intake, 0)
     ));
     
+    // Path find to the amp from any position on the field
+    m_driverController.y().whileTrue(m_drivetrain.pathfindToPath("To Amp"));
+
     m_operatorController.a().onTrue(new CMD_CycleIntakeType(m_variables));
     
     m_operatorController.y().onTrue(new CMD_CycleSyncLocation(m_variables));

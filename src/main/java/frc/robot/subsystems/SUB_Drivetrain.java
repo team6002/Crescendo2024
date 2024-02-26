@@ -6,6 +6,8 @@ package frc.robot.subsystems;
 
 import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.path.PathConstraints;
+import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
@@ -359,6 +361,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     
     setModuleStates(targetStates);
   }
+
   /**
    * Sets the wheels into an X formation to prevent movement.
    */
@@ -367,6 +370,28 @@ public class SUB_Drivetrain extends SubsystemBase {
     m_frontRight.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(-45)));
     m_rearLeft.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(-45)));
     m_rearRight.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(45)));
+  }
+
+  /**
+   * Using the PathPlanner pathfinding algorithm, pathfind from our current position to a path. Used
+   * in teleop to pathfind to the start of a known path location.  Requires AutoPathBuilder to be
+   * configured before use.
+   * @return Command to follow the path that it found.
+   */
+  public Command pathfindToPath(String path_name){
+    PathPlannerPath path = PathPlannerPath.fromPathFile(path_name);
+
+    // Create the constraints to use while pathfinding. The constraints defined in the path will only be used for the path.
+    PathConstraints constraints = new PathConstraints(
+            3.0, 4.0,
+            Units.degreesToRadians(540), Units.degreesToRadians(720));
+    
+    Command pathfindingCommand = AutoBuilder.pathfindThenFollowPath(
+      path, 
+      constraints,
+      3.0 // Rotation delay in meters.  How far robot will travel before rotating.
+      );
+    return pathfindingCommand;
   }
 
   public double getXVelocity(){
