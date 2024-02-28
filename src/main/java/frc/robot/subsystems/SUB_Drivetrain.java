@@ -42,6 +42,7 @@ import frc.robot.Constants.HardwareConstants;
 import frc.utils.SwerveUtils;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -107,7 +108,11 @@ public class SUB_Drivetrain extends SubsystemBase {
   //     getModulePositions()
       // );
 
-
+  // Available paths in teleop.  Will select path based on alliance color.
+  public enum TeleopPath {
+    AMP,
+    SOURCE
+  }
 
   Field2d field;
   Field2d fieldEst;
@@ -376,12 +381,36 @@ public class SUB_Drivetrain extends SubsystemBase {
   /**
    * Using the PathPlanner pathfinding algorithm, pathfind from our current position to a path. Used
    * in teleop to pathfind to the start of a known path location.  Requires AutoPathBuilder to be
-   * configured before use.
+   * configured before use.  
+   * @param wanted_path Path we want to pathfind to.  Known location in TeleopPath.
    * @return Command to follow the path that it found.
    */
-  public Command pathfindToPath(String path_name){
-    PathPlannerPath path = PathPlannerPath.fromPathFile(path_name);
-
+  public Command teleopPathfindTo(TeleopPath wanted_path){
+    PathPlannerPath path;
+    switch (wanted_path) {
+      case AMP:
+        if(DriverStation.getAlliance().get() == DriverStation.Alliance.Red) {
+          path = PathPlannerPath.fromPathFile("RedAmp");
+        }
+        else {
+          path = PathPlannerPath.fromPathFile("BlueAmp");
+        }
+        break;
+      case SOURCE:
+        if(DriverStation.getAlliance().get() == DriverStation.Alliance.Red) {
+          path = PathPlannerPath.fromPathFile("RedSource");
+        }
+        else {
+          path = PathPlannerPath.fromPathFile("BlueSource");
+        }
+        break;
+    
+      default:
+        // no valid path to select.  Do nothing
+        return new InstantCommand();
+    }
+     
+    
     // Create the constraints to use while pathfinding. The constraints defined in the path will only be used for the path.
     PathConstraints constraints = new PathConstraints(
             3.0, 4.0,
