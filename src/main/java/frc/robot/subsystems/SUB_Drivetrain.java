@@ -387,6 +387,7 @@ public class SUB_Drivetrain extends SubsystemBase {
    */
   public Command teleopPathfindTo(TeleopPath wanted_path){
     PathPlannerPath path;
+    if (DriverStation.getAlliance().isPresent()){
     switch (wanted_path) {
       case AMP:
         if(DriverStation.getAlliance().get() == DriverStation.Alliance.Red) {
@@ -404,11 +405,14 @@ public class SUB_Drivetrain extends SubsystemBase {
           path = PathPlannerPath.fromPathFile("BlueSource");
         }
         break;
-    
+      
       default:
         // no valid path to select.  Do nothing
         return new InstantCommand();
-    }
+      
+    }}else {
+        return new InstantCommand();
+      }
      
     
     // Create the constraints to use while pathfinding. The constraints defined in the path will only be used for the path.

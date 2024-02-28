@@ -4,24 +4,24 @@
     {
       "anchor": {
         "x": 13.674587635400671,
-        "y": 7.0050704681015805
+        "y": 6.81
       },
       "prevControl": null,
       "nextControl": {
         "x": 14.027044011154212,
-        "y": 6.623242727701913
+        "y": 6.428172259600332
       },
       "isLocked": false,
       "linkedName": "4SlamRing5"
     },
     {
       "anchor": {
-        "x": 15.187212914676275,
-        "y": 5.624616329733554
+        "x": 15.1,
+        "y": 5.42
       },
       "prevControl": {
-        "x": 14.834756538922738,
-        "y": 6.050501117102413
+        "x": 14.747543624246463,
+        "y": 5.845884787368859
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 178.83086067209263,
+    "rotation": 179.84582808324143,
     "rotateFast": false
   },
   "reversed": false,

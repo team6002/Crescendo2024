@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 8.1,
-        "y": 5.79
+        "y": 5.45
       },
       "prevControl": null,
       "nextControl": {
         "x": 7.042630872739383,
-        "y": 6.524284116153205
+        "y": 6.184284116153205
       },
       "isLocked": false,
       "linkedName": "OuterBlue4"

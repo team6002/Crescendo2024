@@ -8,36 +8,36 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.05134490769876,
-        "y": 6.138615211040798
+        "x": 9.430425444035146,
+        "y": 5.888958611548708
       },
       "isLocked": false,
       "linkedName": "OuterRed3"
     },
     {
       "anchor": {
-        "x": 5.568090993069286,
-        "y": 6.417643175179016
+        "x": 10.928365040987686,
+        "y": 6.447014539825145
       },
       "prevControl": {
-        "x": 5.964604415792017,
-        "y": 6.461700222148208
+        "x": 10.429051842003508,
+        "y": 6.4763859044712735
       },
       "nextControl": {
-        "x": 4.574207258395672,
-        "y": 6.307211649104172
+        "x": 11.926639414162675,
+        "y": 6.388292517873674
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 4.055465713793683,
-        "y": 5.492445188825977
+        "x": 12.720018284401508,
+        "y": 6.035815434779349
       },
       "prevControl": {
-        "x": 4.189398275310599,
-        "y": 5.804954499032117
+        "x": 12.117905309155876,
+        "y": 6.241414987302248
       },
       "nextControl": null,
       "isLocked": false,
@@ -55,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 174.47245984834376,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "OuterRed",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 180.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

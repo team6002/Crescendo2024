@@ -92,9 +92,9 @@ public class RobotContainer {
     NamedCommands.registerCommand("ReadyShooterMid", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2500),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-31)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-31.1)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
-      new CMD_ElbowCheck(m_arm, Math.toRadians(10))
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(10))
     ));
 
     NamedCommands.registerCommand("ReadyShooterThird", new SequentialCommandGroup(
@@ -166,11 +166,19 @@ public class RobotContainer {
     ));
     
     NamedCommands.registerCommand("PickUp", new SequentialCommandGroup(
-      m_intake.CMDsetIndexVelocity(2350),     
+      m_intake.CMDsetIndexVelocity(2650),     
        new CMD_GroundIntakeSetPower(m_intake, .7),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_IndexerIndex(m_intake).withTimeout(3)
+    ));
+
+    NamedCommands.registerCommand("PickUpLate", new SequentialCommandGroup(
+      m_intake.CMDsetIndexVelocity(2650),     
+       new CMD_GroundIntakeSetPower(m_intake, .7),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
+      new CMD_IndexerIndex(m_intake).withTimeout(4)
     ));
 
     NamedCommands.registerCommand("ShooterCheck", new SequentialCommandGroup(
@@ -236,7 +244,9 @@ public class RobotContainer {
     ));
 
     m_driverController.pov(90).onTrue(new SequentialCommandGroup(
-    
+      new CMD_setShooterTrap(m_shooter, 750),
+      new CMD_ShooterOn(m_shooter),
+      m_intake.CMDsetIndexVelocity(750)
     ));
 
     m_driverController.pov(180).onTrue(new SequentialCommandGroup(
@@ -369,8 +379,7 @@ public class RobotContainer {
    */
   
   public Command getAutonomousCommand() {
-    // return new PathPlannerAuto("HAPL").andThen(new PrintCommand("IAHFOSAIOFSOIFALK"));
-    // return new PathPlannerAuto("4SlamBlue");
+    // return new PathPlannerAuto("4SlamRed");
 
     return new PathPlannerAuto("3OuterBlue");
     // return new PathPlannerAuto("BOX");
