@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.51991314000517,
-        "y": 5.683359059025811
+        "x": 8.1,
+        "y": 5.79
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.462544012744554,
-        "y": 6.417643175179016
+        "x": 7.042630872739383,
+        "y": 6.524284116153205
       },
       "isLocked": false,
       "linkedName": "OuterBlue4"
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.5,
-    "maxAcceleration": 3.5,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
