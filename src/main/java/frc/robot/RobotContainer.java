@@ -33,6 +33,7 @@ import frc.robot.subsystems.SUB_Shooter;
 import frc.robot.subsystems.SUB_Shoulder;
 import frc.robot.subsystems.SUB_TopShooter;
 import frc.robot.subsystems.SUB_Vision;
+import frc.robot.subsystems.SUB_Drivetrain.TeleopPath;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
@@ -282,8 +283,8 @@ public class RobotContainer {
     ));
     
     
-    // Path find to the amp from any position on the field
-    m_driverController.y().whileTrue(m_drivetrain.pathfindToPath("To Amp"));
+    // Path find to the color correct amp from any position on the field
+    m_driverController.y().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.AMP));
 
     m_operatorController.a().onTrue(new CMD_CycleIntakeType(m_variables));
     
