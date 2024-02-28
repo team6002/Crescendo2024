@@ -339,8 +339,8 @@ public final class Constants {
       {84, Math.toRadians(-47)}, 
       {100, Math.toRadians(-39)}, 
       {120, Math.toRadians(-37)}, 
-      {180, Math.toRadians(-24.7)},
-      {240, Math.toRadians(-20.7)},
+      {180, Math.toRadians(-26.7)},
+      {240, Math.toRadians(-22.7)},
       {300, Math.toRadians(-15.9)},
       //values after shifiting shooter
       // {36, Math.toRadians(-47)},
@@ -393,15 +393,17 @@ public final class Constants {
     public static final double kElbowGroundIntake = Math.toRadians(45);
     //intake position is 90 to ground
 
-    // public static final double[][] kElbowArray = {
-    // //Elbow Position for shooting at the Speaker for ft 
-    //   {3, 50}, 
-    //   {7, 50}, 
-    //   {10, 40}, 
-    //   {15, 30},
-    //   {20, 60},
-    //   {25, 15},
-    // };
+    public static final double[][] kElbowArray = {
+    //Elbow Position for shooting at the Speaker for ft 
+      {36, Math.toRadians(70)},
+      {50, Math.toRadians(60)},  
+      {84, Math.toRadians(55)}, 
+      {100, Math.toRadians(52)}, 
+      {120, Math.toRadians(42)}, 
+      {180, Math.toRadians(37)},
+      {240, Math.toRadians(30)},
+      {300, Math.toRadians(25)},
+    };
   }
 
   public static final class VariablesConstants{
@@ -410,7 +412,7 @@ public final class Constants {
 
     public static final int kSpeakerOutput = 0;
     public static final int kFrontAmpOutput = 1;
-    public static final int kBackAmpOutput = 2;
+    public static final int kTallOutput = 2;
   }
 
   public static final class LocationConstants{

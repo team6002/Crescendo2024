@@ -17,6 +17,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ElbowConstants;
 import frc.robot.Constants.HardwareConstants;
+import frc.utils.LinearInterpolater;
 import frc.utils.TrapezoidProfileSubsystem;
 
 public class SUB_Elbow extends TrapezoidProfileSubsystem  {
@@ -38,6 +39,10 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
   // private double m_elbowRelativeGround; 
   private static double deltaTime = 0.02;
   
+  private LinearInterpolater m_interpolater;
+
+  private double m_interpolatedValue;
+
   /** Creates a new SUB_Shooter. */
   public SUB_Elbow() {
     super(
@@ -72,6 +77,8 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
     m_elbowFeedForward = new ArmFeedforward(ElbowConstants.kSVolts,ElbowConstants.kGVolts
         , ElbowConstants.kVVoltSecondPerRad,ElbowConstants.kAVoltSecondSquaredPerRad);  
 
+    m_interpolater = new LinearInterpolater(ElbowConstants.kElbowArray);
+      
     setGoal(getPositionRad()); // set goal to current position to prevent it from moving
     setSetpoint(getPositionRad());
 
@@ -112,15 +119,24 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
         setGoal(goalRad);
     }
 
-    private double m_ElbowP = ElbowConstants.kElbowP;
-    private double m_ElbowI = ElbowConstants.kElbowI;
-    private double m_ElbowD = ElbowConstants.kElbowD;
-    private double m_ElbowFF = ElbowConstants.kElbowFF;
-    private double m_ElbowS = ElbowConstants.kSVolts;
-    private double m_ElbowG = ElbowConstants.kGVolts;
-    private double m_ElbowVV = ElbowConstants.kVVoltSecondPerRad;
-    private double m_ElbowAV = ElbowConstants.kAVoltSecondSquaredPerRad;
-    private double m_ElbowWantedPosition = 0;
+    public double interpolateSetpoint(double p_distance){
+      m_interpolatedValue = m_interpolater.getInterpolatedValue(p_distance);
+      return m_interpolatedValue;
+    }
+
+    public double getInterpolateValue(){
+      return m_interpolatedValue;
+    }
+
+    // private double m_ElbowP = ElbowConstants.kElbowP;
+    // private double m_ElbowI = ElbowConstants.kElbowI;
+    // private double m_ElbowD = ElbowConstants.kElbowD;
+    // private double m_ElbowFF = ElbowConstants.kElbowFF;
+    // private double m_ElbowS = ElbowConstants.kSVolts;
+    // private double m_ElbowG = ElbowConstants.kGVolts;
+    // private double m_ElbowVV = ElbowConstants.kVVoltSecondPerRad;
+    // private double m_ElbowAV = ElbowConstants.kAVoltSecondSquaredPerRad;
+    // private double m_ElbowWantedPosition = 0;
 
     // public void ElbowPIDTuning(){
     //     if (firstPIDTesting){

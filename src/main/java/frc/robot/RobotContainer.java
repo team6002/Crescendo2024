@@ -342,10 +342,8 @@ public class RobotContainer {
         new CMD_placeFrontAmp(m_arm, m_shooter, m_intake),
         m_variables.CMDsetReadyDrop(true)  
       )),
-      Map.entry(VariablesConstants.kBackAmpOutput, new SequentialCommandGroup (
-      new CMD_placeBackAmp(m_arm, m_shooter, m_intake),
-      m_variables.CMDsetReadyDrop(true)
-      ))
+      Map.entry(VariablesConstants.kTallOutput, new CMD_ShootSpeakerTall(m_arm, m_shooter, m_intake, m_variables, m_drivetrain)
+      )
     ), 
     this::getOutputType
   );
@@ -358,10 +356,9 @@ public class RobotContainer {
       new CMD_dropFrontAmp(m_arm, m_shooter, m_intake),
       m_variables.CMDsetReadyDrop(false)
       )),
-      Map.entry(VariablesConstants.kBackAmpOutput,  new SequentialCommandGroup( 
-      new CMD_dropBackAmp(m_arm, m_shooter, m_intake),
-      m_variables.CMDsetReadyDrop(false)
-      ))
+      Map.entry(VariablesConstants.kTallOutput,  
+      new CMD_ShootSpeakerTall(m_arm, m_shooter, m_intake, m_variables, m_drivetrain)
+      )
     ), 
     this::getOutputType
   );

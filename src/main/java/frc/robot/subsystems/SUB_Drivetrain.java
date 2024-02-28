@@ -413,8 +413,8 @@ public class SUB_Drivetrain extends SubsystemBase {
     
     // Create the constraints to use while pathfinding. The constraints defined in the path will only be used for the path.
     PathConstraints constraints = new PathConstraints(
-            3.0, 4.0,
-            Units.degreesToRadians(540), Units.degreesToRadians(720));
+            2.0, 1.0,
+            Units.degreesToRadians(180), Units.degreesToRadians(180));
     
     Command pathfindingCommand = AutoBuilder.pathfindThenFollowPath(
       path, 
