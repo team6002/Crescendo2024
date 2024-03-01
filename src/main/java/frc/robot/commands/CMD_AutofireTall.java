@@ -50,11 +50,11 @@ public class CMD_AutofireTall extends Command {
       if (m_firingTimer == 0){
         m_shooter.enableShooter();
       }
-      m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetXError())));
+      m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
       m_firingTimer += 0.02;
       if (m_firingTimer >= .1){
         m_arm.setShoulderGoalWithoutElbow(0);
-        m_arm.setElbowGoalAbsolute(m_arm.interpolateElbow((Units.metersToInches(m_drivetrain.calculateTargetXError()))));
+        m_arm.setElbowGoalAbsolute(m_arm.interpolateElbow((Units.metersToInches(m_drivetrain.calculateTargetDistance()))));
       } 
       if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
         m_intake.setIndexerVelocity(4000);

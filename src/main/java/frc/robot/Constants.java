@@ -247,7 +247,8 @@ public final class Constants {
     public static final double kShooterMinOutput = -1;
 
     // public static final double kShooterBotP = 0.01;//0.005;
-    public static final double kShooterBotP = 0.0079;//0.005;
+    // public static final double kShooterBotP = 0.0079;//0.005;
+    public static final double kShooterBotP = 0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
     public static final double kShooterBotD = 0.0008;//0.0005
     public static final double kShooterBotFF = 0.0000;
@@ -256,8 +257,7 @@ public final class Constants {
     public static final double kBotVVoltSecondsPerRotation = 0.0022;
     public static final double kShooterBotA = 0.1;
 
-    public static final double kShooterTopP = 0.005;//0.005;
-    // public static final double kShooterTopP = 0.0077;//0.005;
+    public static final double kShooterTopP = 0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
     public static final double kShooterTopD = 0.0008;//0.0005
     public static final double kShooterTopFF = 0.0;
@@ -279,9 +279,9 @@ public final class Constants {
       {36, 2050}, 
       {84, 2250}, 
       {120, 2400}, 
-      {180, 3000},
-      {240, 3500},
-      {300, 3800},
+      {180, 2600},
+      {240, 3000},
+      {300, 3250},
     };
   }
 
@@ -339,9 +339,10 @@ public final class Constants {
       {84, Math.toRadians(-47)}, 
       {100, Math.toRadians(-39)}, 
       {120, Math.toRadians(-37)}, 
-      {180, Math.toRadians(-26.7)},
-      {240, Math.toRadians(-22.7)},
-      {300, Math.toRadians(-15.9)},
+      {150, Math.toRadians(-32)},
+      {180, Math.toRadians(-30.7)},
+      {240, Math.toRadians(-25.7)},
+      {300, Math.toRadians(-20.9)},
       //values after shifiting shooter
       // {36, Math.toRadians(-47)},
       // {50, Math.toRadians(-47)},  
@@ -396,13 +397,22 @@ public final class Constants {
     public static final double[][] kElbowArray = {
     //Elbow Position for shooting at the Speaker for ft 
       {36, Math.toRadians(70)},
-      {50, Math.toRadians(60)},  
-      {84, Math.toRadians(55)}, 
-      {100, Math.toRadians(52)}, 
-      {120, Math.toRadians(42)}, 
-      {180, Math.toRadians(37)},
-      {240, Math.toRadians(30)},
+      {50, Math.toRadians(55)},  
+      {84, Math.toRadians(49)}, 
+      {100, Math.toRadians(48)}, 
+      {120, Math.toRadians(43)}, 
+      {180, Math.toRadians(40)},
+      {240, Math.toRadians(35)},
       {300, Math.toRadians(25)},
+    };
+
+    public static final double[][] kElbowShortArray = {
+    //Elbow Position for shooting at the Speaker for ft 
+      {36, Math.toRadians(24)},
+      {50, Math.toRadians(18)},  
+      {84, Math.toRadians(10)}, 
+      {100, Math.toRadians(10)},
+      {120, Math.toRadians(10)},
     };
   }
 
@@ -417,7 +427,10 @@ public final class Constants {
 
   public static final class LocationConstants{
     public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(215));
-    public static final Translation2d SpeakerRed = new Translation2d(16.5, Units.inchesToMeters(215));
+    public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(215));
+  
+    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(8), Units.inchesToMeters(215));
+    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(8), Units.inchesToMeters(215));
   
     public static final Pose2d SubwooferBlue = new Pose2d( 1.2,5.4, Rotation2d.fromDegrees(0));
     public static final Pose2d AmpBlue = new Pose2d( 1.9,7.8, Rotation2d.fromDegrees(-90));
@@ -441,7 +454,7 @@ public final class Constants {
 
         // The standard deviations of our vision estimated poses, which affect correction rate
         // (Fake values. Experiment and determine estimation noise on an actual robot.)
-        public static final Matrix<N3, N1> kSingleTagStdDevs = VecBuilder.fill(2, 2, 4);
+        public static final Matrix<N3, N1> kSingleTagStdDevs = VecBuilder.fill(3, 3, 6);
         public static final Matrix<N3, N1> kMultiTagStdDevs = VecBuilder.fill(0.06, 0.06, .12);
  
   }

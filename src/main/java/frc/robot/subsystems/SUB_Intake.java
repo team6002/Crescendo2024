@@ -84,6 +84,7 @@ public class SUB_Intake extends SubsystemBase {
     // m_indexerPIDController = m_indexerMotor.getPIDController();
     m_indexerMotor.setIdleMode(IdleMode.kBrake);
     m_indexerMotor.setInverted(true);
+    m_indexerMotor.burnFlash();
   }
 
   public void stopGroundIntake(){

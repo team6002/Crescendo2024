@@ -93,6 +93,14 @@ public class SUB_Arm extends SubsystemBase {
     public double getElbowInterpolatedValue(){
         return m_elbow.getInterpolateValue();
     }
+    
+    public double interpolateShortElbow(double p_distance){
+      return m_elbow.shortInterpolateSetpoint(p_distance);
+    }
+    
+    public double getElbowShortInterpolatedValue(){
+        return m_elbow.getShortInterpolateValue();
+    }
     /** sets the Elbow goal in relation to the Shoulder */
     public void setElbowGoalRelative(double goalRad){
         m_elbow.setGoalRad(MathUtil.clamp(goalRad, Math.toRadians(10), Math.toRadians(115)));

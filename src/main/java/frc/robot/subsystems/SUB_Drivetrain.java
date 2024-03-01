@@ -508,22 +508,29 @@ public class SUB_Drivetrain extends SubsystemBase {
 
   public void setShooterTarget(){
     if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red){
-      m_currentTarget = LocationConstants.SpeakerRed;
+      m_currentTarget = LocationConstants.SpeakerShootingRed;
     }else{
-      m_currentTarget = LocationConstants.SpeakerBlue;
+      m_currentTarget = LocationConstants.SpeakerShootingBlue;
     }
+  }
+  public double calculateTargetDistance(){
+    return (getPose().getTranslation().getDistance(m_currentTarget));
   }
 
   public double calculateTargetXError(){
-    return  Math.abs((getPose().getX()) - Units.inchesToMeters(DriveConstants.kTrackWidth/2) - m_currentTarget.getX());
+    return  Math.abs(getPose().getX() - Units.inchesToMeters(DriveConstants.kTrackWidth/2) - m_currentTarget.getX());
   }
-
+  
+  public double calculateTargetYError(){
+    return  (getPose().getY()) - Units.inchesToMeters(DriveConstants.kTrackWidth/2) - m_currentTarget.getY();
+  }
   /**
    * Calculate the angle between current pose to current target
    * @return Relative angle to the current target from robot pose
    */
   public Rotation2d angleToCurrentTarget() {
     Translation2d currentTranslation = getPose().getTranslation();
+    // Translation2d yAdjustment = new Translation2d(0, calculateTargetYError() *0.1);
     Translation2d delta = currentTranslation.minus(m_currentTarget);
     Rotation2d angleTo = new Rotation2d(Math.atan2(delta.getY(), delta.getX()));
     return angleTo;
@@ -539,7 +546,10 @@ public class SUB_Drivetrain extends SubsystemBase {
     double CameraError = 0;
 
     //Angle to target
+    // Rotation2d yAdjustment = new Rotation2d(calculateTargetYError() *0.1);
     Rotation2d globalTargetAng = angleToCurrentTarget();
+    // adjusts the target angle to better shoot from the side
+    // Rotation2d adjustedTargetAng = new Rotation2d(globalTargetAng.getCos(), globalTargetAng.getSin() + (calculateTargetYError()*0.1));
 
     // Calculate difference between target angle and our current heading 
     Rotation2d wantedTurnAngle = getPose().getRotation().minus(globalTargetAng);
@@ -565,7 +575,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     }
     // variable tolerance for different distances
     //TODO: makesure that the sides have tighter tolerance
-    if (targetError <= MathUtil.clamp(250 / calculateTargetXError(), 1, 2.5)){
+    if (targetError <= MathUtil.clamp((250 / calculateTargetXError()) - ( 0.1 * calculateTargetYError()), 1, 3)){
       onTarget = true;
     } else{
       onTarget = false;

@@ -21,8 +21,8 @@ public class CMD_setShooterTrap extends Command {
   @Override
   public void initialize() {
     // System.out.println(m_speed);
-    m_shooter.setTopSetpoint(m_speed*1);
-    m_shooter.setBotSetpoint(m_speed*1.1);
+    m_shooter.setTopSetpoint(-m_speed);
+    m_shooter.setBotSetpoint(m_speed);
     // m_shooter.setShooterSetpoint(m_speed);
   }
 

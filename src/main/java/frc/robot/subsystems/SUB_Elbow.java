@@ -40,8 +40,10 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
   private static double deltaTime = 0.02;
   
   private LinearInterpolater m_interpolater;
+  private LinearInterpolater m_shortInterpolater;
 
   private double m_interpolatedValue;
+  private double m_shortInterpolatedValue;
 
   /** Creates a new SUB_Shooter. */
   public SUB_Elbow() {
@@ -72,12 +74,14 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
     m_elbowPIDController.setPositionPIDWrappingEnabled(false);
     // m_elbowPIDController.setPositionPIDWrappingMinInput(-180);
     // m_elbowPIDController.setPositionPIDWrappingMaxInput(180);
+    m_elbowMotor.setIdleMode(IdleMode.kBrake);
     m_elbowMotor.burnFlash();
     
     m_elbowFeedForward = new ArmFeedforward(ElbowConstants.kSVolts,ElbowConstants.kGVolts
         , ElbowConstants.kVVoltSecondPerRad,ElbowConstants.kAVoltSecondSquaredPerRad);  
 
     m_interpolater = new LinearInterpolater(ElbowConstants.kElbowArray);
+    m_shortInterpolater = new LinearInterpolater(ElbowConstants.kElbowShortArray);
       
     setGoal(getPositionRad()); // set goal to current position to prevent it from moving
     setSetpoint(getPositionRad());
@@ -126,6 +130,15 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
 
     public double getInterpolateValue(){
       return m_interpolatedValue;
+    }
+
+    public double shortInterpolateSetpoint(double p_distance){
+      m_shortInterpolatedValue = m_shortInterpolater.getInterpolatedValue(p_distance);
+      return m_shortInterpolatedValue;
+    }
+
+    public double getShortInterpolateValue(){
+      return m_shortInterpolatedValue;
     }
 
     // private double m_ElbowP = ElbowConstants.kElbowP;
