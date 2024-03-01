@@ -53,7 +53,7 @@ public class CMD_Autofire extends Command {
       m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
       m_firingTimer += 0.02;
       if (m_firingTimer >= .1){
-        m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+        m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
         m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
       }
       if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){

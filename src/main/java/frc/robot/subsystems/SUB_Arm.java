@@ -11,11 +11,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class SUB_Arm extends SubsystemBase {
     SUB_Elbow m_elbow;
     SUB_Shoulder m_shoulder;
+    double ShooterAngleMod = 0;
     public SUB_Arm(SUB_Elbow p_elbow, SUB_Shoulder p_shoulder) {
         m_elbow = p_elbow;
         m_shoulder = p_shoulder;
         m_shoulder.enable();
         m_elbow.enable();
+        
     }
     
     
@@ -139,9 +141,16 @@ public class SUB_Arm extends SubsystemBase {
     // public Command CMDsetHooksPWM(double p_PWM){
     //     return m_shoulder.CMDsetHooksPWM(p_PWM);
     // }
-    
+    public double getShooterAngMod(){
+        return ShooterAngleMod;
+    }
     @Override
     public void periodic() {
+        
+
+
+        SmartDashboard.putNumber("ShooterAngleMod", ShooterAngleMod);
+        ShooterAngleMod = SmartDashboard.getNumber("ShooterAngleMod", 0);
         // m_elbow.ElbowPIDTuning();
         // m_shoulder.ShoulderPIDTuning();
 

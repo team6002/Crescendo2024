@@ -72,6 +72,8 @@ public class RobotContainer {
   private final SUB_GlobalVariables m_variables = new SUB_GlobalVariables();
   // The driver's controller
   CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
+  //A non command Xbox controller so we can implement rumble
+  XboxController m_driverXController = new XboxController(OIConstants.kDriverControllerPort);
   CommandXboxController m_operatorController = new CommandXboxController(OIConstants.kOperatorControllerPort);
   
   private final BooleanSupplier AutoAim = () -> m_variables.getAutofire();
@@ -203,6 +205,7 @@ public class RobotContainer {
 
     // Configure default commands
     m_drivetrain.setDefaultCommand(new CMD_Drive(m_drivetrain, m_driverController, m_variables));
+    m_intake.setDefaultCommand(new CMD_PickUpRumble(m_intake, m_driverXController));
 
   }
 

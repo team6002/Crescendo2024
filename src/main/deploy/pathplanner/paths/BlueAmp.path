@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.78495393354423,
-        "y": 6.2222735354561625
+        "x": 2.561326812794471,
+        "y": 6.619467886823099
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7587918812201258,
-        "y": 6.735354561618215
+        "x": 1.8820364401292191,
+        "y": 6.879621646567238
       },
       "isLocked": false,
       "linkedName": null
@@ -45,7 +45,7 @@
   "reversed": false,
   "folder": "Teleop",
   "previewStartingState": {
-    "rotation": 141.1466256596468,
+    "rotation": -31.087505323480006,
     "velocity": 0
   },
   "useDefaultConstraints": true
