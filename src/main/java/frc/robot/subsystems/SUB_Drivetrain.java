@@ -179,22 +179,22 @@ public class SUB_Drivetrain extends SubsystemBase {
     // Update the odometry in the periodic block
     
     var visionEst = m_vision.getEstimatedGlobalPose();
-    SmartDashboard.putData("Field", field);
-    SmartDashboard.putData("FieldEst", fieldEst);
+    // SmartDashboard.putData("Field", field);
+    // SmartDashboard.putData("FieldEst", fieldEst);
     field.setRobotPose(getPose());
     m_odometry.update(
         Rotation2d.fromDegrees(getAngle()),
         getModulePositions()
         );
-    SmartDashboard.putNumber("X",Units.metersToInches(getPose().getX()));
-    SmartDashboard.putNumber("Y", Units.metersToInches(getPose().getY()));
-    SmartDashboard.putNumber("Angle", getAngle());
-    SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
+    // SmartDashboard.putNumber("X",Units.metersToInches(getPose().getX()));
+    // SmartDashboard.putNumber("Y", Units.metersToInches(getPose().getY()));
+    // SmartDashboard.putNumber("Angle", getAngle());
+    // SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
-    SmartDashboard.putNumber("TargetXError", Units.metersToInches(calculateTargetXError()));
+    // SmartDashboard.putNumber("TargetXError", Units.metersToInches(calculateTargetXError()));
     // SmartDashboard.putNumber("XVelocity", getXVelocity());
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
-    SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
+    // SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
     SmartDashboard.putBoolean("OnTarget", onTarget);
     m_frontLeft.telemetry(); 
     // m_frontRight.telemetry();

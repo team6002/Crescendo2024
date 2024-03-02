@@ -13,7 +13,6 @@ import frc.robot.subsystems.SUB_GlobalVariables;
 public class CMD_CycleSyncLocation extends Command {
   /** Creates a new CMD_CycleIntakeType. */
   SUB_GlobalVariables m_variables;
-  double m_locationStage;
   public CMD_CycleSyncLocation(SUB_GlobalVariables p_variables) {
     m_variables = p_variables;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -22,25 +21,25 @@ public class CMD_CycleSyncLocation extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if (m_locationStage < 2){
-      m_locationStage += 1;
+    if (m_variables.getSyncNumber() < 2){
+      m_variables.setSyncNumber(m_variables.getSyncNumber() + 1);
     }else{
-      m_locationStage = 0;
+      m_variables.setSyncNumber(0);
     }
     if (DriverStation.getAlliance().get() == Alliance.Red){
-      if (m_locationStage == 0){
+      if (m_variables.getSyncNumber() == 0){
         m_variables.setSyncLocation(LocationConstants.SubwooferRed);
-      }else if (m_locationStage == 1){
+      }else if (m_variables.getSyncNumber() == 1){
         m_variables.setSyncLocation(LocationConstants.AmpRed);   
-      }else if (m_locationStage == 2){
+      }else if (m_variables.getSyncNumber() == 2){
         m_variables.setSyncLocation(LocationConstants.LSourceRed);
       }
     }else{
-      if (m_locationStage == 0){
+      if (m_variables.getSyncNumber() == 0){
         m_variables.setSyncLocation(LocationConstants.SubwooferBlue);
-      }else if (m_locationStage == 1){
+      }else if (m_variables.getSyncNumber() == 1){
         m_variables.setSyncLocation(LocationConstants.AmpBlue);   
-      }else if (m_locationStage == 2){
+      }else if (m_variables.getSyncNumber() == 2){
         m_variables.setSyncLocation(LocationConstants.LSourceBlue);
       }  
     }

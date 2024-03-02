@@ -20,6 +20,7 @@ public class SUB_GlobalVariables extends SubsystemBase {
   private int m_intakeType = 0;
   private int m_outputType = 0;
   private int m_robotStage = 0;
+  private int m_syncNumber = 0;
   private Pose2d m_syncLocation;
   public SUB_GlobalVariables() {}
   //*returns if the robot is automatically shooting */
@@ -118,7 +119,17 @@ public class SUB_GlobalVariables extends SubsystemBase {
   public Command CMDsetRobotStage(int p_robotStage) {
     return Commands.runOnce(()->setRobotStage(p_robotStage),this);
   }
+  public int getSyncNumber(){
+    return m_syncNumber;
+  }
 
+  public void setSyncNumber(int p_syncNumber){
+    m_syncNumber = p_syncNumber;
+  }
+
+  public Command CMDsetSyncNumber(int p_syncNumber) {
+    return Commands.runOnce(()->setSyncNumber(p_syncNumber),this);
+  }
   public Pose2d getSyncLocation(){
     return m_syncLocation;
   }
@@ -133,10 +144,11 @@ public class SUB_GlobalVariables extends SubsystemBase {
   @Override
   public void periodic() {
     // SmartDashboard.putBoolean("HasItem", m_hasItem);
-    SmartDashboard.putBoolean("ReadyDrop", m_readyDrop);
+    // SmartDashboard.putBoolean("ReadyDrop", m_readyDrop);
     SmartDashboard.putNumber("IntakeType", m_intakeType);
     SmartDashboard.putNumber("OutputType", m_outputType);
-    SmartDashboard.putNumber("RobotStage", m_robotStage);
+    // SmartDashboard.putNumber("RobotStage", m_robotStage);
+    SmartDashboard.putNumber("SyncNumber", m_syncNumber);
     SmartDashboard.putBoolean("ContShoot", m_contShooting);
     // This method will be called once per scheduler run
   }

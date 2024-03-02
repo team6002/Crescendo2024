@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 13.674587635400671,
-        "y": 6.81
+        "y": 6.990384785778517
       },
       "prevControl": null,
       "nextControl": {
         "x": 14.027044011154212,
-        "y": 6.428172259600332
+        "y": 6.608557045378849
       },
       "isLocked": false,
       "linkedName": "4SlamRing5"

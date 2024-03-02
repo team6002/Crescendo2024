@@ -287,9 +287,8 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
       CANSparkMax.ControlType.kPosition,(1),
       m_shoulderFeedForward.calculate(setpoint.position,setpoint.velocity)
     );
-    
     // SmartDashboard.putNumber("Shoulder feedforward", m_shoulderFeedForward.calculate(setpoint.position, setpoint.velocity));
-    SmartDashboard.putNumber("ShoulderSetpoint", Math.toDegrees(setpoint.position));
+    // SmartDashboard.putNumber("ShoulderSetpoint", Math.toDegrees(setpoint.position));
     // SmartDashboard.putNumber("ShoulderSetpointVelocity", setpoint.velocity);
   }
   

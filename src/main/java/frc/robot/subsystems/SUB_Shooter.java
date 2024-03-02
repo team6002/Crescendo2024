@@ -115,11 +115,12 @@ public class SUB_Shooter extends SubsystemBase {
     // This method will be called once per scheduler run
     // m_botShooter.ShooterBotPIDTuning();
     // m_topShooter.ShooterTopPIDTuning();
-    SmartDashboard.putNumber("ShooterGoal", getBotSetpoint());
-    SmartDashboard.putNumber("Shooter Top Velocity", getTopShooterVelocity());
+    SmartDashboard.putBoolean("ShootFin", getAtShooterSetpoint());
+    // SmartDashboard.putNumber("ShooterGoal", getBotSetpoint());
+    // SmartDashboard.putNumber("Shooter Top Velocity", getTopShooterVelocity());
     // SmartDashboard.putNumber("Shooter Top Current", getTopShooterCurrent());
 
-    SmartDashboard.putNumber("Shooter Bot Velocity", getBotShooterVelocity());
+    // SmartDashboard.putNumber("Shooter Bot Velocity", getBotShooterVelocity());
     // SmartDashboard.putNumber("Shooter Bot Current", getBotShooterCurrent());
     // SmartDashboard.putNumber("Shooter Follower Current", m_botShooter.getFollowerCurrent());
 

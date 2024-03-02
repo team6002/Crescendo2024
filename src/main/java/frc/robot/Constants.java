@@ -332,26 +332,15 @@ public final class Constants {
   
 
     public static final double[][] kShoulderArray = {
-    //Shoulder positions for shooting at the Speaker for ft 
-      // values before shifting shooter
       {36, Math.toRadians(-47)},
       {50, Math.toRadians(-47)},  
       {84, Math.toRadians(-47)}, 
       {100, Math.toRadians(-39)}, 
-      {120, Math.toRadians(-37)}, 
-      {150, Math.toRadians(-32)},
-      {180, Math.toRadians(-30.7)},
-      {240, Math.toRadians(-25.7)},
-      {300, Math.toRadians(-20.9)},
-      //values after shifiting shooter
-      // {36, Math.toRadians(-47)},
-      // {50, Math.toRadians(-47)},  
-      // {84, Math.toRadians(-42)}, 
-      // {100, Math.toRadians(-38)}, 
-      // {120, Math.toRadians(-37)}, 
-      // {180, Math.toRadians(-29.8)},
-      // {240, Math.toRadians(-25.4)},
-      // {300, Math.toRadians(-18.9)},
+      {120, Math.toRadians(-36)}, 
+      {150, Math.toRadians(-34)},
+      {180, Math.toRadians(-33.7)},
+      {240, Math.toRadians(-28.7)},
+      {300, Math.toRadians(-24.9)},
     };
 
   }
@@ -389,7 +378,7 @@ public final class Constants {
 
     public static final double kElbowHome = Math.toRadians(10); 
     //only for da front one
-    public static final double kElbowAmp = Math.toRadians(20); 
+    public static final double kElbowAmp = Math.toRadians(30); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
     public static final double kElbowGroundIntake = Math.toRadians(45);
     //intake position is 90 to ground
