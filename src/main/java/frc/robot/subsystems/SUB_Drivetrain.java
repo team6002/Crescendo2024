@@ -196,7 +196,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
     // SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
     SmartDashboard.putBoolean("OnTarget", onTarget);
-    m_frontLeft.telemetry(); 
+    // m_frontLeft.telemetry(); 
     // m_frontRight.telemetry();
     // m_rearLeft.telemetry();
     // m_rearRight.telemetry();

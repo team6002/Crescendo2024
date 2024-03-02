@@ -137,13 +137,7 @@ public class RobotContainer {
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10))
 
     ));
-    NamedCommands.registerCommand("InterFire", new SequentialCommandGroup( 
-      // new CMD_AutoShoulder(m_arm, m_drivetrain, m_intake, m_variables),
-      // new CMD_interpolateShooterSetpoint(m_drivetrain, m_shooter),
-      // new CMD_ShooterCheck(m_shooter),
-      m_intake.CMDsetIndexPower(2350),
-      new CMD_GroundIntakeSetPower(m_intake, .7)
-    ));
+
     NamedCommands.registerCommand("Fire", new SequentialCommandGroup( 
       // new CMD_AutoShoulder(m_arm, m_drivetrain, m_intake, m_variables),
       m_intake.CMDsetIndexPower(2350),
@@ -165,13 +159,13 @@ public class RobotContainer {
       new CMD_IndexerIndex(m_intake).withTimeout(3)
     ));
 
-    // NamedCommands.registerCommand("PickUp5", new SequentialCommandGroup(
-    //   m_intake.CMDsetIndexVelocity(2650),     
-    //    new CMD_GroundIntakeSetPower(m_intake, .7),
-    //   new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
-    //   new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
-    //   new CMD_IndexerIndex(m_intake).withTimeout(5)
-    // ));
+    NamedCommands.registerCommand("PickUp5", new SequentialCommandGroup(
+      m_intake.CMDsetIndexVelocity(2650),     
+       new CMD_GroundIntakeSetPower(m_intake, .7),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
+      new CMD_IndexerIndex(m_intake).withTimeout(5)
+    ));
 
     NamedCommands.registerCommand("ShooterCheck", new SequentialCommandGroup(
       new CMD_ShooterCheck(m_shooter)
@@ -298,6 +292,8 @@ public class RobotContainer {
     m_operatorController.a().onTrue(new CMD_CycleIntakeType(m_variables));
     
     m_operatorController.y().onTrue(new CMD_CycleSyncLocation(m_variables));
+
+    m_operatorController.b().onTrue(m_intake.CMDsetIndexVelocity(4000));
     
     m_operatorController.x().onTrue(new CMD_SyncOdometry(m_drivetrain, m_variables));
     
