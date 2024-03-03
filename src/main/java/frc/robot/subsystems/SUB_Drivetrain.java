@@ -186,8 +186,8 @@ public class SUB_Drivetrain extends SubsystemBase {
         Rotation2d.fromDegrees(getAngle()),
         getModulePositions()
         );
-    // SmartDashboard.putNumber("X",Units.metersToInches(getPose().getX()));
-    // SmartDashboard.putNumber("Y", Units.metersToInches(getPose().getY()));
+    SmartDashboard.putNumber("X",Units.metersToInches(getPose().getX()));
+    SmartDashboard.putNumber("Y", Units.metersToInches(getPose().getY()));
     // SmartDashboard.putNumber("Angle", getAngle());
     // SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
@@ -237,11 +237,11 @@ public class SUB_Drivetrain extends SubsystemBase {
                         est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
             });
     if (visionEst.isPresent()){
-      SmartDashboard.putNumber("EstX", Units.metersToInches(visionEst.get().estimatedPose.getX()));
-      SmartDashboard.putNumber("EstY", Units.metersToInches(visionEst.get().estimatedPose.getY()));
-      SmartDashboard.putNumber("EstDeg", Math.toDegrees(visionEst.get().estimatedPose.getRotation().getAngle()));
+      // SmartDashboard.putNumber("EstX", Units.metersToInches(visionEst.get().estimatedPose.getX()));
+      // SmartDashboard.putNumber("EstY", Units.metersToInches(visionEst.get().estimatedPose.getY()));
+      // SmartDashboard.putNumber("EstDeg", Math.toDegrees(visionEst.get().estimatedPose.getRotation().getAngle()));
       // SmartDashboard.putNumber("targetAng", m_vision.getTargetYaw(7));
-      fieldEst.setRobotPose(visionEst.get().estimatedPose.toPose2d());
+      // fieldEst.setRobotPose(visionEst.get().estimatedPose.toPose2d());
     }
   }
 
@@ -576,7 +576,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     }
     // variable tolerance for different distances
     //TODO: makesure that the sides have tighter tolerance
-    if (targetError <= MathUtil.clamp((250 / calculateTargetXError()) - ( 0.1 * calculateTargetYError()), 1, 3)){
+    if (targetError <= MathUtil.clamp((250 / calculateTargetXError()) - ( 0.1 * calculateTargetYError()), 2, 4)){
       onTarget = true;
     } else{
       onTarget = false;

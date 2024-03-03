@@ -30,7 +30,7 @@ public class CMD_PickUpRumble extends Command {
   public void execute() {
     if (m_intake.getIndexerSensor()){
       m_pickuptimer += 1;
-      if (m_pickuptimer <= 300){
+      if (m_pickuptimer <= 150){
         m_driverController.setRumble(RumbleType.kBothRumble, 1); 
       }else {
         m_driverController.setRumble(RumbleType.kBothRumble, 0);

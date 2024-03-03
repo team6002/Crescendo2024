@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.42,
-        "y": 5.477759506502913
+        "x": 1.3,
+        "y": 5.48
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.477369127260615,
-        "y": 5.492445188825979
+        "x": 2.3573691272606148,
+        "y": 5.494685682323066
       },
       "isLocked": false,
       "linkedName": "BlueSlam2"

@@ -157,12 +157,12 @@ public class SUB_Arm extends SubsystemBase {
 
         // SmartDashboard.putNumber("Elbow Current", getElbowCurrent());
         // SmartDashboard.putNumber("Elbow Goal", Math.toDegrees(getElbowGoal()));
-        // SmartDashboard.putNumber("Elbow Position", Math.toDegrees(getElbowPosition()));
+        SmartDashboard.putNumber("Elbow Position", Math.toDegrees(getElbowPosition()));
         // SmartDashboard.putBoolean("ElbowAtGoal", m_elbow.atGoal());
 
         // SmartDashboard.putNumber("Shoulder Current", getShoulderCurrent());
         // SmartDashboard.putNumber("Shoulder Goal", Math.toDegrees(getShoulderGoal()));
-        // SmartDashboard.putNumber("Shoulder Position", Math.toDegrees(getShoulderPosition()));
+        SmartDashboard.putNumber("Shoulder Position", Math.toDegrees(getShoulderPosition()));
         // SmartDashboard.putNumber("Shoulder Velocity", getShoulderVelocity());
     }
   

@@ -24,7 +24,7 @@ public class CMD_IndexerIndex extends Command {
   public void initialize() {
     m_detected = false;
     // m_intake.enableIndexerLimit(true);
-    m_intake.setIndexerVelocity(1400);
+    m_intake.setIndexerVelocity(1500);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

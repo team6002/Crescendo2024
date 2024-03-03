@@ -18,7 +18,7 @@ public class CMD_CycleOutputType extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if (m_variables.getOutputType() >= 2){
+    if (m_variables.getOutputType() >= 3){
       m_variables.setOutputType(0);
     }else {
       m_variables.setOutputType(m_variables.getOutputType() + 1);

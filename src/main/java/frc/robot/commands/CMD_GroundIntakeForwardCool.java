@@ -49,7 +49,7 @@ public class CMD_GroundIntakeForwardCool extends Command {
     // SmartDashboard.putBoolean("Detected", m_detected);
 
     if (m_intake.getGroundIntakeCurrent() >= 15 && !m_detected ){
-      if (m_detectTimer >= 5 ){
+      if (m_detectTimer >= 8 ){
         m_detected = true;
       }else  
         m_detectTimer += 1;

@@ -56,7 +56,6 @@ import frc.robot.commands.*;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  private SendableChooser<Command> autoChooser; 
   // The robot's subsystems
   private final SUB_Vision m_vision = new SUB_Vision();
   private final SUB_Drivetrain m_drivetrain = new SUB_Drivetrain(m_vision);
@@ -81,6 +80,7 @@ public class RobotContainer {
   private final BooleanSupplier ReadyDrop = () -> m_variables.getReadyDrop();
   private final BooleanSupplier ContShoot = () -> m_variables.getContShooting();
 
+  // private SendableChooser<Command> autoChooser; 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -125,7 +125,7 @@ public class RobotContainer {
       // m_intake.CMDsetIndexVelocity(2350),
       // new CMD_GroundIntakeSetPower(m_intake, .7),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(0)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(58)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(56.9)),
       new CMD_ElbowCheck(m_arm, Math.toRadians(57))
     ));
 
@@ -175,8 +175,8 @@ public class RobotContainer {
       m_variables.CMDsetAutoaim(false)
     ));
 
-    autoChooser = AutoBuilder.buildAutoChooser();
-    SmartDashboard.putData("Auto Chooser", autoChooser);
+    // autoChooser = AutoBuilder.buildAutoChooser();
+    // SmartDashboard.putData("Auto Chooser", autoChooser);
     // Configure default commands
     m_drivetrain.setDefaultCommand(new CMD_Drive(m_drivetrain, m_driverController, m_variables));
     m_intake.setDefaultCommand(new CMD_PickUpRumble(m_intake, m_driverXController));
@@ -221,8 +221,8 @@ public class RobotContainer {
       // m_arm.CMDsetShoulderConstrainst(ShoulderConstants.kClimbConstraints),
       m_arm.CMDsetLHookPWM(HookConstants.LHookOpen),
       m_arm.CMDsetRHookPWM(HookConstants.RHookOpen),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(60)),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(50)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(45)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(48)),
       new CMD_ShoulderCheck(m_arm, Math.toRadians(50))
       // new CMD_setShooterTrap(m_shooter, 1500),
       // new CMD_ShooterOn(m_shooter)
@@ -234,18 +234,26 @@ public class RobotContainer {
     ));
 
     m_driverController.pov(90).onTrue(new SequentialCommandGroup(
-      new CMD_setShooterTrap(m_shooter, 2000),
+      new CMD_setShooterTrap(m_shooter, 3000),
       new CMD_ShooterOn(m_shooter),
       new WaitCommand(1),
-      m_intake.CMDsetIndexVelocity( 2000)
-      // new CMD_ElbowSetPosition(m_arm, Math.toRadians(70))
+      m_intake.CMDsetIndexVelocity( 3000),
+      new WaitCommand(1),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(30)),
+      new CMD_ElbowSetPosition(m_arm, Math.toRadians(45)),
+      new CMD_ShooterOff(m_shooter),
+      m_intake.CMDsetIndexVelocity(0),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(30)),
+      new CMD_ElbowSetPosition(m_arm, Math.toRadians(45)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-20))
+      // new CMD_ElbowSetPosition(m_arm, )
     ));
 
     m_driverController.pov(180).onTrue(new SequentialCommandGroup(
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(55)),
-      new CMD_ShoulderCheck(m_arm, Math.toRadians(-42)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(50)),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(-44)),
       m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
       m_arm.CMDsetRHookPWM(HookConstants.RHookClose),
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
@@ -254,7 +262,8 @@ public class RobotContainer {
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(40)),
       // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
       
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(15)),
+      // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(15)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(20)),
       // new CMD_setShooterTrap(m_shooter,500),
       // new CMD_ShooterOn(m_shooter),
       new SequentialCommandGroup(
@@ -264,7 +273,10 @@ public class RobotContainer {
         new CMD_ElbowSetPosition(m_arm, Math.toRadians(110))
        
       ),
-      new CMD_ShoulderCheck(m_arm, Math.toRadians(-5))
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(30)),
+      new WaitCommand(0.1),
+      // new CMD_ShoulderSetPosition(m_arm, getIntakeType())
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(15))
       
         // new CMD_ElbowSetPosition(m_arm, Math.toRadians(110)),
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(3)),
@@ -347,6 +359,10 @@ public class RobotContainer {
         new CMD_placeFrontAmp(m_arm, m_shooter, m_intake),
         m_variables.CMDsetReadyDrop(true)  
       )),
+      Map.entry(VariablesConstants.kBackAmpOutput, new SequentialCommandGroup (
+        new CMD_placeBackAmp(m_arm, m_shooter, m_intake),
+        m_variables.CMDsetReadyDrop(true)  
+      )),
       Map.entry(VariablesConstants.kTallOutput, new CMD_ShootSpeakerTall(m_arm, m_shooter, m_intake, m_variables, m_drivetrain)
       )
     ), 
@@ -359,6 +375,10 @@ public class RobotContainer {
       Map.entry(VariablesConstants.kSpeakerOutput, new CMD_ShootSpeaker(m_arm, m_shooter, m_intake, m_variables, m_drivetrain)),
       Map.entry(VariablesConstants.kFrontAmpOutput, new SequentialCommandGroup (
       new CMD_dropFrontAmp(m_arm, m_shooter, m_intake),
+      m_variables.CMDsetReadyDrop(false)
+      )),
+      Map.entry(VariablesConstants.kBackAmpOutput, new SequentialCommandGroup (
+      new CMD_dropBackAmp(m_arm, m_shooter, m_intake),
       m_variables.CMDsetReadyDrop(false)
       )),
       Map.entry(VariablesConstants.kTallOutput,  
@@ -388,9 +408,9 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return autoChooser.getSelected();
-  //   // return new PathPlannerAuto("4SlamBlue");
-  //   return new PathPlannerAuto("4SlamRed");
+    // return autoChooser.getSelected();
+    // return new PathPlannerAuto("4SlamBlue");
+    return new PathPlannerAuto("4SlamRed");
   }
   // public Command getAutonomousCommand() {
   //   // return new PathPlannerAuto("4SlamRed");

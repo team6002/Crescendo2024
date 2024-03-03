@@ -24,12 +24,14 @@ public class CMD_placeFrontAmp extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new CMD_ShoulderSetPosition(p_arm, Math.toRadians(35)),
+      new CMD_setShooterSetpoint(p_shooter, 2000),
+      new CMD_ShooterOn(p_shooter),
+      new CMD_ShoulderSetPosition(p_arm, Math.toRadians(30)),
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(15)),
       new WaitCommand(0.05),
       new CMD_ElbowSetPositionRelative(p_arm, ElbowConstants.kElbowAmp),
-      new CMD_ShoulderCheck(p_arm, Math.toRadians(45)),
-      new CMD_setShooterSetpoint(p_shooter, 750)
+      new CMD_ShoulderCheck(p_arm, Math.toRadians(30))
+  
     );
   }
 }

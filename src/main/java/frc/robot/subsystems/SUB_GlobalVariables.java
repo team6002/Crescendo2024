@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.LocationConstants;
 
 public class SUB_GlobalVariables extends SubsystemBase {
   /** place for subsystems to talk to each other */
@@ -21,7 +22,7 @@ public class SUB_GlobalVariables extends SubsystemBase {
   private int m_outputType = 0;
   private int m_robotStage = 0;
   private int m_syncNumber = 0;
-  private Pose2d m_syncLocation;
+  private Pose2d m_syncLocation = LocationConstants.SubwooferBlue;
   public SUB_GlobalVariables() {}
   //*returns if the robot is automatically shooting */
   public boolean getAutofire(){
