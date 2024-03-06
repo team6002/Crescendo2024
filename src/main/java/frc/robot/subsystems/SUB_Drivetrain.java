@@ -15,6 +15,9 @@ import com.pathplanner.lib.util.ReplanningConfig;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -27,6 +30,7 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -43,6 +47,7 @@ import frc.utils.SwerveUtils;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ProfiledPIDCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -99,6 +104,12 @@ public class SUB_Drivetrain extends SubsystemBase {
 
   private double m_prevXPos = 0;
   private double m_prevYPos = 0;
+
+  //the trapzoid motion profile for the autoalign function
+  private TrapezoidProfile m_AutoAlignTrapProfile;
+  private TrapezoidProfile.Constraints m_AutoAlignConstraints;
+  private ProfiledPIDController m_AutoAlignProfile;
+  private SimpleMotorFeedforward m_AutoAlignFF;
 
   private Translation2d m_currentTarget = LocationConstants.SpeakerBlue;
   // Odometry class for tracking robot pose
@@ -166,6 +177,10 @@ public class SUB_Drivetrain extends SubsystemBase {
               },
               this // Reference to this subsystem to set requirements
       );
+      m_AutoAlignConstraints = new TrapezoidProfile.Constraints(DriveConstants.kAutoAlignMaxVelo, DriveConstants.kAutoAlignMaxAccel);
+      m_AutoAlignTrapProfile = new TrapezoidProfile(m_AutoAlignConstraints);
+      m_AutoAlignProfile = new ProfiledPIDController(DriveConstants.kAutoAlignP, DriveConstants.kAutoAlignI, DriveConstants.kAutoAlignD, m_AutoAlignConstraints);
+      m_AutoAlignFF = new SimpleMotorFeedforward(DriveConstants.kAutoAlignS, DriveConstants.kAutoAlignV, DriveConstants.kAutoAlignA);
   }
 
   
@@ -188,13 +203,14 @@ public class SUB_Drivetrain extends SubsystemBase {
         );
     SmartDashboard.putNumber("X",Units.metersToInches(getPose().getX()));
     SmartDashboard.putNumber("Y", Units.metersToInches(getPose().getY()));
-    // SmartDashboard.putNumber("Angle", getAngle());
+    SmartDashboard.putNumber("Angle", getAngle());
     // SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
     // SmartDashboard.putNumber("TargetXError", Units.metersToInches(calculateTargetXError()));
     // SmartDashboard.putNumber("XVelocity", getXVelocity());
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
     // SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
+    SmartDashboard.putNumber("TargetError", autoAlignTurn());
     SmartDashboard.putBoolean("OnTarget", onTarget);
     // m_frontLeft.telemetry(); 
     // m_frontRight.telemetry();
@@ -567,21 +583,21 @@ public class SUB_Drivetrain extends SubsystemBase {
 
     //TODO: Use wpilib's built in PIDController.  Easier and allows for motion profiles.
     double p =  targetError * DriveConstants.kAutoAlignP;
-    double f = Math.copySign(DriveConstants.kAutoAlignF, targetError);
-    if (Double.isNaN(m_TargetAngle) ){
-      return 0;
-    }
+    // double f = Math.copySign(DriveConstants.kAutoAlignF, targetError);
+
+    // m_AutoAlignProfile.calculate(, null, m_AutoAlignConstraints)
     if (Math.abs(targetError) <= Math.toRadians(2) && Math.abs(CameraError) <= 1){
       return 0;
     }
     // variable tolerance for different distances
-    //TODO: makesure that the sides have tighter tolerance
     if (targetError <= MathUtil.clamp((250 / calculateTargetXError()) - ( 0.1 * calculateTargetYError()), 2, 4)){
       onTarget = true;
     } else{
       onTarget = false;
     }
-    return MathUtil.clamp(p + f, -0.5, 0.5);
+    // return MathUtil.clamp(p + f, -0.5, 0.5);
+    SmartDashboard.putNumber("TargetAngle", globalTargetAng.getDegrees());
+    return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()), globalTargetAng.getRadians());
   }
 
   public boolean getOnTarget(){

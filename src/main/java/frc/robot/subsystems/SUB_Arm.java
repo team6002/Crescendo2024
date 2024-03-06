@@ -12,15 +12,21 @@ public class SUB_Arm extends SubsystemBase {
     SUB_Elbow m_elbow;
     SUB_Shoulder m_shoulder;
     double ShooterAngleMod = 0;
+    double ElbowOffset = 0;
+    double ShoulderOffset = 0;
     public SUB_Arm(SUB_Elbow p_elbow, SUB_Shoulder p_shoulder) {
         m_elbow = p_elbow;
         m_shoulder = p_shoulder;
         m_shoulder.enable();
         m_elbow.enable();
+        getOffset();
         
     }
     
-    
+    public void getOffset(){
+        ShoulderOffset = getShoulderPosition() + Math.toRadians(47);
+        ElbowOffset = getElbowPosition() -  Math.toRadians(7);
+    }
     public double interpolateShoulder(double p_distance){
       return m_shoulder.interpolateSetpoint(p_distance);
     }
@@ -49,7 +55,10 @@ public class SUB_Arm extends SubsystemBase {
     public boolean atShoulderGoal(){
       return m_shoulder.atGoal();
     }   
-
+    /** returns if the Shoulder is at the goal with an adjustable tolerance */
+    public boolean atShoulderGoal(double tolerance){
+      return m_shoulder.atGoal(tolerance);
+    }
     public void setShoulderConstraints(TrapezoidProfile.Constraints p_constraints){
         m_shoulder.setConstraints(p_constraints);
     }
@@ -88,6 +97,12 @@ public class SUB_Arm extends SubsystemBase {
     public boolean atElbowGoal(){
         return m_elbow.atGoal();
     }
+
+    /** returns if the Elbow is at the goal with adjustable tolerance */
+    public boolean atElbowGoal(double tolerance){
+        return m_elbow.atGoal(tolerance);
+    }
+
     public double interpolateElbow(double p_distance){
       return m_elbow.interpolateSetpoint(p_distance);
     }
@@ -147,6 +162,9 @@ public class SUB_Arm extends SubsystemBase {
     @Override
     public void periodic() {
         
+
+        SmartDashboard.putNumber("ElbowOffset", ElbowOffset);
+        SmartDashboard.putNumber("ShoulderOffset", ShoulderOffset);
 
         SmartDashboard.putBoolean("ShoulderFin", m_shoulder.atGoal());
         SmartDashboard.putBoolean("ElbowFin", m_elbow.atGoal());

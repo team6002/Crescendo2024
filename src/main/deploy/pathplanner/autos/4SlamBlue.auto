@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Dunk"
+            "name": "ReadyShooterFirstRing"
           }
         },
         {
@@ -67,7 +67,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Dunk"
+                  "name": "ReadyShooterFirstRing"
                 }
               }
             ]
@@ -124,7 +124,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Dunk"
+                  "name": "ReadyShooterFirstRing"
                 }
               }
             ]
@@ -181,7 +181,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Dunk"
+                  "name": "ReadyShooterFirstRing"
                 }
               }
             ]

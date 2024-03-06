@@ -60,7 +60,7 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
     super(
         new TrapezoidProfile.Constraints(ShoulderConstants.kMaxVelocityRadPerSecond
         , ShoulderConstants.kMaxAccelerationRadPerSecSquared)
-        ,Math.toRadians(-47), deltaTime);
+        ,Math.toRadians(-45), deltaTime);
     
     m_shoulderMotor = new CANSparkMax(HardwareConstants.kShoulderMotorCANID, MotorType.kBrushless);
     m_shoulderFollowerMotor = new CANSparkMax(HardwareConstants.kShoulderFollowerMotorCANID, MotorType.kBrushless);
@@ -70,7 +70,8 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
     m_shoulderFollowerMotor.follow(m_shoulderMotor, true);
 
     m_shoulderMotor.setIdleMode(IdleMode.kCoast);
-    m_shoulderFollowerMotor.setIdleMode(IdleMode.kBrake);
+    // m_shoulderFollowerMotor.setIdleMode(IdleMode.kBrake);
+    m_shoulderFollowerMotor.setIdleMode(IdleMode.kCoast);
     m_shoulderMotor.setSmartCurrentLimit(ShoulderConstants.kShoulderCurrentLimit);
     m_shoulderFollowerMotor.setSmartCurrentLimit(ShoulderConstants.kShoulderCurrentLimit);
 

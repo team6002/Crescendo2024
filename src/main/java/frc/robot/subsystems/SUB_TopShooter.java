@@ -74,13 +74,13 @@ public class SUB_TopShooter extends PIDSubsystem {
     return m_shooterTopMotor.getOutputCurrent();
   }
 
-  private double m_ShooterP = ShooterConstants.kShooterTopP;
-  private double m_ShooterI = ShooterConstants.kShooterTopI;
-  private double m_ShooterD = ShooterConstants.kShooterTopD;
-  private double m_ShooterFF = ShooterConstants.kShooterTopFF;
-  private double m_ShooterS = ShooterConstants.kShooterTopSVolts;
-  private double m_ShooterVV = ShooterConstants.kTopVVoltSecondsPerRotation;
-  private double m_ShooterWantedVelocity = 0;
+  // private double m_ShooterP = ShooterConstants.kShooterTopP;
+  // private double m_ShooterI = ShooterConstants.kShooterTopI;
+  // private double m_ShooterD = ShooterConstants.kShooterTopD;
+  // private double m_ShooterFF = ShooterConstants.kShooterTopFF;
+  // private double m_ShooterS = ShooterConstants.kShooterTopSVolts;
+  // private double m_ShooterVV = ShooterConstants.kTopVVoltSecondsPerRotation;
+  // private double m_ShooterWantedVelocity = 0;
 
   // public void ShooterTopPIDTuning(){
   //   if (firstPIDTesting){

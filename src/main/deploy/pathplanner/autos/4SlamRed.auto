@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Dunk"
+            "name": "ReadyShooterFirstRing"
           }
         },
         {
@@ -61,7 +61,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Dunk"
+                  "name": "ReadyShooterFirstRing"
                 }
               }
             ]
@@ -118,7 +118,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Dunk"
+                  "name": "ReadyShooterFirstRing"
                 }
               }
             ]
@@ -148,15 +148,15 @@
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "PickUp"
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "SlamRingRed5"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
                 }
               }
             ]
@@ -175,7 +175,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Dunk"
+                  "name": "ReadyShooterFirstRing"
                 }
               }
             ]

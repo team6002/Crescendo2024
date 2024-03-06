@@ -251,8 +251,8 @@ public class RobotContainer {
 
     m_driverController.pov(180).onTrue(new SequentialCommandGroup(
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(50)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(45)),
       new CMD_ShoulderCheck(m_arm, Math.toRadians(-44)),
       m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
       m_arm.CMDsetRHookPWM(HookConstants.RHookClose),
@@ -316,6 +316,11 @@ public class RobotContainer {
       ,m_variables.CMDsetContShooting(true)
       ,ContShoot)
     );
+
+    m_operatorController.rightTrigger(.5).onTrue(new SequentialCommandGroup(
+      new CMD_setShooterSetpoint(m_shooter, 1500),
+      new CMD_ShooterOn(m_shooter)
+    ));
 
     m_operatorController.povUp().onTrue(new SequentialCommandGroup(
        new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
@@ -412,13 +417,17 @@ public class RobotContainer {
     // return new PathPlannerAuto("4SlamBlue");
     return new PathPlannerAuto("4SlamRed");
   }
-  // public Command getAutonomousCommand() {
-  //   // return new PathPlannerAuto("4SlamRed");
 
+  public Command get4SlamRed() {
+    return new PathPlannerAuto("4SlamRed");
+  }
+
+  public Command get4SlamBlue() {
+    return new PathPlannerAuto("4SlamBlue");
+  }
   //   // return new PathPlannerAuto("3OuterBlue");
   //   // return new PathPlannerAuto("BOX");
   
-  // }
   // public Command getAutonomousCommand(){
   //   // return new AUTO_StraightTuning(m_trajectories);
   //   // return new AUTO_DistanceTunning(m_trajectories);
@@ -444,6 +453,7 @@ public class RobotContainer {
     m_intake.setIndexerVelocity(0);
     m_intake.setGroundIntakeVelocity(0);
     // m_drivetrain.setShooterTarget();
+    
   }
   public void getShooterTarget(){
     m_drivetrain.setShooterTarget();

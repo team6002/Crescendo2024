@@ -7,8 +7,11 @@ package frc.robot;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -18,7 +21,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-
+  private final SendableChooser<Command> m_Chooser = new SendableChooser<Command>();
   private RobotContainer m_robotContainer;
   
 
@@ -34,6 +37,13 @@ public class Robot extends TimedRobot {
     // m_robotContainer.zeroOdometry();
     m_robotContainer.resetHeading();
     m_robotContainer.subsystemInit();
+    SmartDashboard.putData("AUTO", m_Chooser);
+    
+    // m_Chooser.setDefaultOption("4SlamRed", m_robotContainer.get4SlamRed());
+    // m_Chooser.addOption("4SlamBlue", m_robotContainer.get4SlamBlue());
+
+    m_Chooser.addOption("4SlamBlue", new PrintCommand("4SlamBlue"));
+    m_Chooser.addOption("4SlamRed", new PrintCommand("4SlamRed"));
   }
 
   /**
@@ -62,7 +72,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
     // m_robotContainer.zeroOdometry();
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -75,6 +85,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
+    m_autonomousCommand = 
+    m_Chooser.getSelected();
   }
 
   /** This function is called periodically during autonomous. */

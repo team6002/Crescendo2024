@@ -96,8 +96,16 @@ public final class Constants {
 
     public static final boolean kGyroReversed = false;
 
-    public static final double kAutoAlignP = 0.2;
-    public static final double kAutoAlignF = 0.02;
+    public static final double kAutoAlignMaxAccel = 1;
+    public static final double kAutoAlignMaxVelo = 1;
+    
+    public static final double kAutoAlignP = 0.5;
+    public static final double kAutoAlignI = 0.0;
+    public static final double kAutoAlignD = 0.0;
+
+    public static final double kAutoAlignS = 0.2;
+    public static final double kAutoAlignV = 0.2;
+    public static final double kAutoAlignA = 0.00;
 
     public static final double kAlignVelocityMod = 0.018;
   }
@@ -332,14 +340,14 @@ public final class Constants {
   
 
     public static final double[][] kShoulderArray = {
-      {36, Math.toRadians(-47)},
-      {50, Math.toRadians(-47)},  
+      {36, Math.toRadians(-45)},
+      {50, Math.toRadians(-45)},  
       {84, Math.toRadians(-37)}, 
       {100, Math.toRadians(-35.2)}, 
-      {120, Math.toRadians(-33.5)}, 
+      {120, Math.toRadians(-32.8)}, 
       {150, Math.toRadians(-27.5)},
-      {180, Math.toRadians(-26)},
-      {240, Math.toRadians(-23.7)},
+      {180, Math.toRadians(-26.5)},
+      {240, Math.toRadians(-24.1)},
       {300, Math.toRadians(-24.9)},
     };
 
