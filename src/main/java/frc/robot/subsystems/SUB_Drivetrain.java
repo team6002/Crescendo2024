@@ -580,9 +580,6 @@ public class SUB_Drivetrain extends SubsystemBase {
     if (visionEst.isPresent()){
       // CameraError = m_vision.getTargetYaw(0);
     }
-
-    //TODO: Use wpilib's built in PIDController.  Easier and allows for motion profiles.
-    double p =  targetError * DriveConstants.kAutoAlignP;
     // double f = Math.copySign(DriveConstants.kAutoAlignF, targetError);
 
     // m_AutoAlignProfile.calculate(, null, m_AutoAlignConstraints)
@@ -596,7 +593,8 @@ public class SUB_Drivetrain extends SubsystemBase {
       onTarget = false;
     }
     // return MathUtil.clamp(p + f, -0.5, 0.5);
-    SmartDashboard.putNumber("TargetAngle", globalTargetAng.getDegrees());
+    // SmartDashboard.putNumber("TargetAngle", globalTargetAng.getDegrees());
+    // m_AutoAlignTrapProfile.calculate(0.02, new TrapezoidProfile.State(Math.toRadians(getAngle()), Math.toRadians(getTurnRate())), new TrapezoidProfile.State(globalTargetAng.getRadians(), 0));
     return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()), globalTargetAng.getRadians());
   }
 

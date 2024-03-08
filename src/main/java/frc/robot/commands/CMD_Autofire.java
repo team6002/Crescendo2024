@@ -22,8 +22,8 @@ public class CMD_Autofire extends Command {
   SUB_Shooter m_shooter;
   SUB_GlobalVariables m_variable;
   boolean m_shot;
-  double m_shooterTimer;
-  double m_firingTimer;
+  Timer m_shooterTimer;
+  boolean m_firingStarted;
   public CMD_Autofire(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = p_arm;
@@ -31,46 +31,40 @@ public class CMD_Autofire extends Command {
     m_intake = p_intake;
     m_shooter = p_shooter;
     m_variable = p_variables;
-    m_firingTimer = 0;
-    m_shooterTimer = 0;
+    m_firingStarted = false;
+    m_shooterTimer = new Timer();
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_shot = false;
-    m_firingTimer = 0;
-    m_shooterTimer = 0;
+    m_firingStarted = false;
+    m_shooterTimer.restart();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
-      if (m_firingTimer == 0){
+      if (!m_firingStarted){
         m_shooter.enableShooter();
+        m_firingStarted = true;
       }
       m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-      m_firingTimer += 0.02;
-      if (m_firingTimer >= .1){
         m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
         m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-      }
       if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
         m_intake.setIndexerVelocity(4000);
       }
       if (m_shooter.getAtShooterSetpoint() && m_arm.atShoulderGoal() && m_drivetrain.getOnTarget() && m_arm.atElbowGoal()){
-        m_shooterTimer += 0.02;
+        m_shooterTimer.start();
+      }else{
+        m_shooterTimer.stop();
       }
-      if (m_shooterTimer > 0.0){
-        // System.out.println("SHOOTING");
-        m_shooterTimer +=0.02;
-        if (m_shooterTimer > 1){
+        if (m_shooterTimer.get() > 0.3){
           m_shot = true;
         }
-      }
-    }else {
-      m_firingTimer = 0;
     }
     // if (m_shooter.getTopShooterCurrent() >= 20){
     //   m_shooterTimer += 1;

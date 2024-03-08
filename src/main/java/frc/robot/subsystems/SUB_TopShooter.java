@@ -74,6 +74,9 @@ public class SUB_TopShooter extends PIDSubsystem {
     return m_shooterTopMotor.getOutputCurrent();
   }
 
+  public void setPower(double p_power){
+    m_shooterTopMotor.set(p_power);
+  }
   // private double m_ShooterP = ShooterConstants.kShooterTopP;
   // private double m_ShooterI = ShooterConstants.kShooterTopI;
   // private double m_ShooterD = ShooterConstants.kShooterTopD;

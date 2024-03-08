@@ -256,7 +256,7 @@ public final class Constants {
 
     // public static final double kShooterBotP = 0.01;//0.005;
     // public static final double kShooterBotP = 0.0079;//0.005;
-    public static final double kShooterBotP = 0.0085;//0.005;
+    public static final double kShooterBotP = 0.01;//0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
     public static final double kShooterBotD = 0.0008;//0.0005
     public static final double kShooterBotFF = 0.0000;
@@ -265,7 +265,7 @@ public final class Constants {
     public static final double kBotVVoltSecondsPerRotation = 0.0022;
     public static final double kShooterBotA = 0.1;
 
-    public static final double kShooterTopP = 0.0077;//0.005;
+    public static final double kShooterTopP = 0.009;//0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
     public static final double kShooterTopD = 0.0008;//0.0005
     public static final double kShooterTopFF = 0.0;

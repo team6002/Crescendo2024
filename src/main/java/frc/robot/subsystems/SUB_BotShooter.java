@@ -99,14 +99,18 @@ public class SUB_BotShooter extends PIDSubsystem {
   public double getFollowerCurrent(){
     return m_shooterBotFollowerMotor.getOutputCurrent();
   }
+
+  public void setPower(double p_power){
+    m_shooterBotMotor.set(p_power);
+  }
   
-  private double m_ShooterP = ShooterConstants.kShooterBotP;
-  private double m_ShooterI = ShooterConstants.kShooterBotI;
-  private double m_ShooterD = ShooterConstants.kShooterBotD;
-  private double m_ShooterFF = ShooterConstants.kShooterBotFF;
-  private double m_ShooterS = ShooterConstants.kShooterBotSVolts;
-  private double m_ShooterVV = ShooterConstants.kBotVVoltSecondsPerRotation;
-  private double m_ShooterWantedVelocity = 0;
+  // private double m_ShooterP = ShooterConstants.kShooterBotP;
+  // private double m_ShooterI = ShooterConstants.kShooterBotI;
+  // private double m_ShooterD = ShooterConstants.kShooterBotD;
+  // private double m_ShooterFF = ShooterConstants.kShooterBotFF;
+  // private double m_ShooterS = ShooterConstants.kShooterBotSVolts;
+  // private double m_ShooterVV = ShooterConstants.kBotVVoltSecondsPerRotation;
+  // private double m_ShooterWantedVelocity = 0;
 
   // public void ShooterBotPIDTuning(){
   //   if (firstPIDTesting){

@@ -14,7 +14,7 @@ import frc.robot.subsystems.SUB_GlobalVariables;
 import frc.robot.subsystems.SUB_Intake;
 import frc.robot.subsystems.SUB_Shooter;
 
-public class CMD_AutofireTall extends Command {
+public class CMD_ManFire extends Command {
   /** Creates a new CMD_Autofire. */
   SUB_Arm m_arm;
   SUB_Drivetrain m_drivetrain;
@@ -24,7 +24,7 @@ public class CMD_AutofireTall extends Command {
   boolean m_shot;
   Timer m_shooterTimer;
   boolean m_firingStarted;
-  public CMD_AutofireTall(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
+  public CMD_ManFire(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = p_arm;
     m_drivetrain = p_drivetrain;
@@ -46,33 +46,30 @@ public class CMD_AutofireTall extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
-      if (!m_firingStarted){
-        m_shooter.enableShooter();
-        m_firingStarted = true;
-      }
-      m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-        m_arm.setShoulderGoalWithoutElbow(0);
-        m_arm.setElbowGoalAbsolute(m_arm.interpolateElbow((Units.metersToInches(m_drivetrain.calculateTargetDistance())))); 
-      if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
+    if (!m_firingStarted){
+      // m_shooter.enableShooter();
+      m_shooter.setBotPower(1);
+      m_shooter.setTopPower(1);
+      m_firingStarted = true;
+    }
+    m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+      m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
+      m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+    // if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
+    // }
+    if (m_arm.atShoulderGoal() && m_arm.atElbowGoal()){
+      m_shooterTimer.start();
+    }else{
+      m_shooterTimer.stop();
+    }
+      if (m_shooterTimer.get() > 0.5){
         m_intake.setIndexerVelocity(4000);
-      }
-      if (m_shooter.getAtShooterSetpoint() && m_arm.atShoulderGoal() && m_drivetrain.getOnTarget() && m_arm.atElbowGoal()){
-      }else{
-        m_shooterTimer.stop();
-      }
-        if (m_shooterTimer.get() > .3){
+        if (m_shooterTimer.get() > 0.7){
           m_shot = true;
         }
-    }
+      }
+  }
     
-    // if (m_shooter.getTopShooterCurrent() >= 20){
-    //   m_shooterTimer += 1;
-    //   if (m_shooterTimer >= 7){
-    //     m_shot = true;
-    //   }
-    // }
-   }
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}

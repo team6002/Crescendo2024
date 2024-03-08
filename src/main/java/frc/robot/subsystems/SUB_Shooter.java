@@ -38,6 +38,11 @@ public class SUB_Shooter extends SubsystemBase {
   public double getBotSetpoint(){
     return m_botShooter.getSetpoint();
   }
+
+  public void setBotPower(double p_power){
+    m_botShooter.setPower(p_power);
+  }
+  
   public void enableBotShooter(){
     m_botShooter.enable();
   }
@@ -56,6 +61,10 @@ public class SUB_Shooter extends SubsystemBase {
 
   public double getTopShooterCurrent(){
     return m_topShooter.getCurrent();
+  }
+
+  public void setTopPower(double p_power){
+    m_topShooter.setPower(p_power);
   }
 
   public boolean atTopSetpoint(){

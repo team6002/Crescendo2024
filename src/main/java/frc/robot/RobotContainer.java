@@ -301,7 +301,7 @@ public class RobotContainer {
     // Path find to the color correct amp from any position on the field
     m_driverController.rightTrigger().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.AMP));
 
-    m_operatorController.a().onTrue(new CMD_CycleIntakeType(m_variables));
+    m_operatorController.a().onTrue(new CMD_ManFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables));
     
     m_operatorController.y().onTrue(new CMD_CycleSyncLocation(m_variables));
 
