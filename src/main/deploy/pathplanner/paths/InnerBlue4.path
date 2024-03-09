@@ -1,0 +1,68 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 8.284942222836145,
+        "y": 2.437823265628643
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.888428800113415,
+        "y": 2.3056521247210657
+      },
+      "isLocked": false,
+      "linkedName": "InnerBlue3"
+    },
+    {
+      "anchor": {
+        "x": 5.861804639530567,
+        "y": 1.8210246080599504
+      },
+      "prevControl": {
+        "x": 6.669517167299094,
+        "y": 1.8357102903830147
+      },
+      "nextControl": {
+        "x": 4.861969887817244,
+        "y": 1.8028457943924352
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.585523879455631,
+        "y": 2.202852348459617
+      },
+      "prevControl": {
+        "x": 4.143579807732067,
+        "y": 1.6301107378601165
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.5,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -39.80557109226524,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "InnerBlue",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

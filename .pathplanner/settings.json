@@ -4,13 +4,15 @@
   "holonomicMode": true,
   "pathFolders": [
     "BOX",
-    "StraightRed",
+    "InnerBlue",
+    "InnerRed",
     "OuterBlue",
     "OuterRed",
     "ShootyBlue",
     "SlamBlue",
     "SlamRingRed",
     "StraightBlue",
+    "StraightRed",
     "Teleop"
   ],
   "autoFolders": [],

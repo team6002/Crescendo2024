@@ -69,9 +69,9 @@ public class SUB_Shoulder extends TrapezoidProfileSubsystem {
     m_shoulderMotor.setInverted(true);
     m_shoulderFollowerMotor.follow(m_shoulderMotor, true);
 
-    m_shoulderMotor.setIdleMode(IdleMode.kCoast);
+    m_shoulderMotor.setIdleMode(IdleMode.kBrake);
     // m_shoulderFollowerMotor.setIdleMode(IdleMode.kBrake);
-    m_shoulderFollowerMotor.setIdleMode(IdleMode.kCoast);
+    m_shoulderFollowerMotor.setIdleMode(IdleMode.kBrake);
     m_shoulderMotor.setSmartCurrentLimit(ShoulderConstants.kShoulderCurrentLimit);
     m_shoulderFollowerMotor.setSmartCurrentLimit(ShoulderConstants.kShoulderCurrentLimit);
 
