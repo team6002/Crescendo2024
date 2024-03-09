@@ -35,6 +35,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     // m_robotContainer.zeroOdometry();
+    m_robotContainer.LED();
     m_robotContainer.resetHeading();
     m_robotContainer.subsystemInit();
     SmartDashboard.putData("AUTO", m_Chooser);
@@ -42,8 +43,8 @@ public class Robot extends TimedRobot {
     // m_Chooser.setDefaultOption("4SlamRed", m_robotContainer.get4SlamRed());
     // m_Chooser.addOption("4SlamBlue", m_robotContainer.get4SlamBlue());
 
-    m_Chooser.addOption("4SlamBlue", new PrintCommand("4SlamBlue"));
-    m_Chooser.addOption("4SlamRed", new PrintCommand("4SlamRed"));
+    m_Chooser.addOption("4SlamBlue", m_robotContainer.get4SlamBlue());
+    m_Chooser.addOption("4SlamRed", m_robotContainer.get4SlamRed());
   }
 
   /**

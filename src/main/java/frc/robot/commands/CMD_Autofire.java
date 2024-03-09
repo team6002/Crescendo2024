@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.units.Unit;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ElbowConstants;
@@ -23,7 +24,9 @@ public class CMD_Autofire extends Command {
   SUB_GlobalVariables m_variable;
   boolean m_shot;
   Timer m_shooterTimer;
+  Timer m_altShooterTimer;
   boolean m_firingStarted;
+  boolean m_closeShooting;
   public CMD_Autofire(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = p_arm;
@@ -33,14 +36,24 @@ public class CMD_Autofire extends Command {
     m_variable = p_variables;
     m_firingStarted = false;
     m_shooterTimer = new Timer();
+    m_altShooterTimer = new Timer(); 
+    m_closeShooting = false;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_shot = false;
+    m_closeShooting = false;
     m_firingStarted = false;
     m_shooterTimer.restart();
+    m_altShooterTimer.restart();
+    if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) < 90){
+      m_closeShooting = true;
+    }else{
+      m_closeShooting = false;
+    }
+    System.out.println(m_closeShooting);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -51,27 +64,43 @@ public class CMD_Autofire extends Command {
         m_shooter.enableShooter();
         m_firingStarted = true;
       }
-      m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-        m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
-        m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+      if (m_closeShooting){
+        m_shooter.setBotPower(1);
+        m_shooter.setTopPower(1);
+      }else{
+        m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+      }
+
+      if (m_closeShooting){
+        m_altShooterTimer.start();
+        if (m_altShooterTimer.get() > 1 && m_arm.atElbowGoal() && m_arm.atShoulderGoal()){
+          m_intake.setIndexerVelocity(4000);
+            System.out.println("SHOT");
+          if (m_altShooterTimer.get() > 1.3){
+            m_shot = true;
+          }
+        }
+      }else{
+        m_altShooterTimer.reset();
+      }
+
+      m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
+      m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+
       if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
         m_intake.setIndexerVelocity(4000);
       }
       if (m_shooter.getAtShooterSetpoint() && m_arm.atShoulderGoal() && m_drivetrain.getOnTarget() && m_arm.atElbowGoal()){
         m_shooterTimer.start();
+
       }else{
         m_shooterTimer.stop();
       }
-        if (m_shooterTimer.get() > 0.3){
-          m_shot = true;
-        }
+
+      if (m_shooterTimer.get() > 0.3){
+        m_shot = true;
+      }
     }
-    // if (m_shooter.getTopShooterCurrent() >= 20){
-    //   m_shooterTimer += 1;
-    //   if (m_shooterTimer >= 7){
-    //     m_shot = true;
-    //   }
-    // }
    }
   // Called once the command ends or is interrupted.
   @Override

@@ -32,7 +32,8 @@ public class CMD_ShootSpeaker extends SequentialCommandGroup {
       new CMD_Autofire(p_arm, p_drivetrain, p_intake, p_shooter, p_variables),
       p_variables.CMDsetAutofire(false),
       new CMD_ShoulderSetPosition(p_arm, ShoulderConstants.kShoulderHome),
-      new CMD_ElbowSetPosition(p_arm, ElbowConstants.kElbowHome)
+      new CMD_ElbowSetPosition(p_arm, ElbowConstants.kElbowHome),  
+      p_variables.CMDsetHasItem(false)
     );
   }
 }

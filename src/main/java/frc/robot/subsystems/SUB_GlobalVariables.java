@@ -17,6 +17,7 @@ public class SUB_GlobalVariables extends SubsystemBase {
   private boolean m_autoaim;
   private boolean m_hasItem;
   private boolean m_readyDrop;
+  private boolean m_changeState;
   private boolean m_contShooting; // continous shooting mode
   private int m_intakeType = 0;
   private int m_outputType = 0;
@@ -71,6 +72,18 @@ public class SUB_GlobalVariables extends SubsystemBase {
 
   public Command CMDsetReadyDrop(boolean p_readydrop) {
     return Commands.runOnce(()->setReadyDrop(p_readydrop),this);
+  }
+
+  public boolean getChangeState(){
+    return m_changeState;
+  }
+
+  public void setChangeState(boolean p_changeState){
+    m_changeState = p_changeState;
+  }
+
+  public Command CMDsetChangeState(boolean p_changeState) {
+    return Commands.runOnce(()->setChangeState(p_changeState),this);
   }
 
   public boolean getContShooting(){

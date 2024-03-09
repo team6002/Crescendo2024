@@ -47,7 +47,7 @@ public class CMD_Drive extends Command {
       rot = MathUtil.applyDeadband(m_controller.getRightX(), deadzone);
     }
     // System.out.println(m_drivetrain.autoAlignTurn(m_drivetrain.calculateTargetAngle()));
-    m_drivetrain.drive( xSpeed, ySpeed, rot,true,false);
+    m_drivetrain.drive( xSpeed, ySpeed, rot,true, true);
   }
 
   // private static double modifyAxis(double value) {

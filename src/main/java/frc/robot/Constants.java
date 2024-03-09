@@ -65,6 +65,7 @@ public final class Constants {
     public static final int kHookLeft = 0;
     public static final int kHookRight = 1;
 
+    public static final int kLEDStrip = 9;
   }
 
   public static final class DriveConstants {

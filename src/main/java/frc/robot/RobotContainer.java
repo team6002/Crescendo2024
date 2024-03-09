@@ -31,6 +31,7 @@ import frc.robot.subsystems.SUB_Drivetrain;
 import frc.robot.subsystems.SUB_Elbow;
 import frc.robot.subsystems.SUB_GlobalVariables;
 import frc.robot.subsystems.SUB_Intake;
+import frc.robot.subsystems.SUB_LED;
 // import frc.robot.subsystems.SUB_Shooter;
 import frc.robot.subsystems.SUB_Shooter;
 import frc.robot.subsystems.SUB_Shoulder;
@@ -68,6 +69,7 @@ public class RobotContainer {
   private final SUB_Elbow m_elbow = new SUB_Elbow();
   private final SUB_Shoulder m_shoulder = new SUB_Shoulder();
   private final SUB_Arm m_arm = new SUB_Arm(m_elbow,m_shoulder);
+  private final SUB_LED m_led = new SUB_LED();
   private final SUB_GlobalVariables m_variables = new SUB_GlobalVariables();
   // The driver's controller
   CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
@@ -180,7 +182,7 @@ public class RobotContainer {
     // Configure default commands
     m_drivetrain.setDefaultCommand(new CMD_Drive(m_drivetrain, m_driverController, m_variables));
     m_intake.setDefaultCommand(new CMD_PickUpRumble(m_intake, m_driverXController));
-    
+    m_led.setDefaultCommand(new CMD_LedHandler(m_led, m_shooter, m_variables));
   
   }
 
@@ -362,11 +364,13 @@ public class RobotContainer {
       Map.entry(VariablesConstants.kSpeakerOutput, new CMD_ShootSpeaker(m_arm, m_shooter, m_intake, m_variables, m_drivetrain)),
       Map.entry(VariablesConstants.kFrontAmpOutput, new SequentialCommandGroup (
         new CMD_placeFrontAmp(m_arm, m_shooter, m_intake),
-        m_variables.CMDsetReadyDrop(true)  
+        m_variables.CMDsetReadyDrop(true),
+        m_variables.CMDsetHasItem(false) 
       )),
       Map.entry(VariablesConstants.kBackAmpOutput, new SequentialCommandGroup (
         new CMD_placeBackAmp(m_arm, m_shooter, m_intake),
-        m_variables.CMDsetReadyDrop(true)  
+        m_variables.CMDsetReadyDrop(true),  
+        m_variables.CMDsetHasItem(false) 
       )),
       Map.entry(VariablesConstants.kTallOutput, new CMD_ShootSpeakerTall(m_arm, m_shooter, m_intake, m_variables, m_drivetrain)
       )
@@ -454,6 +458,10 @@ public class RobotContainer {
     m_intake.setGroundIntakeVelocity(0);
     // m_drivetrain.setShooterTarget();
     
+  }
+  
+  public void LED(){
+    m_led.LEDShootingMode();
   }
   public void getShooterTarget(){
     m_drivetrain.setShooterTarget();

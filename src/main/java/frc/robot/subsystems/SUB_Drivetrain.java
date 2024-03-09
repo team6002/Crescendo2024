@@ -32,6 +32,7 @@ import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.units.Unit;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
@@ -207,10 +208,11 @@ public class SUB_Drivetrain extends SubsystemBase {
     // SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
     // SmartDashboard.putNumber("TargetXError", Units.metersToInches(calculateTargetXError()));
+    SmartDashboard.putNumber("TargetDistance", Units.metersToInches(calculateTargetDistance()));
     // SmartDashboard.putNumber("XVelocity", getXVelocity());
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
     // SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
-    SmartDashboard.putNumber("TargetError", autoAlignTurn());
+    // SmartDashboard.putNumber("TargetError", autoAlignTurn());
     SmartDashboard.putBoolean("OnTarget", onTarget);
     // m_frontLeft.telemetry(); 
     // m_frontRight.telemetry();
@@ -325,7 +327,7 @@ public class SUB_Drivetrain extends SubsystemBase {
       if (m_currentTranslationMag != 0.0) {
         directionSlewRate = Math.abs(DriveConstants.kDirectionSlewRate / m_currentTranslationMag);
       } else {
-        directionSlewRate = 325.0; //some high number that means the slew rate is effectively instantaneous
+        directionSlewRate = 500.0; //some high number that means the slew rate is effectively instantaneous
       }
       
 
