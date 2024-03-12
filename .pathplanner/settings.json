@@ -6,6 +6,7 @@
     "BOX",
     "InnerBlue",
     "InnerRed",
+    "ShootyRed",
     "OuterBlue",
     "OuterRed",
     "ShootyBlue",
@@ -16,9 +17,9 @@
     "Teleop"
   ],
   "autoFolders": [],
-  "defaultMaxVel": 4.5,
+  "defaultMaxVel": 5.3,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 360.0,
   "defaultMaxAngAccel": 360.0,
-  "maxModuleSpeed": 4.5
+  "maxModuleSpeed": 5.3
 }

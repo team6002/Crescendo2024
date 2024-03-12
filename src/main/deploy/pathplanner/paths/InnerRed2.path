@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.255570858190017,
-        "y": 0.7636554807993345
+        "x": 8.29962790515921,
+        "y": 4.067934003488759
       },
       "prevControl": null,
       "nextControl": {
-        "x": 9.255570858190017,
-        "y": 0.7636554807993345
+        "x": 9.136711797573865,
+        "y": 3.1133646524895915
       },
       "isLocked": false,
       "linkedName": "InnerRed1"
     },
     {
       "anchor": {
-        "x": 12.690646919755379,
-        "y": 1.4685682323064113
+        "x": 10.12065251321916,
+        "y": 1.9385100666444632
       },
       "prevControl": {
-        "x": 11.794820298048467,
-        "y": 1.101426174229809
+        "x": 9.503365251140163,
+        "y": 2.6571906453294125
+      },
+      "nextControl": {
+        "x": 10.737939775298155,
+        "y": 1.2198294879595135
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 13.424931035908584,
+        "y": 2.364394854013322
+      },
+      "prevControl": {
+        "x": 12.999046248539726,
+        "y": 1.4979395969525402
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +48,7 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.5,
+    "maxVelocity": 5.3,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.2505003900884375,
-      "y": 5.345588365595336
+      "x": 1.2651860724115016,
+      "y": 5.3602740479184
     },
-    "rotation": -1.4878675288277565
+    "rotation": 1.1344216309769894
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
+            "name": "ReadyShooter"
           }
         },
         {
@@ -24,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue1"
+                  "pathName": "ShootBlue1"
                 }
               },
               {
@@ -66,15 +66,72 @@
           "data": {
             "commands": [
               {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue2"
+                  "pathName": "ShootBlue2"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooterFirstRing"
+                  "name": "PickUp"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
                 }
               }
             ]
@@ -106,7 +163,64 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue3"
+                  "pathName": "ShootBlue4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp5"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue5"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooterMid"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue6"
                 }
               },
               {
@@ -125,13 +239,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue4"
+                  "pathName": "ShootBlue7"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooterFirstRing"
+                  "name": "ReadyShooterMid"
                 }
               }
             ]
@@ -142,15 +256,15 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -163,51 +277,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue5"
+                  "pathName": "ShootBlue8"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "PickUp"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "SlamBlue6"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterFirstRing"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
                 }
               }
             ]

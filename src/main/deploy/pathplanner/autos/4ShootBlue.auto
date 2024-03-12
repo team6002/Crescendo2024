@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.77,
-      "y": 6.52
+      "x": 1.2505003900884375,
+      "y": 5.345588365595336
     },
-    "rotation": 119.65945050938548
+    "rotation": 0.38452965958452373
   },
   "command": {
     "type": "sequential",
@@ -14,38 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShooterCheck"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Fire"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "PickUp5"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "OuterRed1"
-                }
-              }
-            ]
+            "name": "ReadyShooter"
           }
         },
         {
@@ -55,13 +24,38 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterRed2"
+                  "pathName": "ShootBlue1"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "ReadyShooterMid"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "ShooterCheck"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Fire"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.3
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "PickUp"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -71,17 +65,17 @@
           "type": "parallel",
           "data": {
             "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              },
               {
                 "type": "named",
                 "data": {
                   "name": "Fire"
                 }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
               }
             ]
           }
@@ -93,7 +87,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterRed3"
+                  "pathName": "ShootBlue2"
                 }
               },
               {
@@ -110,15 +104,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "wait",
                 "data": {
-                  "pathName": "OuterRed4"
+                  "waitTime": 0.3
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooterMid"
+                  "name": "Fire"
                 }
               }
             ]
@@ -129,15 +123,34 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 0.3
+                  "pathName": "ShootBlue3"
                 }
               },
               {
                 "type": "named",
                 "data": {
+                  "name": "PickUp"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
                   "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
                 }
               }
             ]

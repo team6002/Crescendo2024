@@ -37,7 +37,7 @@ public class CMD_AutoShoulder extends Command {
   @Override
   public void execute() {
     m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-    m_arm.setElbowGoalRelative(Math.toRadians(10));
+    m_arm.setElbowGoalRelative(Math.toRadians(0));
     // m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.getPose().getX())));
   }
   // Called once the command ends or is interrupted.

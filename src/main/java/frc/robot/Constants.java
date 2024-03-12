@@ -71,7 +71,7 @@ public final class Constants {
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
-    public static final double kMaxSpeedMetersPerSecond = 4.8;
+    public static final double kMaxSpeedMetersPerSecond = 5.6;
     public static final double kMaxAngularSpeed = 2 * Math.PI; // radians per second
 
     public static final double kDirectionSlewRate = 1.2; // radians per second
@@ -81,7 +81,7 @@ public final class Constants {
     // Chassis configuration
     public static final double kTrackWidth = Units.inchesToMeters(18.5);
     // Distance between centers of right and left wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(22.5);
+    public static final double kWheelBase = Units.inchesToMeters(25.5);
     // Distance between front and back wheels on robot
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
         new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -115,7 +115,7 @@ public final class Constants {
     // The MAXSwerve module can be configured with one of three pinion gears: 12T, 13T, or 14T.
     // This changes the drive speed of the module (a pinion gear with more teeth will result in a
     // robot that drives faster).
-    public static final int kDrivingMotorPinionTeeth = 14;
+    public static final int kDrivingMotorPinionTeeth = 15;
 
     // Invert the turning encoder, since the output shaft rotates in the opposite direction of
     // the steering motor in the MAXSwerve Module.
@@ -126,7 +126,7 @@ public final class Constants {
     public static final double kWheelDiameterMeters = 0.0762;
     public static final double kWheelCircumferenceMeters = kWheelDiameterMeters * Math.PI;
     // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15 teeth on the bevel pinion
-    public static final double kDrivingMotorReduction = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
+    public static final double kDrivingMotorReduction = (45.0 * 20) / (kDrivingMotorPinionTeeth * 15);
     public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters)
         / kDrivingMotorReduction;
 
@@ -343,13 +343,13 @@ public final class Constants {
     public static final double[][] kShoulderArray = {
       {36, Math.toRadians(-45)},
       {50, Math.toRadians(-45)},  
-      {84, Math.toRadians(-37)}, 
-      {100, Math.toRadians(-35.2)}, 
-      {120, Math.toRadians(-32.8)}, 
-      {150, Math.toRadians(-27.5)},
-      {180, Math.toRadians(-26.5)},
-      {240, Math.toRadians(-24.1)},
-      {300, Math.toRadians(-24.9)},
+      {84, Math.toRadians(-39)}, 
+      {100, Math.toRadians(-37.2)}, 
+      {120, Math.toRadians(-34.8)}, 
+      {150, Math.toRadians(-30.)},
+      {180, Math.toRadians(-28.5)},
+      {240, Math.toRadians(-26.1)},
+      {300, Math.toRadians(-25.9)},
     };
 
   }
@@ -385,32 +385,45 @@ public final class Constants {
     public static final double kMaxVelocityRadPerSecond = 6.1;
     public static final double kMaxAccelerationRadPerSecSquared = 6.1;
 
-    public static final double kElbowHome = Math.toRadians(10); 
+    public static final double kElbowHome = Math.toRadians(0); 
     //only for da front one
-    public static final double kElbowAmp = Math.toRadians(18.5); 
-    public static final double kElbowShelfIntake = Math.toRadians(95);
-    public static final double kElbowGroundIntake = Math.toRadians(45);
+    public static final double kElbowAmp = Math.toRadians(8.5); 
+    public static final double kElbowShelfIntake = Math.toRadians(85);
+    public static final double kElbowGroundIntake = Math.toRadians(35);
     //intake position is 90 to ground
 
     public static final double[][] kElbowArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      {36, Math.toRadians(60)},
-      {50, Math.toRadians(47)},  
-      {84, Math.toRadians(43)}, 
-      {100, Math.toRadians(41)}, 
-      {120, Math.toRadians(38)}, 
-      {180, Math.toRadians(34)},
-      {240, Math.toRadians(23)},
-      {300, Math.toRadians(15)},
+      // {36, Math.toRadians(60)},
+      // {50, Math.toRadians(47)},  
+      // {84, Math.toRadians(43)}, 
+      // {100, Math.toRadians(41)}, 
+      // {120, Math.toRadians(38)}, 
+      // {180, Math.toRadians(34)},
+      // {240, Math.toRadians(23)},
+      // {300, Math.toRadians(15)},
+      {36, Math.toRadians(50)},
+      {50, Math.toRadians(37)},  
+      {84, Math.toRadians(33)}, 
+      {100, Math.toRadians(31)}, 
+      {120, Math.toRadians(28)}, 
+      {180, Math.toRadians(24)},
+      {240, Math.toRadians(13)},
+      {300, Math.toRadians(5)},
     };
 
     public static final double[][] kElbowShortArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      {36, Math.toRadians(22)},
-      {50, Math.toRadians(14)},  
-      {84, Math.toRadians(10)}, 
-      {100, Math.toRadians(10)},
-      {120, Math.toRadians(10)},
+      // {36, Math.toRadians(22)},
+      // {50, Math.toRadians(14)},  
+      // {84, Math.toRadians(10)}, 
+      // {100, Math.toRadians(10)},
+      // {120, Math.toRadians(10)},
+      {36, Math.toRadians(12)},
+      {50, Math.toRadians(04)},  
+      {84, Math.toRadians(0)}, 
+      {100, Math.toRadians(0)},
+      {120, Math.toRadians(0)},
     };
   }
 

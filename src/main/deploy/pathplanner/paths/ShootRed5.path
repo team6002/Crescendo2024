@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 13.689273317723737,
-        "y": 5.42
+        "x": 8.29962790515921,
+        "y": 7.445640937793504
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.23218133048491,
-        "y": 5.331960862795485
+        "x": 9.636024996558044,
+        "y": 7.063813197393838
       },
       "isLocked": false,
-      "linkedName": "4SlamRing3"
+      "linkedName": "ShootRed4"
     },
     {
       "anchor": {
-        "x": 15.23,
-        "y": 5.42
+        "x": 11.926991438956046,
+        "y": 6.256100669625311
       },
       "prevControl": {
-        "x": 14.80411521263114,
-        "y": 5.42
+        "x": 11.08990754654139,
+        "y": 6.520442951440464
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "4SlamRing4"
+      "linkedName": "ShootRed5"
     }
   ],
   "rotationTargets": [],
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -178.26429541107166,
+    "rotation": 171.15818543980834,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SlamRingRed",
+  "folder": "ShootyRed",
   "previewStartingState": {
-    "rotation": -178.91907581333933,
+    "rotation": 180.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

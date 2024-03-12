@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.Unit;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ElbowConstants;
 import frc.robot.subsystems.SUB_Arm;
@@ -25,6 +26,7 @@ public class CMD_Autofire extends Command {
   boolean m_shot;
   Timer m_shooterTimer;
   Timer m_altShooterTimer;
+  Timer m_intialTimer;
   boolean m_firingStarted;
   boolean m_closeShooting;
   public CMD_Autofire(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
@@ -37,6 +39,7 @@ public class CMD_Autofire extends Command {
     m_firingStarted = false;
     m_shooterTimer = new Timer();
     m_altShooterTimer = new Timer(); 
+    m_intialTimer = new Timer();
     m_closeShooting = false;
   }
 
@@ -48,6 +51,7 @@ public class CMD_Autofire extends Command {
     m_firingStarted = false;
     m_shooterTimer.restart();
     m_altShooterTimer.restart();
+    m_intialTimer.restart();
     if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) < 90){
       m_closeShooting = true;
     }else{
@@ -60,20 +64,29 @@ public class CMD_Autofire extends Command {
   @Override
   public void execute() {
     if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
-      if (!m_firingStarted){
-        m_shooter.enableShooter();
-        m_firingStarted = true;
-      }
+      
       if (m_closeShooting){
         m_shooter.setBotPower(1);
         m_shooter.setTopPower(1);
       }else{
-        m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+        if (m_intialTimer.get() < 0.5){
+          m_shooter.setBotPower(1);  
+          m_shooter.setTopPower(1);
+          m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+        
+        }else{
+          if (!m_firingStarted){
+            m_shooter.enableShooter();
+            m_firingStarted = true;
+          }
+          m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+        }
       }
+      SmartDashboard.putNumber("Initial Timer", m_intialTimer.get());
 
       if (m_closeShooting){
         m_altShooterTimer.start();
-        if (m_altShooterTimer.get() > 1 && m_arm.atElbowGoal() && m_arm.atShoulderGoal()){
+        if (m_altShooterTimer.get() > 0.8 && m_arm.atElbowGoal() && m_arm.atShoulderGoal()){
           m_intake.setIndexerVelocity(4000);
             System.out.println("SHOT");
           if (m_altShooterTimer.get() > 1.3){

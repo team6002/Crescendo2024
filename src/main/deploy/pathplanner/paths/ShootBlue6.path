@@ -3,54 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.290012690937726,
-        "y": 5.345588365595336
+        "x": 4.14,
+        "y": 6.1826722580099895
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.059111511675617,
-        "y": 4.553464203422146
+        "x": 5.153312080291423,
+        "y": 6.35890044588676
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "ShootBlue5"
     },
     {
       "anchor": {
-        "x": 14.658528351045968,
-        "y": 4.273533556011657
+        "x": 5.714947816299927,
+        "y": 6.35890044588676
       },
       "prevControl": {
-        "x": 15.010984726799506,
-        "y": 4.596618567119068
+        "x": 4.714947816299927,
+        "y": 6.35890044588676
       },
       "nextControl": {
-        "x": 14.480975120543146,
-        "y": 4.110776428050737
+        "x": 6.714947816299927,
+        "y": 6.35890044588676
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 13.880187187923571,
-        "y": 4.126676732781015
+        "x": 8.255570858190017,
+        "y": 5.786158835287259
       },
       "prevControl": {
-        "x": 14.335443339938557,
-        "y": 4.111991050457951
+        "x": 7.4852593372449725,
+        "y": 6.0725296405870095
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "4SlamRing1"
+      "linkedName": "ShootBlue6"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 2,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -61,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SlamRingRed",
+  "folder": "ShootyBlue",
   "previewStartingState": {
-    "rotation": 178.15238973400554,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

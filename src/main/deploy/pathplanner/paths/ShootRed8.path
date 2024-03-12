@@ -3,54 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.290012690937726,
-        "y": 5.345588365595336
+        "x": 12.837503742986021,
+        "y": 5.7567874706411315
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.059111511675617,
-        "y": 4.553464203422146
+        "x": 12.602532825816994,
+        "y": 5.125303130749375
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "ShootRed7"
     },
     {
       "anchor": {
-        "x": 14.658528351045968,
+        "x": 11.486420969264122,
         "y": 4.273533556011657
       },
       "prevControl": {
-        "x": 15.010984726799506,
-        "y": 4.596618567119068
+        "x": 12.01510553289443,
+        "y": 4.552561520149875
       },
       "nextControl": {
-        "x": 14.480975120543146,
-        "y": 4.110776428050737
+        "x": 10.957736405633815,
+        "y": 3.9945055918734385
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 13.880187187923571,
-        "y": 4.126676732781015
+        "x": 8.284942222836145,
+        "y": 4.097305368134887
       },
       "prevControl": {
-        "x": 14.335443339938557,
-        "y": 4.111991050457951
+        "x": 9.9003672783732,
+        "y": 3.9945055918734385
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "4SlamRing1"
+      "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 2,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -65,9 +59,9 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SlamRingRed",
+  "folder": "ShootyRed",
   "previewStartingState": {
-    "rotation": 178.15238973400554,
+    "rotation": 180.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

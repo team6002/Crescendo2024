@@ -16,23 +16,23 @@
     },
     {
       "anchor": {
-        "x": 4.0848370784398105,
-        "y": 6.1826722580099895
+        "x": 4.14,
+        "y": 6.18
       },
       "prevControl": {
-        "x": 4.892549606208337,
-        "y": 6.476385904471272
+        "x": 4.947712527768526,
+        "y": 6.473713646461282
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "ShootBlue5"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.5,
+    "maxVelocity": 5.3,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0

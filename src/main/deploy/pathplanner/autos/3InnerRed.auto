@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.77,
-      "y": 6.52
+      "x": 15.759954525275777,
+      "y": 4.611304249442131
     },
-    "rotation": 119.65945050938548
+    "rotation": -120.41108126712534
   },
   "command": {
     "type": "sequential",
@@ -42,7 +42,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterRed1"
+                  "pathName": "InnerRed1"
                 }
               }
             ]
@@ -55,7 +55,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterRed2"
+                  "pathName": "InnerRed2"
                 }
               },
               {
@@ -74,7 +74,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.3
+                  "waitTime": 0.1
                 }
               },
               {
@@ -93,7 +93,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterRed3"
+                  "pathName": "InnerRed3"
                 }
               },
               {
@@ -112,7 +112,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterRed4"
+                  "pathName": "InnerRed4"
                 }
               },
               {
@@ -131,7 +131,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.3
+                  "waitTime": 0.1
                 }
               },
               {

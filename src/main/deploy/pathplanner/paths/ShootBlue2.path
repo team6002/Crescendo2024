@@ -3,54 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.290012690937726,
-        "y": 5.345588365595336
+        "x": 2.704382940071784,
+        "y": 4.244162191365528
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.059111511675617,
-        "y": 4.553464203422146
+        "x": 1.955413141595514,
+        "y": 4.376333332273105
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "ShootBlue1"
     },
     {
       "anchor": {
-        "x": 14.658528351045968,
-        "y": 4.273533556011657
+        "x": 1.8085563183648736,
+        "y": 5.0225033544879265
       },
       "prevControl": {
-        "x": 15.010984726799506,
-        "y": 4.596618567119068
+        "x": 1.7498135890726172,
+        "y": 4.346961967626977
       },
       "nextControl": {
-        "x": 14.480975120543146,
-        "y": 4.110776428050737
+        "x": 1.8531020150572766,
+        "y": 5.534778866450561
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 13.880187187923571,
-        "y": 4.126676732781015
+        "x": 2.9246681749177457,
+        "y": 5.595244965087426
       },
       "prevControl": {
-        "x": 14.335443339938557,
-        "y": 4.111991050457951
+        "x": 2.219755423410669,
+        "y": 5.492445188825977
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "4SlamRing1"
+      "linkedName": "ShootBlue2"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 2,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -61,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SlamRingRed",
+  "folder": "ShootyBlue",
   "previewStartingState": {
-    "rotation": 178.15238973400554,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true
