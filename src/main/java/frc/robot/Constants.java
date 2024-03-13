@@ -230,10 +230,10 @@ public final class Constants {
 
     public static final int kIndexerCurrentLimit = 40;
 
-    public static final double kIndexerP = 0.0001;
+    public static final double kIndexerP = 0.0002;
     public static final double kIndexerI = 0;
     public static final double kIndexerD = 0.00001;
-    public static final double kIndexerFF = 0.00022;
+    public static final double kIndexerFF = 0.0001;
 
     public static final double kIndexerS = 0;
     public static final double kIndexerV = 0;
@@ -257,22 +257,22 @@ public final class Constants {
 
     // public static final double kShooterBotP = 0.01;//0.005;
     // public static final double kShooterBotP = 0.0079;//0.005;
-    public static final double kShooterBotP = 0.01;//0.0085;//0.005;
+    public static final double kShooterBotP = 0.005;//0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
-    public static final double kShooterBotD = 0.0008;//0.0005
+    public static final double kShooterBotD = 0.00008;//0.0005
     public static final double kShooterBotFF = 0.0000;
 
     public static final double kShooterBotSVolts = 0.00002;
     public static final double kBotVVoltSecondsPerRotation = 0.0022;
     public static final double kShooterBotA = 0.1;
 
-    public static final double kShooterTopP = 0.009;//0.0077;//0.005;
+    public static final double kShooterTopP = 0.005;//0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
-    public static final double kShooterTopD = 0.0008;//0.0005
+    public static final double kShooterTopD = 0.00008;//0.0005
     public static final double kShooterTopFF = 0.0;
 
     public static final double kShooterTopSVolts = 0.00001;//0.7;
-    public static final double kTopVVoltSecondsPerRotation = 0.0022;//0.0025;//
+    public static final double kTopVVoltSecondsPerRotation = 0.0022;//0.0022;
     public static final double kShooterTopA = 0.1;
 
     public static final double kShooterFreeSpeed = 5675;
@@ -346,7 +346,7 @@ public final class Constants {
       {84, Math.toRadians(-39)}, 
       {100, Math.toRadians(-37.2)}, 
       {120, Math.toRadians(-34.8)}, 
-      {150, Math.toRadians(-30.)},
+      {150, Math.toRadians(-31.)},
       {180, Math.toRadians(-28.5)},
       {240, Math.toRadians(-26.1)},
       {300, Math.toRadians(-25.9)},
@@ -385,45 +385,32 @@ public final class Constants {
     public static final double kMaxVelocityRadPerSecond = 6.1;
     public static final double kMaxAccelerationRadPerSecSquared = 6.1;
 
-    public static final double kElbowHome = Math.toRadians(0); 
+    public static final double kElbowHome = Math.toRadians(10); 
     //only for da front one
-    public static final double kElbowAmp = Math.toRadians(8.5); 
-    public static final double kElbowShelfIntake = Math.toRadians(85);
-    public static final double kElbowGroundIntake = Math.toRadians(35);
+    public static final double kElbowAmp = Math.toRadians(18.5); 
+    public static final double kElbowShelfIntake = Math.toRadians(95);
+    public static final double kElbowGroundIntake = Math.toRadians(45);
     //intake position is 90 to ground
 
     public static final double[][] kElbowArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      // {36, Math.toRadians(60)},
-      // {50, Math.toRadians(47)},  
-      // {84, Math.toRadians(43)}, 
-      // {100, Math.toRadians(41)}, 
-      // {120, Math.toRadians(38)}, 
-      // {180, Math.toRadians(34)},
-      // {240, Math.toRadians(23)},
-      // {300, Math.toRadians(15)},
-      {36, Math.toRadians(50)},
-      {50, Math.toRadians(37)},  
-      {84, Math.toRadians(33)}, 
-      {100, Math.toRadians(31)}, 
-      {120, Math.toRadians(28)}, 
-      {180, Math.toRadians(24)},
-      {240, Math.toRadians(13)},
-      {300, Math.toRadians(5)},
+      {36, Math.toRadians(60)},
+      {50, Math.toRadians(47)},  
+      {84, Math.toRadians(43)}, 
+      {100, Math.toRadians(41)}, 
+      {120, Math.toRadians(38)}, 
+      {180, Math.toRadians(34)},
+      {240, Math.toRadians(23)},
+      {300, Math.toRadians(15)},
     };
 
     public static final double[][] kElbowShortArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      // {36, Math.toRadians(22)},
-      // {50, Math.toRadians(14)},  
-      // {84, Math.toRadians(10)}, 
-      // {100, Math.toRadians(10)},
-      // {120, Math.toRadians(10)},
-      {36, Math.toRadians(12)},
-      {50, Math.toRadians(04)},  
-      {84, Math.toRadians(0)}, 
-      {100, Math.toRadians(0)},
-      {120, Math.toRadians(0)},
+      {36, Math.toRadians(22)},
+      {50, Math.toRadians(14)},  
+      {84, Math.toRadians(10)}, 
+      {100, Math.toRadians(10)},
+      {120, Math.toRadians(10)},
     };
   }
 

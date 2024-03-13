@@ -93,11 +93,9 @@ public class SUB_Shooter extends SubsystemBase {
   }
   /**returns if the shooters are at the correct setpoints */
   public boolean getAtShooterSetpoint(){
-    if (atBotSetpoint() && atTopSetpoint()){
-      return true;
-    }else {
-      return false;
-    }
+    // return (atBotSetpoint() && atTopSetpoint());
+    return (Math.abs(getBotSetpoint() - getBotShooterVelocity()) < ShooterConstants.kShooterTolerance && Math.abs(getTopSetpoint() - getTopShooterVelocity()) < ShooterConstants.kShooterTolerance );
+    
   }
   /**turns on both shooters */
   public void enableShooter(){
@@ -124,12 +122,13 @@ public class SUB_Shooter extends SubsystemBase {
     // This method will be called once per scheduler run
     // m_botShooter.ShooterBotPIDTuning();
     // m_topShooter.ShooterTopPIDTuning();
+    
     SmartDashboard.putBoolean("ShootFin", getAtShooterSetpoint());
-    // SmartDashboard.putNumber("ShooterGoal", getBotSetpoint());
-    // SmartDashboard.putNumber("Shooter Top Velocity", getTopShooterVelocity());
+    SmartDashboard.putNumber("ShooterGoal", getBotSetpoint());
+    SmartDashboard.putNumber("Shooter Top Velocity", getTopShooterVelocity());
     // SmartDashboard.putNumber("Shooter Top Current", getTopShooterCurrent());
 
-    // SmartDashboard.putNumber("Shooter Bot Velocity", getBotShooterVelocity());
+    SmartDashboard.putNumber("Shooter Bot Velocity", getBotShooterVelocity());
     // SmartDashboard.putNumber("Shooter Bot Current", getBotShooterCurrent());
     // SmartDashboard.putNumber("Shooter Follower Current", m_botShooter.getFollowerCurrent());
 

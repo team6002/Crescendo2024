@@ -51,7 +51,7 @@ public class CMD_Autofire extends Command {
     m_firingStarted = false;
     m_shooterTimer.restart();
     m_altShooterTimer.restart();
-    m_intialTimer.restart();
+    m_intialTimer.restart();   
     if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) < 90){
       m_closeShooting = true;
     }else{
@@ -63,13 +63,16 @@ public class CMD_Autofire extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    boolean m_shooterAtSetpoint = m_shooter.getAtShooterSetpoint();
+    boolean m_shoulderAtSetpoint = m_arm.atShoulderGoal();
+    boolean m_elbowAtSetpoint = m_arm.atElbowGoal();
     if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
       
       if (m_closeShooting){
         m_shooter.setBotPower(1);
         m_shooter.setTopPower(1);
       }else{
-        if (m_intialTimer.get() < 0.5){
+        if (m_intialTimer.get() < 0.425 || m_shooterAtSetpoint){
           m_shooter.setBotPower(1);  
           m_shooter.setTopPower(1);
           m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
@@ -82,13 +85,13 @@ public class CMD_Autofire extends Command {
           m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
         }
       }
-      SmartDashboard.putNumber("Initial Timer", m_intialTimer.get());
 
       if (m_closeShooting){
         m_altShooterTimer.start();
-        if (m_altShooterTimer.get() > 0.8 && m_arm.atElbowGoal() && m_arm.atShoulderGoal()){
-          m_intake.setIndexerVelocity(4000);
-            System.out.println("SHOT");
+        if (m_altShooterTimer.get() > 0.8 && m_elbowAtSetpoint && m_shoulderAtSetpoint){
+          // m_intake.setIndexerVelocity(4000);
+          m_intake.setIndexerPower(1);
+            // System.out.println("SHOT");
           if (m_altShooterTimer.get() > 1.3){
             m_shot = true;
           }
@@ -100,10 +103,11 @@ public class CMD_Autofire extends Command {
       m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
       m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
 
-      if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
-        m_intake.setIndexerVelocity(4000);
+      if (m_shoulderAtSetpoint && m_elbowAtSetpoint && m_shooterAtSetpoint && m_drivetrain.getOnTarget()){
+        // m_intake.setIndexerVelocity(4000);
+        m_intake.setIndexerPower(1);
       }
-      if (m_shooter.getAtShooterSetpoint() && m_arm.atShoulderGoal() && m_drivetrain.getOnTarget() && m_arm.atElbowGoal()){
+      if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint){
         m_shooterTimer.start();
 
       }else{

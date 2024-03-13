@@ -122,22 +122,21 @@ public class SUB_Arm extends SubsystemBase {
         return m_elbow.getShortInterpolateValue();
     }
 
-    /** sets the Elbow goal in relation to the Shoulder */
+    /** sets the Elbow goal to its current location */
     public void resetElbow(){
         m_elbow.setGoalRad(MathUtil.clamp(getElbowPosition(), Math.toRadians(8), Math.toRadians(115)));
-    }
-    
+    }    
 
     /** sets the Elbow goal in relation to the Shoulder */
     public void setElbowGoalRelative(double goalRad){
-        m_elbow.setGoalRad(MathUtil.clamp(goalRad + ElbowOffset, Math.toRadians(8), Math.toRadians(115)));
+        m_elbow.setGoalRad(MathUtil.clamp(goalRad, Math.toRadians(8), Math.toRadians(115)));
     }
 
     /** sets the Elbow goal in relation to the Ground */
     public void setElbowGoalAbsolute(double goalRad){
         // double newGoal = goalRad + getShoulderPosition();
         double newGoal = goalRad + getShoulderGoal();
-        m_elbow.setGoalRad(MathUtil.clamp(newGoal + ElbowOffset, Math.toRadians(8), Math.toRadians(115)));
+        m_elbow.setGoalRad(MathUtil.clamp(newGoal, Math.toRadians(8), Math.toRadians(115)));
     }
     /** turns on the Shoulder Trapazoid */
     public void useElbow(){
