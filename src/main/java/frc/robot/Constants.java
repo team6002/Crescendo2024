@@ -406,7 +406,8 @@ public final class Constants {
 
     public static final double[][] kElbowShortArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      {36, Math.toRadians(22)},
+      {36, Math.toRadians(15)},
+      {48, Math.toRadians(14)},
       {50, Math.toRadians(14)},  
       {84, Math.toRadians(10)}, 
       {100, Math.toRadians(10)},

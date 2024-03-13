@@ -51,7 +51,8 @@ public class CMD_Autofire extends Command {
     m_firingStarted = false;
     m_shooterTimer.restart();
     m_altShooterTimer.restart();
-    m_intialTimer.restart();   
+    m_intialTimer.restart();  
+    m_shooterTimer.stop(); 
     if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) < 90){
       m_closeShooting = true;
     }else{
@@ -89,12 +90,10 @@ public class CMD_Autofire extends Command {
       if (m_closeShooting){
         m_altShooterTimer.start();
         if (m_altShooterTimer.get() > 0.8 && m_elbowAtSetpoint && m_shoulderAtSetpoint){
+          m_shooterTimer.start();
           // m_intake.setIndexerVelocity(4000);
           m_intake.setIndexerPower(1);
             // System.out.println("SHOT");
-          if (m_altShooterTimer.get() > 1.3){
-            m_shot = true;
-          }
         }
       }else{
         m_altShooterTimer.reset();
@@ -111,13 +110,14 @@ public class CMD_Autofire extends Command {
         m_shooterTimer.start();
 
       }else{
-        m_shooterTimer.stop();
+        // m_shooterTimer.stop();
       }
 
       if (m_shooterTimer.get() > 0.3){
         m_shot = true;
       }
     }
+    SmartDashboard.putNumber("ShooterTimer", m_shooterTimer.get());
    }
   // Called once the command ends or is interrupted.
   @Override
