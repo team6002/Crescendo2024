@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 13.454302400554711,
-      "y": 4.919703578226477
+      "x": 0.7952442380734501,
+      "y": 4.567247202472939
     },
-    "rotation": -56.04094018032372
+    "rotation": -60.04000000000002
   },
   "command": {
     "type": "sequential",
@@ -56,12 +56,6 @@
                 "type": "path",
                 "data": {
                   "pathName": "InnerBlue2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterMid"
                 }
               }
             ]

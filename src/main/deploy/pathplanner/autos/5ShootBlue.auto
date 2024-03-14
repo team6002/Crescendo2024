@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7952442380734501,
-      "y": 6.549814316086593
+      "x": 1.2651860724115016,
+      "y": 5.3602740479184
     },
-    "rotation": 59.81102029744448
+    "rotation": 1.1344216309769894
   },
   "command": {
     "type": "sequential",
@@ -14,38 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShooterCheck"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Fire"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "PickUp5"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "OuterBlue1"
-                }
-              }
-            ]
+            "name": "ReadyShooter"
           }
         },
         {
@@ -55,13 +24,38 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterBlue3"
+                  "pathName": "ShootBlue1"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "ReadyShooterMid"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "ShooterCheck"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Fire"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.3
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "PickUp"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -71,29 +65,29 @@
           "type": "parallel",
           "data": {
             "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              },
               {
                 "type": "named",
                 "data": {
                   "name": "Fire"
                 }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterBlue4"
+                  "pathName": "ShootBlue2"
                 }
               },
               {
@@ -110,9 +104,85 @@
           "data": {
             "commands": [
               {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterBlue5"
+                  "pathName": "ShootBlue3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp5"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue5"
                 }
               },
               {
@@ -129,15 +199,15 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
                 }
               }
             ]

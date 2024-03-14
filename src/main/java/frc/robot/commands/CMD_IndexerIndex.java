@@ -31,7 +31,7 @@ public class CMD_IndexerIndex extends Command {
   @Override
   public void execute() {
     if (m_intake.getIndexerCurrent() >= 24){
-      m_intake.setIndexerVelocity(1200);
+      m_intake.setIndexerVelocity(1800);
     }
     if (m_intake.getIndexerSensor()){
       m_intake.setIndexerVelocity(0);

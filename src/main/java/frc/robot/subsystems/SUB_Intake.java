@@ -25,11 +25,12 @@ import frc.robot.Constants.HardwareConstants;
 
 public class SUB_Intake extends SubsystemBase {
   /** Creates a new SUB_Intake. */
-  private final CANSparkMax m_groundIntakeMotor;
-  private final SparkPIDController m_groundIntakePIDController;
-  private final RelativeEncoder m_groundIntakeEncoder;
+  private final CANSparkMax m_intakeMotor;
+  private final SparkPIDController m_intakePIDController;
+  private final RelativeEncoder m_intakeEncoder;
   private final SimpleMotorFeedforward m_intakeFeedFoward;
 
+  private final CANSparkMax m_intakeFollowerMotor;
   // private final CANSparkMax m_shelfIntakeMotor;
   // private final SparkPIDController m_shelfIntakePIDController;
 
@@ -41,21 +42,24 @@ public class SUB_Intake extends SubsystemBase {
   private final DigitalInput m_indexerSensor;
 
   public SUB_Intake() {
-    m_groundIntakeMotor = new CANSparkMax(HardwareConstants.kGroundIntakeMotorCANID, MotorType.kBrushless);
-    m_groundIntakeMotor.restoreFactoryDefaults();
-    m_groundIntakePIDController = m_groundIntakeMotor.getPIDController();
-    m_groundIntakeEncoder = m_groundIntakeMotor.getEncoder();
+    m_intakeMotor = new CANSparkMax(HardwareConstants.kIntakeMotorCANID, MotorType.kBrushless);
+    m_intakeFollowerMotor = new CANSparkMax(HardwareConstants.kIntakeFollowerMotorCANID, MotorType.kBrushless);
+    m_intakeMotor.restoreFactoryDefaults();
+    m_intakePIDController = m_intakeMotor.getPIDController();
+    m_intakeEncoder = m_intakeMotor.getEncoder();
   
-    m_groundIntakePIDController.setP(IntakeConstants.kIntakeP);
-    m_groundIntakePIDController.setI(IntakeConstants.kIntakeI);
-    m_groundIntakePIDController.setD(IntakeConstants.kIntakeD);
-    m_groundIntakePIDController.setFF(IntakeConstants.kIntakeFF);
+    m_intakePIDController.setP(IntakeConstants.kIntakeP);
+    m_intakePIDController.setI(IntakeConstants.kIntakeI);
+    m_intakePIDController.setD(IntakeConstants.kIntakeD);
+    m_intakePIDController.setFF(IntakeConstants.kIntakeFF);
 
     m_intakeFeedFoward = new SimpleMotorFeedforward(IntakeConstants.kIntakeS, IntakeConstants.kIntakeV);
     
-    m_groundIntakeMotor.setSmartCurrentLimit(IntakeConstants.kIntakeCurrentLimit);
-    m_groundIntakeMotor.setIdleMode(IdleMode.kCoast);
-    m_groundIntakeMotor.setInverted(true);
+    m_intakeMotor.setSmartCurrentLimit(IntakeConstants.kIntakeCurrentLimit);
+    m_intakeMotor.setIdleMode(IdleMode.kCoast);
+    m_intakeMotor.setInverted(false);
+    m_intakeFollowerMotor.follow(m_intakeMotor, true);
+    
   
     // m_shelfIntakeMotor = new CANSparkMax(IntakeConstants.kShelfIntakeMotorCANID, MotorType.kBrushless);
     // m_shelfIntakePIDController = m_shelfIntakeMotor.getPIDController();
@@ -87,30 +91,30 @@ public class SUB_Intake extends SubsystemBase {
     m_indexerMotor.burnFlash();
   }
 
-  public void stopGroundIntake(){
-    m_groundIntakeMotor.set(0);
+  public void stopIntake(){
+    m_intakeMotor.set(0);
   }
 
-  public void setGroundIntakePower(double p_power){
-    m_groundIntakeMotor.set(p_power);
+  public void setIntakePower(double p_power){
+    m_intakeMotor.set(p_power);
   }
 
-  public double getGroundIntakeCurrent(){
-    return m_groundIntakeMotor.getOutputCurrent();
+  public double getIntakeCurrent(){
+    return m_intakeMotor.getOutputCurrent();
   }
 
-  public double getGroundIntakeVelocity(){
-    return m_groundIntakeEncoder.getVelocity();
+  public double getIntakeVelocity(){
+    return m_intakeEncoder.getVelocity();
   }
   
-  public void setGroundIntakeVelocity(double p_velocity){
-    m_groundIntakePIDController.setReference(p_velocity, ControlType.kVelocity, 0, m_intakeFeedFoward.calculate(p_velocity));
+  public void setIntakeVelocity(double p_velocity){
+    m_intakePIDController.setReference(p_velocity, ControlType.kVelocity, 0, m_intakeFeedFoward.calculate(p_velocity));
   }
-  // public Command setGroundIntakePower(double power) {
+  // public Command setintakePower(double power) {
   //   return Commands.runOnce(()->setIndexerPower(power),this);
   // }
 
-  public Command setIntakeVelocity(double velocity) {
+  public Command CMDsetIntakeVelocity(double velocity) {
     return Commands.runOnce(()->setIntakeVelocity(velocity),this);
   }
   // public void stopShelfIntake(){
@@ -168,11 +172,11 @@ public class SUB_Intake extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // SmartDashboard.putNumber("IntakeOutputCurrent", getGroundIntakeCurrent());
+    // SmartDashboard.putNumber("IntakeOutputCurrent", getintakeCurrent());
     // SmartDashboard.putNumber("IndexerOutputCurrent", getIndexerCurrent());
     // SmartDashboard.putNumber("Indexer Position", getIndexerPosition());
     // SmartDashboard.putNumber("Indexer Velocity", getIndexerVelocity());
-    // SmartDashboard.putNumber("Intake Velocity", getGroundIntakeVelocity());
+    // SmartDashboard.putNumber("Intake Velocity", getintakeVelocity());
     // SmartDashboard.putBoolean("Indexer Sensor", getIndexerSensor());
     // This method will be called once per scheduler run
     

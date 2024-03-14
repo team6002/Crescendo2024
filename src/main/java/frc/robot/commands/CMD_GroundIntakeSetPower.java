@@ -20,7 +20,7 @@ public class CMD_GroundIntakeSetPower extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_intake.setGroundIntakePower(m_power);
+    m_intake.setIntakePower(m_power);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

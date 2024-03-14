@@ -30,13 +30,13 @@ public class CMD_GroundIntakeForwardCool extends Command {
     m_detected = false;
     m_finished = false;
     m_detectTimer = 0;
-    m_intake.setGroundIntakeVelocity(m_velocity);
+    m_intake.setIntakeVelocity(m_velocity);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_intake.getGroundIntakeVelocity() < 3){
+    if (m_intake.getIntakeVelocity() < 3){
       if (m_stopTimer >= 10){
       // m_finished = true;
       }else{
@@ -48,7 +48,7 @@ public class CMD_GroundIntakeForwardCool extends Command {
     // SmartDashboard.putNumber("StopTimer", m_stopTimer);
     // SmartDashboard.putBoolean("Detected", m_detected);
 
-    if (m_intake.getGroundIntakeCurrent() >= 15 && !m_detected ){
+    if (m_intake.getIntakeCurrent() >= 15 && !m_detected ){
       if (m_detectTimer >= 8 ){
         m_detected = true;
       }else  
@@ -58,7 +58,7 @@ public class CMD_GroundIntakeForwardCool extends Command {
       // m_detected = false;
       m_detectTimer = 0;
     }
-    if (m_detected == true && m_intake.getGroundIntakeCurrent() <= 10){
+    if (m_detected == true && m_intake.getIntakeCurrent() <= 10){
       m_finished = true;
     }
   }
@@ -71,7 +71,7 @@ public class CMD_GroundIntakeForwardCool extends Command {
   @Override
   public boolean isFinished() {
     if (m_finished){
-    m_intake.setGroundIntakePower(0);
+    m_intake.setIntakePower(0);
     m_stopTimer = 0;
     m_detectTimer = 0;
     }

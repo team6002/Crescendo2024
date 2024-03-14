@@ -52,7 +52,8 @@ public final class Constants {
     public static final int kShoulderMotorCANID = 9;
     public static final int kShoulderFollowerMotorCANID = 10;
 
-    public static final int kGroundIntakeMotorCANID = 11;
+    public static final int kIntakeMotorCANID = 11;
+    public static final int kIntakeFollowerMotorCANID = 12;
 
     public static final int kIndexerMotorCANID = 13;
 
@@ -345,7 +346,7 @@ public final class Constants {
       {50, Math.toRadians(-45)},  
       {84, Math.toRadians(-39)}, 
       {100, Math.toRadians(-37.2)}, 
-      {120, Math.toRadians(-34.8)}, 
+      {120, Math.toRadians(-34.3)}, 
       {150, Math.toRadians(-31.)},
       {180, Math.toRadians(-28.5)},
       {240, Math.toRadians(-26.1)},
@@ -367,7 +368,7 @@ public final class Constants {
     
     public static final int kElbowCurrentLimit = 40;
 
-    public static final double kPositionConversionFactor = (Math.PI * 2) / 3; // 3:1 ratio to shaft
+    public static final double kPositionConversionFactor = (Math.PI * 2); // 3:1 ratio to shaft
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60;
 
     public static final double kElbowP = 1.55;
@@ -406,8 +407,8 @@ public final class Constants {
 
     public static final double[][] kElbowShortArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      {36, Math.toRadians(15)},
-      {48, Math.toRadians(14)},
+      {36, Math.toRadians(20)},
+      {48, Math.toRadians(18)},
       {50, Math.toRadians(14)},  
       {84, Math.toRadians(10)}, 
       {100, Math.toRadians(10)},
