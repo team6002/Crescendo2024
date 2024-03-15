@@ -53,7 +53,7 @@ public class CMD_Autofire extends Command {
     m_altShooterTimer.restart();
     m_intialTimer.restart();  
     m_shooterTimer.stop(); 
-    if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) < 90){
+    if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) < 80){
       m_closeShooting = true;
     }else{
       m_closeShooting = false;
@@ -73,7 +73,7 @@ public class CMD_Autofire extends Command {
         m_shooter.setBotPower(1);
         m_shooter.setTopPower(1);
       }else{
-        if (m_intialTimer.get() < 0.425 || m_shooterAtSetpoint){
+        if (m_intialTimer.get() < 0.6 || m_shooterAtSetpoint){
           m_shooter.setBotPower(1);  
           m_shooter.setTopPower(1);
           m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));

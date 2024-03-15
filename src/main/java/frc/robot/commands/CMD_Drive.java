@@ -42,7 +42,8 @@ public class CMD_Drive extends Command {
     var xSpeed = MathUtil.applyDeadband(-m_controller.getLeftY(),deadzone)*sideMod;
     
     if (m_variables.getAutofire()){
-      rot = m_drivetrain.autoAlignTurn();
+      double autoRot = m_drivetrain.autoAlignTurn();
+      rot = autoRot;
     }else{
       rot = MathUtil.applyDeadband(m_controller.getRightX(), deadzone);
     }

@@ -211,7 +211,7 @@ public final class Constants {
   public static final class IntakeConstants{
     // public static final int kShelfIntakeMotorCANID = 12;
 
-    public static final double kIntakeP = 0.00008;
+    public static final double kIntakeP = 0.00005;
     public static final double kIntakeI = 0;
     public static final double kIntakeD = 0.00001;
     public static final double kIntakeFF = 0.00022;
@@ -260,7 +260,7 @@ public final class Constants {
     // public static final double kShooterBotP = 0.0079;//0.005;
     public static final double kShooterBotP = 0.005;//0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
-    public static final double kShooterBotD = 0.00008;//0.0005
+    public static final double kShooterBotD = 0.00003;//0.0005
     public static final double kShooterBotFF = 0.0000;
 
     public static final double kShooterBotSVolts = 0.00002;
@@ -269,7 +269,7 @@ public final class Constants {
 
     public static final double kShooterTopP = 0.005;//0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
-    public static final double kShooterTopD = 0.00008;//0.0005
+    public static final double kShooterTopD = 0.00003;//0.0005
     public static final double kShooterTopFF = 0.0;
 
     public static final double kShooterTopSVolts = 0.00001;//0.7;
@@ -346,8 +346,8 @@ public final class Constants {
       {50, Math.toRadians(-45)},  
       {84, Math.toRadians(-39)}, 
       {100, Math.toRadians(-37.2)}, 
-      {120, Math.toRadians(-34.3)}, 
-      {150, Math.toRadians(-31.)},
+      {120, Math.toRadians(-33.5)}, 
+      {150, Math.toRadians(-30.)},
       {180, Math.toRadians(-28.5)},
       {240, Math.toRadians(-26.1)},
       {300, Math.toRadians(-25.9)},
@@ -407,7 +407,7 @@ public final class Constants {
 
     public static final double[][] kElbowShortArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      {36, Math.toRadians(20)},
+      {36, Math.toRadians(22)},
       {48, Math.toRadians(18)},
       {50, Math.toRadians(14)},  
       {84, Math.toRadians(10)}, 
