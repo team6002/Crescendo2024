@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.2651860724115016,
-      "y": 5.3602740479184
+      "x": 1.2505003900884375,
+      "y": 5.345588365595336
     },
-    "rotation": 1.1344216309769894
+    "rotation": 0.38452965958452373
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooter"
+            "name": "ReadyShooterStart"
           }
         },
         {
@@ -46,7 +46,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.3
+                        "waitTime": 0.2
                       }
                     },
                     {
@@ -62,9 +62,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShoulderCheck"
+                }
+              },
               {
                 "type": "named",
                 "data": {
@@ -74,14 +86,14 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.3
+                  "waitTime": 0.2
                 }
               }
             ]
           }
         },
         {
-          "type": "race",
+          "type": "parallel",
           "data": {
             "commands": [
               {
@@ -100,13 +112,19 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "named",
                 "data": {
-                  "waitTime": 0.3
+                  "name": "ReadyShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShoulderCheck"
                 }
               },
               {
@@ -114,12 +132,18 @@
                 "data": {
                   "name": "Fire"
                 }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.2
+                }
               }
             ]
           }
         },
         {
-          "type": "race",
+          "type": "parallel",
           "data": {
             "commands": [
               {
@@ -138,9 +162,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShoulderCheck"
+                }
+              },
               {
                 "type": "named",
                 "data": {
@@ -150,7 +186,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.3
+                  "waitTime": 0.2
                 }
               }
             ]
@@ -169,48 +205,34 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "PickUp5"
+                  "name": "PickUp"
                 }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShootBlue5"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterMid"
-                }
-              }
-            ]
+            "pathName": "ShootBlue5"
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              }
-            ]
+            "name": "ReadyShooterMid"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Fire"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
           }
         },
         {

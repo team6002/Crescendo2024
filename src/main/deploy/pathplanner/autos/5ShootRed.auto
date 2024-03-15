@@ -5,7 +5,7 @@
       "x": 15.334069737906917,
       "y": 5.345588365595336
     },
-    "rotation": 180.0
+    "rotation": 179.34893961977056
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooter"
+            "name": "ReadyShooterStart"
           }
         },
         {
@@ -46,7 +46,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.3
+                        "waitTime": 0.2
                       }
                     },
                     {
@@ -62,9 +62,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShoulderCheck"
+                }
+              },
               {
                 "type": "named",
                 "data": {
@@ -74,7 +86,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.3
+                  "waitTime": 0.2
                 }
               }
             ]
@@ -100,19 +112,31 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "named",
                 "data": {
-                  "waitTime": 0.3
+                  "name": "ReadyShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShoulderCheck"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.2
                 }
               }
             ]
@@ -138,9 +162,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShoulderCheck"
+                }
+              },
               {
                 "type": "named",
                 "data": {
@@ -150,7 +186,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.3
+                  "waitTime": 0.2
                 }
               }
             ]
@@ -169,48 +205,34 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "PickUp5"
+                  "name": "PickUp"
                 }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShootRed5"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterMid"
-                }
-              }
-            ]
+            "pathName": "ShootRed5"
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              }
-            ]
+            "name": "ReadyShooterMid"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Fire"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
           }
         },
         {

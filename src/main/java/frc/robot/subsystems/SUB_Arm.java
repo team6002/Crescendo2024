@@ -129,7 +129,7 @@ public class SUB_Arm extends SubsystemBase {
 
     /** sets the Elbow goal in relation to the Shoulder */
     public void setElbowGoalRelative(double goalRad){
-        m_elbow.setGoalRad(MathUtil.clamp(goalRad, Math.toRadians(8), Math.toRadians(115)));
+        m_elbow.setGoalRad(MathUtil.clamp(goalRad, Math.toRadians(8), Math.toRadians(270)));
     }
 
     /** sets the Elbow goal in relation to the Ground */

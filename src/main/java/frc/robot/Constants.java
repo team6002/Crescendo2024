@@ -132,7 +132,7 @@ public final class Constants {
         / kDrivingMotorReduction;
 
     // This accounts for stuff such as wheel wear
-    public static final double kXFactor = .9782;  // if actual is smaller than odo go down  
+    public static final double kXFactor = .9882;  // if actual is smaller than odo go down  
 
     public static final double kDrivingEncoderPositionFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) * kXFactor; // meters

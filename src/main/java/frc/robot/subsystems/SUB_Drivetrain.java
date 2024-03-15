@@ -245,15 +245,16 @@ public class SUB_Drivetrain extends SubsystemBase {
     //   //saw it immedialtly lmao
     // }
     
-    // visionEst.ifPresent(
-    //         est -> {
-    //             var estPose = est.estimatedPose.toPose2d();
-    //             // Change our trust in the measurement based on the tags we can see
-    //             var estStdDevs = m_vision.getEstimationStdDevs(estPose);
+    visionEst.ifPresent(
+      est -> {
+          var estPose = est.estimatedPose.toPose2d();
+          // Change our trust in the measurement based on the tags we can see
+          var estStdDevs = m_vision.getEstimationStdDevs(estPose);
 
-    //             addVisionMeasurement(
-    //                     est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
-    //         });
+          addVisionMeasurement(
+                  est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
+      }
+    );
     // if (visionEst.isPresent()){
       // SmartDashboard.putNumber("EstX", Units.metersToInches(visionEst.get().estimatedPose.getX()));
       // SmartDashboard.putNumber("EstY", Units.metersToInches(visionEst.get().estimatedPose.getY()));
