@@ -33,6 +33,7 @@ public class CMD_ManFire extends Command {
     m_variable = p_variables;
     m_firingStarted = false;
     m_shooterTimer = new Timer();
+    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.

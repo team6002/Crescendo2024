@@ -31,6 +31,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.VisionConstants;
 
@@ -45,7 +46,6 @@ public class SUB_Vision extends SubsystemBase {
     private final PhotonCamera camera;
     private final PhotonPoseEstimator photonEstimator;
     private double lastEstTimestamp = 0;
-
     public SUB_Vision() {
         camera = new PhotonCamera(VisionConstants.kPhoton);
 
@@ -89,13 +89,18 @@ public class SUB_Vision extends SubsystemBase {
         var targets = getLatestResult().getTargets();
         int numTags = 0;
         double avgDist = 0;
+        double avgAng = 0;
         for (var tgt : targets) {
             var tagPose = photonEstimator.getFieldTags().getTagPose(tgt.getFiducialId());
             if (tagPose.isEmpty()) continue;
             numTags++;
             avgDist +=
-                    tagPose.get().toPose2d().getTranslation().getDistance(estimatedPose.getTranslation());
+              tagPose.get().toPose2d().getTranslation().getDistance(estimatedPose.getTranslation());
+            avgAng += 
+              tagPose.get().toPose2d().getRotation().getDegrees();
+            //   tagPose.get().toPose2d().getTranslation().getAngle().getDegrees();
         }
+        SmartDashboard.putNumber("RtargetAng", avgAng);
         if (numTags == 0) return estStdDevs;
         avgDist /= numTags;
         // Decrease std devs if multiple targets are visible
@@ -108,11 +113,13 @@ public class SUB_Vision extends SubsystemBase {
         // getLatestResult(th).getBestTarget().getPoseAmbiguity();
         return estStdDevs;
     }
-
-    public double getTargetYaw(int targId){
+    //basically gets the distance from the middle of the cam
+    public double getTargetYaw(){
         return getLatestResult().getBestTarget().getYaw();
-        // return photonEstimator.getFieldTags().getTagPose(targId).get().getRotation().getAngle();
     }
+    // // returns the angle from a facing pov
+    // public double getTargetAngle(){
+    // }
     // @Override
     // public void periodic() {
     // var visionEst = getEstimatedGlobalPose();

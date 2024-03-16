@@ -254,14 +254,17 @@ public class SUB_Drivetrain extends SubsystemBase {
           addVisionMeasurement(
                   est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
       }
+      
     );
-    // if (visionEst.isPresent()){
+    
+    if (visionEst.isPresent()){
+      SmartDashboard.putNumber("targetYaw", m_vision.getTargetYaw());
       // SmartDashboard.putNumber("EstX", Units.metersToInches(visionEst.get().estimatedPose.getX()));
       // SmartDashboard.putNumber("EstY", Units.metersToInches(visionEst.get().estimatedPose.getY()));
       // SmartDashboard.putNumber("EstDeg", Math.toDegrees(visionEst.get().estimatedPose.getRotation().getAngle()));
       // SmartDashboard.putNumber("targetAng", m_vision.getTargetYaw(7));
       // fieldEst.setRobotPose(visionEst.get().estimatedPose.toPose2d());
-    // }
+    }
   }
 
 
@@ -533,6 +536,7 @@ public class SUB_Drivetrain extends SubsystemBase {
       m_currentTarget = LocationConstants.SpeakerShootingBlue;
     }
   }
+  
   public double calculateTargetDistance(){
     return (getPose().getTranslation().getDistance(m_currentTarget));
   }

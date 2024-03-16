@@ -41,6 +41,7 @@ public class CMD_Autofire extends Command {
     m_altShooterTimer = new Timer(); 
     m_intialTimer = new Timer();
     m_closeShooting = false;
+    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.

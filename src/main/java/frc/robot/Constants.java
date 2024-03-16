@@ -371,7 +371,7 @@ public final class Constants {
     public static final double kPositionConversionFactor = (Math.PI * 2); // 3:1 ratio to shaft
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60;
 
-    public static final double kElbowP = 1.55;
+    public static final double kElbowP = .85;
     public static final double kElbowI = 0;
     public static final double kElbowD = 0.0;
     public static final double kElbowFF = 0.0;

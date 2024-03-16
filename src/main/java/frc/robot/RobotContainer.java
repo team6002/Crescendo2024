@@ -198,6 +198,7 @@ public class RobotContainer {
     m_drivetrain.setDefaultCommand(new CMD_Drive(m_drivetrain, m_driverController, m_variables));
     m_intake.setDefaultCommand(new CMD_PickUpRumble(m_intake, m_driverXController));
     m_led.setDefaultCommand(new CMD_LedHandler(m_led, m_shooter, m_variables));
+    m_shooter.setDefaultCommand(new CMD_IdleShooter(m_shooter));
   
   }
 
@@ -221,6 +222,8 @@ public class RobotContainer {
       getOutputCommand,
       ReadyDrop
       ));
+
+    m_driverController.y().onTrue(new SequentialCommandGroup());
     // eject
     m_driverController.b().onTrue(new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, -1000),
@@ -280,6 +283,10 @@ public class RobotContainer {
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-30)),
       new CMD_ShoulderCheck(m_arm, Math.toRadians(0)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(50)),
+      new CMD_ElbowCheck(m_arm, 0),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(0)),
+      new CMD_ShoulderCheck(m_arm, Math.toRadians(0)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(80)),
       new CMD_ElbowCheck(m_arm, 0),
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(0)),
       // new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(70)),

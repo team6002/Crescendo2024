@@ -20,6 +20,7 @@ public class CMD_dropBackAmp extends SequentialCommandGroup {
     SUB_Shooter p_shooter,
     SUB_Intake p_intake
   ) {
+    addRequirements(p_shooter);
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
