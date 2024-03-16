@@ -209,6 +209,8 @@ public class SUB_Drivetrain extends SubsystemBase {
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
     // SmartDashboard.putNumber("TargetXError", Units.metersToInches(calculateTargetXError()));
     SmartDashboard.putNumber("TargetDistance", Units.metersToInches(calculateTargetDistance()));
+    SmartDashboard.putNumber("TargX", Units.metersToInches(calculateTargetXError()));
+    SmartDashboard.putNumber("TargY", Units.metersToInches(calculateTargetYError()));
     // SmartDashboard.putNumber("XVelocity", getXVelocity());
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
     // SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
@@ -257,14 +259,14 @@ public class SUB_Drivetrain extends SubsystemBase {
       
     );
     
-    if (visionEst.isPresent()){
-      SmartDashboard.putNumber("targetYaw", m_vision.getTargetYaw());
+    // if (visionEst.isPresent()){
+      // SmartDashboard.putNumber("targetYaw", m_vision.getTargetYaw());
       // SmartDashboard.putNumber("EstX", Units.metersToInches(visionEst.get().estimatedPose.getX()));
       // SmartDashboard.putNumber("EstY", Units.metersToInches(visionEst.get().estimatedPose.getY()));
       // SmartDashboard.putNumber("EstDeg", Math.toDegrees(visionEst.get().estimatedPose.getRotation().getAngle()));
       // SmartDashboard.putNumber("targetAng", m_vision.getTargetYaw(7));
       // fieldEst.setRobotPose(visionEst.get().estimatedPose.toPose2d());
-    }
+    // }
   }
 
 
@@ -534,6 +536,14 @@ public class SUB_Drivetrain extends SubsystemBase {
       m_currentTarget = LocationConstants.SpeakerShootingRed;
     }else{
       m_currentTarget = LocationConstants.SpeakerShootingBlue;
+    }
+  }
+
+  public void setAmpTarget(){
+    if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red){
+      m_currentTarget = LocationConstants.AmpRed.getTranslation();
+    }else{
+      m_currentTarget = LocationConstants.AmpRed.getTranslation();
     }
   }
   

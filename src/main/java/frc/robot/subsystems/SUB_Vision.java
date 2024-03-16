@@ -25,9 +25,11 @@
 package frc.robot.subsystems;
 
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
@@ -87,21 +89,21 @@ public class SUB_Vision extends SubsystemBase {
     public Matrix<N3, N1> getEstimationStdDevs(Pose2d estimatedPose) {
         var estStdDevs = VisionConstants.kSingleTagStdDevs;
         var targets = getLatestResult().getTargets();
-        int numTags = 0;
+        int numTags = 0; // tag counter that counts all tags that are within the filter;
+        int totalTags = -1; // a tag counter that counts all of the tags
         double avgDist = 0;
         double avgAng = 0;
         for (var tgt : targets) {
             var tagPose = photonEstimator.getFieldTags().getTagPose(tgt.getFiducialId());
-            if (tagPose.isEmpty()) continue;
+            if (tagPose.isEmpty()) continue; 
+            totalTags ++;
+            if (angFilter(totalTags)) continue;
             numTags++;
             avgDist +=
-              tagPose.get().toPose2d().getTranslation().getDistance(estimatedPose.getTranslation());
-            avgAng += 
-              tagPose.get().toPose2d().getRotation().getDegrees();
-            //   tagPose.get().toPose2d().getTranslation().getAngle().getDegrees();
+                tagPose.get().toPose2d().getTranslation().getDistance(estimatedPose.getTranslation());
         }
-        SmartDashboard.putNumber("RtargetAng", avgAng);
-        if (numTags == 0) return estStdDevs;
+        if (numTags == 0) return estStdDevs = VecBuilder.fill(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE);
+        // estStdDevs;
         avgDist /= numTags;
         // Decrease std devs if multiple targets are visible
         if (numTags > 1) estStdDevs = VisionConstants.kMultiTagStdDevs;
@@ -113,10 +115,18 @@ public class SUB_Vision extends SubsystemBase {
         // getLatestResult(th).getBestTarget().getPoseAmbiguity();
         return estStdDevs;
     }
-    //basically gets the distance from the middle of the cam
-    public double getTargetYaw(){
-        return getLatestResult().getBestTarget().getYaw();
+    public boolean angFilter(int TagNum){// tag num is the index number for the target Table
+        return (new Rotation2d(Math.toRadians(180)).plus(getLatestResult().getTargets().get(TagNum).getBestCameraToTarget().getRotation().toRotation2d()).getDegrees() > 45
+             || new Rotation2d(Math.toRadians(180)).plus(getLatestResult().getTargets().get(TagNum).getBestCameraToTarget().getRotation().toRotation2d()).getDegrees() < -45);
     }
+    // public double getTagYaw(double tagID){
+    //     return 
+    //     new Rotation2d(Math.toRadians(180)).plus(getLatestResult().getTargets().get(tagID);
+    // }   
+    public double getTargetYaw(){
+        return 
+        new Rotation2d(Math.toRadians(180)).plus(getLatestResult().getBestTarget().getBestCameraToTarget().getRotation().toRotation2d()).getDegrees();
+    }   
     // // returns the angle from a facing pov
     // public double getTargetAngle(){
     // }

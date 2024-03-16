@@ -47,6 +47,7 @@ public class CMD_Autofire extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_drivetrain.setShooterTarget();
     m_shot = false;
     m_closeShooting = false;
     m_firingStarted = false;

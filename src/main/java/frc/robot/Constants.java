@@ -293,13 +293,22 @@ public final class Constants {
       {240, 3000},
       {300, 3250},
     };
+    public static final double[][] kStockShooterArray = {
+    //RPMS for shooting to store notes at the AMP
+      {36, 2050}, 
+      {84, 2250}, 
+      {120, 2400}, 
+      {180, 2600},
+      {240, 3000},
+      {300, 3250},
+    };
   }
 
   public static final class ShoulderConstants{
     //240 : 1
     // 0.47699999809265137
 
-    public static final int kShoulderCurrentLimit = 40;
+    public static final int kShoulderCurrentLimit = 50;
 
     public static final double kPositionConversionFactor = Math.PI * 2; // radians
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60; // radians per second
@@ -366,9 +375,9 @@ public final class Constants {
 
   public static final class ElbowConstants{
     
-    public static final int kElbowCurrentLimit = 40;
+    public static final int kElbowCurrentLimit = 50;
 
-    public static final double kPositionConversionFactor = (Math.PI * 2); // 3:1 ratio to shaft
+    public static final double kPositionConversionFactor = (Math.PI * 2); 
     public static final double kVelocityConversionFactor = kPositionConversionFactor / 60;
 
     public static final double kElbowP = .85;
@@ -377,7 +386,7 @@ public final class Constants {
     public static final double kElbowFF = 0.0;
     
     public static final double kSVolts = 0;
-    public static final double kGVolts = 0.22;
+    public static final double kGVolts = 0.21;
     public static final double kVVoltSecondPerRad = 0;
     public static final double kAVoltSecondSquaredPerRad = 0;
 
