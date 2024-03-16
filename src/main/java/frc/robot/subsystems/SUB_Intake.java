@@ -57,8 +57,8 @@ public class SUB_Intake extends SubsystemBase {
     
     m_intakeMotor.setSmartCurrentLimit(IntakeConstants.kIntakeCurrentLimit);
     m_intakeMotor.setIdleMode(IdleMode.kCoast);
-    m_intakeMotor.setInverted(false);
-    m_intakeFollowerMotor.follow(m_intakeMotor, true);
+    m_intakeMotor.setInverted(true);
+    m_intakeFollowerMotor.follow(m_intakeMotor, false);
     
   
     // m_shelfIntakeMotor = new CANSparkMax(IntakeConstants.kShelfIntakeMotorCANID, MotorType.kBrushless);
