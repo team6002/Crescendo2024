@@ -16,6 +16,8 @@ public class SUB_Shooter extends SubsystemBase {
   SUB_TopShooter m_topShooter;
   LinearInterpolater m_interpolater;
   double m_interpolatedValue;
+  LinearInterpolater m_stockInterpolater;
+  double m_stockInterpolatedValue;
 
   public SUB_Shooter(SUB_BotShooter p_botShooter, SUB_TopShooter p_topShooter) {
     m_botShooter = p_botShooter;
@@ -117,6 +119,14 @@ public class SUB_Shooter extends SubsystemBase {
     return m_interpolatedValue;
   }
 
+  public double stockInterpolateSetpoint(double p_distance){
+    m_stockInterpolatedValue = m_stockInterpolater.getInterpolatedValue(p_distance);
+    return m_stockInterpolatedValue;
+  }
+  
+  public double getStockInterpolatedValue(){
+    return m_stockInterpolatedValue;
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

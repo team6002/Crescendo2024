@@ -295,12 +295,12 @@ public final class Constants {
     };
     public static final double[][] kStockShooterArray = {
     //RPMS for shooting to store notes at the AMP
-      {36, 2050}, 
-      {84, 2250}, 
-      {120, 2400}, 
-      {180, 2600},
-      {240, 3000},
-      {300, 3250},
+      {36, 1800}, 
+      {84, 1900}, 
+      {120, 2000}, 
+      {180, 2100},
+      {240, 2200},
+      {300, 2300},
     };
   }
 

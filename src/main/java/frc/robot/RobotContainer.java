@@ -223,7 +223,7 @@ public class RobotContainer {
       ReadyDrop
       ));
 
-    m_driverController.y().onTrue(new SequentialCommandGroup());
+    m_driverController.y().onTrue(new CMD_StockFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables));
     // eject
     m_driverController.b().onTrue(new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, -1000),

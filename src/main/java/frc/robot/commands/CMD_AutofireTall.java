@@ -77,20 +77,19 @@ public class CMD_AutofireTall extends Command {
    }
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    // System.out.println("DONE");
-    if (m_shot){
       if (m_variable.getContShooting()){
         m_shooter.setShooterSetpoint(2000);
       }else{
         m_shooter.disableShooter();
       }
       m_intake.setIndexerVelocity(0);
-    }
+  }
+
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
     return m_shot;
   }
 }
