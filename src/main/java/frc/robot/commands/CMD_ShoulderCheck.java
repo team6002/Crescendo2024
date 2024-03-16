@@ -11,10 +11,10 @@ public class CMD_ShoulderCheck extends Command {
   /** looks to see if the shoulder is at location. */
   SUB_Arm m_arm;
   double m_position;
-  double m_tolerance = 4;
-  public CMD_ShoulderCheck(SUB_Arm p_arm, double p_position) {
+  double m_tolerance = 0;
+  public CMD_ShoulderCheck(SUB_Arm p_arm, double p_toleranceDeg) {
     m_arm = p_arm;
-    m_position = p_position;
+    m_tolerance = p_toleranceDeg;
     addRequirements(m_arm);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -34,6 +34,6 @@ public class CMD_ShoulderCheck extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_arm.atShoulderGoal();//checks to see if elbow is at the wanted position;
+    return m_arm.atShoulderGoal(Math.toRadians(m_tolerance));//checks to see if elbow is at the wanted position;
   }
 }

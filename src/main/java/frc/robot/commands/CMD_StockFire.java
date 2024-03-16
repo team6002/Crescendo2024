@@ -37,14 +37,15 @@ public class CMD_StockFire extends Command {
   @Override
   public void initialize() {
     m_variable.setAutofire(true);
+    m_drivetrain.setAmpTarget(); 
+    m_shooter.setShooterSetpoint( m_shooter.stockInterpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+    m_shooter.disableShooter();
     m_shooterTimer.restart();
     m_shooterTimer.start();
     m_arm.setShoulderGoalWithoutElbow(Math.toRadians(-45));
     m_arm.setElbowGoalRelative(Math.toRadians(10));
     m_shooter.setBotPower(1);
     m_shooter.setTopPower(1);
-    m_shooter.stockInterpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()));
-    m_shooter.disableShooter();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -52,14 +53,16 @@ public class CMD_StockFire extends Command {
   public void execute() {
     if (m_shooterTimer.get() > 1 || m_shooter.getAtShooterSetpoint()){
       m_shooter.enableShooter();
-      m_intake.setIndexerVelocity(3000);
+      m_intake.setIndexerPower(1);
     }
   }
+
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_variable.setAutoaim(false);
+    m_variable.setAutofire(false);
+    m_intake.setIndexerPower(0);
     m_shooter.disableShooter();
   }
 

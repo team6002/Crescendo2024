@@ -10,11 +10,10 @@ import frc.robot.subsystems.SUB_Arm;
 public class CMD_ElbowCheck extends Command {
   /** looks to see if the elbow is at location. */
   SUB_Arm m_arm;
-  double m_position;
-  double m_tolerance = 4;
-  public CMD_ElbowCheck(SUB_Arm p_arm, double p_position) {
+  double m_tolerance = 2;
+  public CMD_ElbowCheck(SUB_Arm p_arm, double p_tolerance) {
     m_arm = p_arm;
-    m_position = p_position;
+    m_tolerance = p_tolerance;
     addRequirements(m_arm);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -34,6 +33,6 @@ public class CMD_ElbowCheck extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_arm.atElbowGoal();//checks to see if elbow is at the wanted position;
+    return m_arm.atElbowGoal(Math.toRadians(m_tolerance));//checks to see if elbow is at the wanted position;
   }
 }

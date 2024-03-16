@@ -543,7 +543,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red){
       m_currentTarget = LocationConstants.AmpRed.getTranslation();
     }else{
-      m_currentTarget = LocationConstants.AmpRed.getTranslation();
+      m_currentTarget = LocationConstants.AmpBlue.getTranslation();
     }
   }
   

@@ -23,6 +23,7 @@ public class SUB_Shooter extends SubsystemBase {
     m_botShooter = p_botShooter;
     m_topShooter = p_topShooter;
     m_interpolater = new LinearInterpolater(ShooterConstants.kShooterArray);
+    m_stockInterpolater = new LinearInterpolater(ShooterConstants.kStockShooterArray);
   }
 
   public double getBotShooterVelocity(){

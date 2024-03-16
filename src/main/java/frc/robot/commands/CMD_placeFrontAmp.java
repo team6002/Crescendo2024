@@ -30,7 +30,7 @@ public class CMD_placeFrontAmp extends SequentialCommandGroup {
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(15)),
       new WaitCommand(0.05),
       new CMD_ElbowSetPositionRelative(p_arm, ElbowConstants.kElbowAmp),
-      new CMD_ShoulderCheck(p_arm, Math.toRadians(30))
+      new CMD_ShoulderCheck(p_arm, Math.toRadians(2))
   
     );
   }

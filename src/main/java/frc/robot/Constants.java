@@ -338,7 +338,7 @@ public final class Constants {
     public static final double kMaxVelocityRadPerSecond = 6.1;
     public static final double kMaxAccelerationRadPerSecSquared = 8.1;
 
-    public static final double kMaxClimbVelocityRadPerSecond = .5;
+    public static final double kMaxClimbVelocityRadPerSecond = .6;
     public static final double kMaxClimbAccelerationRadPerSecSquared = 1;
 
     public static final double kShoulderHome = Math.toRadians(-45);
