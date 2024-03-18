@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.490541775359043,
-        "y": 7.049127515070773
+        "x": 8.578655869297428,
+        "y": 7.4309552554704394
       },
       "prevControl": null,
       "nextControl": {
-        "x": 9.826938866757876,
-        "y": 6.667299774671107
+        "x": 9.915052960696261,
+        "y": 7.049127515070773
       },
       "isLocked": false,
       "linkedName": "ShootRed4"
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

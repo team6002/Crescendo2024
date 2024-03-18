@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.14,
-        "y": 6.1826722580099895
+        "x": 3.423981373901926,
+        "y": 6.065186799425477
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.153312080291423,
-        "y": 6.35890044588676
+        "x": 4.437293454193349,
+        "y": 6.241414987302247
       },
       "isLocked": false,
       "linkedName": "ShootBlue5"
@@ -49,7 +49,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

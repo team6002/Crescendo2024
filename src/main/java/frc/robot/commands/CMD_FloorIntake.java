@@ -24,7 +24,7 @@ public class CMD_FloorIntake extends SequentialCommandGroup {
         p_variables.CMDsetAutofire(false),
         new CMD_ShoulderSetPosition(p_arm, Math.toRadians(-45)),
         new CMD_ShoulderCheck(p_arm, Math.toRadians(2)),
-        new CMD_ElbowSetPositionRelative(p_arm, Math.toRadians(ElbowConstants.kElbowHome)),
+        new CMD_ElbowSetPositionRelative(p_arm, ElbowConstants.kElbowHome),
         // new CMD_GroundIntakeForwardCool(p_intake, 4000),
         new CMD_GroundIntakeSetVelocity(p_intake, 2000),
         new CMD_IndexerIndex(p_intake),

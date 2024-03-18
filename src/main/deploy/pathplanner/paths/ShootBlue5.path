@@ -4,24 +4,24 @@
     {
       "anchor": {
         "x": 8.005914258697928,
-        "y": 7.25472706759367
+        "y": 7.401583890824312
       },
       "prevControl": null,
       "nextControl": {
         "x": 7.286315824867786,
-        "y": 7.019756150424644
+        "y": 7.166612973655286
       },
       "isLocked": false,
       "linkedName": "ShootBlue4"
     },
     {
       "anchor": {
-        "x": 4.14,
-        "y": 6.18
+        "x": 3.423981373901926,
+        "y": 6.065186799425477
       },
       "prevControl": {
-        "x": 4.947712527768526,
-        "y": 6.473713646461282
+        "x": 4.231693901670457,
+        "y": 6.358900445886759
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,13 +33,13 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 11.633633998940548,
+    "rotation": 17.744671625056945,
     "rotateFast": false
   },
   "reversed": false,

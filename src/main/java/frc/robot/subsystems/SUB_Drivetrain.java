@@ -106,6 +106,8 @@ public class SUB_Drivetrain extends SubsystemBase {
   private double m_prevXPos = 0;
   private double m_prevYPos = 0;
 
+  private boolean visionToggle;
+
   //the trapzoid motion profile for the autoalign function
   private TrapezoidProfile m_AutoAlignTrapProfile;
   private TrapezoidProfile.Constraints m_AutoAlignConstraints;
@@ -246,19 +248,19 @@ public class SUB_Drivetrain extends SubsystemBase {
     //   // lol how long does it take for justin to notice this
     //   //saw it immedialtly lmao
     // }
-    
-    visionEst.ifPresent(
-      est -> {
-          var estPose = est.estimatedPose.toPose2d();
-          // Change our trust in the measurement based on the tags we can see
-          var estStdDevs = m_vision.getEstimationStdDevs(estPose);
+    if (visionToggle){
+      visionEst.ifPresent(
+        est -> {
+            var estPose = est.estimatedPose.toPose2d();
+            // Change our trust in the measurement based on the tags we can see
+            var estStdDevs = m_vision.getEstimationStdDevs(estPose);
 
-          addVisionMeasurement(
-                  est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
-      }
-      
-    );
-    
+            addVisionMeasurement(
+                    est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
+        }
+        
+      );
+    }
     // if (visionEst.isPresent()){
       // SmartDashboard.putNumber("targetYaw", m_vision.getTargetYaw());
       // SmartDashboard.putNumber("EstX", Units.metersToInches(visionEst.get().estimatedPose.getX()));
@@ -270,7 +272,9 @@ public class SUB_Drivetrain extends SubsystemBase {
   }
 
 
-
+  public void toggleVision(boolean p_visionBoo){
+    visionToggle = p_visionBoo;
+  }
   public SwerveModuleState[] getModuleStates() {
     SwerveModuleState[] states = new SwerveModuleState[SwerveModules.length];
     for (int i = 0; i < SwerveModules.length; i++) {

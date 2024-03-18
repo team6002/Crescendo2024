@@ -105,7 +105,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "PickUp"
+                  "name": "Intake3"
                 }
               }
             ]
@@ -118,7 +118,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooter"
+                  "name": "ShootyPosition2"
                 }
               },
               {
@@ -155,7 +155,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "PickUp"
+                  "name": "Intake3"
                 }
               }
             ]
@@ -168,7 +168,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooter"
+                  "name": "ShootyPosition3"
                 }
               },
               {

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.6456402107795283,
+        "x": 2.542840434518079,
         "y": 5.53650223579517
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1169556471492204,
-        "y": 5.815530199933388
+        "x": 2.205069741087604,
+        "y": 5.7567874706411315
       },
       "isLocked": false,
       "linkedName": "ShootBlue2"
@@ -20,24 +20,24 @@
         "y": 6.241414987302248
       },
       "prevControl": {
-        "x": 1.940727459272451,
-        "y": 5.888958611548709
+        "x": 1.9502168290314261,
+        "y": 6.034008924040943
       },
       "nextControl": {
-        "x": 2.0245674247920453,
-        "y": 6.559678335705468
+        "x": 2.014155870887771,
+        "y": 6.417643175179016
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6750115754256556,
-        "y": 6.8
+        "x": 2.410669293610502,
+        "y": 6.784785233255618
       },
       "prevControl": {
-        "x": 2.1316413294722834,
-        "y": 6.565029082830974
+        "x": 2.2050697410876046,
+        "y": 6.564499998409658
       },
       "nextControl": null,
       "isLocked": false,
@@ -49,7 +49,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

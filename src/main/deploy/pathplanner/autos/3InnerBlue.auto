@@ -57,6 +57,12 @@
                 "data": {
                   "pathName": "InnerBlue2"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooterMid"
+                }
               }
             ]
           }

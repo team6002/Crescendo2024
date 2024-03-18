@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.6015831638103353,
-        "y": 4.229476509042464
+        "x": 2.6162688461334,
+        "y": 4.2147908267194
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8526133653340655,
-        "y": 4.36164764995004
+        "x": 1.8672990476571303,
+        "y": 4.346961967626976
       },
       "isLocked": false,
       "linkedName": "ShootBlue1"
@@ -20,24 +20,24 @@
         "y": 5.0225033544879265
       },
       "prevControl": {
-        "x": 1.7498135890726172,
-        "y": 4.346961967626977
+        "x": 1.8085563183648736,
+        "y": 4.757753451333014
       },
       "nextControl": {
-        "x": 1.8531020150572766,
-        "y": 5.534778866450561
+        "x": 1.8085563183648736,
+        "y": 5.3602740479184
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6456402107795283,
+        "x": 2.542840434518079,
         "y": 5.53650223579517
       },
       "prevControl": {
-        "x": 1.9407274592724515,
-        "y": 5.433702459533721
+        "x": 1.9260417769493865,
+        "y": 5.477759506502913
       },
       "nextControl": null,
       "isLocked": false,
@@ -49,13 +49,13 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 5.194428907734878,
     "rotateFast": false
   },
   "reversed": false,

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 14.027044011154212,
-        "y": 4.229476509042464
+        "x": 13.968301281861956,
+        "y": 4.2147908267194
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.981613362153379,
-        "y": 4.581932884796003
+        "x": 14.922870632861123,
+        "y": 4.567247202472939
       },
       "isLocked": false,
       "linkedName": "ShootRed1"
     },
     {
       "anchor": {
-        "x": 13.865501505600506,
-        "y": 5.43
+        "x": 13.894872870246635,
+        "y": 5.521816553472107
       },
       "prevControl": {
-        "x": 14.761328127307419,
-        "y": 5.3565715883846785
+        "x": 14.790699491953548,
+        "y": 5.448388141856785
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },

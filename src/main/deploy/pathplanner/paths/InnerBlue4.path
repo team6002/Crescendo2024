@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.284942222836145,
-        "y": 2.437823265628643
+        "x": 8.314313587482273,
+        "y": 4.082619685811823
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.888428800113415,
-        "y": 2.3056521247210657
+        "x": 8.035285623344055,
+        "y": 2.731536912089924
       },
       "isLocked": false,
       "linkedName": "InnerBlue3"
     },
     {
       "anchor": {
-        "x": 5.861804639530567,
-        "y": 1.8210246080599504
+        "x": 5.553405310746221,
+        "y": 1.6594821025062452
       },
       "prevControl": {
-        "x": 6.669517167299094,
-        "y": 1.8357102903830147
+        "x": 6.881227807523125,
+        "y": 1.4979901772225686
       },
       "nextControl": {
-        "x": 4.861969887817244,
-        "y": 1.8028457943924352
+        "x": 4.466664818839477,
+        "y": 1.7916532434138215
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 3.025250558551207
       },
       "prevControl": {
-        "x": 3.5120954678403122,
-        "y": 2.452508947951706
+        "x": 3.8204947966246565,
+        "y": 1.9825671136136553
       },
       "nextControl": null,
       "isLocked": false,
@@ -49,13 +49,13 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -39.80557109226524,
+    "rotation": -42.27368900609373,
     "rotateFast": false
   },
   "reversed": false,
