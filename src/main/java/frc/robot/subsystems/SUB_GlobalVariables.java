@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -13,6 +15,7 @@ import frc.robot.Constants.LocationConstants;
 
 public class SUB_GlobalVariables extends SubsystemBase {
   /** place for subsystems to talk to each other */
+  private Timer m_matchTimer;
   private boolean m_autofire;
   private boolean m_autoaim;
   private boolean m_hasItem;
@@ -165,5 +168,6 @@ public class SUB_GlobalVariables extends SubsystemBase {
     SmartDashboard.putNumber("SyncNumber", m_syncNumber);
     SmartDashboard.putBoolean("ContShoot", m_contShooting);
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("MatchTimer", DriverStation.getMatchTime());
   }
 }

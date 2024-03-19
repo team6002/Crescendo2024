@@ -231,7 +231,7 @@ public final class Constants {
 
     public static final int kIndexerCurrentLimit = 40;
 
-    public static final double kIndexerP = 0.0003;
+    public static final double kIndexerP = 0.0002;
     public static final double kIndexerI = 0;
     public static final double kIndexerD = 0.00001;
     public static final double kIndexerFF = 0.0001;

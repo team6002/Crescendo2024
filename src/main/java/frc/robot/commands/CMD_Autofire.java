@@ -47,6 +47,7 @@ public class CMD_Autofire extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_shooter.disableShooter();
     m_drivetrain.setShooterTarget();
     m_shot = false;
     m_closeShooting = false;
@@ -75,7 +76,7 @@ public class CMD_Autofire extends Command {
         m_shooter.setBotPower(1);
         m_shooter.setTopPower(1);
       }else{
-        if (m_intialTimer.get() < 0.6 || m_shooterAtSetpoint){
+        if (m_intialTimer.get() < 0.7 || m_shooterAtSetpoint){
           m_shooter.setBotPower(1);  
           m_shooter.setTopPower(1);
           m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));

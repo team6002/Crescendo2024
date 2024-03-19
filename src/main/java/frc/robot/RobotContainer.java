@@ -73,9 +73,10 @@ public class RobotContainer {
   private final SUB_GlobalVariables m_variables = new SUB_GlobalVariables();
   // The driver's controller
   CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
+  CommandXboxController m_operatorController = new CommandXboxController(OIConstants.kOperatorControllerPort);
   //A non command Xbox controller so we can implement rumble
   XboxController m_driverXController = new XboxController(OIConstants.kDriverControllerPort);
-  CommandXboxController m_operatorController = new CommandXboxController(OIConstants.kOperatorControllerPort);
+  XboxController m_operatorXController = new XboxController(OIConstants.kOperatorControllerPort);
   
   private final BooleanSupplier AutoAim = () -> m_variables.getAutofire();
   private final BooleanSupplier HasItem = () -> m_variables.getHasItem();
@@ -232,6 +233,7 @@ public class RobotContainer {
     m_intake.setDefaultCommand(new CMD_PickUpRumble(m_intake, m_driverXController));
     m_led.setDefaultCommand(new CMD_LedHandler(m_led, m_shooter, m_variables));
     // m_shooter.setDefaultCommand(new CMD_IdleShooter(m_shooter));
+    
   
   }
 
@@ -375,7 +377,7 @@ public class RobotContainer {
     );
 
     m_operatorController.rightTrigger(.5).onTrue(new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 1500),
+      new CMD_setShooterSetpoint(m_shooter, 1900),
       new CMD_ShooterOn(m_shooter)
     ));
 
@@ -553,5 +555,8 @@ public class RobotContainer {
   }
   public void getShooterTarget(){
     m_drivetrain.setShooterTarget();
+  }
+  public Command startRumbleTimer(){
+    return new CMD_OperatorRumble(m_operatorXController);
   }
 }

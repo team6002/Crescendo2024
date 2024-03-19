@@ -24,15 +24,15 @@ public class CMD_IndexerIndex extends Command {
   public void initialize() {
     m_detected = false;
     // m_intake.enableIndexerLimit(true);
-    m_intake.setIndexerVelocity(2000);
+    m_intake.setIndexerVelocity(2700);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_intake.getIndexerCurrent() >= 24){
-      m_intake.setIndexerVelocity(1800);
-    }
+    // if (m_intake.getIndexerCurrent() >= 24){
+    //   m_intake.setIndexerVelocity(2000);
+    // }
     if (m_intake.getIndexerSensor()){
       m_intake.setIndexerVelocity(0);
       // System.out.println("FOUND");

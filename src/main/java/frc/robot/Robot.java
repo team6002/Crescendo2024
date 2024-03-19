@@ -116,6 +116,7 @@ public class Robot extends TimedRobot {
     // m_robotContainer.zeroOdometry();
     m_robotContainer.subsystemInit();
     m_robotContainer.getShooterTarget();
+    m_robotContainer.startRumbleTimer();
   }
 
   /** This function is called periodically during operator control. */

@@ -106,7 +106,7 @@ public class SUB_Drivetrain extends SubsystemBase {
   private double m_prevXPos = 0;
   private double m_prevYPos = 0;
 
-  private boolean visionToggle;
+  private boolean visionToggle = true;
 
   //the trapzoid motion profile for the autoalign function
   private TrapezoidProfile m_AutoAlignTrapProfile;
