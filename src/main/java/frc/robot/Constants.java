@@ -132,7 +132,7 @@ public final class Constants {
         / kDrivingMotorReduction;
 
     // This accounts for stuff such as wheel wear
-    public static final double kXFactor = .9882;  // if actual is smaller than odo go down  
+    public static final double kXFactor = .9714;  // if actual is smaller than odo go down  
 
     public static final double kDrivingEncoderPositionFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) * kXFactor; // meters
@@ -286,7 +286,6 @@ public final class Constants {
 
     public static final double[][] kShooterArray = {
     //RPMS for shooting at the Speaker for ft 
-      {36, 2050}, 
       {84, 2250}, 
       {120, 2400}, 
       {180, 2600},
@@ -295,12 +294,12 @@ public final class Constants {
     };
     public static final double[][] kStockShooterArray = {
     //RPMS for shooting to store notes at the AMP
-      {36, 1800}, 
-      {84, 1900}, 
-      {120, 2000}, 
-      {180, 2100},
-      {240, 2200},
-      {300, 2300},
+      {36, 1300}, 
+      {84, 1400}, 
+      {120, 1500}, 
+      {180, 1600},
+      {240, 1700},
+      {300, 1800},
     };
   }
 
@@ -397,7 +396,7 @@ public final class Constants {
 
     public static final double kElbowHome = Math.toRadians(10); 
     //only for da front one
-    public static final double kElbowAmp = Math.toRadians(18.5); 
+    public static final double kElbowAmp = Math.toRadians(23); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
     public static final double kElbowGroundIntake = Math.toRadians(45);
     //intake position is 90 to ground
@@ -441,7 +440,10 @@ public final class Constants {
   
     public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(8), Units.inchesToMeters(215));
     public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(8), Units.inchesToMeters(215));
-  
+    // the location in which we shoot at to stage it.
+    public static final Pose2d StageBlue = new Pose2d( 1.9,6.5, Rotation2d.fromDegrees(-90));
+    public static final Pose2d StageRed = new Pose2d( 14.8,6.5, Rotation2d.fromDegrees(-90));
+    
     public static final Pose2d SubwooferBlue = new Pose2d( 1.2,5.4, Rotation2d.fromDegrees(0));
     public static final Pose2d AmpBlue = new Pose2d( 1.9,7.8, Rotation2d.fromDegrees(-90));
     public static final Pose2d LSourceBlue = new Pose2d( 15,.5, Rotation2d.fromDegrees(125));// the source closest to blue side

@@ -105,15 +105,15 @@ public class RobotContainer {
     ));
 
     NamedCommands.registerCommand("ReadyShooterMid", new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 2500),
+      new CMD_setShooterSetpoint(m_shooter, 2600),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-30.7)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-30.6)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ShoulderCheck(m_arm, 2)
     ));
 
     NamedCommands.registerCommand("ReadyShooter", new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 2200),
+      new CMD_setShooterSetpoint(m_shooter, 2300),
       new CMD_ShooterOn(m_shooter),
       // m_intake.CMDsetIndexVelocity(2350),
       // new CMD_GroundIntakeSetPower(m_intake, .7),
@@ -123,25 +123,25 @@ public class RobotContainer {
     ));
 
     NamedCommands.registerCommand("ShootyPosition1", new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 2200),
+      new CMD_setShooterSetpoint(m_shooter, 2300),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.7)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-36.4)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm,2)
     ));
 
     NamedCommands.registerCommand("ShootyPosition2", new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 2200),
+      new CMD_setShooterSetpoint(m_shooter, 2300),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.1)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-34.5)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm,2)
     ));
 
     NamedCommands.registerCommand("ShootyPosition3", new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 2200),
+      new CMD_setShooterSetpoint(m_shooter, 2300),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.5)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.1)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -151,7 +151,7 @@ public class RobotContainer {
       new CMD_ShooterOn(m_shooter),
       // m_intake.CMDsetIndexVelocity(2350),
       // new CMD_GroundIntakeSetPower(m_intake, .7),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-43.)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-42.7)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm, 2)
     ));
@@ -189,7 +189,8 @@ public class RobotContainer {
     ));
 
     NamedCommands.registerCommand("Intake3", new SequentialCommandGroup(
-      m_intake.CMDsetIndexVelocity(2750),     
+      // m_intake.CMDsetIndexVelocity(2750),     
+      m_intake.CMDsetIndexPower(.7),
        new CMD_GroundIntakeSetPower(m_intake, .4)
       // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
       // new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10))
@@ -300,9 +301,6 @@ public class RobotContainer {
       m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
       m_arm.CMDsetRHookPWM(HookConstants.RHookClose),
       new WaitCommand(0.1),
-      new CMD_setShooterTrap(m_shooter, 2000),
-      new CMD_ShooterOn(m_shooter),
-      
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
         m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
       // new CMD_ElbowSetPosition(m_arm, Math.toRadians(0)),
@@ -310,6 +308,8 @@ public class RobotContainer {
       new CMD_ShoulderCheck(m_arm, 4),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(60)),
       new CMD_ElbowCheck(m_arm, 4),
+      new CMD_setShooterTrap(m_shooter, 2000),
+      new CMD_ShooterOn(m_shooter),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
       // new SequentialCommandGroup(
       //   new WaitCommand(1),
@@ -367,7 +367,7 @@ public class RobotContainer {
     );
 
     m_operatorController.rightTrigger(.5).onTrue(new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 1000),
+      new CMD_setShooterSetpoint(m_shooter, 1250),
       new CMD_ShooterOn(m_shooter)
     ));
 

@@ -247,6 +247,12 @@
           "data": {
             "name": "HoldShooter"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ShootBlue6"
+          }
         }
       ]
     }

@@ -24,10 +24,10 @@ public class CMD_dropFrontAmp extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new CMD_setShooterSetpoint(p_shooter, 2000),
-      new CMD_ShooterOn(p_shooter),
+    //   new CMD_setShooterSetpoint(p_shooter, 2000),
+    //   new CMD_ShooterOn(p_shooter),
       // new CMD_ShooterCheck(p_shooter),
-      new WaitCommand(0.15),
+      // new WaitCommand(0.15),
       p_intake.CMDsetIndexVelocity(2000),
       new WaitCommand(0.75),
       new CMD_ShooterOff(p_shooter),
