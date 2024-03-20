@@ -229,7 +229,7 @@ public final class Constants {
 
   public static final class IndexerConstants{
 
-    public static final int kIndexerCurrentLimit = 40;
+    public static final int kIndexerCurrentLimit = 50;
 
     public static final double kIndexerP = 0.0002;
     public static final double kIndexerI = 0;
@@ -354,11 +354,11 @@ public final class Constants {
       {36, Math.toRadians(-45)},
       {50, Math.toRadians(-45)},  
       {84, Math.toRadians(-39)}, 
-      {100, Math.toRadians(-37.2)}, 
-      {120, Math.toRadians(-33.5)}, 
-      {150, Math.toRadians(-30.)},
-      {180, Math.toRadians(-28.5)},
-      {240, Math.toRadians(-26.1)},
+      {100, Math.toRadians(-36.7)}, 
+      {120, Math.toRadians(-33.25)}, 
+      {150, Math.toRadians(-28.75)},
+      {180, Math.toRadians(-28.)},
+      {240, Math.toRadians(-26.)},
       {300, Math.toRadians(-25.9)},
     };
 

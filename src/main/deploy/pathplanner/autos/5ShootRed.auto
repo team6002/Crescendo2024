@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.334069737906917,
+      "x": 15.319384055583853,
       "y": 5.345588365595336
     },
-    "rotation": 179.34893961977056
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -68,7 +68,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooter"
+                  "name": "ShootyPosition1"
                 }
               },
               {
@@ -205,22 +205,29 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "PickUp"
+                  "name": "PickUp5"
                 }
               }
             ]
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "ShootRed5"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ReadyShooterMid"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootRed5"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooterMid"
+                }
+              }
+            ]
           }
         },
         {

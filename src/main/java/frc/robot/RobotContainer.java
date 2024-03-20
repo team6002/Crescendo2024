@@ -107,7 +107,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ReadyShooterMid", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2500),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-29.2)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-30.7)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ShoulderCheck(m_arm, 2)
     ));
@@ -125,7 +125,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition1", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2200),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-36.75)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.7)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -133,7 +133,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition2", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2200),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-36.25)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.1)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -141,7 +141,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition3", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2200),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-36)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.5)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -151,7 +151,7 @@ public class RobotContainer {
       new CMD_ShooterOn(m_shooter),
       // m_intake.CMDsetIndexVelocity(2350),
       // new CMD_GroundIntakeSetPower(m_intake, .7),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-42.5)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-43.)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
       new CMD_ElbowCheck(m_arm, 2)
     ));
@@ -276,7 +276,7 @@ public class RobotContainer {
       // m_arm.CMDsetShoulderConstrainst(ShoulderConstants.kClimbConstraints),
       m_arm.CMDsetLHookPWM(HookConstants.LHookOpen),
       m_arm.CMDsetRHookPWM(HookConstants.RHookOpen),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(35)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(45)),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(48)),
       new CMD_ShoulderCheck(m_arm, 2)
       // new CMD_setShooterTrap(m_shooter, 1500),
@@ -289,58 +289,48 @@ public class RobotContainer {
     ));
 
     m_driverController.pov(90).onTrue(new SequentialCommandGroup(
+      
+    ));
+
+    m_driverController.pov(180).onTrue(new SequentialCommandGroup(
+      m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(50)),
+      new CMD_ShoulderCheck(m_arm, 4.00),
+      m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
+      m_arm.CMDsetRHookPWM(HookConstants.RHookClose),
+      new WaitCommand(0.1),
       new CMD_setShooterTrap(m_shooter, 2000),
       new CMD_ShooterOn(m_shooter),
-      new WaitCommand(1),
+      
+      // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
+        m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
+      // new CMD_ElbowSetPosition(m_arm, Math.toRadians(0)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-10)),
+      new CMD_ShoulderCheck(m_arm, 4),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(60)),
+      new CMD_ElbowCheck(m_arm, 4),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
+      // new SequentialCommandGroup(
+      //   new WaitCommand(1),
+        new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(128)),
+      // )
+      new CMD_ShoulderCheck(m_arm, 2),
+    //   new WaitCommand(0.1)
+      new WaitCommand(0.25),
       m_intake.CMDsetIndexVelocity( 2000),
       new WaitCommand(1),
       // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(30)),
       // new CMD_ElbowSetPosition(m_arm, Math.toRadians(45)),
       // new CMD_ShooterOff(m_shooter),
       m_intake.CMDsetIndexVelocity(0),
-      new CMD_ShooterOff(m_shooter)
+      new CMD_ShooterOff(m_shooter),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(70)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-5))
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(30)),
       // new CMD_ElbowSetPosition(m_arm, Math.toRadians(45)),
       // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-20))
       // new CMD_ElbowSetPosition(m_arm, )
-    ));
-
-    m_driverController.pov(180).onTrue(new SequentialCommandGroup(
-      m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(35)),
-      new CMD_ShoulderCheck(m_arm, 4.00),
-      m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
-      m_arm.CMDsetRHookPWM(HookConstants.RHookClose),
-      new WaitCommand(0.1),
-      // new CMD_ShoulderCheck(m_arm, Math.toRadians(0))
-        m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
-      // new CMD_ElbowSetPosition(m_arm, Math.toRadians(0)),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-30)),
-      new CMD_ShoulderCheck(m_arm, 4),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(65)),
-      new CMD_ElbowCheck(m_arm, 4),
-      // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(0)),
-      // new CMD_ShoulderCheck(m_arm, 4),
-      // new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(100)),
-      // new CMD_ElbowCheck(m_arm, 4),
-      // new CMD_ShoulderCheck(m_arm, Math.toRadians(0)),
-      // new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(70)),
-      // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
-      
-      // new CMD_ShoulderSetPosition(m_arm, Math.toRadians(15)),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
-      // new CMD_setShooterTrap(m_shooter,500),
-      // new CMD_ShooterOn(m_shooter),
-      new SequentialCommandGroup(
-        // new CMD_ShoulderCheck(m_arm, Math.toRadians(6)),
-        new WaitCommand(1),
-        // new CMD_ElbowSetPosition(m_arm, Math.toRadians(100))
-        new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(140))
-       
-      ),
-      new CMD_ShoulderCheck(m_arm, 2),
-      new WaitCommand(0.1)
       
     ));
 
@@ -377,7 +367,7 @@ public class RobotContainer {
     );
 
     m_operatorController.rightTrigger(.5).onTrue(new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 1900),
+      new CMD_setShooterSetpoint(m_shooter, 1000),
       new CMD_ShooterOn(m_shooter)
     ));
 

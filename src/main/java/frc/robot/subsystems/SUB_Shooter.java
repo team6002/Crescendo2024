@@ -100,6 +100,11 @@ public class SUB_Shooter extends SubsystemBase {
     return (Math.abs(getBotSetpoint() - getBotShooterVelocity()) < ShooterConstants.kShooterTolerance && Math.abs(getTopSetpoint() - getTopShooterVelocity()) < ShooterConstants.kShooterTolerance );
     
   }
+
+  public boolean getOverShooterSetpoint(){
+    return getBotShooterVelocity() >= getBotSetpoint() && getTopShooterVelocity() >= getTopSetpoint();
+  }
+
   /**turns on both shooters */
   public void enableShooter(){
     enableBotShooter();
@@ -128,6 +133,7 @@ public class SUB_Shooter extends SubsystemBase {
   public double getStockInterpolatedValue(){
     return m_stockInterpolatedValue;
   }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
@@ -140,6 +146,7 @@ public class SUB_Shooter extends SubsystemBase {
     // SmartDashboard.putNumber("Shooter Top Current", getTopShooterCurrent());
 
     SmartDashboard.putNumber("Shooter Bot Velocity", getBotShooterVelocity());
+    SmartDashboard.putBoolean("OverShooter", getOverShooterSetpoint());
     // SmartDashboard.putNumber("Shooter Bot Current", getBotShooterCurrent());
     // SmartDashboard.putNumber("Shooter Follower Current", m_botShooter.getFollowerCurrent());
 

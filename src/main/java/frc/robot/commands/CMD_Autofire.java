@@ -47,7 +47,8 @@ public class CMD_Autofire extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_shooter.disableShooter();
+    // m_shooter.disableShooter();
+    m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()))); 
     m_drivetrain.setShooterTarget();
     m_shot = false;
     m_closeShooting = false;
@@ -55,6 +56,7 @@ public class CMD_Autofire extends Command {
     m_shooterTimer.restart();
     m_altShooterTimer.restart();
     m_intialTimer.restart();  
+    m_intialTimer.start();
     m_shooterTimer.stop(); 
     if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) < 80){
       m_closeShooting = true;
@@ -76,11 +78,10 @@ public class CMD_Autofire extends Command {
         m_shooter.setBotPower(1);
         m_shooter.setTopPower(1);
       }else{
-        if (m_intialTimer.get() < 0.7 || m_shooterAtSetpoint){
+        if (m_intialTimer.get() < 0.5 || m_shooter.getOverShooterSetpoint()){
           m_shooter.setBotPower(1);  
           m_shooter.setTopPower(1);
-          m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-        
+          m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()))); 
         }else{
           if (!m_firingStarted){
             m_shooter.enableShooter();
@@ -127,7 +128,7 @@ public class CMD_Autofire extends Command {
   public void end(boolean interrupted) {
 
       if (m_variable.getContShooting()){
-        m_shooter.setShooterSetpoint(2000);
+        m_shooter.setShooterSetpoint(1250);
       }else{
         m_shooter.disableShooter();
       }

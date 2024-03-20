@@ -88,6 +88,7 @@ public class SUB_Intake extends SubsystemBase {
     // m_indexerPIDController = m_indexerMotor.getPIDController();
     m_indexerMotor.setIdleMode(IdleMode.kBrake);
     m_indexerMotor.setInverted(true);
+    // m_indexerMotor.follow(m_intakeMotor,true);
     m_indexerMotor.burnFlash();
   }
 
@@ -177,7 +178,7 @@ public class SUB_Intake extends SubsystemBase {
     // SmartDashboard.putNumber("Indexer Position", getIndexerPosition());
     SmartDashboard.putNumber("Indexer Velocity", getIndexerVelocity());
     SmartDashboard.putNumber("Intake Velocity", getIntakeVelocity());
-    // SmartDashboard.putBoolean("Indexer Sensor", getIndexerSensor());
+    SmartDashboard.putBoolean("Indexer Sensor", getIndexerSensor());
     // This method will be called once per scheduler run
     
   }
