@@ -184,7 +184,9 @@ public class SUB_Drivetrain extends SubsystemBase {
       m_AutoAlignTrapProfile = new TrapezoidProfile(m_AutoAlignConstraints);
       m_AutoAlignProfile = new ProfiledPIDController(DriveConstants.kAutoAlignP, DriveConstants.kAutoAlignI, DriveConstants.kAutoAlignD, m_AutoAlignConstraints);
       m_AutoAlignFF = new SimpleMotorFeedforward(DriveConstants.kAutoAlignS, DriveConstants.kAutoAlignV, DriveConstants.kAutoAlignA);
+      m_AutoAlignProfile.enableContinuousInput(-Math.PI, Math.PI);
   }
+
 
   
   // private double m_SwerveP = m_frontLeft.getSwerveP();
@@ -209,7 +211,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("Angle", getAngle());
     // SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
-    // SmartDashboard.putNumber("TargetXError", Units.metersToInches(calculateTargetXError()));
+    SmartDashboard.putNumber("TargetAng", angleToCurrentTarget().getDegrees());
     SmartDashboard.putNumber("TargetDistance", Units.metersToInches(calculateTargetDistance()));
     SmartDashboard.putNumber("TargX", Units.metersToInches(calculateTargetXError()));
     SmartDashboard.putNumber("TargY", Units.metersToInches(calculateTargetYError()));
@@ -582,16 +584,21 @@ public class SUB_Drivetrain extends SubsystemBase {
    */
   public double autoAlignTurn(){
     double CameraError = 0;
-
-    //Angle to target
+    double sideMod = 0;
+    if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red){
+      sideMod = 180;
+    }else{
+      sideMod = 0;
+    }//Angle to target
     // Rotation2d yAdjustment = new Rotation2d(calculateTargetYError() *0.1);
+    // .plus(new Rotation2d(Math.toRadians(sideMod))
     Rotation2d globalTargetAng = angleToCurrentTarget();
     // adjusts the target angle to better shoot from the side
     // Rotation2d adjustedTargetAng = new Rotation2d(globalTargetAng.getCos(), globalTargetAng.getSin() + (calculateTargetYError()*0.1));
 
     // Calculate difference between target angle and our current heading 
     Rotation2d wantedTurnAngle = getPose().getRotation().minus(globalTargetAng);
-    
+    // System.out.println(wantedTurnAngle.getDegrees());
     //The difference between our current pose and target in radians
     double targetError = wantedTurnAngle.getRadians();
     // SmartDashboard.putNumber("targetError", targetError);
@@ -628,6 +635,10 @@ public class SUB_Drivetrain extends SubsystemBase {
    */
   public double getAngle() {
     return Math.toDegrees(MathUtil.angleModulus(-Rotation2d.fromDegrees(m_gyro.getAngle()).getRadians())) + m_angleOffset;
+  }
+
+  public Rotation2d getRotation2D() {
+    return m_gyro.getRotation2d().plus(new Rotation2d(m_angleOffset));
   }
 
   /**

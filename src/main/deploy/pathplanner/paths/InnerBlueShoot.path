@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 14.100472422769533,
-        "y": 3.407078298950874
+        "x": 2.4253549759335664,
+        "y": 3.421763981273938
       },
       "prevControl": null,
       "nextControl": {
-        "x": 13.189960118739558,
-        "y": 2.452508947951707
+        "x": 3.0715249981483868,
+        "y": 2.525937359567027
       },
       "isLocked": false,
-      "linkedName": "InnerRed2"
+      "linkedName": "InnerBlue1"
     },
     {
       "anchor": {
-        "x": 10.429051842003505,
-        "y": 1.7182248317985018
+        "x": 5.568090993069286,
+        "y": 1.9531957489675267
       },
       "prevControl": {
-        "x": 11.545163698556378,
-        "y": 1.380454138368027
+        "x": 4.202322537024323,
+        "y": 1.879767337352207
       },
       "nextControl": {
-        "x": 9.689267626357733,
-        "y": 1.942106897059722
+        "x": 6.330645184782447,
+        "y": 1.9941932861564053
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.255570858190017,
-        "y": 4.097305368134887
+        "x": 8.04997130566712,
+        "y": 2.32033780704413
       },
       "prevControl": {
-        "x": 8.608027233943556,
-        "y": 2.6287371358284757
+        "x": 7.0072878607295666,
+        "y": 2.041309842905912
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "InnerRed3"
+      "linkedName": "InnerBlueShoot"
     }
   ],
   "rotationTargets": [],
@@ -55,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 141.1155035662854,
+    "rotation": 25.76932762433887,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "InnerRed",
+  "folder": "InnerBlue",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": -53.841814560191736,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -8,56 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.363441102553047,
-        "y": 2.393766218659451
+        "x": 14.820070856599674,
+        "y": 3.832963086319733
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 13.043103295508917,
-        "y": 1.4685682323064113
+        "x": 14.08578674044647,
+        "y": 3.4658210282431305
       },
       "prevControl": {
-        "x": 13.938415465307585,
-        "y": 1.754570730992097
-      },
-      "nextControl": {
-        "x": 11.985734168248301,
-        "y": 1.1307975388759368
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 10.928365040987686,
-        "y": 1.3510827737218982
-      },
-      "prevControl": {
-        "x": 11.574364125772455,
-        "y": 1.1590289917588594
-      },
-      "nextControl": {
-        "x": 9.84162454908094,
-        "y": 1.6741677848293084
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.47585609303598,
-        "y": 2.3350234893671944
-      },
-      "prevControl": {
-        "x": 9.518539537973531,
-        "y": 1.7475961964446294
+        "x": 14.673214033369032,
+        "y": 3.7154776277352206
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "InnerRed1"
+      "linkedName": "ShootRed1"
     }
   ],
   "rotationTargets": [],
@@ -71,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 151.8214098900409,
+    "rotation": -136.46880071438594,
     "rotateFast": false
   },
   "reversed": false,

@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 0.7952442380734501,
-      "y": 4.567247202472939
+      "y": 4.53787583782681
     },
-    "rotation": -60.04000000000002
+    "rotation": -59.5344550805401
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooter"
+            "name": "ReadyShooterMid"
           }
         },
         {
@@ -26,36 +26,36 @@
                 "data": {
                   "pathName": "InnerBlue1"
                 }
+              }
+            ]
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterCheck"
+                }
               },
               {
-                "type": "sequential",
+                "type": "named",
                 "data": {
-                  "commands": [
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 1.0
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Fire"
-                      }
-                    },
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.3
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "PickUp5"
-                      }
-                    }
-                  ]
+                  "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "InnerBlueShoot"
                 }
               }
             ]

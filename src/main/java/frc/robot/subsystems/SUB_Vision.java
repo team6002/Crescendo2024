@@ -56,8 +56,7 @@ public class SUB_Vision extends SubsystemBase {
                         VisionConstants.kTagLayout, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, camera, VisionConstants.kRobotToCam);
         photonEstimator.setMultiTagFallbackStrategy(PoseStrategy.LOWEST_AMBIGUITY);
 
-        // ----- Simulation
-   
+        camera.setDriverMode(false);
     }
 
     public PhotonPipelineResult getLatestResult() {

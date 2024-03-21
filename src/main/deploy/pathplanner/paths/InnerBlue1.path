@@ -8,90 +8,29 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5442140365497197,
-        "y": 3.4805067105661944
+        "x": 1.588271083518912,
+        "y": 3.8917058156119895
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.644266608747887,
-        "y": 2.1881666661365524
+        "x": 2.4253549759335664,
+        "y": 3.421763981273938
       },
       "prevControl": {
-        "x": 3.180647002767541,
-        "y": 2.390257263615165
-      },
-      "nextControl": {
-        "x": 4.217008219347387,
-        "y": 1.9385100666444628
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 5.538719628423157,
-        "y": 1.9091387019983346
-      },
-      "prevControl": {
-        "x": 4.363865042578027,
-        "y": 1.8944530196752714
-      },
-      "nextControl": {
-        "x": 6.537375986531668,
-        "y": 1.9216219064746902
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.04997130566712,
-        "y": 2.32033780704413
-      },
-      "prevControl": {
-        "x": 7.345058554160043,
-        "y": 2.0266241605828474
+        "x": 1.9994701885647073,
+        "y": 3.6273635337968355
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "InnerBlue1"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": -46.54414927257798,
-      "rotateFast": false
-    }
-  ],
-  "constraintZones": [
-    {
-      "name": "beginShot",
-      "minWaypointRelativePos": 0.0,
-      "maxWaypointRelativePos": 0.6000000000000001,
-      "constraints": {
-        "maxVelocity": 2.0,
-        "maxAcceleration": 1.3,
-        "maxAngularVelocity": 360.0,
-        "maxAngularAcceleration": 360.0
-      }
-    }
-  ],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    }
-  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.3,
     "maxAcceleration": 3.75,
@@ -100,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 25.76932762433887,
+    "rotation": -41.009086901570235,
     "rotateFast": false
   },
   "reversed": false,

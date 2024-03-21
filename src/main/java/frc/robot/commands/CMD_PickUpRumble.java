@@ -38,9 +38,11 @@ public class CMD_PickUpRumble extends Command {
         m_driverController.setRumble(RumbleType.kBothRumble, 0);
       }
     }else {
-      m_driverController.setRumble(RumbleType.kBothRumble, 0);
-      m_pickuptimer.restart();;
     }
+  if (m_pickuptimer.get() >= 1.5){
+    m_pickuptimer.restart();
+    m_driverController.setRumble(RumbleType.kBothRumble, 0);
+  }
   }
 
   // Called once the command ends or is interrupted.

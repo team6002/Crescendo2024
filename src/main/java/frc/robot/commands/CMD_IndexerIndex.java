@@ -31,7 +31,7 @@ public class CMD_IndexerIndex extends Command {
     m_intakerTimer.stop();
     m_indexerSpeed = 0.2;
     // m_intake.enableIndexerLimit(true);
-    m_intake.setIndexerPower(.6);
+    m_intake.setIndexerPower(.5);
     // m_intake.setIndexerVelocity(2400);
   }
 
@@ -56,7 +56,7 @@ public class CMD_IndexerIndex extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-      m_intake.setIndexerVelocity(-0.);
+      m_intake.setIndexerVelocity(0.);
       m_intake.setIntakePower(0);
   }
 

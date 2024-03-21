@@ -121,7 +121,6 @@ public class CMD_Autofire extends Command {
         m_shot = true;
       }
     }
-    SmartDashboard.putNumber("ShooterTimer", m_shooterTimer.get());
    }
   // Called once the command ends or is interrupted.
   @Override

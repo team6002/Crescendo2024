@@ -8,24 +8,40 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.040356091445636,
-        "y": 3.818277403996669
+        "x": 12.720018284401506,
+        "y": 2.2469093954288097
       },
       "isLocked": false,
       "linkedName": "ShootRed1"
     },
     {
       "anchor": {
-        "x": 13.894872870246635,
-        "y": 5.521816553472107
+        "x": 11.104593228864454,
+        "y": 1.7916532434138215
       },
       "prevControl": {
-        "x": 14.790699491953548,
-        "y": 5.448388141856785
+        "x": 12.372854177474402,
+        "y": 1.626227902290786
+      },
+      "nextControl": {
+        "x": 10.09128114857303,
+        "y": 1.9238243843213978
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.284942222836145,
+        "y": 2.4525089479517073
+      },
+      "prevControl": {
+        "x": 9.753510455142555,
+        "y": 2.055995525228976
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootRed2"
+      "linkedName": "InnerRedShoot"
     }
   ],
   "rotationTargets": [],
@@ -39,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 178.66778014613033,
+    "rotation": -14.875682001638808,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "ShootyRed",
+  "folder": "InnerRed",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": -132.13759477388834,
     "velocity": 0
   },
   "useDefaultConstraints": true

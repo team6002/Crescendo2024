@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 15.759954525275777,
-      "y": 4.611304249442131
+      "y": 4.581932884796002
     },
-    "rotation": -120.41108126712534
+    "rotation": -118.94578033722428
   },
   "command": {
     "type": "sequential",
@@ -14,19 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShooterCheck"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Fire"
+            "name": "ReadyShooterMid"
           }
         },
         {
@@ -34,15 +22,40 @@
           "data": {
             "commands": [
               {
+                "type": "path",
+                "data": {
+                  "pathName": "InnerRed1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
                 "type": "named",
                 "data": {
-                  "name": "PickUp5"
+                  "name": "ShooterCheck"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
                 }
               },
               {
                 "type": "path",
                 "data": {
-                  "pathName": "InnerRed1"
+                  "pathName": "InnerRedShoot"
                 }
               }
             ]
@@ -74,7 +87,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.1
+                  "waitTime": 0.3
                 }
               },
               {
@@ -131,7 +144,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.1
+                  "waitTime": 0.3
                 }
               },
               {
