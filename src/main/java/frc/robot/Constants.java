@@ -249,7 +249,7 @@ public final class Constants {
   public static final class ShooterConstants{
 
     public static final double kShooterEncoderResolution = 42;
-    public static final int kShooterCurrentLimit = 40;
+    public static final int kShooterCurrentLimit = 50;
 
     public static final double kShooterMaxVelocity = 6000;
     public static final double kShooterMaxAcceleration = 6000;
@@ -352,22 +352,22 @@ public final class Constants {
     public static final double[][] kShoulderArray = {
       {36, Math.toRadians(-45)},
       {50, Math.toRadians(-45)},  
-      {84, Math.toRadians(-39)}, 
-      {100, Math.toRadians(-36.7)}, 
-      {120, Math.toRadians(-33.25)}, 
-      {150, Math.toRadians(-28.75)},
-      {180, Math.toRadians(-28.)},
-      {240, Math.toRadians(-26.)},
-      {300, Math.toRadians(-25.9)},
+      {84, Math.toRadians(-39.2)}, 
+      {100, Math.toRadians(-36.9)}, 
+      {120, Math.toRadians(-33.45)}, 
+      {150, Math.toRadians(-28.95)},
+      {180, Math.toRadians(-28.2)},
+      {240, Math.toRadians(-26.1)},
+      {300, Math.toRadians(-26.)},
     };
 
   }
   
   public static final class HookConstants{
-    public static final double LHookClose = 0.9;
-    public static final double LHookOpen = 0.6;
+    public static final double LHookClose = 1;
+    public static final double LHookOpen = 0.55;
 
-    public static final double RHookClose = 0.1;
+    public static final double RHookClose = 0.2;
     public static final double RHookOpen = 0.4;
 
   }

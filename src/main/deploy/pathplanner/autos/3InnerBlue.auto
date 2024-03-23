@@ -51,11 +51,24 @@
                 "data": {
                   "waitTime": 0.3
                 }
-              },
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
               {
                 "type": "path",
                 "data": {
                   "pathName": "InnerBlueShoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp5"
                 }
               }
             ]

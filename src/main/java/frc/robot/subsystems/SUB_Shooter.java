@@ -146,7 +146,7 @@ public class SUB_Shooter extends SubsystemBase {
     // SmartDashboard.putNumber("Shooter Top Current", getTopShooterCurrent());
 
     SmartDashboard.putNumber("Shooter Bot Velocity", getBotShooterVelocity());
-    SmartDashboard.putBoolean("OverShooter", getOverShooterSetpoint());
+    // SmartDashboard.putBoolean("OverShooter", getOverShooterSetpoint());
     // SmartDashboard.putNumber("Shooter Bot Current", getBotShooterCurrent());
     // SmartDashboard.putNumber("Shooter Follower Current", m_botShooter.getFollowerCurrent());
 

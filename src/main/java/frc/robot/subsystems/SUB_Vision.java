@@ -57,6 +57,8 @@ public class SUB_Vision extends SubsystemBase {
         photonEstimator.setMultiTagFallbackStrategy(PoseStrategy.LOWEST_AMBIGUITY);
 
         camera.setDriverMode(false);
+        camera.setDriverMode(false);
+        camera.setPipelineIndex(0);
     }
 
     public PhotonPipelineResult getLatestResult() {

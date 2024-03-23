@@ -19,6 +19,7 @@ public class CMD_Drive extends Command {
   double x = 0;           //variable for side to side movement
   double rot = 0;        //variable for turning mo vement
   double sideMod = 1; // variable for which side is the robot on
+  boolean m_autoSlew;
   public CMD_Drive(SUB_Drivetrain p_drivetrain, CommandXboxController p_controller, SUB_GlobalVariables p_variable) {
     m_drivetrain = p_drivetrain;
     m_controller = p_controller;
@@ -44,11 +45,13 @@ public class CMD_Drive extends Command {
     double autoRot = m_drivetrain.autoAlignTurn();
     if (m_variables.getAutofire()){
       rot = autoRot;
+      m_autoSlew = true;
     }else{
       rot = MathUtil.applyDeadband(m_controller.getRightX(), deadzone);
+      m_autoSlew = false;
     }
     // System.out.println(m_drivetrain.autoAlignTurn(m_drivetrain.calculateTargetAngle()));
-    m_drivetrain.drive( xSpeed, ySpeed, rot,true, true);
+    m_drivetrain.drive( xSpeed, ySpeed, rot,true, m_autoSlew);
   }
 
   // private static double modifyAxis(double value) {

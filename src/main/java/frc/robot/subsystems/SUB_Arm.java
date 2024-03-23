@@ -173,8 +173,8 @@ public class SUB_Arm extends SubsystemBase {
     public void periodic() {
         
 
-        SmartDashboard.putNumber("ElbowOffset", ElbowOffset);
-        SmartDashboard.putNumber("ShoulderOffset", ShoulderOffset);
+        // SmartDashboard.putNumber("ElbowOffset", ElbowOffset);
+        // SmartDashboard.putNumber("ShoulderOffset", ShoulderOffset);
 
         SmartDashboard.putBoolean("ShoulderFin", m_shoulder.atGoal());
         SmartDashboard.putBoolean("ElbowFin", m_elbow.atGoal());

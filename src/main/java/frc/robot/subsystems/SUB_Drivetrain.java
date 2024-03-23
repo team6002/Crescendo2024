@@ -211,10 +211,10 @@ public class SUB_Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("Angle", getAngle());
     // SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
-    SmartDashboard.putNumber("TargetAng", angleToCurrentTarget().getDegrees());
-    SmartDashboard.putNumber("TargetDistance", Units.metersToInches(calculateTargetDistance()));
-    SmartDashboard.putNumber("TargX", Units.metersToInches(calculateTargetXError()));
-    SmartDashboard.putNumber("TargY", Units.metersToInches(calculateTargetYError()));
+    // SmartDashboard.putNumber("TargetAng", angleToCurrentTarget().getDegrees());
+    // SmartDashboard.putNumber("TargetDistance", Units.metersToInches(calculateTargetDistance()));
+    // SmartDashboard.putNumber("TargX", Units.metersToInches(calculateTargetXError()));
+    // SmartDashboard.putNumber("TargY", Units.metersToInches(calculateTargetYError()));
     // SmartDashboard.putNumber("XVelocity", getXVelocity());
     // SmartDashboard.putNumber("YVelocity", getYVelocity());
     // SmartDashboard.putBoolean("SeeTarget", visionEst.isPresent());
@@ -339,7 +339,7 @@ public class SUB_Drivetrain extends SubsystemBase {
       if (m_currentTranslationMag != 0.0) {
         directionSlewRate = Math.abs(DriveConstants.kDirectionSlewRate / m_currentTranslationMag);
       } else {
-        directionSlewRate = 500.0; //some high number that means the slew rate is effectively instantaneous
+        directionSlewRate = 600.0; //some high number that means the slew rate is effectively instantaneous
       }
       
 
@@ -583,35 +583,14 @@ public class SUB_Drivetrain extends SubsystemBase {
    * @return: rotation power for drivetrain from -0.5 to 0.5
    */
   public double autoAlignTurn(){
-    double CameraError = 0;
-    double sideMod = 0;
-    if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red){
-      sideMod = 180;
-    }else{
-      sideMod = 0;
-    }//Angle to target
-    // Rotation2d yAdjustment = new Rotation2d(calculateTargetYError() *0.1);
-    // .plus(new Rotation2d(Math.toRadians(sideMod))
     Rotation2d globalTargetAng = angleToCurrentTarget();
-    // adjusts the target angle to better shoot from the side
-    // Rotation2d adjustedTargetAng = new Rotation2d(globalTargetAng.getCos(), globalTargetAng.getSin() + (calculateTargetYError()*0.1));
-
+    
     // Calculate difference between target angle and our current heading 
     Rotation2d wantedTurnAngle = getPose().getRotation().minus(globalTargetAng);
-    // System.out.println(wantedTurnAngle.getDegrees());
     //The difference between our current pose and target in radians
     double targetError = wantedTurnAngle.getRadians();
-    // SmartDashboard.putNumber("targetError", targetError);
     
-    //target angle as detect by the Camera
-    var visionEst = m_vision.getEstimatedGlobalPose();
-    if (visionEst.isPresent()){
-      // CameraError = m_vision.getTargetYaw(0);
-    }
-    // double f = Math.copySign(DriveConstants.kAutoAlignF, targetError);
-
-    // m_AutoAlignProfile.calculate(, null, m_AutoAlignConstraints)
-    if (Math.abs(targetError) <= Math.toRadians(2) && Math.abs(CameraError) <= 1){
+    if (Math.abs(targetError) <= Math.toRadians(1)){
       return 0;
     }
     // variable tolerance for different distances
@@ -620,9 +599,6 @@ public class SUB_Drivetrain extends SubsystemBase {
     } else{
       onTarget = false;
     }
-    // return MathUtil.clamp(p + f, -0.5, 0.5);
-    // SmartDashboard.putNumber("TargetAngle", globalTargetAng.getDegrees());
-    // m_AutoAlignTrapProfile.calculate(0.02, new TrapezoidProfile.State(Math.toRadians(getAngle()), Math.toRadians(getTurnRate())), new TrapezoidProfile.State(globalTargetAng.getRadians(), 0));
     return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()), globalTargetAng.getRadians());
   }
 

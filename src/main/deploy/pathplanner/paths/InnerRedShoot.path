@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 14.08578674044647,
-        "y": 3.4658210282431305
+        "x": 14.326057947890545,
+        "y": 3.2519219968017405
       },
       "prevControl": null,
       "nextControl": {
-        "x": 12.720018284401506,
-        "y": 2.2469093954288097
+        "x": 12.960289491845582,
+        "y": 2.0330103639874197
       },
       "isLocked": false,
-      "linkedName": "ShootRed1"
+      "linkedName": "InnerRed1"
     },
     {
       "anchor": {
@@ -55,7 +55,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -14.875682001638808,
+    "rotation": 164.29136217098426,
     "rotateFast": false
   },
   "reversed": false,

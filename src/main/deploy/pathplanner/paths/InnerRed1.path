@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 14.08578674044647,
-        "y": 3.4658210282431305
+        "x": 14.326057947890545,
+        "y": 3.2519219968017405
       },
       "prevControl": {
-        "x": 14.673214033369032,
-        "y": 3.7154776277352206
+        "x": 14.788553520769014,
+        "y": 3.5409817298507846
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootRed1"
+      "linkedName": "InnerRed1"
     }
   ],
   "rotationTargets": [],

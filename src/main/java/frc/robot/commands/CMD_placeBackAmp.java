@@ -23,6 +23,9 @@ public class CMD_placeBackAmp extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
+      
+      new CMD_setShooterTrap(p_shooter, 1500),
+      new CMD_ShooterOn(p_shooter),
       new CMD_ShoulderSetPosition(p_arm, Math.toRadians(-10)),
       new WaitCommand(0.05),
       new CMD_ElbowSetPosition(p_arm, Math.toRadians(87)),
