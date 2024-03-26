@@ -5,11 +5,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.units.Unit;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants.ElbowConstants;
 import frc.robot.subsystems.SUB_Arm;
 import frc.robot.subsystems.SUB_Drivetrain;
 import frc.robot.subsystems.SUB_GlobalVariables;
@@ -63,7 +60,6 @@ public class CMD_Autofire extends Command {
     }else{
       m_closeShooting = false;
     }
-    System.out.println(m_closeShooting);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -78,17 +74,17 @@ public class CMD_Autofire extends Command {
         m_shooter.setBotPower(1);
         m_shooter.setTopPower(1);
       }else{
-        if (m_intialTimer.get() < 0.5 || m_shooter.getOverShooterSetpoint()){
-          m_shooter.setBotPower(1);  
-          m_shooter.setTopPower(1);
-          m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()))); 
-        }else{
+        // if (m_intialTimer.get() < 0.5 || m_shooter.getOverShooterSetpoint()){
+        //   m_shooter.setBotPower(1);  
+        //   m_shooter.setTopPower(1);
+        //   m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()))); 
+        // }else{
           if (!m_firingStarted){
             m_shooter.enableShooter();
             m_firingStarted = true;
           }
           m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-        }
+        // }
       }
 
       if (m_closeShooting){

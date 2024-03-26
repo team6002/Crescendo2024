@@ -43,6 +43,7 @@ import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
 import org.photonvision.targeting.PhotonPipelineResult;
+import org.photonvision.targeting.PhotonTrackedTarget;
 
 public class SUB_Vision extends SubsystemBase {
     private final PhotonCamera camera;
@@ -130,21 +131,14 @@ public class SUB_Vision extends SubsystemBase {
         return 
         new Rotation2d(Math.toRadians(180)).plus(getLatestResult().getBestTarget().getBestCameraToTarget().getRotation().toRotation2d()).getDegrees();
     }   
-    // // returns the angle from a facing pov
-    // public double getTargetAngle(){
-    // }
-    // @Override
-    // public void periodic() {
-    // var visionEst = getEstimatedGlobalPose();
-    // visionEst.ifPresent(
-    //         est -> {
-    //             var estPose = est.estimatedPose.toPose2d();
-                // Change our trust in the measurement based on the tags we can see
-                // var estStdDevs = getEstimationStdDevs(estPose);
-
-                // drivetrain.addVisionMeasurement(
-                //         est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
-    //         });
-    // }
-
+    //only gets the yaw of target 7 or 4
+    public double getTargetingYaw(){
+        double targetYaw = 0;
+        for(PhotonTrackedTarget target : getLatestResult().getTargets()){
+            if(target.getFiducialId() == 4 || target.getFiducialId() == 7){
+                targetYaw = target.getYaw();
+            }else continue;
+        }
+        return targetYaw;
+    }
 }

@@ -45,7 +45,8 @@ public class CMD_Drive extends Command {
     double autoRot = m_drivetrain.autoAlignTurn();
     if (m_variables.getAutofire()){
       rot = autoRot;
-      m_autoSlew = true;
+      // m_autoSlew = true;
+      m_autoSlew = false;
     }else{
       rot = MathUtil.applyDeadband(m_controller.getRightX(), deadzone);
       m_autoSlew = false;

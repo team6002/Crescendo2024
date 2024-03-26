@@ -253,14 +253,20 @@ public class RobotContainer {
     // m_driverController.rightBumper().onTrue(new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-44)));
 
     m_driverController.leftBumper().onTrue(getIntakeCommand);
-    m_driverController.rightBumper().onTrue(new ConditionalCommand(
-      getDropCommand, 
-      getOutputCommand,
-      ReadyDrop
-      ));
+    m_driverController.rightBumper().onTrue(new CMD_ShootSpeaker(m_arm, m_shooter, m_intake, m_variables, m_drivetrain));
 
     m_driverController.y().onTrue(new CMD_StockFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables));
     // eject
+    m_driverController.x().onTrue(new SequentialCommandGroup(
+       new CMD_setShooterSetpoint(m_shooter, 1800),
+      // new CMD_ShooterOn(m_shooter),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(10)),
+      new CMD_ElbowCheck(m_arm, 2),
+      new CMD_ShoulderCheck(m_arm, 2),
+      new CMD_IndexerSetPower(m_intake, .7)
+    ));
+    
     m_driverController.b().onTrue(new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, -1000),
       m_intake.CMDsetIndexPower(-3000),
@@ -322,21 +328,22 @@ public class RobotContainer {
 
     ));
 
-    m_driverController.a().onTrue(new SequentialCommandGroup(
-      m_variables.CMDsetReadyDrop(false),
-      m_variables.CMDsetAutofire(false),
-      m_arm.CMDsetShoulderConstraints(ShoulderConstants.kNormalConstaints),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
-      // new CMD_ShoulderCheck(m_arm, Math.toRadians(-45)),
-      new CMD_ElbowSetPosition(m_arm, Math.toRadians(15)),
-      new CMD_ShooterOff(m_shooter),
-      m_intake.CMDsetIndexVelocity(0),
-      new CMD_GroundIntakeSetPower(m_intake, 0)
-    ));
+    m_driverController.start().onTrue(
+      new CMD_Home(m_arm, m_intake, m_shooter, m_variables)
+    );
     
-    m_driverController.leftTrigger().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.SOURCE));
-    // Path find to the color correct amp from any position on the field
-    m_driverController.rightTrigger().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.AMP));
+    m_driverController.rightTrigger(.5).onTrue(
+      // new CMD_placeBackAmp(m_arm, m_shooter, m_intake)
+      new PrintCommand("PP")
+    );
+    m_driverController.rightTrigger(.5).onFalse(new SequentialCommandGroup(
+      // new CMD_dropBackAmp(m_arm, m_shooter, m_intake),
+      // m_variables.CMDsetHasItem(false),
+      // new CMD_Home(m_arm, m_intake, m_shooter, m_variables)
+      new PrintCommand("Poopoo")
+    ));
+
+    m_driverController.leftTrigger().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.AMP));
 
     m_operatorController.a().onTrue(new CMD_ManFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables));
     
@@ -355,19 +362,10 @@ public class RobotContainer {
     );
 
     m_operatorController.rightTrigger(.5).onTrue(new SequentialCommandGroup(
-      new CMD_setShooterSetpoint(m_shooter, 1250),
+      new CMD_setShooterSetpoint(m_shooter, 2050),
       new CMD_ShooterOn(m_shooter)
     ));
 
-    m_operatorController.povUp().onTrue(new SequentialCommandGroup(
-      m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
-      m_arm.CMDsetRHookPWM(HookConstants.RHookClose)
-    ));
-
-    m_operatorController.povDown().onTrue(new SequentialCommandGroup(
-      m_arm.CMDsetLHookPWM(HookConstants.LHookOpen),
-      m_arm.CMDsetRHookPWM(HookConstants.RHookOpen)
-    ));
     
   }
 

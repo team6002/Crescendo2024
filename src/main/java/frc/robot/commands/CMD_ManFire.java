@@ -48,17 +48,15 @@ public class CMD_ManFire extends Command {
   @Override
   public void execute() {
     if (!m_firingStarted){
-      // m_shooter.enableShooter();
-      m_shooter.setBotPower(1);
-      m_shooter.setTopPower(1);
+      m_shooter.enableShooter();
       m_firingStarted = true;
     }
-    m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-      m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
-      m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
+    m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(120));
+      m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(120));
+      m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(120));
     // if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint() && m_drivetrain.getOnTarget()){
     // }
-    if (m_arm.atShoulderGoal() && m_arm.atElbowGoal()){
+    if (m_arm.atShoulderGoal() && m_arm.atElbowGoal() && m_shooter.getAtShooterSetpoint()){
       m_shooterTimer.start();
     }else{
       m_shooterTimer.stop();

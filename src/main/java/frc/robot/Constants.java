@@ -98,7 +98,7 @@ public final class Constants {
 
     public static final boolean kGyroReversed = false;
 
-    public static final double kAutoAlignMaxAccel = 1;
+    public static final double kAutoAlignMaxAccel = 1.25;
     public static final double kAutoAlignMaxVelo = 1;
     
     public static final double kAutoAlignP = 0.5;
@@ -353,11 +353,11 @@ public final class Constants {
       {36, Math.toRadians(-45)},
       {50, Math.toRadians(-45)},  
       {84, Math.toRadians(-39.2)}, 
-      {100, Math.toRadians(-36.9)}, 
-      {120, Math.toRadians(-33.45)}, 
-      {150, Math.toRadians(-28.95)},
-      {180, Math.toRadians(-28.2)},
-      {240, Math.toRadians(-26.1)},
+      {100, Math.toRadians(-36.7)}, 
+      {120, Math.toRadians(-33.25)}, 
+      {150, Math.toRadians(-29.3)},
+      {180, Math.toRadians(-28.3)},
+      {240, Math.toRadians(-26.0)},
       {300, Math.toRadians(-26.)},
     };
 
@@ -435,14 +435,14 @@ public final class Constants {
   }
 
   public static final class LocationConstants{
-    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(215));
-    public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(215));
+    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(218));
+    public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(218));
   
-    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(8), Units.inchesToMeters(215));
-    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(8), Units.inchesToMeters(215));
+    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(8), Units.inchesToMeters(218));
+    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(8), Units.inchesToMeters(218));
     // the location in which we shoot at to stage it.
-    public static final Pose2d StageBlue = new Pose2d( 1.9,6.5, Rotation2d.fromDegrees(-90));
-    public static final Pose2d StageRed = new Pose2d( 14.8,6.5, Rotation2d.fromDegrees(-90));
+    public static final Pose2d StageBlue = new Pose2d( 0.9,6.5, Rotation2d.fromDegrees(-90));
+    public static final Pose2d StageRed = new Pose2d( 15.8,6.5, Rotation2d.fromDegrees(-90));
     
     public static final Pose2d SubwooferBlue = new Pose2d( 1.2,5.4, Rotation2d.fromDegrees(0));
     public static final Pose2d AmpBlue = new Pose2d( 1.9,7.8, Rotation2d.fromDegrees(-90));
