@@ -18,44 +18,37 @@
           }
         },
         {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShooterCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              }
-            ]
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed1"
+                  "pathName": "ShootBlue1"
                 }
               },
               {
                 "type": "sequential",
                 "data": {
                   "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "ShooterCheck"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Fire"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.2
+                      }
+                    },
                     {
                       "type": "named",
                       "data": {
@@ -106,7 +99,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed2"
+                  "pathName": "ShootBlue2"
                 }
               },
               {
@@ -156,7 +149,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed3"
+                  "pathName": "ShootBlue3"
                 }
               },
               {
@@ -206,7 +199,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed4"
+                  "pathName": "ShootBlue4"
                 }
               },
               {
@@ -225,7 +218,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed5"
+                  "pathName": "ShootBlue5"
                 }
               },
               {
@@ -258,7 +251,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "ShootRed6"
+            "pathName": "ShootBlue6"
           }
         }
       ]

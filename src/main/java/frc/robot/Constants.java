@@ -258,27 +258,27 @@ public final class Constants {
 
     // public static final double kShooterBotP = 0.01;//0.005;
     // public static final double kShooterBotP = 0.0079;//0.005;
-    public static final double kShooterBotP = 0.005;//0.0085;//0.005;
+    public static final double kShooterBotP = 0.008;//0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
-    public static final double kShooterBotD = 0.00003;//0.0005
+    public static final double kShooterBotD = 0.0009;//0.0005
     public static final double kShooterBotFF = 0.0000;
 
     public static final double kShooterBotSVolts = 0.00002;
     public static final double kBotVVoltSecondsPerRotation = 0.0022;
     public static final double kShooterBotA = 0.1;
 
-    public static final double kShooterTopP = 0.005;//0.0077;//0.005;
+    public static final double kShooterTopP = 0.009;//0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
-    public static final double kShooterTopD = 0.00003;//0.0005
+    public static final double kShooterTopD = 0.0009;//0.0005
     public static final double kShooterTopFF = 0.0;
 
-    public static final double kShooterTopSVolts = 0.00001;//0.7;
+    public static final double kShooterTopSVolts = 0.00002;//0.7;
     public static final double kTopVVoltSecondsPerRotation = 0.0022;//0.0022;
     public static final double kShooterTopA = 0.1;
 
     public static final double kShooterFreeSpeed = 5675;
     public static final double kShooterTargetSpeed = -500;
-    public static final double kShooterTolerance = 100;
+    public static final double kShooterTolerance = 50;
 
     
     public static final double kShootVelocity = 4000;
@@ -352,10 +352,10 @@ public final class Constants {
     public static final double[][] kShoulderArray = {
       {36, Math.toRadians(-45)},
       {50, Math.toRadians(-45)},  
-      {84, Math.toRadians(-39.2)}, 
-      {100, Math.toRadians(-36.7)}, 
-      {120, Math.toRadians(-33.25)}, 
-      {150, Math.toRadians(-29.3)},
+      {84, Math.toRadians(-41.2)}, 
+      {100, Math.toRadians(-38)}, 
+      {120, Math.toRadians(-35.)}, 
+      {150, Math.toRadians(-31.)},
       {180, Math.toRadians(-28.3)},
       {240, Math.toRadians(-26.0)},
       {300, Math.toRadians(-26.)},

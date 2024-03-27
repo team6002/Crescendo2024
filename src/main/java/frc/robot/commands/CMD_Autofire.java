@@ -87,17 +87,17 @@ public class CMD_Autofire extends Command {
         // }
       }
 
-      if (m_closeShooting){
-        m_altShooterTimer.start();
-        if (m_altShooterTimer.get() > 0.8 && m_elbowAtSetpoint && m_shoulderAtSetpoint){
-          m_shooterTimer.start();
-          // m_intake.setIndexerVelocity(4000);
-          m_intake.setIndexerPower(1);
-            // System.out.println("SHOT");
-        }
-      }else{
-        m_altShooterTimer.reset();
-      }
+      // if (m_closeShooting){
+      //   m_altShooterTimer.start();
+      //   if (m_altShooterTimer.get() > 0.8 && m_elbowAtSetpoint && m_shoulderAtSetpoint){
+      //     m_shooterTimer.start();
+      //     // m_intake.setIndexerVelocity(4000);
+      //     m_intake.setIndexerPower(1);
+      //       // System.out.println("SHOT");
+      //   }
+      // }else{
+      //   m_altShooterTimer.reset();
+      // }
 
       m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
       m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
@@ -121,7 +121,9 @@ public class CMD_Autofire extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
+      System.out.println("Top" + m_shooter.getTopShooterVelocity());
+      System.out.println("Bot" + m_shooter.getBotShooterVelocity());
+      System.out.println("Shoulder" + Math.toDegrees(m_arm.getShoulderPosition()));
       if (m_variable.getContShooting()){
         m_shooter.setShooterSetpoint(1250);
       }else{

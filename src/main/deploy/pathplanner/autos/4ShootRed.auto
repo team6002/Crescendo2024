@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.319384055583853,
+      "x": 1.2505003900884375,
       "y": 5.345588365595336
     },
-    "rotation": 180.0
+    "rotation": 0.38452965958452373
   },
   "command": {
     "type": "sequential",
@@ -15,6 +15,31 @@
           "type": "named",
           "data": {
             "name": "ReadyShooterStart"
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterCheck"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
           }
         },
         {
@@ -31,24 +56,6 @@
                 "type": "sequential",
                 "data": {
                   "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "ShooterCheck"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Fire"
-                      }
-                    },
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.2
-                      }
-                    },
                     {
                       "type": "named",
                       "data": {

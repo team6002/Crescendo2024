@@ -28,6 +28,7 @@ public class CMD_FloorIntake extends SequentialCommandGroup {
         // new CMD_GroundIntakeForwardCool(p_intake, 4000),
         new CMD_GroundIntakeSetPower(p_intake, .5),
         new CMD_IndexerIndex(p_intake),
+        new CMD_PrepShot(p_intake),
         // new CMD_GroundIntakeSetVelocity(p_intake, 0),
         p_variables.CMDsetHasItem(true)
       )

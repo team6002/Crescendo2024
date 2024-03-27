@@ -104,60 +104,60 @@ public class SUB_BotShooter extends PIDSubsystem {
     m_shooterBotMotor.set(p_power);
   }
   
-  // private double m_ShooterP = ShooterConstants.kShooterBotP;
-  // private double m_ShooterI = ShooterConstants.kShooterBotI;
-  // private double m_ShooterD = ShooterConstants.kShooterBotD;
-  // private double m_ShooterFF = ShooterConstants.kShooterBotFF;
-  // private double m_ShooterS = ShooterConstants.kShooterBotSVolts;
-  // private double m_ShooterVV = ShooterConstants.kBotVVoltSecondsPerRotation;
-  // private double m_ShooterWantedVelocity = 0;
+  private double m_ShooterP = ShooterConstants.kShooterBotP;
+  private double m_ShooterI = ShooterConstants.kShooterBotI;
+  private double m_ShooterD = ShooterConstants.kShooterBotD;
+  private double m_ShooterFF = ShooterConstants.kShooterBotFF;
+  private double m_ShooterS = ShooterConstants.kShooterBotSVolts;
+  private double m_ShooterVV = ShooterConstants.kBotVVoltSecondsPerRotation;
+  private double m_ShooterWantedVelocity = 0;
 
-  // public void ShooterBotPIDTuning(){
-  //   if (firstPIDTesting){
-  //     SmartDashboard.putNumber("ShooterP", m_ShooterP);
-  //     SmartDashboard.putNumber("ShooterI", m_ShooterI);
-  //     SmartDashboard.putNumber("ShooterD", m_ShooterD);
-  //     SmartDashboard.putNumber("ShooterFF", m_ShooterFF);
-  //     SmartDashboard.putNumber("ShooterS", m_ShooterS);
-  //     SmartDashboard.putNumber("ShooterVV", m_ShooterVV);
-  //     SmartDashboard.putNumber("ShooterWantedVelocity", 0);
+  public void ShooterBotPIDTuning(){
+    if (firstPIDTesting){
+      SmartDashboard.putNumber("ShooterP", m_ShooterP);
+      SmartDashboard.putNumber("ShooterI", m_ShooterI);
+      SmartDashboard.putNumber("ShooterD", m_ShooterD);
+      SmartDashboard.putNumber("ShooterFF", m_ShooterFF);
+      SmartDashboard.putNumber("ShooterS", m_ShooterS);
+      SmartDashboard.putNumber("ShooterVV", m_ShooterVV);
+      SmartDashboard.putNumber("ShooterWantedVelocity", 0);
 
-  //     firstPIDTesting = false;
-  //   }
+      firstPIDTesting = false;
+    }
   
-  //   double m_ShooterP_ = SmartDashboard.getNumber("ShooterP", m_ShooterP);
-  //   double m_ShooterI_ = SmartDashboard.getNumber("ShooterI", m_ShooterI);
-  //   double m_ShooterD_ = SmartDashboard.getNumber("ShooterD", m_ShooterD);
-  //   double m_ShooterFF_ = SmartDashboard.getNumber("ShooterFF", m_ShooterFF);
-  //   double m_ShooterS_ = SmartDashboard.getNumber("ShooterS", m_ShooterS);
-  //   double m_ShooterVV_ = SmartDashboard.getNumber("ShooterVV", m_ShooterVV);
-  //   double m_ShooterWantedVelocity_ = SmartDashboard.getNumber("ShooterWantedVelocity", m_ShooterWantedVelocity);
-  //   if (m_ShooterP_ != m_ShooterP || m_ShooterI_ != m_ShooterI
-  //       || m_ShooterD_ != m_ShooterD || m_ShooterFF_ != m_ShooterFF
-  //       || m_ShooterWantedVelocity != m_ShooterWantedVelocity_
-  //       || m_ShooterS != m_ShooterS_ || m_ShooterVV != m_ShooterVV_){
+    double m_ShooterP_ = SmartDashboard.getNumber("ShooterP", m_ShooterP);
+    double m_ShooterI_ = SmartDashboard.getNumber("ShooterI", m_ShooterI);
+    double m_ShooterD_ = SmartDashboard.getNumber("ShooterD", m_ShooterD);
+    double m_ShooterFF_ = SmartDashboard.getNumber("ShooterFF", m_ShooterFF);
+    double m_ShooterS_ = SmartDashboard.getNumber("ShooterS", m_ShooterS);
+    double m_ShooterVV_ = SmartDashboard.getNumber("ShooterVV", m_ShooterVV);
+    double m_ShooterWantedVelocity_ = SmartDashboard.getNumber("ShooterWantedVelocity", m_ShooterWantedVelocity);
+    if (m_ShooterP_ != m_ShooterP || m_ShooterI_ != m_ShooterI
+        || m_ShooterD_ != m_ShooterD || m_ShooterFF_ != m_ShooterFF
+        || m_ShooterWantedVelocity != m_ShooterWantedVelocity_
+        || m_ShooterS != m_ShooterS_ || m_ShooterVV != m_ShooterVV_){
       
-  //     m_ShooterP = m_ShooterP_;
-  //     m_ShooterI = m_ShooterI_;
-  //     m_ShooterD = m_ShooterD_;
-  //     m_ShooterFF = m_ShooterFF_;
-  //     m_ShooterS = m_ShooterS_;
-  //     m_ShooterVV = m_ShooterVV_; 
-  //     m_ShooterWantedVelocity = m_ShooterWantedVelocity_;
-  //     m_shooterFeedforward = new SimpleMotorFeedforward(m_ShooterS, m_ShooterVV);  
-  //     m_controller.setP(m_ShooterP);
-  //     m_controller.setI(m_ShooterI);
-  //     m_controller.setD(m_ShooterD);
-  //     setSetpoint(m_ShooterWantedVelocity);
-  //     SmartDashboard.putNumber("ShooterP", m_ShooterP);
-  //     SmartDashboard.putNumber("ShooterI", m_ShooterI);
-  //     SmartDashboard.putNumber("ShooterD", m_ShooterD);
-  //     SmartDashboard.putNumber("ShooterFF", m_ShooterFF);
-  //     SmartDashboard.putNumber("ShooterS", m_ShooterS);
-  //     SmartDashboard.putNumber("ShooterVV", m_ShooterVV);
-  //     SmartDashboard.putNumber("ShooterWantedVelocity", m_ShooterWantedVelocity);
-  //   }
-  // }
+      m_ShooterP = m_ShooterP_;
+      m_ShooterI = m_ShooterI_;
+      m_ShooterD = m_ShooterD_;
+      m_ShooterFF = m_ShooterFF_;
+      m_ShooterS = m_ShooterS_;
+      m_ShooterVV = m_ShooterVV_; 
+      m_ShooterWantedVelocity = m_ShooterWantedVelocity_;
+      m_shooterFeedforward = new SimpleMotorFeedforward(m_ShooterS, m_ShooterVV);  
+      m_controller.setP(m_ShooterP);
+      m_controller.setI(m_ShooterI);
+      m_controller.setD(m_ShooterD);
+      setSetpoint(m_ShooterWantedVelocity);
+      SmartDashboard.putNumber("ShooterP", m_ShooterP);
+      SmartDashboard.putNumber("ShooterI", m_ShooterI);
+      SmartDashboard.putNumber("ShooterD", m_ShooterD);
+      SmartDashboard.putNumber("ShooterFF", m_ShooterFF);
+      SmartDashboard.putNumber("ShooterS", m_ShooterS);
+      SmartDashboard.putNumber("ShooterVV", m_ShooterVV);
+      SmartDashboard.putNumber("ShooterWantedVelocity", m_ShooterWantedVelocity);
+    }
+  }
 
   // @Override
   // public void periodic() {

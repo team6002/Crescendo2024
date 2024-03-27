@@ -60,7 +60,7 @@ public class RobotContainer {
   // The robot's subsystems
   private final SUB_Vision m_vision = new SUB_Vision();
   private final SUB_Drivetrain m_drivetrain = new SUB_Drivetrain(m_vision);
-  private final AUTO_Trajectories m_trajectories = new AUTO_Trajectories(m_drivetrain);
+  // private final AUTO_Trajectories m_trajectories = new AUTO_Trajectories();
   private final SUB_Intake m_intake = new SUB_Intake();
   // private final SUB_Shooter m_shooter = new SUB_Shooter();
   private final SUB_BotShooter m_botShooter = new SUB_BotShooter();
@@ -252,7 +252,7 @@ public class RobotContainer {
     // m_driverController.leftBumper().onTrue(new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-4.8)));
     // m_driverController.rightBumper().onTrue(new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-44)));
 
-    m_driverController.leftBumper().onTrue(getIntakeCommand);
+    m_driverController.leftBumper().onTrue(new CMD_FloorIntake(m_variables, m_arm, m_intake));
     m_driverController.rightBumper().onTrue(new CMD_ShootSpeaker(m_arm, m_shooter, m_intake, m_variables, m_drivetrain));
 
     m_driverController.y().onTrue(new CMD_StockFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables));
@@ -333,14 +333,14 @@ public class RobotContainer {
     );
     
     m_driverController.rightTrigger(.5).onTrue(
-      // new CMD_placeBackAmp(m_arm, m_shooter, m_intake)
-      new PrintCommand("PP")
+      new CMD_placeBackAmp(m_arm, m_shooter, m_intake)
+      // new PrintCommand("PP")
     );
     m_driverController.rightTrigger(.5).onFalse(new SequentialCommandGroup(
-      // new CMD_dropBackAmp(m_arm, m_shooter, m_intake),
-      // m_variables.CMDsetHasItem(false),
-      // new CMD_Home(m_arm, m_intake, m_shooter, m_variables)
-      new PrintCommand("Poopoo")
+      new CMD_dropBackAmp(m_arm, m_shooter, m_intake),
+      m_variables.CMDsetHasItem(false),
+      new CMD_Home(m_arm, m_intake, m_shooter, m_variables)
+      // new PrintCommand("Poopoo")
     ));
 
     m_driverController.leftTrigger().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.AMP));
@@ -376,14 +376,6 @@ public class RobotContainer {
     return m_variables.getOutputType();
   }
 
-  public final Command getIntakeCommand =
-  new SelectCommand<>(
-    Map.ofEntries(
-      Map.entry(VariablesConstants.kgroundIntakeType, new CMD_FloorIntake(m_variables, m_arm, m_intake)),
-      Map.entry(VariablesConstants.kshelfIntakeType, new CMD_SourceIntake(m_arm, m_shooter, m_intake))
-    ), 
-    this::getIntakeType
-  );
 
   public final Command getOutputCommand =
   new SelectCommand<>(

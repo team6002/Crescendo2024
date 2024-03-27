@@ -49,7 +49,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed1"
+                  "pathName": "ShootBlue1"
                 }
               },
               {
@@ -106,7 +106,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed2"
+                  "pathName": "ShootBlue2"
                 }
               },
               {
@@ -156,7 +156,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed3"
+                  "pathName": "ShootBlue3"
                 }
               },
               {
@@ -206,7 +206,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed4"
+                  "pathName": "ShootBlue4Alt"
                 }
               },
               {
@@ -225,7 +225,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed5"
+                  "pathName": "ShootBlue5Alt"
                 }
               },
               {
@@ -258,7 +258,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "ShootRed6"
+            "pathName": "ShootBlue6"
           }
         }
       ]
