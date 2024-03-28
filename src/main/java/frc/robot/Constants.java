@@ -352,11 +352,11 @@ public final class Constants {
     public static final double[][] kShoulderArray = {
       {36, Math.toRadians(-45)},
       {50, Math.toRadians(-45)},  
-      {84, Math.toRadians(-41.2)}, 
-      {100, Math.toRadians(-38)}, 
-      {120, Math.toRadians(-35.)}, 
-      {150, Math.toRadians(-31.)},
-      {180, Math.toRadians(-28.3)},
+      {84, Math.toRadians(-40.5)}, 
+      {100, Math.toRadians(-39)}, 
+      {120, Math.toRadians(-37.5)}, 
+      {150, Math.toRadians(-31.3)},
+      {180, Math.toRadians(-28.9)},
       {240, Math.toRadians(-26.0)},
       {300, Math.toRadians(-26.)},
     };
@@ -435,11 +435,11 @@ public final class Constants {
   }
 
   public static final class LocationConstants{
-    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(218));
-    public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(218));
+    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(215));
+    public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(215));
   
-    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(8), Units.inchesToMeters(218));
-    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(8), Units.inchesToMeters(218));
+    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(4), Units.inchesToMeters(218));
+    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(4), Units.inchesToMeters(218));
     // the location in which we shoot at to stage it.
     public static final Pose2d StageBlue = new Pose2d( 0.9,6.5, Rotation2d.fromDegrees(-90));
     public static final Pose2d StageRed = new Pose2d( 15.8,6.5, Rotation2d.fromDegrees(-90));

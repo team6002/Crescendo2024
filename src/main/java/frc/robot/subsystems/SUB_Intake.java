@@ -86,7 +86,7 @@ public class SUB_Intake extends SubsystemBase {
     m_indexerMotor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen).enableLimitSwitch(false);
     // m_indexerSensor.enableLimitSwitch(false);
     // m_indexerPIDController = m_indexerMotor.getPIDController();
-    m_indexerMotor.setIdleMode(IdleMode.kBrake);
+    m_indexerMotor.setIdleMode(IdleMode.kCoast);
     m_indexerMotor.setInverted(true);
     // m_indexerMotor.follow(m_intakeMotor,true);
     m_indexerMotor.burnFlash();

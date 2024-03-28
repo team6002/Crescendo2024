@@ -13,8 +13,8 @@ import frc.robot.subsystems.SUB_GlobalVariables;
 import frc.robot.subsystems.SUB_Intake;
 import frc.robot.subsystems.SUB_Shooter;
 
-public class CMD_Autofire extends Command {
-  /** Creates a new CMD_Autofire. */
+public class CMD_CloseFire extends Command {
+  /** Creates a new CMD_Closefire. */
   SUB_Arm m_arm;
   SUB_Drivetrain m_drivetrain;
   SUB_Intake m_intake;
@@ -23,22 +23,16 @@ public class CMD_Autofire extends Command {
   boolean m_shot;
   Timer m_shooterTimer;
   Timer m_altShooterTimer;
-  Timer m_intialTimer;
-  boolean m_firingStarted;
-  boolean m_closeShooting;
-  int m_CHECK;
-  public CMD_Autofire(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
+  public CMD_CloseFire(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = p_arm;
     m_drivetrain = p_drivetrain;
     m_intake = p_intake;
     m_shooter = p_shooter;
     m_variable = p_variables;
-    m_firingStarted = false;
     m_shooterTimer = new Timer();
     m_altShooterTimer = new Timer(); 
-    m_intialTimer = new Timer();
-    m_closeShooting = false;
+    // m_intialTimer = new Timer();
     addRequirements(m_shooter);
   }
 
@@ -46,17 +40,15 @@ public class CMD_Autofire extends Command {
   @Override
   public void initialize() {
     // m_shooter.disableShooter();
-    m_CHECK = 0;
-    m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()))); 
     m_drivetrain.setShooterTarget();
     m_shot = false;
-    m_closeShooting = false;
-    m_firingStarted = false;
     m_shooterTimer.restart();
     m_altShooterTimer.restart();
-    m_intialTimer.restart();  
-    m_intialTimer.start();
     m_shooterTimer.stop(); 
+    m_shooter.setShooterSetpoint(2000);
+    m_shooter.setBotPower(1);
+    m_shooter.setTopPower(1);
+  
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -65,51 +57,22 @@ public class CMD_Autofire extends Command {
     boolean m_shooterAtSetpoint = m_shooter.getAtShooterSetpoint();
     boolean m_shoulderAtSetpoint = m_arm.atShoulderGoal();
     boolean m_elbowAtSetpoint = m_arm.atElbowGoal();
-    if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
-      
-      
-        // if (m_intialTimer.get() < 0.5 || m_shooter.getOverShooterSetpoint()){
-        //   m_shooter.setBotPower(1);  
-        //   m_shooter.setTopPower(1);
-        //   m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()))); 
-        // }else{
-          if (!m_firingStarted){
-            m_shooter.enableShooter();
-            m_firingStarted = true;
-          }
-          // m_shooter.setShooterSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-          m_shooter.setBotSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-          m_shooter.setTopSetpoint(m_shooter.interpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance()))*1.25);
-        
-
-      // if (m_closeShooting){
-      //   m_altShooterTimer.start();
-      //   if (m_altShooterTimer.get() > 0.8 && m_elbowAtSetpoint && m_shoulderAtSetpoint){
-      //     m_shooterTimer.start();
-      //     // m_intake.setIndexerVelocity(4000);
-      //     m_intake.setIndexerPower(1);
-      //       // System.out.println("SHOT");
-      //   }
-      // }else{
-      //   m_altShooterTimer.reset();
-      // }
-
-      m_arm.setShoulderGoalWithoutElbow(m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod())));
+    if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){  
+      m_arm.setShoulderGoalWithoutElbow(Math.toRadians(-45));
       m_arm.setElbowGoalRelative(m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
 
-     
-      if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint){
-        if (m_CHECK >= 10){
-          m_shooterTimer.start();
-          m_intake.setIndexerPower(1);
-        }
-        m_CHECK +=1;
+      if ((m_shoulderAtSetpoint && m_elbowAtSetpoint && m_drivetrain.getOnTarget() && m_shooter.getOverShooterSetpoint()) || m_altShooterTimer.get() >= .5){
+        // m_intake.setIndexerVelocity(4000);
+        m_intake.setIndexerPower(1);
+      }
+      if (m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint && m_shooter.getOverShooterSetpoint() || m_altShooterTimer.get() >= .5){
+        m_shooterTimer.start();
+
       }else{
-        m_CHECK = 0;
         // m_shooterTimer.stop();
       }
 
-      if (m_shooterTimer.get() > 0.3){
+      if (m_shooterTimer.get() > 0.3 || m_altShooterTimer.get() >= .85){
         m_shot = true;
       }
     }
