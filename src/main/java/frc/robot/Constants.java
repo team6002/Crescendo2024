@@ -393,6 +393,8 @@ public final class Constants {
     // public static final double kElbowMaxAcceleration = 1000;
     public static final double kMaxVelocityRadPerSecond = 6.1;
     public static final double kMaxAccelerationRadPerSecSquared = 6.1;
+    public static final TrapezoidProfile.Constraints kNormalConstaints = new TrapezoidProfile.Constraints(ElbowConstants.kMaxVelocityRadPerSecond
+        , ElbowConstants.kMaxAccelerationRadPerSecSquared);
 
     public static final double kElbowHome = Math.toRadians(16); 
     //only for da front one
@@ -400,6 +402,11 @@ public final class Constants {
     public static final double kElbowShelfIntake = Math.toRadians(95);
     public static final double kElbowGroundIntake = Math.toRadians(45);
     //intake position is 90 to ground
+
+    public static final double kMaxClimbVelocityRadPerSecond = .6;
+    public static final double kMaxClimbAccelerationRadPerSecSquared = 1;
+    public static final TrapezoidProfile.Constraints kClimbConstraints = new TrapezoidProfile.Constraints(ElbowConstants.kMaxClimbVelocityRadPerSecond
+        , ElbowConstants.kMaxClimbAccelerationRadPerSecSquared);
 
     public static final double[][] kElbowArray = {
     //Elbow Position for shooting at the Speaker for ft 

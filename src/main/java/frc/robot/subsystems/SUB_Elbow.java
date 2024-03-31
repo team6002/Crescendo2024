@@ -48,8 +48,7 @@ public class SUB_Elbow extends TrapezoidProfileSubsystem  {
   /** Creates a new SUB_Shooter. */
   public SUB_Elbow() {
     super(
-        new TrapezoidProfile.Constraints(ElbowConstants.kMaxVelocityRadPerSecond
-        , ElbowConstants.kMaxAccelerationRadPerSecSquared)
+        ElbowConstants.kNormalConstaints
         ,Math.toDegrees(10),deltaTime);
 
     m_elbowMotor = new CANSparkMax(HardwareConstants.kElbowMotorCANID, MotorType.kBrushless);

@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ShoulderConstants;
+import frc.robot.Constants.ElbowConstants;
 import frc.robot.subsystems.SUB_Arm;
 import frc.robot.subsystems.SUB_GlobalVariables;
 import frc.robot.subsystems.SUB_Intake;
@@ -23,6 +24,7 @@ public class CMD_Home extends SequentialCommandGroup {
       m_variables.CMDsetReadyDrop(false),
       m_variables.CMDsetAutofire(false),
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kNormalConstaints),
+      m_arm.CMDsetElbowConstraints(ElbowConstants.kNormalConstaints),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-49)),
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(-45)),
       new CMD_ElbowSetPosition(m_arm, Math.toRadians(15)),

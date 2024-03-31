@@ -65,7 +65,11 @@ public class SUB_Arm extends SubsystemBase {
     public void setShoulderConstraints(TrapezoidProfile.Constraints p_constraints){
         m_shoulder.setConstraints(p_constraints);
     }
-    
+
+    public void setElbowConstraints(TrapezoidProfile.Constraints p_constraints){
+        m_elbow.setConstraints(p_constraints);
+    }
+
     /** sets the Shoulder goal*/
     public void setShoulderGoalWithoutElbow(double goalRad){
         m_shoulder.setGoalRad(goalRad);
@@ -84,6 +88,11 @@ public class SUB_Arm extends SubsystemBase {
     public Command CMDsetShoulderConstraints(TrapezoidProfile.Constraints p_constraints){
         return Commands.runOnce(()->setShoulderConstraints(p_constraints),this);
     }
+
+    public Command CMDsetElbowConstraints(TrapezoidProfile.Constraints p_constraints){
+        return Commands.runOnce(()->setElbowConstraints(p_constraints), this);
+    }
+
     /**returns the current Elbow goal */
     public double getElbowGoal(){
         return m_elbow.getGoal();
