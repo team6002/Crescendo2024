@@ -45,16 +45,15 @@ public class Robot extends TimedRobot {
 
     // m_Chooser.addOption("4SlamBlue", m_robotContainer.get4SlamBlue());
     // m_Chooser.addOption("4SlamRed", m_robotContainer.get4SlamRed());
+    // m_Chooser.addOption("4ShootRed", m_robotContainer.get4ShootRed());
     m_Chooser.addOption("4ShootBlue", m_robotContainer.get4ShootBlue());
-
     m_Chooser.addOption("4ShootBlueSafe_V2", m_robotContainer.get4ShootBlueSafeV2());
     m_Chooser.addOption("4ShootRed_V3", m_robotContainer.get4ShootRedV3());
-    m_Chooser.addOption("4ShootRed", m_robotContainer.get4ShootRed());
     m_Chooser.addOption("4ShootRedSafe_V2", m_robotContainer.get4ShootRedSafeV2());
 
-    m_Chooser.addOption("5ShootBlue", m_robotContainer.get5ShootBlue());
+    // m_Chooser.addOption("5ShootBlue", m_robotContainer.get5ShootBlue());
+    // m_Chooser.addOption("5ShootRed", m_robotContainer.get5ShootRed());
     m_Chooser.addOption("5ShootBlue_V3", m_robotContainer.get5ShootBlueV3());
-    m_Chooser.addOption("5ShootRed", m_robotContainer.get5ShootRed());
     m_Chooser.addOption("5ShootRed_V3", m_robotContainer.get5ShootRedV3());
 
     m_Chooser.addOption("3InnerBlue", m_robotContainer.get3InnerBlue());
