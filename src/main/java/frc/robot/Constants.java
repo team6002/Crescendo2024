@@ -350,15 +350,26 @@ public final class Constants {
   
 
     public static final double[][] kShoulderArray = {
-      {36, Math.toRadians(-45)},
-      {50, Math.toRadians(-45)},  
-      {84, Math.toRadians(-40.5)}, 
-      {100, Math.toRadians(-39)}, 
-      {120, Math.toRadians(-37.5)}, 
-      {150, Math.toRadians(-31.3)},
-      {180, Math.toRadians(-30.9)},
-      {240, Math.toRadians(-26.0)},
-      {300, Math.toRadians(-26.)},
+      // {36, Math.toRadians(-45)},
+      // {50, Math.toRadians(-45)},  
+      {71, Math.toRadians(-42)},
+      {80, Math.toRadians(-39.5)},
+      {90, Math.toRadians(-36.5)},
+      {100, Math.toRadians(-34)},
+      {110, Math.toRadians(-32)},
+      {120, Math.toRadians(-29.)},
+      // {80, Math.toRadians(-40)},
+      // {90, Math.toRadians(-40)},
+      // {100, Math.toRadians(-39)},
+      // {110, Math.toRadians(-38)},
+      // {120, Math.toRadians(-37)},
+      // {130, Math.toRadians(-36)},
+      // {115, Math.toRadians(-35)},
+      // {120, Math.toRadians(-35)},
+      // {150, Math.toRadians(-31.3)},
+      // {180, Math.toRadians(-30.9)},
+      // {240, Math.toRadians(-26.0)},
+      // {300, Math.toRadians(-26.)},
     };
 
   }
