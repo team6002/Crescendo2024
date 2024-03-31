@@ -113,6 +113,7 @@ public class SUB_Drivetrain extends SubsystemBase {
   private TrapezoidProfile.Constraints m_AutoAlignConstraints;
   private ProfiledPIDController m_AutoAlignProfile;
   private SimpleMotorFeedforward m_AutoAlignFF;
+  private Rotation2d m_autoAlignSP;
 
   private Translation2d m_currentTarget = LocationConstants.SpeakerBlue;
   // Odometry class for tracking robot pose
@@ -185,6 +186,7 @@ public class SUB_Drivetrain extends SubsystemBase {
       m_AutoAlignProfile = new ProfiledPIDController(DriveConstants.kAutoAlignP, DriveConstants.kAutoAlignI, DriveConstants.kAutoAlignD, m_AutoAlignConstraints);
       m_AutoAlignFF = new SimpleMotorFeedforward(DriveConstants.kAutoAlignS, DriveConstants.kAutoAlignV, DriveConstants.kAutoAlignA);
       m_AutoAlignProfile.enableContinuousInput(-Math.PI, Math.PI);
+      m_AutoAlignProfile.setTolerance(Math.toRadians(5));
   }
 
 
@@ -582,6 +584,25 @@ public class SUB_Drivetrain extends SubsystemBase {
    * @param targetAng: angle to the target
    * @return: rotation power for drivetrain from -0.5 to 0.5
    */
+  public void setAutoAlignSetpoint() {
+    m_autoAlignSP = angleToCurrentTarget();
+    m_AutoAlignProfile.setGoal(m_autoAlignSP.getRadians());
+    m_AutoAlignProfile.reset(Math.toRadians(getAngle()));
+  }
+
+  public boolean getOnTargetV2(){
+    return m_AutoAlignProfile.atGoal();
+  }
+
+  public double autoAlignTurnV2() {
+    /* At target, do not move. */
+    if (getOnTargetV2()) {
+      return 0.0;
+    }
+
+    return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()));
+  }
+
   public double autoAlignTurn(){
     // double sideMod = 0;
     //vision target yaw
@@ -615,12 +636,12 @@ public class SUB_Drivetrain extends SubsystemBase {
       onTarget = false;
     }
 
-    if (visionEst.isPresent()){
-      return -m_AutoAlignProfile.calculate(Math.toRadians(targetYaw), 0);
-    } else {
+    // if (visionEst.isPresent()){
+    //   return -m_AutoAlignProfile.calculate(Math.toRadians(targetYaw), 0);
+    // } else {
       return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()), globalTargetAng.getRadians());
       // return 0;
-    }
+    // }
   }
 
   public boolean getOnTarget(){

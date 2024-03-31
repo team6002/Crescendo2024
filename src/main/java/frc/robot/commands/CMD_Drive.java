@@ -41,16 +41,10 @@ public class CMD_Drive extends Command {
     var ySpeed = MathUtil.applyDeadband(-m_controller.getLeftX(),deadzone)*sideMod;
 
     var xSpeed = MathUtil.applyDeadband(-m_controller.getLeftY(),deadzone)*sideMod;
-    
-    double autoRot = m_drivetrain.autoAlignTurn();
-    if (m_variables.getAutofire()){
-      rot = autoRot;
-      // m_autoSlew = true;
-      m_autoSlew = false;
-    }else{
-      rot = MathUtil.applyDeadband(m_controller.getRightX(), deadzone);
-      m_autoSlew = false;
-    }
+
+    rot = MathUtil.applyDeadband(m_controller.getRightX(), deadzone);
+    m_autoSlew = false;
+
     // System.out.println(m_drivetrain.autoAlignTurn(m_drivetrain.calculateTargetAngle()));
     m_drivetrain.drive( xSpeed, ySpeed, rot,true, m_autoSlew);
   }

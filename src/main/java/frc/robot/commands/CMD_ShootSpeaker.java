@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ElbowConstants;
@@ -30,11 +31,12 @@ public class CMD_ShootSpeaker extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
+      Commands.runOnce(()->p_drivetrain.setShooterTarget(), p_drivetrain),
       p_variables.CMDsetAutofire(true),
       new ConditionalCommand(
         new CMD_CloseFire(p_arm, p_drivetrain, p_intake, p_shooter, p_variables), 
         new CMD_Autofire(p_arm, p_drivetrain, p_intake, p_shooter, p_variables),
-        () -> Units.metersToInches(p_drivetrain.calculateTargetDistance()) <= 70),
+        () -> Units.metersToInches(p_drivetrain.calculateTargetDistance()) <= 65),
       p_variables.CMDsetAutofire(false),
       new CMD_ShoulderSetPosition(p_arm, ShoulderConstants.kShoulderHome),
       new CMD_ElbowSetPosition(p_arm, ElbowConstants.kElbowHome),  

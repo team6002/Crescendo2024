@@ -98,7 +98,7 @@ public final class Constants {
 
     public static final boolean kGyroReversed = false;
 
-    public static final double kAutoAlignMaxAccel = 1.25;
+    public static final double kAutoAlignMaxAccel = 6;
     public static final double kAutoAlignMaxVelo = 1;
     
     public static final double kAutoAlignP = 0.5;
