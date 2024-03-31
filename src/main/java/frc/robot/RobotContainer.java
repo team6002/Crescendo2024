@@ -328,6 +328,10 @@ public class RobotContainer {
       m_drivetrain.CMDzeroHeading()
     );
 
+    /* CLIMBING SEQUENCE
+     *
+     * STEP 1: PREP SHOULDER AND ELBOW FOR CLIMBING. 
+     */
     m_driverController.pov(0).onTrue(new SequentialCommandGroup(
       // m_arm.CMDsetShoulderConstrainst(ShoulderConstants.kClimbConstraints),
       m_arm.CMDsetLHookPWM(HookConstants.LHookOpen),
@@ -344,23 +348,10 @@ public class RobotContainer {
       // m_intake.setIndexVelocity(0)
     ));
 
-    m_driverController.pov(90).onTrue(new SequentialCommandGroup(
-
-      new CMD_setShooterTrap(m_shooter, 2000),
-      new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(128)),
-      new CMD_ShoulderCheck(m_arm, 2),
-      new WaitCommand(0.25),
-      m_intake.CMDsetIndexVelocity( 2000),
-      new WaitCommand(1),
-      m_intake.CMDsetIndexVelocity(0),
-      new CMD_ShooterOff(m_shooter),
-      m_arm.CMDsetElbowConstraints(ElbowConstants.kNormalConstaints), /* Put Elbow back to Normal speed to ensure it comes down with the Shoulder at the same time. */
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(70)),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-5))
-    ));
-
+    /*
+     * STEP 2: BRING DOWN SHOULDER AND ELBOW AND HOOK ONTO CHAIN. AFTER HOOKING, RAISE THE SHOULDER
+     * UP ALITTLE TO BALANCE THE ROBOT.
+     */
     m_driverController.pov(180).onTrue(new SequentialCommandGroup(
       m_arm.CMDsetShoulderConstraints(ShoulderConstants.kClimbConstraints),
       m_arm.CMDsetElbowConstraints(ElbowConstants.kClimbConstraints),
@@ -378,6 +369,27 @@ public class RobotContainer {
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(80)),//60
       new CMD_ShoulderCheck(m_arm, 4),
       new CMD_ElbowCheck(m_arm, 4)
+    ));
+
+    /*
+     * STEP 3: RAISE SHOULDER AND ELBOW UP INTO TRAP. SHOOT TRAP.
+     * LOWER SHOUJLDER AND ELBOW BACK DOWN TO BALANCING POSITION FROM STEP 2.
+     * EASY DUB.
+     */
+    m_driverController.pov(90).onTrue(new SequentialCommandGroup(
+      new CMD_setShooterTrap(m_shooter, 2000),
+      new CMD_ShooterOn(m_shooter),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(17)),
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(128)),
+      new CMD_ShoulderCheck(m_arm, 2),
+      new WaitCommand(0.25),
+      m_intake.CMDsetIndexVelocity( 2000),
+      new WaitCommand(1),
+      m_intake.CMDsetIndexVelocity(0),
+      new CMD_ShooterOff(m_shooter),
+      m_arm.CMDsetElbowConstraints(ElbowConstants.kNormalConstaints), /* Put Elbow back to Normal speed to ensure it comes down with the Shoulder at the same time. */
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(70)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-5))
     ));
 
     m_driverController.start().onTrue(
