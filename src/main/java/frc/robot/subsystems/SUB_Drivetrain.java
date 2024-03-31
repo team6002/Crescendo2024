@@ -212,7 +212,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     // SmartDashboard.putNumber("Target Angle", angleToCurrentTarget().getDegrees());
     // SmartDashboard.putNumber("Velocity?", Units.metersToInches(getVelocity()));
     // SmartDashboard.putNumber("TargetAng", angleToCurrentTarget().getDegrees());
-    // SmartDashboard.putNumber("TargetDistance", Units.metersToInches(calculateTargetDistance()));
+    SmartDashboard.putNumber("TargetDistance", Units.metersToInches(calculateTargetDistance()));
     // SmartDashboard.putNumber("TargX", Units.metersToInches(calculateTargetXError()));
     // SmartDashboard.putNumber("TargY", Units.metersToInches(calculateTargetYError()));
     // SmartDashboard.putNumber("XVelocity", getXVelocity());

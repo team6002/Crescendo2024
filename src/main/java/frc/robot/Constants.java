@@ -258,7 +258,7 @@ public final class Constants {
 
     // public static final double kShooterBotP = 0.01;//0.005;
     // public static final double kShooterBotP = 0.0079;//0.005;
-    public static final double kShooterBotP = 0.008;//0.0085;//0.005;
+    public static final double kShooterBotP = 0.0075;//0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
     public static final double kShooterBotD = 0.0009;//0.0005
     public static final double kShooterBotFF = 0.0000;
@@ -356,7 +356,7 @@ public final class Constants {
       {100, Math.toRadians(-39)}, 
       {120, Math.toRadians(-37.5)}, 
       {150, Math.toRadians(-31.3)},
-      {180, Math.toRadians(-28.9)},
+      {180, Math.toRadians(-30.9)},
       {240, Math.toRadians(-26.0)},
       {300, Math.toRadians(-26.)},
     };
@@ -364,8 +364,8 @@ public final class Constants {
   }
   
   public static final class HookConstants{
-    public static final double LHookClose = 1;
-    public static final double LHookOpen = 0.55;
+    public static final double LHookClose = .8;
+    public static final double LHookOpen = 0.4;
 
     public static final double RHookClose = 0.2;
     public static final double RHookOpen = 0.4;
@@ -394,7 +394,7 @@ public final class Constants {
     public static final double kMaxVelocityRadPerSecond = 6.1;
     public static final double kMaxAccelerationRadPerSecSquared = 6.1;
 
-    public static final double kElbowHome = Math.toRadians(10); 
+    public static final double kElbowHome = Math.toRadians(16); 
     //only for da front one
     public static final double kElbowAmp = Math.toRadians(23); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
@@ -418,9 +418,9 @@ public final class Constants {
       {36, Math.toRadians(22)},
       {48, Math.toRadians(18)},
       {50, Math.toRadians(14)},  
-      {84, Math.toRadians(10)}, 
-      {100, Math.toRadians(10)},
-      {120, Math.toRadians(10)},
+      {84, Math.toRadians(16)}, 
+      {100, Math.toRadians(16)},
+      {120, Math.toRadians(16)},
     };
   }
 

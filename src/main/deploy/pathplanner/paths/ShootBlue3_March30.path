@@ -3,31 +3,31 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.5179678528371143,
-        "y": 5.56439986119409
+        "x": 2.52,
+        "y": 5.56
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1801971594066396,
-        "y": 5.784685096040052
+        "x": 2.404214733414954,
+        "y": 5.921930617718133
       },
-      "isLocked": false,
+      "isLocked": true,
       "linkedName": "ShootBlue2"
     },
     {
       "anchor": {
-        "x": 1.9847845062416432,
-        "y": 6.241414987302248
+        "x": 2.3156260397027837,
+        "y": 6.446032046993673
       },
       "prevControl": {
-        "x": 1.9502168290314261,
-        "y": 6.034008924040943
+        "x": 2.330079026355236,
+        "y": 6.330408153774056
       },
       "nextControl": {
-        "x": 2.014155870887771,
-        "y": 6.417643175179016
+        "x": 2.303077333158576,
+        "y": 6.546421699347336
       },
-      "isLocked": false,
+      "isLocked": true,
       "linkedName": null
     },
     {
@@ -36,20 +36,26 @@
         "y": 6.836262686609881
       },
       "prevControl": {
-        "x": 2.3557272602715735,
-        "y": 6.6159774517639205
+        "x": 2.339387908430255,
+        "y": 6.744921990698303
       },
       "nextControl": null,
-      "isLocked": false,
+      "isLocked": true,
       "linkedName": "ShootBlue3"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.2,
+      "rotationDegrees": 40.0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.3,
-    "maxAcceleration": 3.75,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
@@ -64,5 +70,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

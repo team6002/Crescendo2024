@@ -99,9 +99,9 @@ public class CMD_Autofire extends Command {
 
      
       if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint){
-        if (m_CHECK >= 10){
+        if (m_CHECK >= 5){
           m_shooterTimer.start();
-          m_intake.setIndexerPower(1);
+          m_intake.setIndexerPower(.3);
         }
         m_CHECK +=1;
       }else{

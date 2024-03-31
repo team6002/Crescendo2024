@@ -105,6 +105,10 @@ public class SUB_Shooter extends SubsystemBase {
     return getBotShooterVelocity() >= getBotSetpoint() && getTopShooterVelocity() >= getTopSetpoint();
   }
 
+  public boolean getOverShooterValue(double p_topVel, double p_botVel){
+    return getBotShooterVelocity() >= p_botVel && getTopShooterVelocity() >= p_topVel;
+  }
+
   /**turns on both shooters */
   public void enableShooter(){
     enableBotShooter();
@@ -141,6 +145,9 @@ public class SUB_Shooter extends SubsystemBase {
     // m_topShooter.ShooterTopPIDTuning();
     
     SmartDashboard.putBoolean("ShootFin", getAtShooterSetpoint());
+    SmartDashboard.putBoolean("TopFin", atTopSetpoint());
+    SmartDashboard.putBoolean("BotFin", atBotSetpoint());
+
     SmartDashboard.putNumber("ShooterGoal", getBotSetpoint());
     SmartDashboard.putNumber("Shooter Top Velocity", getTopShooterVelocity());
     // SmartDashboard.putNumber("Shooter Top Current", getTopShooterCurrent());

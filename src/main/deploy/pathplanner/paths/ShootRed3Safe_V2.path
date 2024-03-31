@@ -3,50 +3,50 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.04,
-        "y": 7.47
+        "x": 15.33,
+        "y": 5.35
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.320401566169857,
-        "y": 7.235029082830974
+        "x": 14.759647547467438,
+        "y": 5.434322981327798
       },
       "isLocked": false,
-      "linkedName": "ShootBlue4"
+      "linkedName": "ShootRed1Start"
     },
     {
       "anchor": {
-        "x": 1.2505003900884375,
-        "y": 5.55
+        "x": 14.06,
+        "y": 5.41
       },
       "prevControl": {
-        "x": 2.0582129178569737,
-        "y": 5.843713646461282
+        "x": 14.35496392119878,
+        "y": 5.405417008022893
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootBlue5"
+      "linkedName": "ShootRed2_V2"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.3,
-    "maxAcceleration": 3.75,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -2.2906100426386335,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "ShootyBlue",
+  "folder": "ShootyRed",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 180.0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

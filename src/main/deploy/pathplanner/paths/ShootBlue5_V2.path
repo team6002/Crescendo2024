@@ -8,38 +8,54 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.320401566169857,
-        "y": 7.235029082830974
+        "x": 7.142923581621812,
+        "y": 7.573365005884942
       },
       "isLocked": false,
-      "linkedName": "ShootBlue4"
+      "linkedName": "ShootBlue4_V2"
     },
     {
       "anchor": {
-        "x": 1.2505003900884375,
+        "x": 5.33,
+        "y": 7.47
+      },
+      "prevControl": {
+        "x": 6.651054292949371,
+        "y": 7.813860458982098
+      },
+      "nextControl": {
+        "x": 4.008945707050629,
+        "y": 7.126139541017902
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.25,
         "y": 5.55
       },
       "prevControl": {
-        "x": 2.0582129178569737,
+        "x": 2.057712527768536,
         "y": 5.843713646461282
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootBlue5"
+      "linkedName": "ShootBlue5_V2"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.3,
-    "maxAcceleration": 3.75,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -2.2906100426386335,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
@@ -48,5 +64,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

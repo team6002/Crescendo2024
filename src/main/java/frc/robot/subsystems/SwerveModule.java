@@ -183,8 +183,8 @@ public class SwerveModule {
   public void telemetry(){
     SmartDashboard.putNumber(m_moduleChannel + "Desired Velocity", Math.abs(Units.metersToInches(m_desiredState.speedMetersPerSecond)));
     SmartDashboard.putNumber(m_moduleChannel + "Velocity", Math.abs(Units.metersToInches(m_drivingEncoder.getVelocity())));
-    // SmartDashboard.putNumber(m_moduleChannel + "Drive Angle", m_turningEncoder.getPosition());
-    // SmartDashboard.putNumber(m_moduleChannel + "Desired Drive Angle", m_desiredState.angle.getDegrees());
+    SmartDashboard.putNumber(m_moduleChannel + "Drive Angle", m_turningEncoder.getPosition());
+    SmartDashboard.putNumber(m_moduleChannel + "Desired Drive Angle", m_desiredState.angle.getDegrees());
 
   }
   

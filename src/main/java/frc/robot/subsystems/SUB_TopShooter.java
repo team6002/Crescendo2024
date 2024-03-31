@@ -29,6 +29,7 @@ public class SUB_TopShooter extends PIDSubsystem {
     super(new PIDController(ShooterConstants.kShooterTopP, ShooterConstants.kShooterTopI, ShooterConstants.kShooterTopD));
     m_shooterTopMotor  = new CANSparkMax(HardwareConstants.kShooterTopMotorCANID, MotorType.kBrushless);
     m_shooterTopEncoder = m_shooterTopMotor.getEncoder();
+    m_shooterTopMotor.restoreFactoryDefaults();
     
     m_shooterTopMotor.setSmartCurrentLimit(ShooterConstants.kShooterCurrentLimit);
 

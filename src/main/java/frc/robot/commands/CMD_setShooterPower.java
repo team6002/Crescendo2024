@@ -4,42 +4,30 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.SUB_Shooter;
 
-public class CMD_ShooterOnTime extends Command {
-  /** Creates a new CMD_ShooterOnTime. */
+public class CMD_setShooterPower extends Command {
+  /** Creates a new CMD_setShooterPower. */
   SUB_Shooter m_shooter;
-  double m_velocity;
-  Timer m_shooterTimer;
-  double m_modifier;
-  boolean m_finished;
-  public CMD_ShooterOnTime(SUB_Shooter p_shooter, double p_velocity) {
-    m_shooter = p_shooter;
-    m_velocity = p_velocity;
-    
+  double m_speed;
+  public CMD_setShooterPower(SUB_Shooter p_shooter, double p_speed) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_shooter = p_shooter;
+    m_speed = p_speed;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_modifier = (m_velocity / 4000);
-    m_shooterTimer.start();
-    m_shooterTimer.reset();
-    m_finished = false;
+    System.out.println(m_speed);
+    m_shooter.setBotPower(m_speed);
+    m_shooter.setTopPower(m_speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    if (m_shooterTimer.get() >= m_modifier * 2.5){
-      m_finished = true;
-    }else{
-
-    }
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -48,6 +36,6 @@ public class CMD_ShooterOnTime extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_finished;
+    return true;
   }
 }

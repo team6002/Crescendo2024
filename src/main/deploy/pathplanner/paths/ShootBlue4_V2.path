@@ -3,53 +3,53 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2505003900884375,
-        "y": 5.55
+        "x": 2.561326812794471,
+        "y": 6.836262686609881
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.307869517349053,
-        "y": 6.108055928276436
+        "x": 3.5296769185087666,
+        "y": 7.067510473049116
       },
       "isLocked": false,
-      "linkedName": "ShootBlue5"
+      "linkedName": "ShootBlue3"
     },
     {
       "anchor": {
-        "x": 4.995349382469785,
-        "y": 6.564499998409658
+        "x": 5.33,
+        "y": 7.47
       },
       "prevControl": {
-        "x": 3.9444156889849085,
-        "y": 6.578512447656122
+        "x": 4.449212243131137,
+        "y": 7.394917976783621
       },
       "nextControl": {
-        "x": 6.096775556699593,
-        "y": 6.549814316086595
+        "x": 6.20347944921242,
+        "y": 7.544459032580037
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.04997130566712,
-        "y": 5.786158835287259
+        "x": 8.04,
+        "y": 7.47
       },
       "prevControl": {
-        "x": 6.9926021784065036,
-        "y": 6.417643175179016
+        "x": 7.041752675054646,
+        "y": 7.544459032580037
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootBlue6"
+      "linkedName": "ShootBlue4_V2"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.3,
-    "maxAcceleration": 3.75,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
@@ -64,5 +64,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

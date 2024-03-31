@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.30469837326079,
-      "y": 5.3602740479184
+      "x": 15.33,
+      "y": 5.35
     },
     "rotation": 180.0
   },
@@ -14,25 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterStart"
+            "name": "SubShot"
           }
         },
         {
           "type": "sequential",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShooterCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
               {
                 "type": "wait",
                 "data": {
@@ -49,7 +37,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed1"
+                  "pathName": "ShootRed1_V2"
                 }
               },
               {
@@ -59,7 +47,13 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "PickUp"
+                        "name": "Intake3"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "ShootyPosition1"
                       }
                     }
                   ]
@@ -75,18 +69,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootyPosition1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShoulderCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "Fire"
                 }
               },
@@ -106,7 +88,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed2"
+                  "pathName": "ShootRed2_V2"
                 }
               },
               {
@@ -114,20 +96,20 @@
                 "data": {
                   "name": "Intake3"
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
+              },
               {
                 "type": "named",
                 "data": {
                   "name": "ShootyPosition2"
                 }
-              },
+              }
+            ]
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
               {
                 "type": "named",
                 "data": {
@@ -138,12 +120,6 @@
                 "type": "named",
                 "data": {
                   "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.2
                 }
               }
             ]
@@ -156,13 +132,19 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed3"
+                  "pathName": "ShootRed3_V2"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Intake3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootyPosition3"
                 }
               }
             ]
@@ -175,12 +157,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootyPosition3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "ShoulderCheck"
                 }
               },
@@ -206,7 +182,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed4Alt"
+                  "pathName": "ShootRed4_V2"
                 }
               },
               {
@@ -225,40 +201,35 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed5Alt"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterMid"
+                  "pathName": "ShootRed5_V2"
                 }
               }
             ]
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "Fire"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "SubShot"
+                }
+              }
+            ]
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.3
+            "waitTime": 0.4
           }
         },
         {
           "type": "named",
           "data": {
             "name": "HoldShooter"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "ShootRed6"
           }
         }
       ]

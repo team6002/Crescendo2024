@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.33,
+      "x": 1.25,
       "y": 5.35
     },
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -15,19 +15,6 @@
           "type": "named",
           "data": {
             "name": "SubShot"
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              }
-            ]
           }
         },
         {
@@ -49,12 +36,6 @@
                       "data": {
                         "name": "Intake3"
                       }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "ShootyPosition1"
-                      }
                     }
                   ]
                 }
@@ -63,22 +44,22 @@
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.2
+                  "pathName": "ShootBlue2Safe_V2"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "SubShot"
           }
         },
         {
@@ -88,7 +69,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue2_March30"
+                  "pathName": "ShootBlue3Safe_V2"
                 }
               },
               {
@@ -101,25 +82,44 @@
           }
         },
         {
-          "type": "sequential",
+          "type": "named",
+          "data": {
+            "name": "SubShot"
+          }
+        },
+        {
+          "type": "parallel",
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "ShootyPosition2"
+                  "pathName": "ShootBlue4Safe_V2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "SubShot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue5Safe_V2"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ShoulderCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
+                  "name": "Intake3"
                 }
               }
             ]
@@ -132,47 +132,16 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue3_March30"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootyPosition3"
+                  "pathName": "ShootBlue6Safe_V2"
                 }
               }
             ]
           }
         },
         {
-          "type": "sequential",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShoulderCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.2
-                }
-              }
-            ]
+            "name": "SubShot"
           }
         },
         {
