@@ -295,6 +295,8 @@ public class RobotContainer {
     // m_driverController.leftBumper().onTrue(new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-4.8)));
     // m_driverController.rightBumper().onTrue(new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-44)));
 
+    m_driverController.a().onTrue(new CMD_ShootSafeSubShotTeleop(m_arm, m_shooter, m_intake));
+
     m_driverController.leftBumper().onTrue(new CMD_FloorIntake(m_variables, m_arm, m_intake));
     m_driverController.rightBumper().onTrue(new CMD_ShootSpeaker(m_arm, m_shooter, m_intake, m_variables, m_drivetrain));
 
