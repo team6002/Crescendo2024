@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 14.02,
-        "y": 6.858
+        "y": 6.84
       },
       "prevControl": null,
       "nextControl": {
         "x": 14.268246001280735,
-        "y": 6.431579060341219
+        "y": 6.4135790603412195
       },
       "isLocked": false,
       "linkedName": "ShootRed3_V2"

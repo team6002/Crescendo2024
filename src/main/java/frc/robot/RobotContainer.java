@@ -168,7 +168,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition1", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2500),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-34.1)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-33.1)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(11)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -176,7 +176,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition2", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2500),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-34.)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-35.)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(11)),
       new CMD_ElbowCheck(m_arm,2)
     ));
