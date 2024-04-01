@@ -57,9 +57,6 @@ public class CMD_Autofire extends Command {
     m_arm.setShoulderGoalWithoutElbow(sh_sp);
     m_arm.setElbowGoalRelative(el_sp);
 
-    SmartDashboard.putNumber("AutoFire Shoulder SP", Math.toDegrees(sh_sp));
-    SmartDashboard.putNumber("AutoFire Elbow SP", Math.toDegrees(el_sp));
-
     m_shot = false;
     m_closeShooting = false;
     m_shooterTimer.restart();
@@ -77,17 +74,13 @@ public class CMD_Autofire extends Command {
     boolean m_elbowAtSetpoint = m_arm.atElbowGoal();
 
     if (m_variable.getAutofire()){
-      double rot = m_drivetrain.autoAlignTurnV2();
+      double rot = m_drivetrain.autoAlignTurn();
 
       m_drivetrain.drive(0, 0, rot,true, false);
     }
 
-    SmartDashboard.putBoolean("shooterAtSetpoint", m_shooterAtSetpoint);
-    SmartDashboard.putBoolean("m_shoulderAtSetpoint", m_shoulderAtSetpoint);
-    SmartDashboard.putBoolean("m_elbowAtSetpoint", m_elbowAtSetpoint);
-
     // if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
-    if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTargetV2() && m_elbowAtSetpoint){
+    if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint){
         if (m_CHECK >= 5){
           m_shooterTimer.start();
           m_intake.setIndexerPower(.3);

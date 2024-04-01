@@ -101,7 +101,7 @@ public final class Constants {
     public static final double kAutoAlignMaxAccel = 6;
     public static final double kAutoAlignMaxVelo = 1;
     
-    public static final double kAutoAlignP = 0.5;
+    public static final double kAutoAlignP = 1;
     public static final double kAutoAlignI = 0.0;
     public static final double kAutoAlignD = 0.0;
 
@@ -132,7 +132,7 @@ public final class Constants {
         / kDrivingMotorReduction;
 
     // This accounts for stuff such as wheel wear
-    public static final double kXFactor = .9714;  // if actual is smaller than odo go down  
+    public static final double kXFactor = .9473;  // if actual is smaller than odo go down  
 
     public static final double kDrivingEncoderPositionFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) * kXFactor; // meters
@@ -352,12 +352,16 @@ public final class Constants {
     public static final double[][] kShoulderArray = {
       // {36, Math.toRadians(-45)},
       // {50, Math.toRadians(-45)},  
-      {71, Math.toRadians(-42)},
-      {80, Math.toRadians(-39.5)},
-      {90, Math.toRadians(-36.5)},
-      {100, Math.toRadians(-34)},
-      {110, Math.toRadians(-32)},
-      {120, Math.toRadians(-29.)},
+      {71, Math.toRadians(-43.)},
+      {80, Math.toRadians(-40.5)},
+      {90, Math.toRadians(-37.5)},
+      {100, Math.toRadians(-36.5)},
+      {110, Math.toRadians(-35)},
+      {120, Math.toRadians(-31.5)},
+      {130, Math.toRadians(-31.)},
+      {140, Math.toRadians(-29.)},
+      {150, Math.toRadians(-27.6)},
+
       // {80, Math.toRadians(-40)},
       // {90, Math.toRadians(-40)},
       // {100, Math.toRadians(-39)},
@@ -407,7 +411,7 @@ public final class Constants {
     public static final TrapezoidProfile.Constraints kNormalConstaints = new TrapezoidProfile.Constraints(ElbowConstants.kMaxVelocityRadPerSecond
         , ElbowConstants.kMaxAccelerationRadPerSecSquared);
 
-    public static final double kElbowHome = Math.toRadians(16); 
+    public static final double kElbowHome = Math.toRadians(13); 
     //only for da front one
     public static final double kElbowAmp = Math.toRadians(23); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
@@ -436,9 +440,9 @@ public final class Constants {
       {36, Math.toRadians(22)},
       {48, Math.toRadians(18)},
       {50, Math.toRadians(14)},  
-      {84, Math.toRadians(16)}, 
-      {100, Math.toRadians(16)},
-      {120, Math.toRadians(16)},
+      {84, Math.toRadians(13)}, 
+      {100, Math.toRadians(13)},
+      {120, Math.toRadians(13)},
     };
   }
 
@@ -453,11 +457,11 @@ public final class Constants {
   }
 
   public static final class LocationConstants{
-    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(215));
-    public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(215));
+    public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(218));
+    public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(218));
   
-    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(4), Units.inchesToMeters(218));
-    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(4), Units.inchesToMeters(218));
+    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(4), Units.inchesToMeters(228));
+    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(4), Units.inchesToMeters(208));
     // the location in which we shoot at to stage it.
     public static final Pose2d StageBlue = new Pose2d( 0.9,6.5, Rotation2d.fromDegrees(-90));
     public static final Pose2d StageRed = new Pose2d( 15.8,6.5, Rotation2d.fromDegrees(-90));
