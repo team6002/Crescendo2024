@@ -260,19 +260,19 @@ public final class Constants {
     // public static final double kShooterBotP = 0.0079;//0.005;
     public static final double kShooterBotP = 0.0075;//0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
-    public static final double kShooterBotD = 0.0009;//0.0005
+    public static final double kShooterBotD = 0.00075;//0.0005
     public static final double kShooterBotFF = 0.0000;
 
-    public static final double kShooterBotSVolts = 0.00002;
+    public static final double kShooterBotSVolts = 0.22;
     public static final double kBotVVoltSecondsPerRotation = 0.0022;
     public static final double kShooterBotA = 0.1;
 
-    public static final double kShooterTopP = 0.009;//0.0077;//0.005;
+    public static final double kShooterTopP = 0.008;//0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
-    public static final double kShooterTopD = 0.0009;//0.0005
+    public static final double kShooterTopD = 0.0008;//0.0005
     public static final double kShooterTopFF = 0.0;
 
-    public static final double kShooterTopSVolts = 0.00002;//0.7;
+    public static final double kShooterTopSVolts = 0.24;//0.7;
     public static final double kTopVVoltSecondsPerRotation = 0.0022;//0.0022;
     public static final double kShooterTopA = 0.1;
 
@@ -352,15 +352,30 @@ public final class Constants {
     public static final double[][] kShoulderArray = {
       // {36, Math.toRadians(-45)},
       // {50, Math.toRadians(-45)},  
-      {71, Math.toRadians(-43.)},
-      {80, Math.toRadians(-40.5)},
-      {90, Math.toRadians(-37.5)},
-      {100, Math.toRadians(-36.5)},
-      {110, Math.toRadians(-35)},
-      {120, Math.toRadians(-31.5)},
-      {130, Math.toRadians(-31.)},
-      {140, Math.toRadians(-29.)},
-      {150, Math.toRadians(-27.6)},
+      //3000RPM
+      // {71, Math.toRadians(-41.)},
+      // {80, Math.toRadians(-38.5)},
+      // {90, Math.toRadians(-35.5)},
+      // {100, Math.toRadians(-33.5)},
+      // {110, Math.toRadians(-32)},
+      // {120, Math.toRadians(-31.3)},
+      // {130, Math.toRadians(-28.5)},
+      // {140, Math.toRadians(-28.)},
+      // {150, Math.toRadians(-26.5)},
+      // {160, Math.toRadians(-26.)},
+      // {170, Math.toRadians(-25.2)},
+      //3500RPM
+      {71, Math.toRadians(-41.)},
+      {80, Math.toRadians(-38.5)},
+      {90, Math.toRadians(-35.5)},
+      {100, Math.toRadians(-31.5)},
+      {110, Math.toRadians(-30.5)},
+      {120, Math.toRadians(-29.5)},
+      {130, Math.toRadians(-26.1)},
+      {140, Math.toRadians(-25.7)},
+      {150, Math.toRadians(-23.6)},
+      {160, Math.toRadians(-22.6)},
+      {170, Math.toRadians(-22.)},
 
       // {80, Math.toRadians(-40)},
       // {90, Math.toRadians(-40)},
@@ -411,7 +426,7 @@ public final class Constants {
     public static final TrapezoidProfile.Constraints kNormalConstaints = new TrapezoidProfile.Constraints(ElbowConstants.kMaxVelocityRadPerSecond
         , ElbowConstants.kMaxAccelerationRadPerSecSquared);
 
-    public static final double kElbowHome = Math.toRadians(13); 
+    public static final double kElbowHome = Math.toRadians(14); 
     //only for da front one
     public static final double kElbowAmp = Math.toRadians(23); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
@@ -460,8 +475,8 @@ public final class Constants {
     public static final Translation2d SpeakerBlue = new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(218));
     public static final Translation2d SpeakerRed = new Translation2d(16.54, Units.inchesToMeters(218));
   
-    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(4), Units.inchesToMeters(228));
-    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(4), Units.inchesToMeters(208));
+    public static final Translation2d SpeakerShootingBlue = new Translation2d(Units.inchesToMeters(4), Units.inchesToMeters(218));
+    public static final Translation2d SpeakerShootingRed = new Translation2d(16.54 - Units.inchesToMeters(4), Units.inchesToMeters(218));
     // the location in which we shoot at to stage it.
     public static final Pose2d StageBlue = new Pose2d( 0.9,6.5, Rotation2d.fromDegrees(-90));
     public static final Pose2d StageRed = new Pose2d( 15.8,6.5, Rotation2d.fromDegrees(-90));

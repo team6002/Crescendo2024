@@ -23,7 +23,7 @@ public class CMD_Autofire extends Command {
   SUB_GlobalVariables m_variable;
   boolean m_shot;
   Timer m_shooterTimer;
-  Timer m_altShooterTimer;
+  Timer m_totalTimer;
   Timer m_intialTimer;
   boolean m_closeShooting;
   int m_CHECK;
@@ -35,7 +35,7 @@ public class CMD_Autofire extends Command {
     m_shooter = p_shooter;
     m_variable = p_variables;
     m_shooterTimer = new Timer();
-    m_altShooterTimer = new Timer(); 
+    m_totalTimer = new Timer(); 
     m_intialTimer = new Timer();
     m_closeShooting = false;
     addRequirements(m_shooter);
@@ -49,7 +49,7 @@ public class CMD_Autofire extends Command {
 
     m_drivetrain.setAutoAlignSetpoint();
 
-    m_shooter.setShooterSetpoint(2500);
+    m_shooter.setShooterSetpoint(3500);
     m_shooter.enableShooter();
 
     double sh_sp = m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()) + Math.toRadians(m_arm.getShooterAngMod()));
@@ -60,7 +60,7 @@ public class CMD_Autofire extends Command {
     m_shot = false;
     m_closeShooting = false;
     m_shooterTimer.restart();
-    m_altShooterTimer.restart();
+    m_totalTimer.restart();
     m_intialTimer.restart();  
     m_intialTimer.start();
     m_shooterTimer.stop(); 
@@ -69,7 +69,7 @@ public class CMD_Autofire extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean m_shooterAtSetpoint = m_shooter.getOverShooterValue(2400, 2400);
+    boolean m_shooterAtSetpoint = m_shooter.getOverShooterValue(3400, 3400);
     boolean m_shoulderAtSetpoint = m_arm.atShoulderGoal();
     boolean m_elbowAtSetpoint = m_arm.atElbowGoal();
 
@@ -103,7 +103,7 @@ public class CMD_Autofire extends Command {
       System.out.println("Top" + m_shooter.getTopShooterVelocity());
       System.out.println("Bot" + m_shooter.getBotShooterVelocity());
       System.out.println("Shoulder" + Math.toDegrees(m_arm.getShoulderPosition()));
-
+      System.out.println("Timer" + m_totalTimer.get());
       if (m_variable.getContShooting()){
         m_shooter.setShooterSetpoint(1250);
       }else{

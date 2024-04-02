@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.25,
-      "y": 5.35
+      "x": 1.2605580140737749,
+      "y": 5.362058048059758
     },
-    "rotation": 0
+    "rotation": 0.4658090827650052
   },
   "command": {
     "type": "sequential",
@@ -41,22 +41,15 @@
                 }
               },
               {
-                "type": "sequential",
+                "type": "named",
                 "data": {
-                  "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Intake3"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "ShootyPosition1"
-                      }
-                    }
-                  ]
+                  "name": "Intake3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootyPosition1"
                 }
               }
             ]
@@ -96,6 +89,12 @@
                 "data": {
                   "name": "Intake3"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootyPosition2"
+                }
               }
             ]
           }
@@ -104,12 +103,6 @@
           "type": "sequential",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootyPosition2"
-                }
-              },
               {
                 "type": "named",
                 "data": {
@@ -203,6 +196,12 @@
                 "data": {
                   "pathName": "ShootBlue5_V2"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PrepSubShot"
+                }
               }
             ]
           }
@@ -214,7 +213,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "SubShot"
+                  "name": "FireSubShot"
                 }
               }
             ]
