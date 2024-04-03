@@ -3,29 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.648044732709184,
-        "y": 6.879621646567236
+        "x": 8.079342670313249,
+        "y": 7.445640937793504
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.648044732709184,
-        "y": 6.879621646567236
+        "x": 6.757631261237478,
+        "y": 7.195984338301414
       },
       "isLocked": false,
-      "linkedName": "ShootBlue3"
+      "linkedName": "ShootiestBlue2"
     },
     {
       "anchor": {
-        "x": 8.04,
-        "y": 7.47
+        "x": 4.01,
+        "y": 6.76
       },
       "prevControl": {
-        "x": 7.039999999999999,
-        "y": 7.47
+        "x": 5.330889877977139,
+        "y": 7.038836744812332
+      },
+      "nextControl": {
+        "x": 2.5423445800254005,
+        "y": 6.450181394652964
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.2171990541164184,
+        "y": 5.55
+      },
+      "prevControl": {
+        "x": 1.5538031148222047,
+        "y": 6.618221749599012
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootBlue4"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -43,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "ShootyBlue",
+  "folder": "ShootiestBlue",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

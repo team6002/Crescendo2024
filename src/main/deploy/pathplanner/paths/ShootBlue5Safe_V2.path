@@ -4,24 +4,24 @@
     {
       "anchor": {
         "x": 1.25,
-        "y": 5.35
+        "y": 5.48
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.6218826803850794,
-        "y": 6.417126073688768
+        "y": 6.547126073688768
       },
       "isLocked": false,
       "linkedName": "ShootBlue1Start"
     },
     {
       "anchor": {
-        "x": 2.561326812794471,
-        "y": 6.836262686609881
+        "x": 2.648044732709184,
+        "y": 6.879621646567236
       },
       "prevControl": {
-        "x": 1.9543013733914794,
-        "y": 6.821809699957429
+        "x": 2.0410192933061926,
+        "y": 6.865168659914785
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 20.556045219583563,
     "rotateFast": false
   },
   "reversed": false,

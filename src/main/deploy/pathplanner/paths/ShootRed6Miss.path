@@ -3,72 +3,66 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 14.06,
-        "y": 5.4
+        "x": 8.534598822328235,
+        "y": 5.947701340840965
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.175785266585047,
-        "y": 5.761930617718134
+        "x": 9.797567502111749,
+        "y": 6.549814316086593
       },
       "isLocked": false,
-      "linkedName": "ShootRed2_V2"
+      "linkedName": "ShootRed5Miss"
     },
     {
       "anchor": {
-        "x": 14.28,
-        "y": 6.45
+        "x": 11.618592110171699,
+        "y": 6.417643175179016
       },
       "prevControl": {
-        "x": 14.265105474772632,
-        "y": 6.330927949886418
+        "x": 10.42606722243856,
+        "y": 6.469043063309741
       },
       "nextControl": {
-        "x": 14.292412104356139,
-        "y": 6.549226708427985
+        "x": 12.811116997904838,
+        "y": 6.366243287048292
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 13.935827308274336,
-        "y": 6.836262686609881
+        "x": 15.30469837326079,
+        "y": 5.742101788318067
       },
       "prevControl": {
-        "x": 14.15776621263855,
-        "y": 6.744921990698303
+        "x": 14.30469837326079,
+        "y": 5.742101788318067
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootRed3_V2"
+      "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.2,
-      "rotationDegrees": 140.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 5.3,
+    "maxAcceleration": 3.75,
     "maxAngularVelocity": 360.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 155.0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "ShootyRed",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": -155.17945866451092,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

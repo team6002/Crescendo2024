@@ -1,26 +1,27 @@
 {
   "version": 1.0,
-  "startingPose": {
-    "position": {
-      "x": 15.33,
-      "y": 5.35
-    },
-    "rotation": 180.0
-  },
+  "startingPose": null,
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "SubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootiestBlue2Miss"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              }
+            ]
           }
         },
         {
@@ -30,7 +31,38 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed1_V2"
+                  "pathName": "ShootiestBlue3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PrepSubShot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FireSubShot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.4
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue1"
                 }
               },
               {
@@ -40,7 +72,13 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "PickUp"
+                        "name": "Intake3"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "ShootyPosition1"
                       }
                     }
                   ]
@@ -50,50 +88,19 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "ShootRed2Safe_V2"
+                  "name": "Fire"
                 }
               },
               {
-                "type": "named",
+                "type": "wait",
                 "data": {
-                  "name": "PrepSubShot"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "FireSubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShootRed3Safe_V2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "PickUp"
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -106,78 +113,48 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootRed4Safe_V2"
+                  "pathName": "ShootBlue2_March30"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "PrepSubShot"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Intake3"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "ShootyPosition2"
+                      }
+                    }
+                  ]
                 }
               }
             ]
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "FireSubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
-          }
-        },
-        {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "ShootRed5Safe_V2"
+                  "name": "Fire"
                 }
               },
               {
-                "type": "named",
+                "type": "wait",
                 "data": {
-                  "name": "PickUp"
+                  "waitTime": 0.3
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShootRed6SAfe_V2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "PrepSubShot"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "FireSubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
           }
         },
         {

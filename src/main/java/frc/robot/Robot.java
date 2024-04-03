@@ -60,6 +60,8 @@ public class Robot extends TimedRobot {
     m_Chooser.addOption("3InnerRed", m_robotContainer.get3InnerRed());
     // m_Chooser.addOption("3OuterBlue", m_robotContainer.get3OuterBlue());
     // m_Chooser.addOption("3OuterRed", m_robotContainer.get3OuterRed());
+    m_Chooser.addOption("5ShootDangerousBlue", m_robotContainer.get5ShootBlueDangerous());
+    m_Chooser.addOption("5ShootDangerousRed", m_robotContainer.get5ShootRedDangerous());
   }
 
   /**

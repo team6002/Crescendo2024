@@ -3,29 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.648044732709184,
-        "y": 6.879621646567236
+        "x": 7.976542894051799,
+        "y": 6.021129752456285
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.648044732709184,
-        "y": 6.879621646567236
+        "x": 6.919173766791183,
+        "y": 6.373586128209824
       },
       "isLocked": false,
-      "linkedName": "ShootBlue3"
+      "linkedName": "ShootBlue5Miss"
     },
     {
       "anchor": {
-        "x": 8.04,
-        "y": 7.47
+        "x": 5.391862805192516,
+        "y": 6.388271810532888
       },
       "prevControl": {
-        "x": 7.039999999999999,
-        "y": 7.47
+        "x": 6.697052821654836,
+        "y": 6.3775545283201485
+      },
+      "nextControl": {
+        "x": 4.086672788730196,
+        "y": 6.398989092745628
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.2505003900884375,
+        "y": 5.55
+      },
+      "prevControl": {
+        "x": 2.0582129178569737,
+        "y": 5.843713646461282
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootBlue4"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -39,7 +55,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 0.09269250649144055,
     "rotateFast": false
   },
   "reversed": false,

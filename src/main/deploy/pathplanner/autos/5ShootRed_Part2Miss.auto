@@ -1,0 +1,63 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootRed5Miss"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootRed6Miss"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PrepSubShot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FireSubShot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "HoldShooter"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

@@ -5,7 +5,7 @@
       "x": 1.2505003900884375,
       "y": 5.345588365595336
     },
-    "rotation": 0.38452965958452373
+    "rotation": 1.52752544221295
   },
   "command": {
     "type": "sequential",
@@ -14,25 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterStart"
+            "name": "SubShot"
           }
         },
         {
           "type": "sequential",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShooterCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
               {
                 "type": "wait",
                 "data": {
@@ -59,7 +47,13 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "PickUp"
+                        "name": "Intake3"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "ShootyPosition1"
                       }
                     }
                   ]
@@ -75,18 +69,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootyPosition1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShoulderCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "Fire"
                 }
               },
@@ -106,7 +88,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue2"
+                  "pathName": "ShootBlue2_March30"
                 }
               },
               {
@@ -114,20 +96,20 @@
                 "data": {
                   "name": "Intake3"
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
+              },
               {
                 "type": "named",
                 "data": {
                   "name": "ShootyPosition2"
                 }
-              },
+              }
+            ]
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
               {
                 "type": "named",
                 "data": {
@@ -138,12 +120,6 @@
                 "type": "named",
                 "data": {
                   "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.2
                 }
               }
             ]
@@ -156,13 +132,19 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue3"
+                  "pathName": "ShootBlue3_March30"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Intake3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootyPosition3"
                 }
               }
             ]
@@ -175,12 +157,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootyPosition3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "ShoulderCheck"
                 }
               },
@@ -206,7 +182,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue4Alt"
+                  "pathName": "ShootBlue4_V2"
                 }
               },
               {
@@ -216,49 +192,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShootBlue5Alt"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterMid"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Fire"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "HoldShooter"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "ShootBlue6"
           }
         }
       ]

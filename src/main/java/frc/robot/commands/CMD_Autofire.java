@@ -76,14 +76,14 @@ public class CMD_Autofire extends Command {
     if (m_variable.getAutofire()){
       double rot = m_drivetrain.autoAlignTurn();
 
-      m_drivetrain.drive(0, 0, rot,true, false);
+      m_drivetrain.drive(-0.01, 0, rot, true, false);
     }
 
     // if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
     if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint){
         if (m_CHECK >= 5){
           m_shooterTimer.start();
-          m_intake.setIndexerPower(.3);
+          m_intake.setIndexerPower(.5);
         }
         m_CHECK +=1;
       }else{
@@ -91,9 +91,10 @@ public class CMD_Autofire extends Command {
         // m_shooterTimer.stop();
       }
 
-      if (m_shooterTimer.get() > 0.3){
-        m_shot = true;
-      }
+    if (m_shooterTimer.get() > 0.3){
+      m_shot = true;
+    }
+
     }
   // }
 

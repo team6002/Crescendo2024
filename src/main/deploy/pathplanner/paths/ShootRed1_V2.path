@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 15.33,
-        "y": 5.35
+        "y": 5.48
       },
       "prevControl": null,
       "nextControl": {
         "x": 14.671899209471599,
-        "y": 4.707113268525555
+        "y": 4.837113268525556
       },
       "isLocked": true,
       "linkedName": "ShootRed1Start"

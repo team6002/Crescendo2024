@@ -132,7 +132,7 @@ public final class Constants {
         / kDrivingMotorReduction;
 
     // This accounts for stuff such as wheel wear
-    public static final double kXFactor = .9473;  // if actual is smaller than odo go down  
+    public static final double kXFactor = 1.002;  // if actual is smaller than odo go down  
 
     public static final double kDrivingEncoderPositionFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) * kXFactor; // meters
@@ -258,9 +258,9 @@ public final class Constants {
 
     // public static final double kShooterBotP = 0.01;//0.005;
     // public static final double kShooterBotP = 0.0079;//0.005;
-    public static final double kShooterBotP = 0.0075;//0.0085;//0.005;
+    public static final double kShooterBotP = 0.001;//0.0085;//0.005;
     public static final double kShooterBotI = 0.0;
-    public static final double kShooterBotD = 0.00075;//0.0005
+    public static final double kShooterBotD = 0.0001;//0.0005
     public static final double kShooterBotFF = 0.0000;
 
     public static final double kShooterBotSVolts = 0.22;
