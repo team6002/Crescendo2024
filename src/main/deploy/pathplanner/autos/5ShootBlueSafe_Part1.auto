@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.2505003900884375,
-      "y": 5.345588365595336
+      "x": 12.895212269297778,
+      "y": 6.648373860128002
     },
-    "rotation": -1.4878675288277565
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
+            "name": "SubShot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
           }
         },
         {
@@ -24,89 +30,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue1"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "ShooterCheck"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Fire"
-                      }
-                    },
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.3
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "PickUp"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "SlamBlue2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReadyShooterFirstRing"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "SlamBlue3"
+                  "pathName": "ShootBlue1"
                 }
               },
               {
@@ -125,35 +49,28 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue4"
+                  "pathName": "ShootBlue2Safe_V2"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooterFirstRing"
+                  "name": "PrepSubShot"
                 }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              }
-            ]
+            "name": "FireSubShot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
           }
         },
         {
@@ -163,7 +80,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue5"
+                  "pathName": "ShootBlue3Safe_V2"
                 }
               },
               {
@@ -182,13 +99,44 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SlamBlue6"
+                  "pathName": "ShootBlue4Safe_V2"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ReadyShooterFirstRing"
+                  "name": "PrepSubShot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FireSubShot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue5Safe_V2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
                 }
               }
             ]
@@ -199,15 +147,59 @@
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "Fire"
+                  "pathName": "ShootBlue6Safe_V2"
                 }
               },
               {
-                "type": "wait",
+                "type": "named",
                 "data": {
-                  "waitTime": 0.3
+                  "name": "PrepSubShot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FireSubShot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue5Safe_V2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ShootBlue4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp5"
                 }
               }
             ]

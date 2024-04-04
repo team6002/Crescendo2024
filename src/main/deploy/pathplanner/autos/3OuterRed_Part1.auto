@@ -1,0 +1,62 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.8125154278477575,
+      "y": 6.518296980255932
+    },
+    "rotation": 60.780753309515426
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ReadyShooterFirstRing"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShooterCheck"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Fire"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp5"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "OuterBlue1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "HoldShooter"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

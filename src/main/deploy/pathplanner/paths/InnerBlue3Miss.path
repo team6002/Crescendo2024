@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.7617520673323996,
-        "y": 5.85958724690258
+        "x": 8.096820700683654,
+        "y": 0.8960851724520357
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.7292748106622975,
-        "y": 6.30150218046915
+        "x": 6.319103342432037,
+        "y": 1.416392691940314
       },
       "isLocked": false,
-      "linkedName": "OuterBlue3"
+      "linkedName": "InnerBlue2Miss"
     },
     {
       "anchor": {
-        "x": 5.740983876333949,
-        "y": 6.590561913518194
+        "x": 2.43,
+        "y": 3.44
       },
       "prevControl": {
-        "x": 4.784720742801207,
-        "y": 6.298054102603437
-      },
-      "nextControl": {
-        "x": 6.967781306874563,
-        "y": 6.965822464991702
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.08,
-        "y": 7.45
-      },
-      "prevControl": {
-        "x": 7.186282541579168,
-        "y": 6.995245539786855
+        "x": 4.021078464692141,
+        "y": 2.1534950112153757
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "OuterBlue4"
+      "linkedName": "InnerBlue2"
     }
   ],
   "rotationTargets": [],
@@ -55,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 28.072486935852996,
+    "rotation": -43.836622211043164,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "OuterBlue",
+  "folder": "InnerBlue",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

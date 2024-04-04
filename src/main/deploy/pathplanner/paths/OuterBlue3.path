@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.270256540513081,
-        "y": 7.372212526178183
+        "x": 8.08,
+        "y": 5.89
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.271630142544722,
-        "y": 7.18129865597835
+        "x": 6.781598915310506,
+        "y": 6.460485033646124
       },
       "isLocked": false,
       "linkedName": "OuterBlue1"
     },
     {
       "anchor": {
-        "x": 3.7617520673323996,
-        "y": 5.85958724690258
+        "x": 5.6976249163765935,
+        "y": 6.431579060341219
       },
       "prevControl": {
-        "x": 4.686950053685442,
-        "y": 6.109243846394669
+        "x": 6.550351128871272,
+        "y": 6.474938020298576
+      },
+      "nextControl": {
+        "x": 5.1184280530963955,
+        "y": 6.4021283723778195
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.76,
+        "y": 5.86
+      },
+      "prevControl": {
+        "x": 4.890028429437017,
+        "y": 6.34573217791712
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,7 +55,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 8.130102354156048,
+    "rotation": 8.13,
     "rotateFast": false
   },
   "reversed": false,

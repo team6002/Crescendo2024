@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 8.079342670313249,
-        "y": 5.888958611548708
+        "y": 5.89
       },
       "prevControl": null,
       "nextControl": {
         "x": 6.963230813760378,
-        "y": 6.4910715867943365
+        "y": 6.492112975245628
       },
       "isLocked": false,
       "linkedName": "ShootiestBlue2Miss"

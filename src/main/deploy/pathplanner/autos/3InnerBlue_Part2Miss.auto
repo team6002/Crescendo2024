@@ -1,26 +1,58 @@
 {
   "version": 1.0,
-  "startingPose": {
-    "position": {
-      "x": 1.2505003900884375,
-      "y": 5.345588365595336
-    },
-    "rotation": 0.38452965958452373
-  },
+  "startingPose": null,
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "SubShot"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "InnerBlue2Miss"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PickUp"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "InnerBlue3Miss"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReadyShooterMid"
+                }
+              }
+            ]
           }
         },
         {
           "type": "sequential",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              },
               {
                 "type": "wait",
                 "data": {
@@ -37,45 +69,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue1"
+                  "pathName": "InnerBlue3"
                 }
               },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Intake3"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "ShootyPosition1"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.2
+                  "name": "PickUp5"
                 }
               }
             ]
@@ -88,13 +88,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue2"
+                  "pathName": "InnerBlue4"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Intake3"
+                  "name": "ReadyShooterMid"
                 }
               }
             ]
@@ -107,75 +107,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootyPosition2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShoulderCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "Fire"
                 }
               },
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.2
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShootBlue3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake3"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootyPosition3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShoulderCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.2
+                  "waitTime": 0.3
                 }
               }
             ]

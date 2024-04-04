@@ -1,79 +1,10 @@
 {
   "version": 1.0,
-  "startingPose": {
-    "position": {
-      "x": 0.8,
-      "y": 4.53787583782681
-    },
-    "rotation": -59.5344550805401
-  },
+  "startingPose": null,
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "named",
-          "data": {
-            "name": "ReadyShooterMid"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "InnerBlue1"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShooterCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "InnerBlueShoot"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "PickUp5"
-                }
-              }
-            ]
-          }
-        },
         {
           "type": "parallel",
           "data": {
@@ -94,19 +25,19 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              },
               {
                 "type": "named",
                 "data": {
                   "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -125,7 +56,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "PickUp"
+                  "name": "PickUp5"
                 }
               }
             ]
@@ -151,19 +82,19 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
-                }
-              },
               {
                 "type": "named",
                 "data": {
                   "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
                 }
               }
             ]

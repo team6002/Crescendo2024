@@ -1,36 +1,18 @@
 {
   "version": 1.0,
-  "startingPose": {
-    "position": {
-      "x": 12.895212269297778,
-      "y": 6.648373860128002
-    },
-    "rotation": 0.0
-  },
+  "startingPose": null,
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "SubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue1"
+                  "pathName": "InnerRed2Miss"
                 }
               },
               {
@@ -49,44 +31,32 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue2Safe_V2"
+                  "pathName": "InnerRed3Miss"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "PrepSubShot"
+                  "name": "ReadyShooterMid"
                 }
               }
             ]
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "FireSubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
-          }
-        },
-        {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "ShootBlue3Safe_V2"
+                  "name": "Fire"
                 }
               },
               {
-                "type": "named",
+                "type": "wait",
                 "data": {
-                  "name": "PickUp"
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -99,44 +69,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue4Safe_V2"
+                  "pathName": "InnerRed3"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "PrepSubShot"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "FireSubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShootBlue5Safe_V2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "PickUp"
+                  "name": "PickUp5"
                 }
               }
             ]
@@ -149,28 +88,35 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "ShootBlue6Safe_V2"
+                  "pathName": "InnerRed4"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "PrepSubShot"
+                  "name": "ReadyShooterMid"
                 }
               }
             ]
           }
         },
         {
-          "type": "named",
+          "type": "sequential",
           "data": {
-            "name": "FireSubShot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.3
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Fire"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
           }
         },
         {
