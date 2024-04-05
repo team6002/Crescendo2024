@@ -340,7 +340,7 @@ public final class Constants {
     public static final double kMaxClimbVelocityRadPerSecond = .6;
     public static final double kMaxClimbAccelerationRadPerSecSquared = 1;
 
-    public static final double kShoulderHome = Math.toRadians(-45);
+    public static final double kShoulderHome = Math.toRadians(-49);
 
     public static final TrapezoidProfile.Constraints kClimbConstraints = new TrapezoidProfile.Constraints(ShoulderConstants.kMaxClimbVelocityRadPerSecond
         , ShoulderConstants.kMaxClimbAccelerationRadPerSecSquared);
@@ -367,15 +367,15 @@ public final class Constants {
       //3500RPM
       {71, Math.toRadians(-41.)},
       {80, Math.toRadians(-38.5)},
-      {90, Math.toRadians(-35.5)},
-      {100, Math.toRadians(-31.5)},
+      {90, Math.toRadians(-36.)},
+      {100, Math.toRadians(-32.)},
       {110, Math.toRadians(-30.5)},
       {120, Math.toRadians(-29.5)},
-      {130, Math.toRadians(-26.1)},
-      {140, Math.toRadians(-25.7)},
-      {150, Math.toRadians(-23.6)},
-      {160, Math.toRadians(-22.6)},
-      {170, Math.toRadians(-22.)},
+      {130, Math.toRadians(-28.)},
+      {140, Math.toRadians(-26.)},
+      {150, Math.toRadians(-25.3)},
+      {160, Math.toRadians(-24.3)},
+      {170, Math.toRadians(-23.7)},
 
       // {80, Math.toRadians(-40)},
       // {90, Math.toRadians(-40)},
@@ -426,9 +426,9 @@ public final class Constants {
     public static final TrapezoidProfile.Constraints kNormalConstaints = new TrapezoidProfile.Constraints(ElbowConstants.kMaxVelocityRadPerSecond
         , ElbowConstants.kMaxAccelerationRadPerSecSquared);
 
-    public static final double kElbowHome = Math.toRadians(14); 
+    public static final double kElbowHome = Math.toRadians(13); 
     //only for da front one
-    public static final double kElbowAmp = Math.toRadians(23); 
+    public static final double kElbowAmp = Math.toRadians(26); 
     public static final double kElbowShelfIntake = Math.toRadians(95);
     public static final double kElbowGroundIntake = Math.toRadians(45);
     //intake position is 90 to ground

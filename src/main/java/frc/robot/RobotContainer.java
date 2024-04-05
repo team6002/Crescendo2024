@@ -159,7 +159,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition1", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2500),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-30.5)),//-32.6
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-29.5)),//-32.6
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(14)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -167,7 +167,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition2", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2500),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-33.5)),
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-32.5)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(14)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -175,7 +175,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootyPosition3", new SequentialCommandGroup(
       new CMD_setShooterSetpoint(m_shooter, 2500),
       new CMD_ShooterOn(m_shooter),
-      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-31.5)),//-33.6
+      new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-30.5)),//-33.6
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(14)),
       new CMD_ElbowCheck(m_arm,2)
     ));
@@ -232,9 +232,12 @@ public class RobotContainer {
       // m_intake.CMDsetIndexPower(0)
     ));
 
+    NamedCommands.registerCommand("SpinShooter", new SequentialCommandGroup(
+      new CMD_ShooterOn(m_shooter),
+      new CMD_setShooterSetpoint(m_shooter, 2500)
+    ));
     NamedCommands.registerCommand("PickUp", new SequentialCommandGroup(
-      m_intake.CMDsetIndexVelocity(2650),     
-       new CMD_GroundIntakeSetPower(m_intake, .5),
+      new CMD_GroundIntakeSetPower(m_intake, .5),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(14)),
       new CMD_IndexerIndex(m_intake).withTimeout(3),
@@ -243,8 +246,7 @@ public class RobotContainer {
     ));
 
     NamedCommands.registerCommand("PickUp5", new SequentialCommandGroup(
-      m_intake.CMDsetIndexVelocity(2650),     
-       new CMD_GroundIntakeSetPower(m_intake, .5),
+      new CMD_GroundIntakeSetPower(m_intake, .5),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47.5)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(14)),
       new CMD_IndexerIndex(m_intake).withTimeout(5),
@@ -289,8 +291,11 @@ public class RobotContainer {
     // m_driverController.leftBumper().onTrue(new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-4.8)));
     // m_driverController.rightBumper().onTrue(new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-44)));
 
-    m_driverController.a().onTrue(new CMD_ShootSafeSubShotTeleop(m_arm, m_shooter, m_intake));
-
+    m_driverController.a().onTrue( new SequentialCommandGroup(
+      new CMD_ShootSafeSubShotTeleop(m_arm, m_shooter, m_intake), 
+      new CMD_Home(m_arm, m_intake, m_shooter, m_variables)
+      ));
+    
     m_driverController.leftBumper().onTrue(new CMD_FloorIntake(m_variables, m_arm, m_intake));
     m_driverController.rightBumper().onTrue(new CMD_ShootSpeaker(m_arm, m_shooter, m_intake, m_variables, m_drivetrain));
 
@@ -354,12 +359,12 @@ public class RobotContainer {
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-47)),
       new WaitCommand(2),
 
-      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(50)),//50
+      new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(60)),//50
 
       new CMD_ShoulderCheck(m_arm, 4.00),
       m_arm.CMDsetLHookPWM(HookConstants.LHookClose),
       m_arm.CMDsetRHookPWM(HookConstants.RHookClose),
-      new WaitCommand(0.2),
+      new WaitCommand(0.6),
 
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-10)),
       new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(80)),//60
@@ -393,17 +398,29 @@ public class RobotContainer {
     );
     
     m_driverController.rightTrigger(.5).onTrue(
-      new CMD_placeBackAmp(m_arm, m_shooter, m_intake)
+      new CMD_placeFrontAmp(m_arm, m_shooter, m_intake)
       // new PrintCommand("PP")
     );
     m_driverController.rightTrigger(.5).onFalse(new SequentialCommandGroup(
+      new CMD_dropFrontAmp(m_arm, m_shooter, m_intake),
+      m_variables.CMDsetHasItem(false),
+      new CMD_Home(m_arm, m_intake, m_shooter, m_variables)
+      // new PrintCommand("Poopoo")
+    ));
+
+    m_driverController.leftTrigger(.5).onTrue(
+      new CMD_placeBackAmp(m_arm, m_shooter, m_intake)
+      // new PrintCommand("PP")
+    );
+
+    m_driverController.leftTrigger(.5).onFalse(new SequentialCommandGroup(
       new CMD_dropBackAmp(m_arm, m_shooter, m_intake),
       m_variables.CMDsetHasItem(false),
       new CMD_Home(m_arm, m_intake, m_shooter, m_variables)
       // new PrintCommand("Poopoo")
     ));
 
-    m_driverController.leftTrigger().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.AMP));
+    // m_driverController.leftTrigger().whileTrue(m_drivetrain.teleopPathfindTo(TeleopPath.AMP));
 
     m_operatorController.a().onTrue(new CMD_ManFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables));
     
@@ -524,6 +541,14 @@ public class RobotContainer {
   public Command get4ShootBlueSafeV2() {
     return new PathPlannerAuto("4ShootBlueSafe_V2");
   }
+  
+  public Command get4SafeBlueReverse() {
+    return new PathPlannerAuto("4ShootBlueSafeReverse");
+  }
+
+  public Command get4SafeBlueUnder() {
+    return new PathPlannerAuto("4ShootBlueSafeUnder");
+  }
 
   public Command get4ShootRedV3() {
     return new PathPlannerAuto("4ShootRed_V3");
@@ -553,20 +578,52 @@ public class RobotContainer {
     return new PathPlannerAuto("5ShootRed_V3");
   }
   
+  public Command get4SafeRedReverse() {
+    return new PathPlannerAuto("4ShootRedSafeReverse");
+  }
+  
+  public Command get4SafeRedUnder() {
+    return new PathPlannerAuto("4ShootRedSafeUnder");
+  }
+
   public Command get3InnerBlue() {
-    return new PathPlannerAuto("3InnerBlue");
+    return new SequentialCommandGroup(
+      new PathPlannerAuto("3InnerBlue_Part1"),
+      new ConditionalCommand( 
+        new PathPlannerAuto("3InnerBlue_Part2"), 
+        new PathPlannerAuto("3InnerBlue_Part2Miss"), 
+        () -> m_intake.getIndexerSensor()
+      ));  
   }
   
   public Command get3InnerRed() {
-    return new PathPlannerAuto("3InnerRed");
+    return new SequentialCommandGroup(
+      new PathPlannerAuto("3InnerRed_Part1"),
+      new ConditionalCommand( 
+        new PathPlannerAuto("3InnerRed_Part2"), 
+        new PathPlannerAuto("3InnerRed_Part2Miss"), 
+        () -> m_intake.getIndexerSensor()
+      ));  
   }
 
   public Command get3OuterBlue() {
-    return new PathPlannerAuto("3OuterBlue");
+    return new SequentialCommandGroup(
+      new PathPlannerAuto("3OuterBlue_Part1"),
+      new ConditionalCommand( 
+        new PathPlannerAuto("3OuterBlue_Part2"), 
+        new PathPlannerAuto("3OuterBlue_Part2Miss"), 
+        () -> m_intake.getIndexerSensor()
+      ));
   }
   
   public Command get3OuterRed() {
-    return new PathPlannerAuto("3OuterRed");
+    return new SequentialCommandGroup(
+      new PathPlannerAuto("3OuterRed_Part1"),
+      new ConditionalCommand( 
+        new PathPlannerAuto("3OuterRed_Part2"), 
+        new PathPlannerAuto("3OuterRed_Part2Miss"), 
+        () -> m_intake.getIndexerSensor()
+      ));
   }
 
   public Command get5ShootBlueDangerous() {

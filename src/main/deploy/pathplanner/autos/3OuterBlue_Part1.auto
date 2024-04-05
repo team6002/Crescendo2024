@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.771356613135762,
-      "y": 6.518296980255932
+      "x": 0.7952442380734501,
+      "y": 6.549814316086593
     },
-    "rotation": 120.0
+    "rotation": 59.81102029744448
   },
   "command": {
     "type": "sequential",
@@ -42,7 +42,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OuterRed1"
+                  "pathName": "OuterBlue1"
                 }
               }
             ]

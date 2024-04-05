@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.079342670313249,
-        "y": 7.445640937793504
+        "x": 14.06,
+        "y": 5.4
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.757631261237478,
-        "y": 7.195984338301414
+        "x": 12.738867662685088,
+        "y": 5.246672418329788
       },
       "isLocked": false,
-      "linkedName": "ShootiestBlue2"
+      "linkedName": "ShootRed2_V2"
     },
     {
       "anchor": {
-        "x": 4.01,
-        "y": 6.76
+        "x": 11.1,
+        "y": 4.23
       },
       "prevControl": {
-        "x": 5.330889877977139,
-        "y": 7.038836744812332
+        "x": 12.0424860568031,
+        "y": 4.480425862260176
       },
       "nextControl": {
-        "x": 2.5423445800254005,
-        "y": 6.450181394652964
+        "x": 10.012870705770966,
+        "y": 3.941141306621497
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2945574370576298,
-        "y": 5.507130871149041
+        "x": 8.53,
+        "y": 4.12
       },
       "prevControl": {
-        "x": 1.6311614977634161,
-        "y": 6.5753526207480535
+        "x": 9.989927752350093,
+        "y": 4.105475609547973
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "ShootiestRedMiddle1"
     }
   ],
   "rotationTargets": [],
@@ -55,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "ShootiestBlue",
+  "folder": "ShootiestRed",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -177.7072219217679,
     "velocity": 0
   },
   "useDefaultConstraints": true

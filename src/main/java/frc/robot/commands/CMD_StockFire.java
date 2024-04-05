@@ -39,7 +39,7 @@ public class CMD_StockFire extends Command {
     m_variable.setAutofire(true);
     m_drivetrain.setAmpTarget(); 
     m_shooter.setShooterSetpoint( m_shooter.stockInterpolateSetpoint(Units.metersToInches(m_drivetrain.calculateTargetDistance())));
-    m_shooter.disableShooter();
+    m_shooter.enableShooter();
     m_shooterTimer.restart();
     m_shooterTimer.start();
     m_arm.setShoulderGoalWithoutElbow(Math.toRadians(-45));
@@ -54,6 +54,11 @@ public class CMD_StockFire extends Command {
     if (m_shooterTimer.get() > 1 || m_shooter.getAtShooterSetpoint()){
       m_shooter.enableShooter();
       m_intake.setIndexerPower(1);
+    }
+    if (m_variable.getAutofire()){
+      double rot = m_drivetrain.autoAlignTurn();
+
+      m_drivetrain.drive(-0.01, 0, rot, true, false);
     }
   }
 

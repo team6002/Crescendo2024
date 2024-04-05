@@ -27,7 +27,7 @@ public class CMD_Home extends SequentialCommandGroup {
       m_arm.CMDsetElbowConstraints(ElbowConstants.kNormalConstaints),
       new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-49)),
       // new CMD_ShoulderCheck(m_arm, Math.toRadians(-45)),
-      new CMD_ElbowSetPosition(m_arm, Math.toRadians(15)),
+      new CMD_ElbowSetPosition(m_arm, Math.toRadians(ElbowConstants.kElbowHome)),
       new CMD_ShooterOff(m_shooter),
       m_intake.CMDsetIndexVelocity(0),
       new CMD_GroundIntakeSetPower(m_intake, 0)

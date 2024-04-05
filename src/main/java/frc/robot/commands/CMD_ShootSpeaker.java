@@ -40,6 +40,8 @@ public class CMD_ShootSpeaker extends SequentialCommandGroup {
 
       // shot complete, reset to home position  
       p_variables.CMDsetAutofire(false),
+      p_arm.CMDsetShoulderConstraints(ShoulderConstants.kNormalConstaints),
+      p_arm.CMDsetElbowConstraints(ElbowConstants.kNormalConstaints),
       new CMD_ShoulderSetPosition(p_arm, ShoulderConstants.kShoulderHome),
       new CMD_ElbowSetPosition(p_arm, ElbowConstants.kElbowHome),  
       p_variables.CMDsetHasItem(false)

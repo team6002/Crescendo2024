@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.079342670313249,
-        "y": 7.445640937793504
+        "x": 2.546873826142019,
+        "y": 5.54
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.757631261237478,
-        "y": 7.195984338301414
+        "x": 3.837183823275738,
+        "y": 5.381569853573308
       },
       "isLocked": false,
-      "linkedName": "ShootiestBlue2"
+      "linkedName": "ShootBlue2"
     },
     {
       "anchor": {
-        "x": 4.01,
-        "y": 6.76
+        "x": 5.44,
+        "y": 4.23
       },
       "prevControl": {
-        "x": 5.330889877977139,
-        "y": 7.038836744812332
+        "x": 4.282974349518213,
+        "y": 4.5482634822394745
       },
       "nextControl": {
-        "x": 2.5423445800254005,
-        "y": 6.450181394652964
+        "x": 6.500606846274973,
+        "y": 3.938258474613816
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2945574370576298,
-        "y": 5.507130871149041
+        "x": 8.299162513817985,
+        "y": 4.12
       },
       "prevControl": {
-        "x": 1.6311614977634161,
-        "y": 6.5753526207480535
+        "x": 6.839162513817985,
+        "y": 4.12
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "ShootiestBlueMiddle"
     }
   ],
   "rotationTargets": [],
