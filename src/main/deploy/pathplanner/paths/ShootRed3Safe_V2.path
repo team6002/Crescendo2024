@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.308861040257291,
-        "y": 5.3476050614073065
+        "x": 15.2,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.738508587724729,
-        "y": 5.431928042735104
+        "x": 14.608410040080933,
+        "y": 5.492445188825977
       },
       "isLocked": false,
       "linkedName": "ShootRed1Start"

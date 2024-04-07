@@ -14,7 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterMid"
+            "name": "SubShot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.3
           }
         },
         {
@@ -25,31 +31,6 @@
                 "type": "path",
                 "data": {
                   "pathName": "InnerRed1"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShooterCheck"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
                 }
               }
             ]

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2505003900884375,
-        "y": 5.727416105995004
+        "x": 1.35,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9113560946263224,
-        "y": 6.388271810532888
+        "x": 2.0108557045378848,
+        "y": 6.2108557045378845
       },
       "isLocked": false,
       "linkedName": "ShootBlue1Start"

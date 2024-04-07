@@ -28,7 +28,7 @@ public class CMD_dropFrontAmp extends SequentialCommandGroup {
     //   new CMD_ShooterOn(p_shooter),
       // new CMD_ShooterCheck(p_shooter),
       // new WaitCommand(0.15),
-      p_intake.CMDsetIndexVelocity(2000),
+      p_intake.CMDsetIndexVelocity(1500),
       new WaitCommand(0.75),
       new CMD_ShooterOff(p_shooter),
       p_intake.CMDsetIndexVelocity(0)

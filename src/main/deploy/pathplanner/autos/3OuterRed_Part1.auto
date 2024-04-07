@@ -14,19 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "ReadyShooterFirstRing"
+            "name": "SubShot"
           }
         },
         {
-          "type": "named",
+          "type": "wait",
           "data": {
-            "name": "ShooterCheck"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Fire"
+            "waitTime": 0.3
           }
         },
         {

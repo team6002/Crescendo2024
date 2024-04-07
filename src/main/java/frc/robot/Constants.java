@@ -132,7 +132,7 @@ public final class Constants {
         / kDrivingMotorReduction;
 
     // This accounts for stuff such as wheel wear
-    public static final double kXFactor = 1.002;  // if actual is smaller than odo go down  
+    public static final double kXFactor = 1;  // if actual is smaller than odo go down  
 
     public static final double kDrivingEncoderPositionFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) * kXFactor; // meters
@@ -369,13 +369,13 @@ public final class Constants {
       {80, Math.toRadians(-38.5)},
       {90, Math.toRadians(-36.)},
       {100, Math.toRadians(-32.)},
-      {110, Math.toRadians(-30.5)},
-      {120, Math.toRadians(-29.5)},
-      {130, Math.toRadians(-28.)},
-      {140, Math.toRadians(-26.)},
-      {150, Math.toRadians(-25.3)},
-      {160, Math.toRadians(-24.3)},
-      {170, Math.toRadians(-23.7)},
+      {110, Math.toRadians(-31.5)},
+      {120, Math.toRadians(-28.5)},
+      {130, Math.toRadians(-27.)},
+      {140, Math.toRadians(-25.)},
+      {150, Math.toRadians(-24.3)},
+      {160, Math.toRadians(-23.3)},
+      {170, Math.toRadians(-22.7)},
 
       // {80, Math.toRadians(-40)},
       // {90, Math.toRadians(-40)},
