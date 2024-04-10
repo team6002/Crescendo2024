@@ -101,6 +101,7 @@ public class SUB_Vision extends SubsystemBase {
             totalTags ++;
             if (angFilter(totalTags)) continue;
             numTags++;
+            // if(tgt.getFiducialId() != 4 || tgt.getFiducialId() != 7) continue;
             avgDist +=
                 tagPose.get().toPose2d().getTranslation().getDistance(estimatedPose.getTranslation());
         }

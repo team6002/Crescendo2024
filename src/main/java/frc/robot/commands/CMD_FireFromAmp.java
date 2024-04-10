@@ -4,9 +4,7 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.units.Unit;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -16,7 +14,7 @@ import frc.robot.subsystems.SUB_GlobalVariables;
 import frc.robot.subsystems.SUB_Intake;
 import frc.robot.subsystems.SUB_Shooter;
 
-public class CMD_Autofire extends Command {
+public class CMD_FireFromAmp extends Command {
   /** Creates a new CMD_Autofire. */
   SUB_Arm m_arm;
   SUB_Drivetrain m_drivetrain;
@@ -28,10 +26,8 @@ public class CMD_Autofire extends Command {
   Timer m_totalTimer;
   Timer m_intialTimer;
   boolean m_closeShooting;
-  Timer m_timeoutTimer;
   int m_CHECK;
-  int m_ODOCHECK;
-  public CMD_Autofire(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
+  public CMD_FireFromAmp(SUB_Arm p_arm, SUB_Drivetrain p_drivetrain, SUB_Intake p_intake, SUB_Shooter p_shooter, SUB_GlobalVariables p_variables) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = p_arm;
     m_drivetrain = p_drivetrain;
@@ -41,7 +37,6 @@ public class CMD_Autofire extends Command {
     m_shooterTimer = new Timer();
     m_totalTimer = new Timer(); 
     m_intialTimer = new Timer();
-    m_timeoutTimer = new Timer();
     m_closeShooting = false;
     addRequirements(m_shooter);
   }
@@ -51,14 +46,14 @@ public class CMD_Autofire extends Command {
   public void initialize() {
     // m_shooter.disableShooter();
     m_CHECK = 0;
-    m_ODOCHECK = 0;
+
     m_drivetrain.setAutoAlignSetpoint();
 
     m_shooter.setShooterSetpoint(4000);
     m_shooter.enableShooter();
 
-    double sh_sp = m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()));
-    double el_sp = m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance()));
+    double sh_sp = m_arm.interpolateShoulder(125);
+    double el_sp = m_arm.interpolateShortElbow(125);
     m_arm.setShoulderGoalWithoutElbow(sh_sp);
     m_arm.setElbowGoalRelative(el_sp);
 
@@ -69,8 +64,6 @@ public class CMD_Autofire extends Command {
     m_intialTimer.restart();  
     m_intialTimer.start();
     m_shooterTimer.stop(); 
-    m_timeoutTimer.restart();
-    m_timeoutTimer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -83,21 +76,16 @@ public class CMD_Autofire extends Command {
     if (m_variable.getAutofire()){
       double rot = m_drivetrain.autoAlignTurn();
 
-      m_drivetrain.drive(0.0, 0, rot, false, false);
+      m_drivetrain.drive(-0.0, 0, rot, false, false);
     }
 
     // if (Units.metersToInches(m_drivetrain.getVelocity()) <= 40){
-    if (m_drivetrain.getStableOdometry()){
-      m_ODOCHECK ++;
-    }else{
-      m_ODOCHECK = 0;
-    }
     if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint){
-        if (m_CHECK >= 10 && m_ODOCHECK >=40){
+        if (m_CHECK >= 5){
           m_shooterTimer.start();
           m_intake.setIndexerPower(.5);
         }
-        m_CHECK ++;
+        m_CHECK +=1;
       }else{
         m_CHECK = 0;
         // m_shooterTimer.stop();
@@ -105,11 +93,6 @@ public class CMD_Autofire extends Command {
 
     if (m_shooterTimer.get() > 0.3){
       m_shot = true;
-    }
-
-    if (m_timeoutTimer.get() > 3){
-      m_shooterTimer.start();
-      m_intake.setIndexerPower(.5);
     }
 
     }
@@ -121,7 +104,6 @@ public class CMD_Autofire extends Command {
       System.out.println("Top" + m_shooter.getTopShooterVelocity());
       System.out.println("Bot" + m_shooter.getBotShooterVelocity());
       System.out.println("Shoulder" + Math.toDegrees(m_arm.getShoulderPosition()));
-      System.out.println("Distance" + Units.metersToInches(m_drivetrain.calculateTargetDistance()));
       System.out.println("Timer" + m_totalTimer.get());
       if (m_variable.getContShooting()){
         m_shooter.setShooterSetpoint(1250);

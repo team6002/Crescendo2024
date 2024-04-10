@@ -29,9 +29,9 @@ public class CMD_IndexerIndex extends Command {
     m_detected = false;
     m_intakerTimer.reset();
     m_intakerTimer.stop();
-    m_indexerSpeed = 0.2;
+    m_indexerSpeed = 0.4;
     // m_intake.enableIndexerLimit(true);
-    m_intake.setIndexerPower(.6);
+    m_intake.setIndexerPower(.2);
     // m_intake.setIndexerVelocity(2400);
   }
 

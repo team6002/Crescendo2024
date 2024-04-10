@@ -44,8 +44,8 @@ public class CMD_ShootSafeSubShotTeleop extends SequentialCommandGroup {
          * is above a threshold, fire.
         */
         new SequentialCommandGroup(
-          new CMD_ShoulderSetPosition(p_arm, Math.toRadians(-45)),
-          new CMD_ElbowSetPositionRelative(p_arm, Math.toRadians(21)),
+          new CMD_ShoulderSetPosition(p_arm, Math.toRadians(-49)),
+          new CMD_ElbowSetPositionRelative(p_arm, Math.toRadians(17)),
           // new CMD_ElbowCheck(p_arm, 2),
 
           /* Wait for shooter to be above threshold */

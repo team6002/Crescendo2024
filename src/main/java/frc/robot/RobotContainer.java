@@ -101,8 +101,8 @@ public class RobotContainer {
       new SequentialCommandGroup(  
         new CMD_setShooterSetpoint(m_shooter, 2500),
         new CMD_ShooterOn(m_shooter),
-        new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
-        new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(20)),
+        new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-49)),
+        new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(17)),
         new CMD_ElbowCheck(m_arm, 2),
         new CMD_ShooterOverValue(m_shooter, 2300, 2300),
         new CMD_IndexerSetPower(m_intake, .7)
@@ -116,8 +116,8 @@ public class RobotContainer {
         ),
         new SequentialCommandGroup(
           // new CMD_setShooterPower(m_shooter, 1),
-          new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-45)),
-          new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(21))
+          new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-49)),
+          new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(17))
         )
     ));
 
@@ -299,22 +299,19 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(new CMD_FloorIntake(m_variables, m_arm, m_intake));
     m_driverController.rightBumper().onTrue(new CMD_ShootSpeaker(m_arm, m_shooter, m_intake, m_variables, m_drivetrain));
 
-    m_driverController.y().onTrue(new CMD_StockFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables));
+    m_driverController.y().onTrue(new CMD_StockFire(m_arm, m_drivetrain, m_intake, m_shooter, m_variables, m_driverController));
     // eject
-    m_driverController.x().onTrue(new ParallelCommandGroup(
-      
-      new SequentialCommandGroup(
-        // new CMD_setShooterSetpoint(m_shooter, 2200),
-        new CMD_setBotSetpoint(m_shooter, 2500),
-        new CMD_setTopSetpoint(m_shooter, 2000),
-        new CMD_ShooterOn(m_shooter),
-        new CMD_ShoulderSetPosition(m_arm, Math.toRadians(-49)),
-        new CMD_ElbowSetPositionRelative(m_arm, Math.toRadians(13)),
-        new CMD_ElbowCheck(m_arm, 2),
-        new CMD_ShoulderCheck(m_arm, 2),
-        new WaitCommand(1),
-        new CMD_IndexerSetPower(m_intake, .7)
-      )
+    m_driverController.x().onTrue(new SequentialCommandGroup(
+      Commands.runOnce(()->m_drivetrain.setShooterTarget(), m_drivetrain),
+      m_variables.CMDsetAutofire(true),
+      new CMD_FireFromAmp(m_arm, m_drivetrain, m_intake, m_shooter, m_variables),
+      // shot complete, reset to home position  
+      m_variables.CMDsetAutofire(false),
+      m_arm.CMDsetShoulderConstraints(ShoulderConstants.kNormalConstaints),
+      m_arm.CMDsetElbowConstraints(ElbowConstants.kNormalConstaints),
+      new CMD_ShoulderSetPosition(m_arm, ShoulderConstants.kShoulderHome),
+      new CMD_ElbowSetPosition(m_arm, ElbowConstants.kElbowHome),  
+      m_variables.CMDsetHasItem(false)
     ));
     
     m_driverController.b().onTrue(new SequentialCommandGroup(

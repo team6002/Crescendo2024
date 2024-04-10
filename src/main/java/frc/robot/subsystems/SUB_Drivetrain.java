@@ -105,6 +105,7 @@ public class SUB_Drivetrain extends SubsystemBase {
 
   private double m_prevXPos = 0;
   private double m_prevYPos = 0;
+  private Pose2d m_prevOdo = new Pose2d(new Translation2d(0,0), Rotation2d.fromDegrees(0));
 
   private boolean visionToggle = true;
 
@@ -639,6 +640,7 @@ public class SUB_Drivetrain extends SubsystemBase {
     // if (visionEst.isPresent()){
     //   return -m_AutoAlignProfile.calculate(Math.toRadians(targetYaw), 0);
     // } else {
+      
       return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()), globalTargetAng.getRadians());
       // return 0;
     // }
@@ -658,7 +660,17 @@ public class SUB_Drivetrain extends SubsystemBase {
   public Rotation2d getRotation2D() {
     return m_gyro.getRotation2d().plus(new Rotation2d(m_angleOffset));
   }
-
+  //checks to see if the odometry is similiar enough to the vision
+  public boolean getStableOdometry(){
+    var p_OdoError = getPose().minus(m_prevOdo);
+    if (Math.abs(p_OdoError.getX()) <= 0.15 && Math.abs(p_OdoError.getY()) <= 0.15){
+    m_prevOdo = getPose();
+      return true;
+    }else {
+    m_prevOdo = getPose();
+      return false;
+    }
+  }
   /**
   * Get the SwerveModulePosition of each swerve module (position, angle). The returned array order
   * matches the kinematics module order.
