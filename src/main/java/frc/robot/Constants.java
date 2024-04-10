@@ -363,7 +363,7 @@ public final class Constants {
       {140, Math.toRadians(-22.)},
       {150, Math.toRadians(-21.3)},
       {160, Math.toRadians(-20.3)},
-      {170, Math.toRadians(-19.7)},
+      {170, Math.toRadians(-19.9)},
 
       // {80, Math.toRadians(-40)},
       // {90, Math.toRadians(-40)},
@@ -374,9 +374,9 @@ public final class Constants {
       // {115, Math.toRadians(-35)},
       // {120, Math.toRadians(-35)},
       // {150, Math.toRadians(-31.3)},
-      {200, Math.toRadians(-17)},
-      {240, Math.toRadians(-16.5)},
-      {300, Math.toRadians(-15.3)},
+      {200, Math.toRadians(-17.5)},
+      {240, Math.toRadians(-17.)},
+      {300, Math.toRadians(-15.8)},
     };
 
   }

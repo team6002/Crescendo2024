@@ -272,7 +272,7 @@ public class RobotContainer {
     m_drivetrain.setDefaultCommand(new CMD_Drive(m_drivetrain, m_driverController, m_variables));
     m_intake.setDefaultCommand(new CMD_PickUpRumble(m_intake, m_driverXController));
     m_led.setDefaultCommand(new CMD_LedHandler(m_led, m_shooter, m_variables));
-    // m_shooter.setDefaultCommand(new CMD_IdleShooter(m_shooter));
+    m_shooter.setDefaultCommand(new CMD_IdleShooter(m_shooter, m_drivetrain, m_variables));
     
   
   }

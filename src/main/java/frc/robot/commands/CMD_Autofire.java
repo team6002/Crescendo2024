@@ -71,6 +71,9 @@ public class CMD_Autofire extends Command {
     m_shooterTimer.stop(); 
     m_timeoutTimer.restart();
     m_timeoutTimer.start();
+    
+    // System.out.println("Shoulder" + Math.toDegrees(m_arm.getShoulderGoal()));
+    // System.out.println("Distance" + Units.metersToInches(m_drivetrain.calculateTargetDistance()));
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -80,6 +83,15 @@ public class CMD_Autofire extends Command {
     boolean m_shoulderAtSetpoint = m_arm.atShoulderGoal();
     boolean m_elbowAtSetpoint = m_arm.atElbowGoal();
 
+    // updates the arms incase we move to far from the original setpoint
+    if (Math.abs(m_arm.getShoulderGoal() - m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()))) <= .75){
+      double sh_sp = m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()));
+      m_arm.setShoulderGoalWithoutElbow(sh_sp);
+    }
+    // if (Math.abs(m_arm.getElbowGoal() - m_arm.interpolateShortElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance()))) <= 1){
+    //   double el_sp = m_arm.interpolateElbow(Units.metersToInches(m_drivetrain.calculateTargetDistance()));
+    //   m_arm.setElbowGoalRelative(el_sp);
+    // }
     if (m_variable.getAutofire()){
       double rot = m_drivetrain.autoAlignTurn();
 
@@ -92,8 +104,9 @@ public class CMD_Autofire extends Command {
     }else{
       m_ODOCHECK = 0;
     }
+
     if (m_shooterAtSetpoint && m_shoulderAtSetpoint && m_drivetrain.getOnTarget() && m_elbowAtSetpoint){
-        if (m_CHECK >= 10 && m_ODOCHECK >=40){
+        if (m_CHECK >= 5 && m_ODOCHECK >=10){
           m_shooterTimer.start();
           m_intake.setIndexerPower(.5);
         }
@@ -124,9 +137,9 @@ public class CMD_Autofire extends Command {
       System.out.println("Distance" + Units.metersToInches(m_drivetrain.calculateTargetDistance()));
       System.out.println("Timer" + m_totalTimer.get());
       if (m_variable.getContShooting()){
-        m_shooter.setShooterSetpoint(1250);
+        m_shooter.setShooterSetpoint(3000);
       }else{
-        m_shooter.disableShooter();
+        m_shooter.setShooterSetpoint(0);
       }
 
       m_intake.setIndexerVelocity(0);

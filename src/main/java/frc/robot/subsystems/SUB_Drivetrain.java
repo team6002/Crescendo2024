@@ -663,7 +663,7 @@ public class SUB_Drivetrain extends SubsystemBase {
   //checks to see if the odometry is similiar enough to the vision
   public boolean getStableOdometry(){
     var p_OdoError = getPose().minus(m_prevOdo);
-    if (Math.abs(p_OdoError.getX()) <= 0.15 && Math.abs(p_OdoError.getY()) <= 0.15){
+    if (Math.abs(p_OdoError.getX()) <= 0.25 && Math.abs(p_OdoError.getY()) <= 0.25){
     m_prevOdo = getPose();
       return true;
     }else {
