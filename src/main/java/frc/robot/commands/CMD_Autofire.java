@@ -23,6 +23,7 @@ public class CMD_Autofire extends Command {
   SUB_Intake m_intake;
   SUB_Shooter m_shooter;
   SUB_GlobalVariables m_variable;
+  double ShooterSpeed;
   boolean m_shot;
   Timer m_shooterTimer;
   Timer m_totalTimer;
@@ -53,8 +54,12 @@ public class CMD_Autofire extends Command {
     m_CHECK = 0;
     m_ODOCHECK = 0;
     m_drivetrain.setAutoAlignSetpoint();
-
-    m_shooter.setShooterSetpoint(4000);
+    if (Units.metersToInches(m_drivetrain.calculateTargetDistance()) > 120){
+      ShooterSpeed = 4000; 
+    }else{
+      ShooterSpeed = 3500;
+    }
+    m_shooter.setShooterSetpoint(ShooterSpeed);
     m_shooter.enableShooter();
 
     double sh_sp = m_arm.interpolateShoulder(Units.metersToInches(m_drivetrain.calculateTargetDistance()));
@@ -79,7 +84,7 @@ public class CMD_Autofire extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean m_shooterAtSetpoint = m_shooter.getOverShooterValue(3900, 3900);
+    boolean m_shooterAtSetpoint = m_shooter.getOverShooterValue(ShooterSpeed - 100, ShooterSpeed - 100);
     boolean m_shoulderAtSetpoint = m_arm.atShoulderGoal();
     boolean m_elbowAtSetpoint = m_arm.atElbowGoal();
 
@@ -136,12 +141,7 @@ public class CMD_Autofire extends Command {
       System.out.println("Shoulder" + Math.toDegrees(m_arm.getShoulderPosition()));
       System.out.println("Distance" + Units.metersToInches(m_drivetrain.calculateTargetDistance()));
       System.out.println("Timer" + m_totalTimer.get());
-      if (m_variable.getContShooting()){
-        m_shooter.setShooterSetpoint(3000);
-      }else{
-        m_shooter.setShooterSetpoint(0);
-      }
-
+      m_shooter.disableShooter();
       m_intake.setIndexerVelocity(0);
   }
 

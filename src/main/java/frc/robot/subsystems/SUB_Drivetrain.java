@@ -603,49 +603,45 @@ public class SUB_Drivetrain extends SubsystemBase {
 
     return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()));
   }
+  // calculates distance between a set location and the target
+  public double calculatePositionDistance(Translation2d p_position){
+    return (p_position.getDistance(m_currentTarget));
+  }
+  
+  //You feed it a location and it will turn to the Target
+  public double autoAlignTurnV3(Translation2d p_startingLocation){    
+    Translation2d delta = p_startingLocation.minus(m_currentTarget);
+    Rotation2d angleTo = new Rotation2d(Math.atan2(delta.getY(), delta.getX()));
+    Rotation2d globalTargetAng = angleTo;
+    // Calculate difference between target angle and our current heading 
+    Rotation2d wantedTurnAngle = getPose().getRotation().minus(globalTargetAng);
+    //The difference between our current pose and target in radians
+    double targetError = wantedTurnAngle.getRadians();
+    // variable tolerance for different distances
+    if (targetError <= 1.5){
+      onTarget = true;
+    } else{
+      onTarget = false;
+    }
+    return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()), globalTargetAng.getRadians());
+  }
 
   public double autoAlignTurn(){
-    // double sideMod = 0;
-    //vision target yaw
-    double targetYaw = 0;
-    // if (DriverStation.getAlliance().get() == Alliance.Red){
-    //   sideMod = 180;
-    // }else{
-    //   sideMod = 0;
-    // }
-    // var visionEst = m_vision.getEstimatedGlobalPose();  
-    // the vision target yaw  
-    // if (visionEst.isPresent()){
-    //   targetYaw = m_vision.getTargetingYaw();
-    // }
     Rotation2d globalTargetAng = angleToCurrentTarget();
     // Calculate difference between target angle and our current heading 
     Rotation2d wantedTurnAngle = getPose().getRotation().minus(globalTargetAng);
     //The difference between our current pose and target in radians
     double targetError = wantedTurnAngle.getRadians();
-
-    // if (visionEst.isPresent()){
-    //   if (Math.abs(m_vision.getTargetingYaw()) <= 2){
-    //     onTarget = true;
-    //     // return 0;
-    //   }
-    // }
     // variable tolerance for different distances
     if (targetError <= Math.toRadians(MathUtil.clamp((250 / calculateTargetXError()) - ( 0.1 * calculateTargetYError()), 1, 2))){
       onTarget = true;
     } else{
       onTarget = false;
     }
-
-    // if (visionEst.isPresent()){
-    //   return -m_AutoAlignProfile.calculate(Math.toRadians(targetYaw), 0);
-    // } else {
-      
+    
       return -m_AutoAlignProfile.calculate(Math.toRadians(getAngle()), globalTargetAng.getRadians());
       // return 0;
-    // }
   }
-
   public boolean getOnTarget(){
     return onTarget;
   }

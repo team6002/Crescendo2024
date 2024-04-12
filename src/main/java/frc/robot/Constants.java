@@ -269,7 +269,7 @@ public final class Constants {
 
     public static final double kShooterTopP = 0.007;//0.0077;//0.005;
     public static final double kShooterTopI = 0.0;
-    public static final double kShooterTopD = 0.0008;//0.0005
+    public static final double kShooterTopD = 0.00065;//0.0005
     public static final double kShooterTopFF = 0.0;
 
     public static final double kShooterTopSVolts = 0.24;//0.7;
@@ -359,11 +359,11 @@ public final class Constants {
       {100, Math.toRadians(-30.)},
       {110, Math.toRadians(-29.5)},
       {120, Math.toRadians(-26.5)},
-      {130, Math.toRadians(-24.)},
-      {140, Math.toRadians(-22.)},
-      {150, Math.toRadians(-21.3)},
-      {160, Math.toRadians(-20.3)},
-      {170, Math.toRadians(-19.9)},
+      {130, Math.toRadians(-24.8)},
+      {140, Math.toRadians(-22.8)},
+      {150, Math.toRadians(-21.8)},
+      {160, Math.toRadians(-20.8)},
+      {170, Math.toRadians(-20.8)},
 
       // {80, Math.toRadians(-40)},
       // {90, Math.toRadians(-40)},
@@ -374,9 +374,9 @@ public final class Constants {
       // {115, Math.toRadians(-35)},
       // {120, Math.toRadians(-35)},
       // {150, Math.toRadians(-31.3)},
-      {200, Math.toRadians(-17.5)},
-      {240, Math.toRadians(-17.)},
-      {300, Math.toRadians(-15.8)},
+      {200, Math.toRadians(-18.)},
+      {240, Math.toRadians(-17.5)},
+      {300, Math.toRadians(-16.3)},
     };
 
   }
@@ -440,9 +440,9 @@ public final class Constants {
 
     public static final double[][] kElbowShortArray = {
     //Elbow Position for shooting at the Speaker for ft 
-      {36, Math.toRadians(22)},
-      {48, Math.toRadians(18)},
-      {50, Math.toRadians(11)},  
+      {45, Math.toRadians(22)},
+      {57, Math.toRadians(20)},
+      {69, Math.toRadians(16)},  
       {84, Math.toRadians(10)}, 
       {100, Math.toRadians(10)},
       {120, Math.toRadians(10)},
